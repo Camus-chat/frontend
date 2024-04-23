@@ -1,0 +1,24 @@
+@import '_colors';
+@import '_fonts';
+
+html, body {
+  height: 100vh;
+  width: 100vw;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: Pretendard;
+  font-weight: $regular;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input:focus {
+  outline: none;
+}
