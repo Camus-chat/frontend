@@ -7,7 +7,7 @@ interface Props {
   name: string;
 }
 
-const Index = ({ children, name }: Props) => {
+const FormWrapper = ({ children, name }: Props) => {
   return (
     <div className={styles.formWrapper}>
       <p className={styles.label}>{name}</p>
@@ -16,4 +16,4 @@ const Index = ({ children, name }: Props) => {
   );
 };
 
-export default Index;
+export default FormWrapper;

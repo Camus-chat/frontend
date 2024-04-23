@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './index.module.scss';
-import Index from '@/components/Form/Wrapper';
+import FormWrapper from '@/components/Form/Wrapper';
 
 interface Props {
   name: string;
@@ -12,7 +12,7 @@ interface Props {
 
 const Input = ({ name, type, placeholder, invalid }: Props) => {
   return (
-    <Index name={name}>
+    <FormWrapper name={name}>
       <input
         className={styles.inputBox}
         name={name}
@@ -20,7 +20,7 @@ const Input = ({ name, type, placeholder, invalid }: Props) => {
         placeholder={placeholder}
         aria-invalid={invalid}
       />
-    </Index>
+    </FormWrapper>
   );
 };
 
