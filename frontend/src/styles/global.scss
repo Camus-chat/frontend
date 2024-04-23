@@ -1,5 +1,4 @@
-@import '_colors';
-@import '_fonts';
+@import '_variables';
 
 html, body {
   height: 100vh;
@@ -13,6 +12,7 @@ html, body {
   box-sizing: border-box;
   font-family: Pretendard;
   font-weight: $regular;
+  color: $black;
 }
 
 button:hover {
@@ -21,4 +21,9 @@ button:hover {
 
 input:focus {
   outline: none;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/fonts/PretendardVariable.woff2');
 }
