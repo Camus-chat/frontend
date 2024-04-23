@@ -1,0 +1,10 @@
+@import '@/styles/variables';
+
+.formWrapper {
+  margin: 8px 0;
+
+  p {
+    font-size: 14px;
+    font-weight: $bold;
+  }
+}
