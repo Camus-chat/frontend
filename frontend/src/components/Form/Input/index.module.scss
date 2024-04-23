@@ -1,0 +1,15 @@
+@import '@/styles/_variables';
+
+.inputBox {
+  width: 100%;
+  height: 40px;
+  margin-top: 4px;
+  padding: 16px 20px;
+  border: $gray-300 solid 1px;
+  border-radius: 8px;
+  font-size: 14px;
+
+  &[aria-invalid='true']{
+    border-color: $red-300;
+  }
+}
