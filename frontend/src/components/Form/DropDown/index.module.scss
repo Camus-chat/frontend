@@ -1,0 +1,10 @@
+@import '@/components/Form/index.scss';
+
+.select {
+  @include form;
+  padding: 0 16px;
+
+  &:focus {
+    outline: none;
+  }
+}
