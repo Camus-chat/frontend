@@ -1,0 +1,14 @@
+@import '@/styles/_variables';
+@import '@/components/Form/index.scss';
+
+.inputBox {
+  @include form;
+  padding: 16px 20px;
+
+  &.invalid {
+    border: $red-300 1px solid;
+    &::placeholder{
+      color: $red-300;
+    }
+  }
+}
