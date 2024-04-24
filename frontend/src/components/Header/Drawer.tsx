@@ -30,7 +30,7 @@ const Drawer = ({ navItems, signedIn }: Props) => {
       {drawerOpen && (
         <div
           className={classNames(styles.drawerWrapper, {
-            [styles.signeIn]: signedIn,
+            [styles.signedIn]: signedIn,
           })}
         >
           <div className={styles.drawer}>
