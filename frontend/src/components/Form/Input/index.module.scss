@@ -5,7 +5,10 @@
   @include form;
   padding: 16px 20px;
 
-  &[aria-invalid='true']{
-    border-color: $red-300;
+  &.invalid {
+    border: $red-300 1px solid;
+    &::placeholder{
+      color: $red-300;
+    }
   }
 }

@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 
 import styles from './index.module.scss';
@@ -7,18 +8,17 @@ interface Props {
   name: string;
   type: string;
   placeholder: string;
-  invalid: boolean;
+  invalid?: boolean;
 }
 
-const Input = ({ name, type, placeholder, invalid }: Props) => {
+const Input = ({ name, type, placeholder, invalid = false }: Props) => {
   return (
     <FormWrapper name={name}>
       <input
-        className={styles.inputBox}
+        className={classNames(styles.inputBox, { [styles.invalid]: invalid })}
         name={name}
         type={type}
         placeholder={placeholder}
-        aria-invalid={invalid}
       />
     </FormWrapper>
   );
