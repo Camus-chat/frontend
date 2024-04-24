@@ -3,6 +3,7 @@
 import CloseIcon from '@mui/icons-material/Close';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MenuIcon from '@mui/icons-material/Menu';
+import classNames from 'classnames';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -10,9 +11,10 @@ import styles from '@/components/Header/index.module.scss';
 
 interface Props {
   navItems: Navigation[];
+  signedIn?: boolean;
 }
 
-const Drawer = ({ navItems }: Props) => {
+const Drawer = ({ navItems, signedIn }: Props) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -26,7 +28,11 @@ const Drawer = ({ navItems }: Props) => {
       </button>
 
       {drawerOpen && (
-        <div className={styles.drawerWrapper}>
+        <div
+          className={classNames(styles.drawerWrapper, {
+            [styles.signeIn]: signedIn,
+          })}
+        >
           <div className={styles.drawer}>
             <div className={styles.closeBox}>
               <button
