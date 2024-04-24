@@ -21,7 +21,7 @@ const Drawer = ({ navItems, signedIn }: Props) => {
     <>
       <button
         type='button'
-        className={styles.button}
+        className={styles.openDrawer}
         onClick={() => setDrawerOpen(true)}
       >
         <MenuIcon />
@@ -37,7 +37,7 @@ const Drawer = ({ navItems, signedIn }: Props) => {
             <div className={styles.closeBox}>
               <button
                 type='button'
-                className={styles.button}
+                className={styles.closeDrawer}
                 onClick={() => setDrawerOpen(false)}
               >
                 <CloseIcon />
