@@ -1,0 +1,96 @@
+@import '@/styles/_variables';
+
+@mixin button-color($color) {
+  background: $color;
+  &:hover {
+    background: darken($color, 10%);
+  }
+
+  &:active {
+    background: darken($color, 15%);
+  }
+}
+
+@mixin hover-white {
+  &:hover {
+    background-color: $gray-100;
+  }
+
+  &:active {
+    background-color: darken($gray-100, 3%);
+  }
+}
+
+.Button {
+  font-weight: $semi-bold;
+
+  &.large {
+    min-width: 88px;
+    height: 40px;
+    padding: 0 16px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  &.small {
+    padding: 4px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+
+  &.blue {
+    @include button-color($blue-300);
+    color: $white;
+  }
+
+  &.lightgray {
+    @include button-color($gray-100);
+    color: $gray-500;
+
+    &:hover {
+      color: $black;
+    }
+
+    &.red {
+      &:hover{
+        background-color: $red-100;
+        color: $red-300;
+      }
+    }
+  }
+
+  &.gray {
+    @include button-color($gray-300);
+    color: $white;
+  }
+
+  &.skyblue {
+    background-color: $blue-100;
+    color: $blue-500;
+
+    &.outline {
+      border: 1px solid $blue-500;
+    }
+  }
+
+  &.white {
+    @include hover-white;
+
+    background-color: $white;
+    color: $black;
+
+  }
+
+  &.transparent {
+    @include hover-white;
+
+    background-color: transparent;
+    color: $gray-500;
+
+  }
+
+  &.black {
+    @include button-color($black);
+    color: $white;
+  }
+}
