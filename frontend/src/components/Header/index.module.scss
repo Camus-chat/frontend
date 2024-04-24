@@ -1,4 +1,5 @@
-@import '@/styles/variables.scss';
+@import '@/styles/variables';
+@import './variables';
 
 @mixin nav {
   margin: 0 auto;
@@ -49,7 +50,7 @@
   justify-content: space-between;
 
   @include mobile {
-    padding: 12px;
+    height: $nav-height-mobile;
   }
 }
 
@@ -109,7 +110,7 @@
 .navMenu {
   @include mobile-disable;
 
-  height: 56px;
+  height: $nav-height-desktop;
   display: flex;
   align-items: center;
 
