@@ -1,0 +1,182 @@
+@import '@/styles/variables.scss';
+
+@mixin nav {
+  margin: 0 auto;
+  max-width: $desktop;
+  display: flex;
+}
+
+@mixin mobile-disable {
+  @include mobile {
+    display: none;
+  }
+}
+
+.navBelt {
+  @include nav;
+
+  padding: 10px 12px 6px;
+  font-size: 12px;
+  line-height: 12px;
+
+  a {
+    margin-left: 12px;
+  }
+
+  div {
+    color: $gray-500;
+  }
+
+  @include mobile {
+    background: $black;
+    padding-bottom: 10px;
+
+    a {
+      color: $gray-100;
+    }
+
+    div {
+      color: $gray-300;
+    }
+  }
+}
+
+.navBar {
+  @include nav;
+
+  padding: 0 12px;
+  align-items: center;
+  justify-content: space-between;
+
+  @include mobile {
+    padding: 12px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: flex-end;
+
+  img {
+    margin-right: 4px;
+  }
+
+  div {
+    font-weight: $semi-bold;
+    font-size: 30px;
+  }
+
+  .biz {
+    font-weight: $light;
+  }
+
+  @include mobile {
+    img {
+      width: 24px;
+      height: 24px;
+    }
+
+    div {
+      font-size: 18px;
+    }
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+
+  @include desktop {
+    display: none;
+  }
+}
+
+.loginMenu {
+  @include mobile-disable;
+
+  button {
+    margin: 0 2px;
+  }
+}
+
+.navMenu {
+  @include mobile-disable;
+
+  height: 56px;
+  display: flex;
+  align-items: center;
+
+  a {
+    padding: 0 16px;
+    font-size: 16px;
+    font-weight: $medium;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: $blue-500;
+      border-bottom: 3px solid $blue-500;
+    }
+  }
+}
+
+.drawerWrapper {
+  position: fixed;
+  left: 0;
+  top: 32px;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, .5);
+}
+
+@mixin drawer-top {
+  background: $black;
+
+  path, a {
+    color: $white;
+  }
+}
+
+.drawer {
+  background: $white;
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+
+  .closeBox {
+    @include drawer-top;
+
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px;
+  }
+
+  .loginBox {
+    @include drawer-top;
+
+    padding: 20px;
+
+    a {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      font-weight: $semi-bold;
+    }
+
+    svg {
+      margin-left: 4px;
+      transform: rotate(-90deg);
+    }
+  }
+
+  .nav {
+    font-weight: $medium;
+    padding: 20px;
+    font-size: 18px;
+  }
+}
+
