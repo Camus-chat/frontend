@@ -11,13 +11,17 @@
   }
 }
 
-@mixin hover-white {
+@mixin transparent {
+  background-color: transparent;
+  color: $gray-500;
+
   &:hover {
     background-color: $gray-100;
   }
 
   &:active {
-    background-color: darken($gray-100, 3%);
+    background-color: transparent;
+    color: $blue-300;
   }
 }
 
@@ -52,7 +56,7 @@
     }
 
     &.red {
-      &:hover{
+      &:hover {
         background-color: $red-100;
         color: $red-300;
       }
@@ -73,20 +77,14 @@
     }
   }
 
-  &.white {
-    @include hover-white;
+  &.login {
+    @include transparent;
 
-    background-color: $white;
     color: $black;
-
   }
 
   &.transparent {
-    @include hover-white;
-
-    background-color: transparent;
-    color: $gray-500;
-
+    @include transparent;
   }
 
   &.black {
