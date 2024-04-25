@@ -23,7 +23,7 @@
   }
 
   @include mobile {
-    background: $black;
+    @include background($black);
     padding-bottom: 10px;
 
     a {
@@ -138,7 +138,7 @@
 }
 
 @mixin drawer-top {
-  background: $black;
+  @include background($black);
 
   path, a {
     color: $white;
