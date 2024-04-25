@@ -37,6 +37,12 @@ $desktop: 1280px;
   }
 }
 
+@mixin mobile-disable {
+  @include mobile {
+    display: none;
+  }
+}
+
 @mixin desktop {
   @media (min-width: #{$tablet}) {
     @content;
