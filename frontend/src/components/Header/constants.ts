@@ -1,12 +1,12 @@
 export const NAVIGATIONS = {
   personal: [
-    { path: '/', name: '서비스' },
-    { path: '/', name: '채팅하기' },
-    { path: '/', name: '고객지원' },
+    { key: 'service', path: '/', name: '서비스' },
+    { key: 'chat', path: '/service/chat', name: '채팅하기' },
+    { key: 'support', path: '/', name: '고객지원' },
   ],
   business: [
-    { path: '/', name: '서비스' },
-    { path: '/', name: '요금' },
-    { path: '/', name: '고객지원' },
+    { key: 'service', path: '/', name: '서비스' },
+    { key: 'price', path: '/', name: '요금' },
+    { key: 'support', path: '/', name: '고객지원' },
   ],
 };
