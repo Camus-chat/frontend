@@ -1,0 +1,22 @@
+@import "@/styles/_variables";
+
+@mixin info-text-box($title, $content) {
+  padding-bottom: 12px;
+
+  .title {
+    font-weight: $semi-bold;
+    font-size: $title
+  }
+  .content {
+    font-weight: $light;
+    font-size: $content
+  }
+}
+
+.large {
+  @include info-text-box(64px, 32px);
+}
+
+.small {
+  @include info-text-box(24px, 14px);
+}
