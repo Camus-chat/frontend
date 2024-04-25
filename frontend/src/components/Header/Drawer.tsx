@@ -50,7 +50,7 @@ const Drawer = ({ navItems, signedIn }: Props) => {
               </Link>
             </div>
             {navItems.map((item) => (
-              <Link key={item.name} href={item.path} className={styles.nav}>
+              <Link key={item.key} href={item.path} className={styles.nav}>
                 {item.name}
               </Link>
             ))}
