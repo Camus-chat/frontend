@@ -1,0 +1,102 @@
+@import '@/components/ProfileImage/_variables.scss';
+
+.profile {
+  border-radius: 50%;
+}
+
+@mixin profile-color($color) {
+  background-color: $color;
+}
+
+@mixin random-profile($size) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $size;
+  height: $size;
+
+  svg {
+    width: calc($size - 12px);
+    height: calc($size - 12px);
+
+    path {
+      color: white;
+    }
+  }
+}
+
+.small {
+  @include random-profile($small);
+}
+
+.medium {
+  @include random-profile($medium);
+}
+
+.red {
+  @include profile-color($profile-red)
+}
+
+.orange {
+  @include profile-color($profile-orange)
+}
+
+.amber {
+  @include profile-color($profile-amber)
+}
+
+.yellow {
+  @include profile-color($profile-yellow)
+}
+
+.lime {
+  @include profile-color($profile-lime)
+}
+
+.green {
+  @include profile-color($profile-green)
+}
+
+.emerald {
+  @include profile-color($profile-emerald)
+}
+
+.teal {
+  @include profile-color($profile-teal)
+}
+
+.cyan {
+  @include profile-color($profile-cyan)
+}
+
+.sky {
+  @include profile-color($profile-sky)
+}
+
+.blue {
+  @include profile-color($profile-blue)
+}
+
+.indigo {
+  @include profile-color($profile-indigo)
+}
+
+.violet {
+  @include profile-color($profile-violet)
+}
+
+.purple {
+  @include profile-color($profile-purple)
+}
+
+.fuchsia {
+  @include profile-color($profile-fuchsia)
+}
+
+.pink {
+  @include profile-color($profile-pink)
+}
+
+.rose {
+  @include profile-color($profile-rose)
+}
