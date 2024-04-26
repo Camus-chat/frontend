@@ -1,11 +1,8 @@
-@import '@/components/ProfileImage/_variables.scss';
+@import '@/components/ProfileImage/variables';
+@import '@/styles/variables';
 
 .profile {
   border-radius: 50%;
-}
-
-@mixin profile-color($color) {
-  background-color: $color;
 }
 
 @mixin random-profile($size) {
@@ -26,77 +23,77 @@
 }
 
 .small {
-  @include random-profile($small);
+  @include random-profile($profile-size-small);
 }
 
 .medium {
-  @include random-profile($medium);
+  @include random-profile($profile-size-medium);
 }
 
 .red {
-  @include profile-color($profile-red)
+  @include background($profile-red)
 }
 
 .orange {
-  @include profile-color($profile-orange)
+  @include background($profile-orange)
 }
 
 .amber {
-  @include profile-color($profile-amber)
+  @include background($profile-amber)
 }
 
 .yellow {
-  @include profile-color($profile-yellow)
+  @include background($profile-yellow)
 }
 
 .lime {
-  @include profile-color($profile-lime)
+  @include background($profile-lime)
 }
 
 .green {
-  @include profile-color($profile-green)
+  @include background($profile-green)
 }
 
 .emerald {
-  @include profile-color($profile-emerald)
+  @include background($profile-emerald)
 }
 
 .teal {
-  @include profile-color($profile-teal)
+  @include background($profile-teal)
 }
 
 .cyan {
-  @include profile-color($profile-cyan)
+  @include background($profile-cyan)
 }
 
 .sky {
-  @include profile-color($profile-sky)
+  @include background($profile-sky)
 }
 
 .blue {
-  @include profile-color($profile-blue)
+  @include background($profile-blue)
 }
 
 .indigo {
-  @include profile-color($profile-indigo)
+  @include background($profile-indigo)
 }
 
 .violet {
-  @include profile-color($profile-violet)
+  @include background($profile-violet)
 }
 
 .purple {
-  @include profile-color($profile-purple)
+  @include background($profile-purple)
 }
 
 .fuchsia {
-  @include profile-color($profile-fuchsia)
+  @include background($profile-fuchsia)
 }
 
 .pink {
-  @include profile-color($profile-pink)
+  @include background($profile-pink)
 }
 
 .rose {
-  @include profile-color($profile-rose)
+  @include background($profile-rose)
 }
