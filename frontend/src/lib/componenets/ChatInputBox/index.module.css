@@ -1,0 +1,44 @@
+.inputBoxWrapper {
+    height: var(--input-height, 64px);
+    padding: calc(var(--input-height, 64px) / 8);
+    background-color: var(--background-color, #FFFFFF);
+}
+
+.inputBox {
+    --padding: calc(var(--input-height, 64px) / 16);
+    width: 100%;
+    height: 100%;
+    padding: var(--padding);
+    padding-left: calc(var(--padding) * 3);
+    border-radius: var(--input-height, 64px);
+    display: flex;
+    align-items: center;
+    background-color: var(--input-box-color, #F6F7F8);
+}
+
+.inputBox input {
+    --send-button-size: calc(var(--input-height, 64px) * 0.625);
+    margin: 4px;
+    color: var(--text-color, #2B2D36);
+    font-size: calc(var(--input-height, 64px) / 4);
+    width: calc(100% - var(--send-button-size) - 4px);
+    background-color: transparent;
+}
+
+.sendButton {
+    --send-button-size: calc(var(--input-height, 64px) * 0.625);
+    margin-left: 4px;
+    width: var(--send-button-size);
+    height: var(--send-button-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--send-button-color, #117CE9);
+}
+
+.sendButtonIcon {
+    --send-button-icon-size: calc(var(--input-height, 64px) * 0.375);
+    width: var(--send-button-icon-size);
+    height: var(--send-button-icon-size);
+}
