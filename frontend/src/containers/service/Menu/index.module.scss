@@ -1,0 +1,57 @@
+@import "@/styles/variables";
+@import "variables";
+
+.menuWrapper {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+
+  @include mobile {
+    width: 100%;
+    height: $menu-height;
+    bottom: 0;
+    justify-content: space-around;
+    border-top: 1px solid $gray-100;
+  }
+
+  @include desktop {
+    @include background($black);
+    padding: 8px 0;
+    width: $menu-width;
+    height: 100%;
+    flex-direction: column;
+  }
+}
+
+@mixin menu($color) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: $semi-bold;
+  height: $menu-height;
+
+  path, div {
+    color: $color;
+  }
+
+  div {
+    margin-top: 4px;
+  }
+}
+
+.selected {
+  @include menu($white);
+
+  @include mobile {
+    path, div {
+      color: $black;
+    }
+  }
+}
+
+.unselected {
+  @include menu($gray-500);
+}
