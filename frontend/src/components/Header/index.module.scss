@@ -126,6 +126,7 @@
 
 .drawerWrapper {
   position: fixed;
+  z-index: 100;
   left: 0;
   top: 32px;
   height: 100vh;
