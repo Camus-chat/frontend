@@ -1,0 +1,55 @@
+@import '@/styles/variables';
+@import '@/containers/service/Menu/variables';
+
+.contentWrapper {
+  display: flex;
+  justify-content: center;
+  height: calc(100% - $menu-height);
+  margin-bottom: $menu-height;
+  padding: 0 16px;
+
+  @include desktop {
+    background: $gray-100;
+    padding: 24px 12px;
+    margin-left: $menu-width;
+    width: calc(100% - $menu-width);
+    height: 100%;
+  }
+}
+
+@mixin content-box {
+  width: 100%;
+
+  @include desktop {
+    @include boxShadow;
+
+    border-radius: 20px;
+    margin: 0 16px;
+    max-width: 400px;
+  }
+}
+
+.contentList {
+  @include content-box;
+
+  @include desktop {
+    padding: 16px;
+  }
+}
+
+.content {
+  @include content-box;
+
+  @include mobile {
+    position: absolute;
+    height: 100%;
+    z-index: 2;
+  }
+}
+
+.title {
+  font-size: 24px;
+  font-weight: $bold;
+
+  @include mobile-disable;
+}
