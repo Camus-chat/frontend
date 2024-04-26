@@ -9,7 +9,7 @@ interface Props {
 const Logo = ({ biz }: Props) => {
   return (
     <div className={styles.logo}>
-      <Image src='/logo.svg' alt='logo' width={40} height={40} />
+      <Image src='/images/logo.svg' alt='logo' width={40} height={40} />
       <div>CAMUS</div>
       {biz && <div className={styles.biz}>BIZ</div>}
     </div>
