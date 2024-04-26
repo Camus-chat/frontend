@@ -10,25 +10,26 @@ import NavMenu from '@/components/Header/NavMenu';
 
 interface Props {
   biz?: boolean;
+  signedIn?: boolean;
 }
 
-const Header = ({ biz }: Props) => {
+const Header = ({ biz, signedIn }: Props) => {
   const navItems = biz ? NAVIGATIONS.business : NAVIGATIONS.personal;
 
   return (
     <header>
-      <div className={styles.navBelt}>
-        <div>패밀리 사이트</div>
-        <Link href='/'>개인용</Link>
-        <Link href='/'>기업용</Link>
-      </div>
+        {!signedIn && <div className={styles.navBelt}>
+            <div>패밀리 사이트</div>
+            <Link href='/'>개인용</Link>
+            <Link href='/'>기업용</Link>
+        </div>}
       <div className={styles.navBar}>
         <Link href='/'>
           <Logo biz={biz} />
         </Link>
         <NavMenu navItems={navItems} />
         <LoginMenu />
-        <Drawer navItems={navItems} />
+        <Drawer navItems={navItems} signedIn={signedIn} />
       </div>
     </header>
   );

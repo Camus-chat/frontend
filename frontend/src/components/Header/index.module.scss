@@ -1,15 +1,10 @@
-@import '@/styles/variables.scss';
+@import '@/styles/variables';
+@import './variables';
 
 @mixin nav {
   margin: 0 auto;
   max-width: $desktop;
   display: flex;
-}
-
-@mixin mobile-disable {
-  @include mobile {
-    display: none;
-  }
 }
 
 .navBelt {
@@ -28,7 +23,7 @@
   }
 
   @include mobile {
-    background: $black;
+    @include background($black);
     padding-bottom: 10px;
 
     a {
@@ -42,6 +37,7 @@
 }
 
 .navBar {
+  @include headerShadow;
   @include nav;
 
   padding: 0 12px;
@@ -49,7 +45,7 @@
   justify-content: space-between;
 
   @include mobile {
-    padding: 12px;
+    height: $nav-height-mobile;
   }
 }
 
@@ -82,10 +78,17 @@
   }
 }
 
-.button {
+@mixin button {
   display: flex;
   align-items: center;
+}
 
+.closeDrawer {
+  @include button;
+}
+
+.openDrawer {
+  @include button;
   @include desktop {
     display: none;
   }
@@ -102,7 +105,7 @@
 .navMenu {
   @include mobile-disable;
 
-  height: 56px;
+  height: $nav-height-desktop;
   display: flex;
   align-items: center;
 
@@ -123,15 +126,20 @@
 
 .drawerWrapper {
   position: fixed;
+  z-index: 100;
   left: 0;
   top: 32px;
   height: 100vh;
   width: 100vw;
   background: rgba(0, 0, 0, .5);
+
+  &.signedIn {
+    top: 0;
+  }
 }
 
 @mixin drawer-top {
-  background: $black;
+  @include background($black);
 
   path, a {
     color: $white;

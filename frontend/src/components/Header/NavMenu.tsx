@@ -10,7 +10,7 @@ const NavMenu = ({ navItems }: Props) => {
   return (
     <nav className={styles.navMenu}>
       {navItems.map((item) => (
-        <Link key={item.name} href={item.path}>
+        <Link key={item.key} href={item.path}>
           {item.name}
         </Link>
       ))}

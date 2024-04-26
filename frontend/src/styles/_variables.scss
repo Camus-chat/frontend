@@ -37,8 +37,32 @@ $desktop: 1280px;
   }
 }
 
+@mixin mobile-disable {
+  @include mobile {
+    display: none;
+  }
+}
+
 @mixin desktop {
   @media (min-width: #{$tablet}) {
     @content;
+  }
+}
+
+// shadow
+@mixin headerShadow {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.07);
+}
+
+@mixin boxShadow {
+  box-shadow: 0 1px 23px 0 rgba(0, 0, 0, 0.05);
+}
+
+// background
+@mixin background($color) {
+  background: $color;
+
+  * {
+    background: $color;
   }
 }

@@ -3,6 +3,7 @@
 import CloseIcon from '@mui/icons-material/Close';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MenuIcon from '@mui/icons-material/Menu';
+import classNames from 'classnames';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -10,28 +11,33 @@ import styles from '@/components/Header/index.module.scss';
 
 interface Props {
   navItems: Navigation[];
+  signedIn?: boolean;
 }
 
-const Drawer = ({ navItems }: Props) => {
+const Drawer = ({ navItems, signedIn }: Props) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
     <>
       <button
         type='button'
-        className={styles.button}
+        className={styles.openDrawer}
         onClick={() => setDrawerOpen(true)}
       >
         <MenuIcon />
       </button>
 
       {drawerOpen && (
-        <div className={styles.drawerWrapper}>
+        <div
+          className={classNames(styles.drawerWrapper, {
+            [styles.signedIn]: signedIn,
+          })}
+        >
           <div className={styles.drawer}>
             <div className={styles.closeBox}>
               <button
                 type='button'
-                className={styles.button}
+                className={styles.closeDrawer}
                 onClick={() => setDrawerOpen(false)}
               >
                 <CloseIcon />
@@ -44,7 +50,7 @@ const Drawer = ({ navItems }: Props) => {
               </Link>
             </div>
             {navItems.map((item) => (
-              <Link key={item.name} href={item.path} className={styles.nav}>
+              <Link key={item.key} href={item.path} className={styles.nav}>
                 {item.name}
               </Link>
             ))}
