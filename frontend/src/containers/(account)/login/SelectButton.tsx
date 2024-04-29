@@ -9,13 +9,13 @@ import styles from '@/containers/(account)/login/index.module.scss';
 import Button from '@/components/Button';
 
 const SelectButton = () => {
-  const [isBiz, setIsBiz] = useState<boolean>(true);
+  const [isEnterprise, setIsEnterprise] = useState<boolean>(ENTERPRISE);
 
-  const enterpriseColor = isBiz ? 'skyblue' : 'lightgray';
-  const personalColor = isBiz ? 'lightgray' : 'skyblue';
+  const enterpriseColor = isEnterprise ? 'skyblue' : 'lightgray';
+  const personalColor = isEnterprise ? 'lightgray' : 'skyblue';
 
   const handleClick = (clickedValue: boolean) => {
-    setIsBiz((prev) => {
+    setIsEnterprise((prev) => {
       if (prev !== clickedValue) {
         return !prev;
       }

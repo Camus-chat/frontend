@@ -13,12 +13,12 @@
 .selectButtonWrapper {
   @include item-margin;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  gap: 4px;
+  grid-template-columns: 50% 50%;
 
   button {
     @include flex-center;
-    width: 204px;
   }
 
   .icon {
@@ -37,7 +37,7 @@
   @include flex-column;
   margin-bottom: 160px;
 
-  button {
+  .button {
     @include item-margin;
   }
 
