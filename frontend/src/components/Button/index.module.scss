@@ -1,13 +1,13 @@
 @import '@/styles/_variables';
 
 @mixin button-color($color) {
-  background: $color;
+  @include background($color);
   &:hover {
-    background: darken($color, 10%);
+    @include background(darken($color, 10%));
   }
 
   &:active {
-    background: darken($color, 15%);
+    @include background(darken($color, 15%));
   }
 }
 
@@ -49,15 +49,15 @@
 
   &.lightgray {
     @include button-color($gray-100);
-    color: $gray-500;
+    @include color($gray-500);
 
     &:hover {
-      color: $black;
+      @include color($black);
     }
 
     &.red {
       &:hover {
-        background-color: $red-100;
+        @include background($red-100);
         color: $red-300;
       }
     }
@@ -69,8 +69,12 @@
   }
 
   &.skyblue {
-    background-color: $blue-100;
-    color: $blue-500;
+    @include background($blue-100);
+    @include color($blue-500);
+
+    &:hover {
+      cursor: default;
+    }
 
     &.outline {
       border: 1px solid $blue-500;
