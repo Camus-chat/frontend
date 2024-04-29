@@ -1,0 +1,22 @@
+@use '@/styles/variables' as *;
+
+$-title-size: 24px;
+$-title-padding-bottom: 12px;
+
+.title {
+  font-size: $-title-size;
+  line-height: $-title-size;
+  padding-bottom: $-title-padding-bottom;
+  font-weight: $bold;
+
+  @include mobile-disable;
+}
+
+
+.chat {
+  height: calc(100% - $-title-size - $-title-padding-bottom);
+
+  @include mobile {
+    height: calc(100%);
+  }
+}
