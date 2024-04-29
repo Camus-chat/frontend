@@ -9,7 +9,7 @@ interface Props {
 const AccountLayout = ({ children }: Props) => {
   return (
     <main className={styles.main}>
-      <div className={styles.loginWrapper}>{children}</div>
+      <div className={styles.accountBox}>{children}</div>
     </main>
   );
 };
