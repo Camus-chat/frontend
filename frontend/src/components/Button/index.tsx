@@ -9,6 +9,7 @@ interface Props {
   color: string;
   hover?: string;
   outline?: boolean;
+  onClick: () => void;
 }
 
 const Button = ({
@@ -17,6 +18,7 @@ const Button = ({
   color,
   outline,
   hover = 'default',
+  onClick,
 }: Props) => {
   return (
     <button
@@ -30,6 +32,7 @@ const Button = ({
           [styles.outline]: outline,
         },
       )}
+      onClick={onClick}
     >
       {children}
     </button>
