@@ -1,5 +1,5 @@
-@import "@/styles/variables";
-@import "variables";
+@use "@/styles/variables" as *;
+@use "variables" as menu;
 
 .menuWrapper {
   display: flex;
@@ -9,7 +9,7 @@
 
   @include mobile {
     width: 100%;
-    height: $menu-height;
+    height: menu.$height;
     bottom: 0;
     justify-content: space-around;
     border-top: 1px solid $gray-100;
@@ -18,7 +18,7 @@
   @include desktop {
     @include background($black);
     padding: 8px 0;
-    width: $menu-width;
+    width: menu.$width;
     height: 100%;
     flex-direction: column;
   }
@@ -31,7 +31,7 @@
   justify-content: center;
   font-size: 10px;
   font-weight: $semi-bold;
-  height: $menu-height;
+  height: menu.$height;
 
   path, div {
     color: $color;

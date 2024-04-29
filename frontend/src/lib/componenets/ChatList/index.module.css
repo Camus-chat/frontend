@@ -1,0 +1,5 @@
+.chatList {
+    height: 100%;
+    overflow: auto;
+    scrollbar-width: none;
+}

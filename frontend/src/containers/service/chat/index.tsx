@@ -1,12 +1,12 @@
 import Chatting from '@/containers/service/chat/Chatting';
-import styles from '@/containers/service/index.module.scss';
-import Menu from '@/containers/service/Menu';
+
+import styles from './index.module.scss';
 
 const Chat = () => {
   return (
     <>
-      <Menu selectedMenuKey='chat' />
-      <div className={styles.contentWrapper}>
+      <div className={styles.title}>채팅</div>
+      <div className={styles.chat}>
         <Chatting />
       </div>
     </>

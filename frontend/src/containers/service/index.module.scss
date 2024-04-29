@@ -1,24 +1,37 @@
-@import '@/styles/variables';
-@import '@/containers/service/Menu/variables';
+@use '@/styles/variables' as *;
+@use '@/containers/service/Menu/variables' as menu;
+@use '@/components/Header/variables' as header;
+
+.main {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - #{header.$nav-height-mobile} - 1px);
+
+  @include desktop {
+    height: calc(100vh - #{header.$nav-height-desktop});
+    background: $gray-100;
+  }
+}
 
 .contentWrapper {
   display: flex;
   justify-content: center;
-  height: calc(100% - $menu-height);
-  margin-bottom: $menu-height;
+  height: calc(100% - #{menu.$height});
+  margin-bottom: menu.$height;
   padding: 0 16px;
 
   @include desktop {
     background: $gray-100;
     padding: 24px 12px;
-    margin-left: $menu-width;
-    width: calc(100% - $menu-width);
+    margin-left: menu.$width;
+    width: calc(100% - #{menu.$width});
     height: 100%;
   }
 }
 
 @mixin content-box {
   width: 100%;
+  overflow: hidden;
 
   @include desktop {
     @include boxShadow;
@@ -33,7 +46,7 @@
   @include content-box;
 
   @include desktop {
-    padding: 16px;
+    padding: 16px 16px 12px;
   }
 }
 
@@ -45,11 +58,4 @@
     height: 100%;
     z-index: 2;
   }
-}
-
-.title {
-  font-size: 24px;
-  font-weight: $bold;
-
-  @include mobile-disable;
 }
