@@ -1,0 +1,27 @@
+@use '@/styles/variables' as *;
+
+
+.main {
+  @include flex-column-center;
+  @include desktop {
+    background-color: $gray-100;
+  }
+
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.accountBox {
+  @include flex-column;
+  @include desktop {
+    @include boxShadow;
+  }
+
+  max-width: 400px;
+  width: 100%;
+  padding: 64px 32px;
+
+  background-color: $white;
+  border-radius: 20px;
+}

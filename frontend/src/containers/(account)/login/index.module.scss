@@ -1,0 +1,52 @@
+@use '@/styles/variables' as *;
+
+@mixin item-margin {
+  margin: 4px 0;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: $semi-bold;
+  margin-bottom: 16px;
+}
+
+.selectButtonWrapper {
+  @include item-margin;
+  width: 100%;
+  display: grid;
+  gap: 4px;
+  grid-template-columns: 50% 50%;
+
+  button {
+    @include flex-center;
+  }
+
+  .icon {
+    width: 16px;
+    margin-right: 2px;
+  }
+}
+
+.inputWrapper {
+  input {
+    @include item-margin;
+  }
+}
+
+.buttonWrapper {
+  @include flex-column;
+  margin-bottom: 160px;
+
+  .button {
+    @include item-margin;
+  }
+
+  .link {
+    @include item-margin;
+
+    font-size: 12px;
+    color: $gray-500;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

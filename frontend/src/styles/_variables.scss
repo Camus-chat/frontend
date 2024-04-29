@@ -66,3 +66,27 @@ $desktop: 1280px;
     background: $color;
   }
 }
+
+@mixin color($color) {
+  color: $color;
+
+  path {
+    color: $color;
+  }
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  @include flex-column;
+  align-items: center;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
