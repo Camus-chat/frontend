@@ -1,19 +1,35 @@
 'use client';
 
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 
 import ChattingRoom from '@/containers/service/chat/ChattingRoom';
 import styles from '@/containers/service/index.module.scss';
 
 const Chatting = () => {
-  const [selectedRoomId, setSelectRoomId] = useState<number>(-1);
+  const [selectedChatIndex, setSelectChatIndex] = useState<number>(-1);
 
   return (
     <>
-      <div className={styles.contentList}>
-        <div className={styles.title}>채팅</div>
-      </div>
-      {selectedRoomId >= 0 && <ChattingRoom />}
+      {/* <ChatList> */}
+      {/*  {chattings.map((chat, index) => ( */}
+      {/*    <ChatListItem */}
+      {/*      key={chat.uuid} */}
+      {/*      isSelected={index === selectedChatIndex} */}
+      {/*      chat={chat} */}
+      {/*      onClick={() => setSelectChatIndex(index)} */}
+      {/*    > */}
+      {/*      <Random size='medium' color='red' /> */}
+      {/*    </ChatListItem> */}
+      {/*  ))} */}
+      {/* </ChatList> */}
+      {selectedChatIndex >= 0 &&
+        createPortal(
+          <div className={styles.content}>
+            <ChattingRoom />
+          </div>,
+          document.getElementById('content-wrapper') as HTMLDivElement,
+        )}
     </>
   );
 };
