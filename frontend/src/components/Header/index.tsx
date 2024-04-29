@@ -18,19 +18,18 @@ const Header = ({ biz, signedIn }: Props) => {
 
   return (
     <header>
-        {!signedIn && <div className={styles.navBelt}>
-            <div>패밀리 사이트</div>
-            <Link href='/'>개인용</Link>
-            <Link href='/'>기업용</Link>
-        </div>}
-      <div className={styles.navBar}>
-        <Link href='/'>
-          <Logo biz={biz} />
-        </Link>
+      {!signedIn && (
+        <div className={styles.navBelt}>
+          <div>패밀리 사이트</div>
+          <Link href='/'>개인용</Link>
+          <Link href='/'>기업용</Link>
+        </div>
+      )}
+      <Logo biz={biz}>
         <NavMenu navItems={navItems} />
         <LoginMenu />
         <Drawer navItems={navItems} signedIn={signedIn} />
-      </div>
+      </Logo>
     </header>
   );
 };
