@@ -1,6 +1,6 @@
-@import '@/styles/_variables';
+@use '@/styles/variables' as *;
 
-@mixin form {
+@mixin form-style {
   width: 100%;
   height: 40px;
   border: $gray-300 solid 1px;

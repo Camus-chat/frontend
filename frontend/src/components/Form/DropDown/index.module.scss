@@ -1,5 +1,5 @@
-@import '@/components/Form/index.scss';
-@import '@/styles/_variables';
+@use '@/components/Form/variables' as *;
+@use '@/styles/_variables' as *;
 
 @mixin text-style {
   text-align: start;
@@ -7,7 +7,7 @@
 }
 
 .label {
-  @include form;
+  @include form-style;
   @include text-style;
 
   background-color: $white;
@@ -20,7 +20,7 @@
 }
 
 .optionList {
-  @include form;
+  @include form-style;
 
   background-color: $white;
   overflow: hidden;
