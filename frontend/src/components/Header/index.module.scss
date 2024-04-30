@@ -1,5 +1,5 @@
-@import '@/styles/variables';
-@import './variables';
+@use '@/styles/variables' as *;
+@use './variables' as header;
 
 @mixin nav {
   margin: 0 auto;
@@ -37,7 +37,6 @@
 }
 
 .navBar {
-  @include headerShadow;
   @include nav;
 
   padding: 0 12px;
@@ -45,7 +44,7 @@
   justify-content: space-between;
 
   @include mobile {
-    height: $nav-height-mobile;
+    height: header.$nav-height-mobile;
   }
 }
 
@@ -55,26 +54,24 @@
 
   img {
     margin-right: 4px;
+
+    @include mobile {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   div {
     font-weight: $semi-bold;
     font-size: 30px;
+
+    @include mobile {
+      font-size: 18px;
+    }
   }
 
   .biz {
     font-weight: $light;
-  }
-
-  @include mobile {
-    img {
-      width: 24px;
-      height: 24px;
-    }
-
-    div {
-      font-size: 18px;
-    }
   }
 }
 
@@ -105,7 +102,7 @@
 .navMenu {
   @include mobile-disable;
 
-  height: $nav-height-desktop;
+  height: header.$nav-height-desktop;
   display: flex;
   align-items: center;
 
