@@ -1,5 +1,11 @@
 @use '@/styles/variables' as *;
+@use '@/components/Header/variables' as header;
 
+$-header-padding: 12px;
+
+.header {
+  padding: $-header-padding 0;
+}
 
 .main {
   @include flex-column-center;
@@ -8,11 +14,11 @@
   }
 
   width: 100%;
-  height: 100%;
+  height: calc(100% - #{header.$logo-size-desktop} - #{$-header-padding * 2});
   justify-content: center;
 }
 
-.accountBox {
+.container {
   @include flex-column;
   @include desktop {
     @include boxShadow;
