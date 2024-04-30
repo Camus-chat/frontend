@@ -1,7 +1,9 @@
 @use '@/styles/variables' as *;
 
-@mixin item-margin {
-  margin: 4px 0;
+$-grid-gap: 8px;
+
+@mixin item-padding {
+  padding: 8px 0;
 }
 
 .title {
@@ -11,10 +13,10 @@
 }
 
 .selectButtonWrapper {
-  @include item-margin;
-  width: 100%;
+  @include item-padding;
+  width: calc(100% - #{$-grid-gap});
   display: grid;
-  gap: 4px;
+  gap: $-grid-gap;
   grid-template-columns: 50% 50%;
 
   button {
@@ -27,26 +29,20 @@
   }
 }
 
-.inputWrapper {
-  input {
-    @include item-margin;
-  }
-}
-
 .buttonWrapper {
   @include flex-column;
-  margin-bottom: 160px;
-
-  .button {
-    @include item-margin;
-  }
+  @include item-padding;
 
   .link {
-    @include item-margin;
+    @include item-padding;
 
-    font-size: 12px;
+    font-size: 14px;
     color: $gray-500;
     display: flex;
     justify-content: flex-end;
+
+    &:hover {
+      color: $blue-300;
+    }
   }
 }

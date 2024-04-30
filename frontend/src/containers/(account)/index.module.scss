@@ -25,11 +25,12 @@ $-header-padding: 12px;
   @include flex-column;
   @include desktop {
     @include boxShadow;
+    max-width: 416px;
   }
 
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
-  padding: 64px 32px;
+  padding: 96px 40px;
 
   background-color: $white;
   border-radius: 20px;
