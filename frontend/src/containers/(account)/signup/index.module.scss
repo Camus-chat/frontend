@@ -1,0 +1,62 @@
+@use '@/styles/variables' as *;
+
+.contentWrapper {
+
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 160px;
+
+  .prevButton {
+    &.hidden {
+      visibility: hidden;
+    }
+
+    &.none {
+      display: none;
+    }
+  }
+}
+
+.signupButton {
+  margin-top: 160px;
+
+  button {
+    width: 100%;
+  }
+}
+
+
+.checkBox {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  font-weight: $medium;
+  border-radius: 8px;
+  padding: 12px;
+
+  label {
+    background-color: transparent;
+  }
+
+  input {
+    margin-right: 4px;
+  }
+
+  &.gray {
+    background-color: $gray-100;
+  }
+
+  &.white {
+    background-color: $white;
+
+    span {
+      color: $blue-300;
+      margin-right: 4px;
+      font-size: 14px;
+      font-weight: $medium;
+    }
+  }
+}

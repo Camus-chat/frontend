@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import SelectButton from '@/containers/(account)/login/SelectButton';
+import SelectButton from '@/containers/(account)/SelectButton';
 
 import styles from './index.module.scss';
 import Button from '@/components/Button';

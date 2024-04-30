@@ -3,9 +3,9 @@
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useState } from 'react';
 
-import { ENTERPRISE, PERSONAL } from './constants';
 import styles from '@/containers/(account)/login/index.module.scss';
 
+import { ENTERPRISE, PERSONAL } from './login/constants';
 import Button from '@/components/Button';
 
 const SelectButton = () => {
