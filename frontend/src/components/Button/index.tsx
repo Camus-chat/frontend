@@ -9,7 +9,7 @@ interface Props {
   color: string;
   hover?: string;
   outline?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button = ({
