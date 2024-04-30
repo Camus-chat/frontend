@@ -4,17 +4,20 @@
 $-header-padding: 12px;
 
 .header {
-  padding: $-header-padding 0;
+  @include desktop {
+    padding: $-header-padding 0;
+  }
 }
 
 .main {
   @include flex-column-center;
   @include desktop {
     background-color: $gray-100;
+    height: calc(100% - #{header.$logo-size-desktop} - #{$-header-padding * 2});
   }
 
   width: 100%;
-  height: calc(100% - #{header.$logo-size-desktop} - #{$-header-padding * 2});
+  height: calc(100% - #{header.$nav-height-mobile});
   justify-content: center;
 }
 
