@@ -2,7 +2,7 @@
 @use '@/components/Form/index.scss' as *;
 
 .inputBox {
-  @include form;
+  @include form(40px);
   padding: 16px 20px;
 
   &.invalid {

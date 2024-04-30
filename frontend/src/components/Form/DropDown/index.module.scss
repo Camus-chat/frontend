@@ -7,7 +7,7 @@
 }
 
 .label {
-  @include form;
+  @include form(40px);
   @include text-style;
 
   display: flex;
@@ -24,7 +24,7 @@
 }
 
 .optionList {
-  @include form;
+  @include form(40px);
   background-color: $white;
   overflow: hidden;
   width: 100%;
