@@ -7,7 +7,7 @@ interface Props {
   children: ReactNode;
 }
 
-const Layout = ({ children }: Props) => {
+const SupportLayout = ({ children }: Props) => {
   return (
     <>
       <Header />
@@ -18,4 +18,4 @@ const Layout = ({ children }: Props) => {
   );
 };
 
-export default Layout;
+export default SupportLayout;
