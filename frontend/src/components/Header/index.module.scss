@@ -56,8 +56,8 @@
     margin-right: 4px;
 
     @include mobile {
-      width: 24px;
-      height: 24px;
+      width: header.$logo-size-mobile;
+      height: header.$logo-size-mobile;
     }
   }
 
