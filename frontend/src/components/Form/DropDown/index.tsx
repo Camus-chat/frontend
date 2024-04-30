@@ -1,6 +1,6 @@
 'use client';
 
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from 'react';
 
 import styles from './index.module.scss';
@@ -29,7 +29,7 @@ const DropDown = ({ name, options }: Props) => {
         onClick={handleClickDropdown}
       >
         {selectedOption}
-        {/* <ExpandMoreIcon /> */}
+        <ExpandMoreIcon />
       </button>
       {isClicked && (
         <div className={styles.optionList}>
