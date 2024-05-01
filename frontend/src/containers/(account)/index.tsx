@@ -11,7 +11,9 @@ const AccountLayout = ({ children }: Props) => {
   return (
     <>
       <header className={styles.header}>
-        <Logo />
+        <div className={styles.wrapper}>
+          <Logo />
+        </div>
       </header>
       <main className={styles.main}>
         <div className={styles.container}>{children}</div>

@@ -10,7 +10,7 @@
 .navBelt {
   @include nav;
 
-  padding: 10px 12px 6px;
+  padding: 10px header.$nav-padding-x 6px;
   font-size: 12px;
   line-height: 12px;
 
@@ -39,7 +39,7 @@
 .navBar {
   @include nav;
 
-  padding: 0 12px;
+  padding: 0 header.$nav-padding-x;
   align-items: center;
   justify-content: space-between;
 
