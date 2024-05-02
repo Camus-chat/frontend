@@ -1,9 +1,8 @@
 @use '@/styles/variables' as *;
 
-@mixin form($height-size) {
+@mixin form-style($height-size: 40px) {
   width: 100%;
-  height: ($height-size);
-  margin-top: 4px;
+  height: $height-size;
   border: $gray-300 solid 1px;
   border-radius: 8px;
   font-size: 14px;

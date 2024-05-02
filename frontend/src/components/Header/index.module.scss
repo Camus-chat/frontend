@@ -1,6 +1,9 @@
 @use '@/styles/variables' as *;
 @use './variables' as header;
 
+$-nav-belt-line-height: 12px;
+$-nav-belt-padding-y-mobile: 4px;
+
 @mixin nav {
   margin: 0 auto;
   max-width: $desktop;
@@ -10,9 +13,9 @@
 .navBelt {
   @include nav;
 
-  padding: 10px 12px 6px;
+  padding: 10px header.$nav-padding-x 6px;
   font-size: 12px;
-  line-height: 12px;
+  line-height: $-nav-belt-line-height;
 
   a {
     margin-left: 12px;
@@ -24,7 +27,8 @@
 
   @include mobile {
     @include background($black);
-    padding-bottom: 10px;
+    padding: $-nav-belt-padding-y-mobile header.$nav-padding-x;
+    font-size: 8px;
 
     a {
       color: $gray-100;
@@ -39,7 +43,7 @@
 .navBar {
   @include nav;
 
-  padding: 0 12px;
+  padding: 0 header.$nav-padding-x;
   align-items: center;
   justify-content: space-between;
 
@@ -125,10 +129,14 @@
   position: fixed;
   z-index: 100;
   left: 0;
-  top: 32px;
+  top: #{$-nav-belt-line-height + $-nav-belt-padding-y-mobile * 2};
   height: 100vh;
   width: 100vw;
   background: rgba(0, 0, 0, .5);
+
+  @include desktop {
+    top: 0;
+  }
 
   &.signedIn {
     top: 0;
