@@ -1,19 +1,71 @@
-import ButtonBox from '@/containers/(account)/signup/ButtonBox';
+import { ChangeEvent, useState } from 'react';
+
 import CheckBox from '@/containers/(account)/signup/CheckBox';
 import { AGREE_TEXT } from '@/containers/(account)/signup/constants';
 
-const Agreement = () => {
+import styles from './index.module.scss';
+import Button from '@/components/Button';
+
+interface Props {
+  clickNext: () => void;
+}
+
+const Agreement = ({ clickNext }: Props) => {
+  const [service, setService] = useState(false);
+  const [personalInfo, setPersonalInfo] = useState(false);
+  const checkedAll = service && personalInfo;
+  const buttonColor = checkedAll ? 'blue' : 'gray';
+  const buttonHover = checkedAll ? '' : 'disable';
+
+  const handleAllCheck = (e: ChangeEvent<HTMLInputElement>) => {
+    setService(e.target.checked);
+    setPersonalInfo(e.target.checked);
+  };
+
+  const handleServiceCheck = (e: ChangeEvent<HTMLInputElement>) => {
+    setService(e.target.checked);
+  };
+
+  const handlePersonalInfoCheck = (e: ChangeEvent<HTMLInputElement>) => {
+    setPersonalInfo(e.target.checked);
+  };
+
+  const handleClickNext = () => {
+    if (checkedAll) {
+      clickNext();
+    }
+  };
+
   return (
-    <div>
-      <CheckBox content={AGREE_TEXT[0]} color='gray' />
-      <CheckBox content={AGREE_TEXT[1]} color='white' isEssential />
-      <CheckBox content={AGREE_TEXT[2]} color='white' isEssential />
-      <ButtonBox
-        prev=''
-        clickPrev={() => {}}
-        clickNext={() => {}}
-        nextColor='gray'
+    <div className={styles.checkBoxWrapper}>
+      <CheckBox
+        content={AGREE_TEXT[0]}
+        isChecked={checkedAll}
+        color='gray'
+        onChange={handleAllCheck}
       />
+      <CheckBox
+        content={AGREE_TEXT[1]}
+        color='white'
+        isChecked={service}
+        isEssential
+        onChange={handleServiceCheck}
+      />
+      <CheckBox
+        content={AGREE_TEXT[2]}
+        color='white'
+        isChecked={personalInfo}
+        isEssential
+        onChange={handlePersonalInfoCheck}
+      />
+      <Button
+        size='large'
+        color={buttonColor}
+        hover={buttonHover}
+        onClick={handleClickNext}
+      >
+        가입하기
+      </Button>
     </div>
   );
 };
