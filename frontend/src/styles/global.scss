@@ -1,4 +1,4 @@
-@import '_variables';
+@use '_variables' as *;
 
 html, body {
   height: 100vh;
@@ -10,7 +10,7 @@ html, body {
   padding: 0;
   border: 0;
   box-sizing: border-box;
-  font-family: Pretendard;
+  font-family: 'Pretendard', sans-serif;
   font-weight: $regular;
   color: $black;
   background: $white;
@@ -30,6 +30,11 @@ input:focus {
 }
 
 header {
+  @include headerShadow;
+  @include desktop {
+    padding: 0 20px;
+  }
+
   width: 100%;
 }
 

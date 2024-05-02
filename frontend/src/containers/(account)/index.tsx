@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import styles from './index.module.scss';
+import Logo from '@/components/Header/Logo';
 
 interface Props {
   children: ReactNode;
@@ -8,9 +9,16 @@ interface Props {
 
 const AccountLayout = ({ children }: Props) => {
   return (
-    <main className={styles.main}>
-      <div className={styles.accountBox}>{children}</div>
-    </main>
+    <>
+      <header>
+        <div className={styles.wrapper}>
+          <Logo />
+        </div>
+      </header>
+      <main className={styles.main}>
+        <div className={styles.container}>{children}</div>
+      </main>
+    </>
   );
 };
 

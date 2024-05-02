@@ -5,7 +5,7 @@ import styles from './index.module.scss';
 import FormWrapper from '@/components/Form/Wrapper';
 
 interface Props {
-  name: string;
+  name?: string;
   type: string;
   placeholder: string;
   invalid?: boolean;

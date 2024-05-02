@@ -1,8 +1,8 @@
 @use '@/styles/variables' as *;
-@use '@/components/Form/index' as *;
+@use '@/components/Form/variables' as *;
 
 .textBox {
-  @include form(120px);
+  @include form-style(120px);
   padding: 16px 20px;
   resize: none;
 

@@ -1,12 +1,13 @@
-@import '@/styles/variables';
+@use '@/styles/variables' as *;
 
 .formWrapper {
+  padding: 8px 0;
   width: 100%;
-  margin: 8px 0;
   position: relative;
 
   p {
     font-size: 14px;
     font-weight: $bold;
+    margin-bottom: 4px;
   }
 }
