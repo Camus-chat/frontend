@@ -1,8 +1,8 @@
 @use '@/styles/variables' as *;
-@use '@/components/Form/index.scss' as *;
+@use '@/components/Form/variables' as *;
 
 .inputBox {
-  @include form(40px);
+  @include form-style;
   padding: 16px 20px;
 
   &.invalid {

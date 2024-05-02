@@ -1,5 +1,8 @@
-@import '@/styles/variables';
-@import './variables';
+@use '@/styles/variables' as *;
+@use './variables' as header;
+
+$-nav-belt-line-height: 12px;
+$-nav-belt-padding-y-mobile: 4px;
 
 @mixin nav {
   margin: 0 auto;
@@ -10,9 +13,9 @@
 .navBelt {
   @include nav;
 
-  padding: 10px 12px 6px;
+  padding: 10px header.$nav-padding-x 6px;
   font-size: 12px;
-  line-height: 12px;
+  line-height: $-nav-belt-line-height;
 
   a {
     margin-left: 12px;
@@ -24,7 +27,8 @@
 
   @include mobile {
     @include background($black);
-    padding-bottom: 10px;
+    padding: $-nav-belt-padding-y-mobile header.$nav-padding-x;
+    font-size: 8px;
 
     a {
       color: $gray-100;
@@ -37,15 +41,14 @@
 }
 
 .navBar {
-  @include headerShadow;
   @include nav;
 
-  padding: 0 12px;
+  padding: 0 header.$nav-padding-x;
   align-items: center;
   justify-content: space-between;
 
   @include mobile {
-    height: $nav-height-mobile;
+    height: header.$nav-height-mobile;
   }
 }
 
@@ -55,26 +58,24 @@
 
   img {
     margin-right: 4px;
+
+    @include mobile {
+      width: header.$logo-size-mobile;
+      height: header.$logo-size-mobile;
+    }
   }
 
   div {
     font-weight: $semi-bold;
     font-size: 30px;
+
+    @include mobile {
+      font-size: 18px;
+    }
   }
 
   .biz {
     font-weight: $light;
-  }
-
-  @include mobile {
-    img {
-      width: 24px;
-      height: 24px;
-    }
-
-    div {
-      font-size: 18px;
-    }
   }
 }
 
@@ -105,7 +106,7 @@
 .navMenu {
   @include mobile-disable;
 
-  height: $nav-height-desktop;
+  height: header.$nav-height-desktop;
   display: flex;
   align-items: center;
 
@@ -128,10 +129,14 @@
   position: fixed;
   z-index: 100;
   left: 0;
-  top: 32px;
+  top: #{$-nav-belt-line-height + $-nav-belt-padding-y-mobile * 2};
   height: 100vh;
   width: 100vw;
   background: rgba(0, 0, 0, .5);
+
+  @include desktop {
+    top: 0;
+  }
 
   &.signedIn {
     top: 0;

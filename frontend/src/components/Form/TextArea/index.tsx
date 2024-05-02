@@ -10,7 +10,7 @@ interface Props {
 const TextArea = ({ name }: Props) => {
   return (
     <FormWrapper name={name}>
-      <textarea className={styles.textBox} />
+      <textarea className={styles.textBox} placeholder='내용을 입력해 주세요' />
     </FormWrapper>
   );
 };

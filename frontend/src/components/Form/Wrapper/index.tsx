@@ -4,13 +4,13 @@ import styles from './index.module.scss';
 
 interface Props {
   children: ReactNode;
-  name: string;
+  name?: string;
 }
 
 const FormWrapper = ({ children, name }: Props) => {
   return (
     <div className={styles.formWrapper}>
-      <p className={styles.label}>{name}</p>
+      {name && <p className={styles.label}>{name}</p>}
       {children}
     </div>
   );

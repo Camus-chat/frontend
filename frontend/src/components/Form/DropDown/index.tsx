@@ -8,13 +8,14 @@ import FormWrapper from '@/components/Form/Wrapper';
 
 interface Props {
   name: string;
+  placeholder: string;
   options: DropDownItems[];
 }
 
-const DropDown = ({ name, options }: Props) => {
+const DropDown = ({ name, options, placeholder }: Props) => {
   const [isClicked, setIsClicked] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string>(
-    `${name}를 선택해주세요`,
+    `${placeholder}`,
   );
 
   const handleClickDropdown = () => {
