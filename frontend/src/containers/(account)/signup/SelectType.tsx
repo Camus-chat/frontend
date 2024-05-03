@@ -3,22 +3,19 @@ import { useState } from 'react';
 import SelectButton from '@/containers/(account)/SelectButton';
 import ButtonBox from '@/containers/(account)/signup/ButtonBox';
 import { COUNTRY } from '@/containers/(account)/signup/constants';
+import { useAccountStore } from '@/states/account';
 
 import styles from './index.module.scss';
 import DropDown from '@/components/Form/DropDown';
 import FormWrapper from '@/components/Form/Wrapper';
 
-interface Props {
-  clickPrev: () => void;
-  clickNext: () => void;
-}
-
-const SelectType = ({ clickPrev, clickNext }: Props) => {
+const SelectType = () => {
   const [isSelected, setIsSelected] = useState(false);
-  const buttonColor = isSelected ? 'blue' : 'gray';
-  const buttonHover = isSelected ? '' : 'disable';
+  const { clickPrev, clickNext } = useAccountStore((state) => ({
+    clickPrev: state.prevIndex,
+    clickNext: state.nextIndex,
+  }));
 
-  // TODO: 선택된 회원 유형 정보 저장하는 로직 (SelectButton 에서 api 로직 + 상태관리 로직)
   const handleSelectCountry = (option: string) => {
     if (option) {
       setIsSelected(true);
@@ -45,8 +42,7 @@ const SelectType = ({ clickPrev, clickNext }: Props) => {
       <ButtonBox
         clickPrev={clickPrev}
         clickNext={handleClickNext}
-        nextColor={buttonColor}
-        nextHover={buttonHover}
+        nextColor='blue'
       />
     </div>
   );

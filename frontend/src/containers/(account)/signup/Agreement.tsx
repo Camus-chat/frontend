@@ -2,17 +2,16 @@ import { ChangeEvent, useState } from 'react';
 
 import CheckBox from '@/containers/(account)/signup/CheckBox';
 import { AGREE_TEXT } from '@/containers/(account)/signup/constants';
+import { useAccountStore } from '@/states/account';
 
 import styles from './index.module.scss';
 import Button from '@/components/Button';
 
-interface Props {
-  clickNext: () => void;
-}
-
-const Agreement = ({ clickNext }: Props) => {
+const Agreement = () => {
   const [service, setService] = useState(false);
   const [personalInfo, setPersonalInfo] = useState(false);
+  const clickNext = useAccountStore((state) => state.nextIndex);
+
   const checkedAll = service && personalInfo;
   const buttonColor = checkedAll ? 'blue' : 'gray';
   const buttonHover = checkedAll ? '' : 'disable';
@@ -28,12 +27,6 @@ const Agreement = ({ clickNext }: Props) => {
 
   const handlePersonalInfoCheck = (e: ChangeEvent<HTMLInputElement>) => {
     setPersonalInfo(e.target.checked);
-  };
-
-  const handleClickNext = () => {
-    if (checkedAll) {
-      clickNext();
-    }
   };
 
   return (
@@ -62,7 +55,7 @@ const Agreement = ({ clickNext }: Props) => {
         size='large'
         color={buttonColor}
         hover={buttonHover}
-        onClick={handleClickNext}
+        onClick={clickNext}
       >
         가입하기
       </Button>

@@ -1,24 +1,29 @@
 'use client';
 
 import { INFO_TEXT } from './constants';
+import AccountInfo from '@/containers/(account)/signup/AccountInfo';
+import Agreement from '@/containers/(account)/signup/Agreement';
 import Profile from '@/containers/(account)/signup/Profile';
+import SelectType from '@/containers/(account)/signup/SelectType';
+import { useAccountStore } from '@/states/account';
 
-import styles from './index.module.scss';
 import InfoTextBox from '@/components/InfoTextBox';
 
 const Signup = () => {
+  const index = useAccountStore((state) => state.index);
+
   return (
     <>
       <InfoTextBox
         size='small'
-        title={INFO_TEXT[3].title}
-        content={INFO_TEXT[3].content}
+        title={INFO_TEXT[index].title}
+        content={INFO_TEXT[index].content}
       />
-      <div className={styles.contentWrapper}>
-        {/* <SelectType /> */}
-        {/* <Agreement /> */}
-        {/* <AccountInfo /> */}
-        <Profile imgSrc='' />
+      <div>
+        {index === 0 && <Agreement />}
+        {index === 1 && <SelectType />}
+        {index === 2 && <AccountInfo />}
+        {index === 3 && <Profile />}
       </div>
     </>
   );

@@ -9,16 +9,9 @@ interface Props {
   clickPrev?: () => void;
   clickNext: () => void;
   nextColor: string;
-  nextHover: string;
 }
 
-const ButtonBox = ({
-  prev,
-  clickPrev,
-  clickNext,
-  nextColor,
-  nextHover,
-}: Props) => {
+const ButtonBox = ({ prev, clickPrev, clickNext, nextColor }: Props) => {
   return (
     <div className={styles.buttonWrapper}>
       <div className={classNames(styles.prevButton, { [styles.prev]: prev })}>
@@ -27,12 +20,7 @@ const ButtonBox = ({
         </Button>
       </div>
       <div className={styles.nextButton}>
-        <Button
-          size='large'
-          color={nextColor}
-          onClick={clickNext}
-          hover={nextHover}
-        >
+        <Button size='large' color={nextColor} onClick={clickNext}>
           다음
         </Button>
       </div>
