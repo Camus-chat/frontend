@@ -1,8 +1,9 @@
 import ChatBubble from '@/lib/componenets/ChatBubble';
 import ChatInputBox from '@/lib/componenets/ChatInputBox';
 
+import styles from '@/containers/tutorial/filter/index.module.scss';
+
 import { FILTER_OPTION, FILTER_DESCRIPTION } from '../constants';
-import styles from '../index.module.scss';
 import DropDown from '@/components/Form/DropDown';
 import InfoTextBox from '@/components/InfoTextBox';
 import Random from '@/components/ProfileImage/Random';
