@@ -1,0 +1,63 @@
+@use '@/styles/variables' as *;
+
+.container {
+  display: flex;
+  height: 100%;
+  background-color: $gray-100;
+}
+
+.sideBar {
+  width: 360px;
+  height: 100%;
+
+  div {
+    padding: 12px 16px;
+  }
+
+  .title {
+    padding-left: 32px;
+    padding-bottom: 0;
+    font-size: 24px;
+    font-weight: $bold;
+  }
+
+}
+
+.contentWrapper {
+  width: 100%;
+  background-color: transparent;
+  padding: 60px 60px 0;
+}
+
+
+.content {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+
+  .titleWrapper {
+    padding: 64px;
+    background-color: $blue-700;
+    color: $white;
+    font-size: 64px;
+    font-weight: $semi-bold;
+  }
+
+  .introduce {
+    margin: 40px 64px;
+  }
+
+  .serviceInfo {
+    margin: 40px 64px;
+
+    .document {
+      width: 100%;
+      height: 100%;
+      background-color: $gray-100;
+      padding: 16px;
+    }
+  }
+
+}
+
