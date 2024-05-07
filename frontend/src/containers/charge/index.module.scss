@@ -6,19 +6,22 @@
 }
 
 .descriptionWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   width: 100%;
-  padding: 120px;
+  padding: 120px 120px 60px;
   background-color: $black;
 
   div {
     background-color: transparent;
     color: $white;
+    max-width: 1000px;
   }
 }
 
 .cardWrapper {
   @include flex-center;
-
 }
 
 .card {
