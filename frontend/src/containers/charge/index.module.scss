@@ -22,6 +22,8 @@
 
 .cardWrapper {
   @include flex-center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .card {
