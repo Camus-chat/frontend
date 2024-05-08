@@ -25,74 +25,78 @@
   }
 }
 
-.Button {
+.button {
   font-weight: $semi-bold;
+}
 
-  &.large {
-    min-width: 88px;
-    height: 40px;
-    padding: 0 16px;
-    font-size: 16px;
-    border-radius: 8px;
+// button size class
+.large {
+  min-width: 88px;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.small {
+  padding: 4px 16px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+//button color class
+.blue {
+  @include button-color($blue-300);
+  color: $white;
+}
+
+.lightgray {
+  @include button-color($gray-100);
+  @include color($gray-500);
+
+  &:hover {
+    @include color($black);
   }
 
-  &.small {
-    padding: 4px 12px;
-    font-size: 12px;
-    border-radius: 4px;
+  &.red {
+    &:hover {
+      @include background($red-100);
+      color: $red-300;
+    }
   }
+}
 
-  &.blue {
-    @include button-color($blue-300);
-    color: $white;
-  }
+.gray {
+  @include button-color($gray-300);
+  color: $white;
+}
 
-  &.lightgray {
-    @include button-color($gray-100);
-    @include color($gray-500);
+.skyblue {
+  @include button-color($blue-100);
+  @include color($blue-500);
+
+  &.outline {
+    border: 1px solid $blue-500;
 
     &:hover {
-      @include color($black);
-    }
-
-    &.red {
-      &:hover {
-        @include background($red-100);
-        color: $red-300;
-      }
-    }
-  }
-
-  &.gray {
-    @include button-color($gray-300);
-    color: $white;
-  }
-
-  &.skyblue {
-    @include background($blue-100);
-    @include color($blue-500);
-
-    &:hover {
+      @include background($blue-100);
+      
       cursor: default;
     }
-
-    &.outline {
-      border: 1px solid $blue-500;
-    }
   }
+}
 
-  &.login {
-    @include transparent;
+.login {
+  @include transparent;
 
-    color: $black;
-  }
+  color: $black;
+}
 
-  &.transparent {
-    @include transparent;
-  }
+.transparent {
+  @include transparent;
+}
 
-  &.black {
-    @include button-color($black);
-    color: $white;
-  }
+.black {
+  @include button-color($black);
+  color: $white;
 }
