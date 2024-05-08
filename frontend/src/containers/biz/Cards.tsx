@@ -14,12 +14,10 @@ const Cards = () => {
           key={item.key}
         >
           <div className={styles.title}>{item.title}</div>
-          <button>
-            <Link href={item.path}>
-              자세히 보기
-              <NavigateNextRoundedIcon />
-            </Link>
-          </button>
+          <Link href={item.path}>
+            자세히 보기
+            <NavigateNextRoundedIcon />
+          </Link>
         </div>
       ))}
     </div>

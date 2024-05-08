@@ -25,7 +25,9 @@ const BizHome = () => {
             <div className={styles.description}>
               {LANDING_DESCRIPTION.second}
             </div>
-            <button className={styles.moreButton}>서비스 전체보기</button>
+            <button type='button' className={styles.moreButton}>
+              서비스 전체보기
+            </button>
           </div>
           <Cards />
         </div>

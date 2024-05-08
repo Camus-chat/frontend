@@ -85,21 +85,19 @@
     font-weight: $semi-bold;
   }
 
-  button {
-    a {
-      display: flex;
-      align-items: center;
-      background-color: transparent;
+  a {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    color: $white;
+    font-size: 16px;
+  }
+
+  svg {
+    background-color: transparent;
+
+    path {
       color: $white;
-      font-size: 16px;
-    }
-
-    svg {
-      background-color: transparent;
-
-      path {
-        color: $white;
-      }
     }
   }
 
