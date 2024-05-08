@@ -8,7 +8,7 @@ interface Props {
 const SideBar = ({ menu, onClick }: Props) => {
   return (
     <div className={styles.sideBar}>
-      <div className={styles.title}> AI 감정분석</div>
+      <div className={styles.title}> 서비스</div>
       <div className={styles.navMenu}>
         {menu.map((item) => (
           <div key={item.key} className={styles.navItem}>

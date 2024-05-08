@@ -23,7 +23,7 @@ const Docs = () => {
         <SideBar menu={MENU} onClick={handleClick} />
         <div className={styles.contentWrapper}>
           <div className={styles.content}>
-            <div className={styles.titleWrapper}>AI 감정 분석</div>
+            <div className={styles.titleWrapper}>AI 감정 필터링</div>
             {isSelected === 'introduction' && <Introduction />}
             {isSelected === 'guidance' && <Guidance />}
             {isSelected === 'api' && <Introduction />}
