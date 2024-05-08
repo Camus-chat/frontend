@@ -1,16 +1,18 @@
-import Link from 'next/link';
-
-import { MENU } from '@/containers/docs/constants';
 import styles from '@/containers/docs/index.module.scss';
 
-const SideBar = () => {
+interface Props {
+  menu: { key: string; name: string }[];
+  onClick: (key: string) => void;
+}
+
+const SideBar = ({ menu, onClick }: Props) => {
   return (
     <div className={styles.sideBar}>
       <div className={styles.title}> AI 감정분석</div>
       <div className={styles.navMenu}>
-        {MENU.map((item) => (
+        {menu.map((item) => (
           <div key={item.key} className={styles.navItem}>
-            <Link href='/'>{item.name}</Link>
+            <button onClick={() => onClick(item.key)}>{item.name}</button>
           </div>
         ))}
       </div>
