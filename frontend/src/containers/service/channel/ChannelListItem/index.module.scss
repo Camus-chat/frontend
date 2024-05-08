@@ -3,7 +3,7 @@
 @mixin container-style {
   @include flex-column;
 
-  height: 110px;
+  min-height: 110px;
   margin-bottom: 12px;
   padding: 16px;
   border-radius: 8px;
@@ -24,6 +24,8 @@
   align-items: center;
 
   .title {
+    @include text-overflow-hidden;
+
     font-size: 20px;
     font-weight: $semi-bold;
     margin-right: 2px;

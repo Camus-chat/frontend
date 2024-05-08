@@ -39,17 +39,16 @@
 }
 
 .small {
+  @include flex-center;
+  flex-shrink: 0;
   margin-right: 4px;
   padding: 4px 16px;
   font-size: 16px;
-  font-weight: $bold;
+  font-weight: $semi-bold;
   border-radius: 4px;
 
   &.link {
     padding: 0 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
     svg {
       height: 20px;
