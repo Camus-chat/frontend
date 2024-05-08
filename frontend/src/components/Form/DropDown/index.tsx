@@ -10,9 +10,10 @@ interface Props {
   name: string;
   placeholder: string;
   options: DropDownItems[];
+  onSelect: (option: string) => void;
 }
 
-const DropDown = ({ name, options, placeholder }: Props) => {
+const DropDown = ({ name, options, placeholder, onSelect }: Props) => {
   const [isClicked, setIsClicked] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string>(
     `${placeholder}`,
@@ -20,6 +21,11 @@ const DropDown = ({ name, options, placeholder }: Props) => {
 
   const handleClickDropdown = () => {
     setIsClicked(!isClicked);
+  };
+
+  const handleSelectOption = (item: string) => {
+    setSelectedOption(item);
+    onSelect(item);
   };
 
   return (
@@ -39,7 +45,7 @@ const DropDown = ({ name, options, placeholder }: Props) => {
               key={items.value}
               type='button'
               className={styles.optionItem}
-              onClick={() => setSelectedOption(items.name)}
+              onClick={() => handleSelectOption(items.name)}
             >
               {items.name}
             </button>
