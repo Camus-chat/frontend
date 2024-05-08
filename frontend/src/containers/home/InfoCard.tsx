@@ -10,12 +10,12 @@ const InfoCard = () => {
   // TODO: 이미지 추가 하기
   return (
     <div className={styles.infoCardWrapper}>
-      {INFO_CARD.map((item) => (
+      {INFO_CARD.map((item, index) => (
         <div
           className={classNames(styles.card, styles[item.color])}
           key={item.key}
         >
-          {item.isOdd && (
+          {index % 2 === 0 && (
             <Image
               className={styles.img}
               src={item.imgSrc}
@@ -31,7 +31,7 @@ const InfoCard = () => {
               <ExpandCircleDownRoundedIcon />
             </Link>
           </div>
-          {!item.isOdd && (
+          {index % 2 === 1 && (
             <Image
               className={styles.img}
               src={item.imgSrc}

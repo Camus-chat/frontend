@@ -3,7 +3,6 @@ export const DESCRIPTION = 'AI 안전 채팅을 통해\n 당신을 지켜드립�
 export const INFO_CARD = [
   {
     key: 1,
-    isOdd: true,
     description: '나만의 채널을 생성해요',
     path: '/tutorial/channel',
     color: 'white',
@@ -13,7 +12,6 @@ export const INFO_CARD = [
   },
   {
     key: 2,
-    isOdd: false,
     description: 'AI 안전 필터링 강도를 선택하세요',
     path: '/tutorial/filter',
     color: 'yellow',
@@ -23,7 +21,6 @@ export const INFO_CARD = [
   },
   {
     key: 3,
-    isOdd: true,
     description: '익명의 사용자와\n안전한 대화를 진행해요',
     path: '/tutorial/filter',
     color: 'white',
@@ -33,7 +30,6 @@ export const INFO_CARD = [
   },
   {
     key: 4,
-    isOdd: false,
     description: '채널과 채팅방 관리를 통해\n효과적으로 비용을 관리해요',
     path: '/tutorial/channel',
     color: 'red',

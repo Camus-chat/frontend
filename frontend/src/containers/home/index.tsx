@@ -20,7 +20,7 @@ const Home = () => {
           </div>
           <div className={styles.image}>
             <Image
-              src='/images/landing.svg'
+              src='/images/landing.png'
               alt='image'
               width='422'
               height='526'
