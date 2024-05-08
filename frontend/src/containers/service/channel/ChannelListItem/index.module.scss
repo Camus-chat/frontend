@@ -1,0 +1,39 @@
+@use "@/styles/variables" as *;
+
+@mixin container-style {
+  @include flex-column;
+
+  height: 110px;
+  margin-bottom: 12px;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid $gray-100;
+
+  &:hover {
+    @include headerShadow;
+    @include transition-slow;
+  }
+}
+
+.channelListItem {
+  @include container-style;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+
+  .title {
+    font-size: 20px;
+    font-weight: $semi-bold;
+    margin-right: 2px;
+  }
+}
+
+.description {
+  padding: 4px 0;
+}
+
+.buttons {
+  display: flex;
+}

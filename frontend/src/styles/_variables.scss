@@ -90,3 +90,7 @@ $desktop: 1280px;
   justify-content: center;
   align-items: center;
 }
+
+@mixin transition-slow {
+    transition: all 0.3s;
+}

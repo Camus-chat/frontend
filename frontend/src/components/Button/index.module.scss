@@ -39,9 +39,25 @@
 }
 
 .small {
+  margin-right: 4px;
   padding: 4px 16px;
   font-size: 16px;
+  font-weight: $bold;
   border-radius: 4px;
+
+  &.link {
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      height: 20px;
+      width: 20px;
+      @include color($white);
+      transform: rotate(-45deg);
+    }
+  }
 }
 
 //button color class
@@ -80,7 +96,7 @@
 
     &:hover {
       @include background($blue-100);
-      
+
       cursor: default;
     }
   }
