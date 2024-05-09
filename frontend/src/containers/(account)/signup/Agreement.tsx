@@ -14,7 +14,7 @@ const Agreement = () => {
 
   const checkedAll = service && personalInfo;
   const buttonColor = checkedAll ? 'blue' : 'gray';
-  const buttonHover = checkedAll ? '' : 'disable';
+  const buttonOption = checkedAll ? '' : 'disable';
 
   const handleAllCheck = (e: ChangeEvent<HTMLInputElement>) => {
     setService(e.target.checked);
@@ -54,7 +54,7 @@ const Agreement = () => {
       <Button
         size='large'
         color={buttonColor}
-        hover={buttonHover}
+        option={buttonOption}
         onClick={clickNext}
       >
         가입하기
