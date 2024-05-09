@@ -1,14 +1,14 @@
-import { CONTENT } from './constants';
+import { TEXT_ICON_NAME_MAP } from './constants';
 
 import styles from './index.module.scss';
-import { textIconType } from '@/components/TextIcon/type';
+import type { TextIconName } from '@/components/TextIcon/type';
 
 interface Props {
-  name: textIconType;
+  name: TextIconName;
 }
 
 const TextIcon = ({ name }: Props) => {
-  return <span className={styles[name]}>{CONTENT[name]}</span>;
+  return <span className={styles[name]}>{TEXT_ICON_NAME_MAP[name]}</span>;
 };
 
 export default TextIcon;

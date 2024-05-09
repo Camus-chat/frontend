@@ -10,8 +10,8 @@ const ServiceLayout = ({ children }: { children: ReactNode }) => {
     <>
       <Header signedIn />
       <main className={styles.main}>
-        <Menu selectedMenuKey='chat' />
-        <div className={styles.contentWrapper} id="content-wrapper">
+        <Menu />
+        <div className={styles.contentWrapper} id='content-wrapper'>
           <div className={styles.contentList}>{children}</div>
         </div>
       </main>

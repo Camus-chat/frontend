@@ -16,16 +16,14 @@
 .contentWrapper {
   display: flex;
   justify-content: center;
-  height: calc(100% - #{menu.$height});
-  margin-bottom: menu.$height;
+  height: calc(100% - #{menu.$height-mobile});
+  margin-bottom: menu.$height-mobile;
   padding: 0 16px;
 
   @include desktop {
     background: $gray-100;
     padding: 24px 12px;
-    margin-left: menu.$width;
-    width: calc(100% - #{menu.$width});
-    height: 100%;
+    height: calc(100% - #{menu.$height-desktop});
   }
 }
 

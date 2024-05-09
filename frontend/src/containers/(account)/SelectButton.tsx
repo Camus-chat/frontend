@@ -27,7 +27,7 @@ const SelectButton = () => {
         size='large'
         color={enterpriseColor}
         onClick={() => handleClick(ENTERPRISE)}
-        outline={enterpriseColor === 'skyblue'}
+        option='outline'
       >
         <CheckCircleIcon className={styles.icon} />
         기업회원
@@ -36,7 +36,7 @@ const SelectButton = () => {
         size='large'
         color={personalColor}
         onClick={() => handleClick(PERSONAL)}
-        outline={personalColor === 'skyblue'}
+        option='outline'
       >
         <CheckCircleIcon className={styles.icon} />
         개인회원
