@@ -21,7 +21,7 @@ const Login = () => {
         <Input type='text' placeholder='아이디를 입력해주세요' />
         <Input type='password' placeholder='비밀번호를 입력해주세요' />
         <div className={styles.buttonWrapper}>
-          <Button size='large' color='blue' hover='blue' onClick={handleClick}>
+          <Button size='large' color='blue' onClick={handleClick}>
             로그인
           </Button>
           <Link className={styles.link} href='/singup'>
