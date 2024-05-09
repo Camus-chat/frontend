@@ -19,8 +19,13 @@ export const config = {
 export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host');
 
-  if (hostname !== 'localhost:3000') {
+  if (hostname !== process.env.DOMAIN_NAME) {
     const subdomain = hostname?.split('.')[0];
+
+    if (subdomain === 'www') {
+      return NextResponse.next();
+    }
+
     return NextResponse.rewrite(
       new URL(`${subdomain}${request.nextUrl.pathname}`, request.url),
     );

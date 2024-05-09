@@ -5,32 +5,21 @@ import styles from './index.module.scss';
 
 interface Props {
   children: ReactNode;
-  size: string;
-  color: string;
-  hover?: string;
-  outline?: boolean;
+  size: ButtonSize;
+  color: ButtonColor;
+  option?: string;
   onClick?: () => void;
 }
 
-const Button = ({
-  children,
-  size,
-  color,
-  outline,
-  hover = 'default',
-  onClick,
-}: Props) => {
+const Button = ({ children, size, color, option = 'none', onClick }: Props) => {
   return (
     <button
       type='button'
       className={classNames(
-        styles.Button,
+        styles.button,
         styles[size],
         styles[color],
-        styles[hover],
-        {
-          [styles.outline]: outline,
-        },
+        styles[option],
       )}
       onClick={onClick}
     >
