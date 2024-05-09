@@ -1,26 +1,24 @@
 'use client';
 
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { useState } from 'react';
 
-import { ENTERPRISE, PERSONAL } from './constants';
 import styles from '@/containers/(account)/login/index.module.scss';
+import { useAccountStore } from '@/states/account';
 
+import { ENTERPRISE, PERSONAL } from './login/constants';
 import Button from '@/components/Button';
 
 const SelectButton = () => {
-  const [isEnterprise, setIsEnterprise] = useState<boolean>(ENTERPRISE);
+  const { isEnterprise, setIsEnterprise } = useAccountStore((state) => ({
+    isEnterprise: state.isEnterprise,
+    setIsEnterprise: state.setIsEnterprise,
+  }));
 
   const enterpriseColor = isEnterprise ? 'skyblue' : 'lightgray';
   const personalColor = isEnterprise ? 'lightgray' : 'skyblue';
 
   const handleClick = (clickedValue: boolean) => {
-    setIsEnterprise((prev) => {
-      if (prev !== clickedValue) {
-        return !prev;
-      }
-      return prev;
-    });
+    setIsEnterprise(clickedValue);
   };
 
   return (
