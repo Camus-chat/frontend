@@ -1,12 +1,10 @@
-const API_URL = '';
-
 const fetchClient = (requiredToken: boolean) => {
   const prepareRequest = async <T, P = undefined>(
     url: string,
     method: 'GET' | 'POST' | 'PATCH' | 'DELETE',
     data?: P,
   ): Promise<T> => {
-    const endpoint = `${API_URL}${url}`;
+    const endpoint = `${url}`;
     const headers = new Headers({
       'Content-Type': 'application/json',
     });
