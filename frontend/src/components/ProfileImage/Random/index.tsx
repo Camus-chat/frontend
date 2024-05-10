@@ -3,12 +3,15 @@ import PersonIcon from '@mui/icons-material/Person';
 import classNames from 'classnames';
 
 import styles from '@/components/ProfileImage/index.module.scss';
-import { profileImageType } from '@/components/ProfileImage/type';
+import type {
+  ProfileColor,
+  ProfileImageSize,
+} from '@/components/ProfileImage/type';
 
 interface Props {
   group?: boolean;
-  size: profileImageType;
-  color: string;
+  size: ProfileImageSize;
+  color: ProfileColor;
 }
 
 const Random = ({ group, size, color }: Props) => {
