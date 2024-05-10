@@ -1,7 +1,1 @@
-import Home from '@/containers/home';
-
-const HomePage = () => {
-  return <Home />;
-};
-
-export default HomePage;
+export { default } from '@/containers/(personal)';

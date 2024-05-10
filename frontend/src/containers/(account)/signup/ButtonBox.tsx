@@ -8,7 +8,7 @@ interface Props {
   prev?: string;
   clickPrev?: () => void;
   clickNext: () => void;
-  nextColor: string;
+  nextColor: ButtonColor;
 }
 
 const ButtonBox = ({ prev, clickPrev, clickNext, nextColor }: Props) => {
