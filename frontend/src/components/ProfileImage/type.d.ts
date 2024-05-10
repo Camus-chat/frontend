@@ -1,5 +1,8 @@
-import { COLORS, PROFILE_SIZE } from '@/components/ProfileImage/constants';
+import {
+  COLORS,
+  PROFILE_IMAGE_SIZE,
+} from '@/components/ProfileImage/constants';
 
-export type profileImageType = (typeof PROFILE_SIZE)[number];
+type ProfileImageSize = keyof typeof PROFILE_IMAGE_SIZE;
 
-export type profileColorType = (typeof COLORS)[number];
+type ProfileColor = (typeof COLORS)[number];

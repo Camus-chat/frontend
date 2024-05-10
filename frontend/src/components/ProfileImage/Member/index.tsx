@@ -1,12 +1,12 @@
 import Image from 'next/image';
 
-import { PROFILE_IMAGE } from '@/components/ProfileImage/constants';
+import { PROFILE_IMAGE_SIZE } from '@/components/ProfileImage/constants';
 import styles from '@/components/ProfileImage/index.module.scss';
-import { profileImageType } from '@/components/ProfileImage/type';
+import type { ProfileImageSize } from '@/components/ProfileImage/type';
 
 interface Props {
   imgSrc: string;
-  size: profileImageType;
+  size: ProfileImageSize;
 }
 
 const Member = ({ imgSrc, size }: Props) => {
@@ -15,8 +15,8 @@ const Member = ({ imgSrc, size }: Props) => {
       className={styles.profile}
       src={imgSrc}
       alt='profile'
-      width={PROFILE_IMAGE[size]}
-      height={PROFILE_IMAGE[size]}
+      width={PROFILE_IMAGE_SIZE[size]}
+      height={PROFILE_IMAGE_SIZE[size]}
     />
   );
 };
