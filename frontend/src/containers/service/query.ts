@@ -1,6 +1,6 @@
-import { api } from '@/containers/query';
+import { query } from '@/containers/query';
 
-interface RoomInfo {
+interface $RoomInfo {
   type: string;
   title: string;
   content: string;
@@ -15,16 +15,14 @@ interface channel {
   link: string;
 }
 
-export const postCreateChannel = async (channelInfo: RoomInfo) => {
-  try {
-    const response = await api.post<channel, RoomInfo>(
-      false,
-      '/channel/create',
-      channelInfo,
-    );
-    console.log(response);
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
+export const createChannel = async (channelInfo: $RoomInfo) => {
+  return query
+    .post<channel, $RoomInfo>(false, '/channel/create', channelInfo)
+    .then((res) => {
+      console.log(res);
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };

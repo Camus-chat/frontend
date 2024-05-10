@@ -3,7 +3,7 @@
 import AddIcon from '@mui/icons-material/Add';
 
 import ChannelListitem from '@/containers/service/channel/ChannelListItem';
-import { postCreateChannel } from '@/containers/service/query';
+import { createChannel } from '@/containers/service/query';
 
 import styles from './index.module.scss';
 
@@ -16,7 +16,7 @@ const Channel = () => {
   };
 
   const handleClick = async () => {
-    await postCreateChannel(Example);
+    await createChannel(Example);
   };
 
   return (

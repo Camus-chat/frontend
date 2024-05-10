@@ -41,7 +41,7 @@ const fetchClient = (requiredToken: boolean) => {
   return { prepareRequest };
 };
 
-const api = {
+const query = {
   post: async <T, P>(
     requiredToken: boolean,
     url: string,
@@ -67,4 +67,4 @@ const api = {
   },
 };
 
-export { api };
+export { query };
