@@ -1,6 +1,6 @@
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AllInboxIcon from '@mui/icons-material/AllInbox';
 import ChatIcon from '@mui/icons-material/Chat';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 import type { Menu } from './type';
 
@@ -18,9 +18,9 @@ export const menu: Menu[] = [
     icon: AllInboxIcon,
   },
   {
-    key: 'more',
-    name: '더보기',
-    path: '/service/settings',
-    icon: MoreHorizIcon,
+    key: 'profile',
+    name: '프로필',
+    path: '/service/profile',
+    icon: AccountCircleIcon,
   },
 ];

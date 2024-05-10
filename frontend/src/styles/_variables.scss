@@ -70,7 +70,7 @@ $desktop: 1280px;
 @mixin color($color) {
   color: $color;
 
-  path {
+  path, div {
     color: $color;
   }
 }
@@ -89,4 +89,16 @@ $desktop: 1280px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin transition-slow {
+    transition: all 0.3s;
+}
+
+@mixin text-overflow-hidden {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }

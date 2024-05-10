@@ -1,2 +1,5 @@
-$height: 64px;
+$padding-y: 3px;
+$height-mobile: 64px;
+$height-desktop: 32px;
+$height-desktop-selected: $height-desktop - $padding-y;
 $width: 60px;
