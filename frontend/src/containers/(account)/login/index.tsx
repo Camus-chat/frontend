@@ -24,7 +24,7 @@ const Login = () => {
           <Button size='large' color='blue' onClick={handleClick}>
             로그인
           </Button>
-          <Link className={styles.link} href='/singup'>
+          <Link className={styles.link} href='/signup'>
             회원가입
           </Link>
         </div>

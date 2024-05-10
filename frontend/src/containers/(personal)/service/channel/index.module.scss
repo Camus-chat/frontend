@@ -1,0 +1,21 @@
+@use "variables" as *;
+@use '@/containers/service/channel/ChannelListItem/index.module.scss' as channel;
+
+.channelAddButton {
+  @include channel.container-style;
+  @include color($gray-500);
+
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    @include transition-slow;
+
+    margin-bottom: 4px;
+  }
+
+  &:active {
+    @include background(darken($white, 1%));
+  }
+}
