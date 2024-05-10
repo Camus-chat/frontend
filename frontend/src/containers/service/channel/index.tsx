@@ -12,7 +12,7 @@ const Channel = () => {
     type: 'group',
     title: '이건예시',
     content: '호호안녕하세요',
-    filterLevel: 100,
+    filterLevel: 0,
   };
 
   const handleClick = async () => {

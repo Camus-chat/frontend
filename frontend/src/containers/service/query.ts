@@ -19,7 +19,7 @@ export const postCreateChannel = async (channelInfo: RoomInfo) => {
   try {
     const response = await api.post<channel, RoomInfo>(
       false,
-      'channel/create',
+      '/channel/create',
       channelInfo,
     );
     console.log(response);
