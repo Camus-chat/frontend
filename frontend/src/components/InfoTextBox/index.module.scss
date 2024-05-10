@@ -17,6 +17,10 @@
   @include info-text-box(64px, 32px);
 }
 
+.medium {
+  @include info-text-box(40px, 24px);
+}
+
 .small {
   @include info-text-box(24px, 14px);
 }
