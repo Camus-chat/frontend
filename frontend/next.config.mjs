@@ -5,7 +5,7 @@ const nextConfig = {
         return [
             {
                 source: "/:path*",
-                destination: "https://api.camus.life/:path*",
+                destination: `${process.env.API_URL}/:path*`,
             },
         ];
     },
