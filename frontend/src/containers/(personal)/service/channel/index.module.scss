@@ -1,5 +1,5 @@
-@use "variables" as *;
-@use '@/containers/service/channel/ChannelListItem/index.module.scss' as channel;
+@use "@/styles/variables" as *;
+@use 'ChannelListItem/index.module.scss' as channel;
 
 .channelAddButton {
   @include channel.container-style;
