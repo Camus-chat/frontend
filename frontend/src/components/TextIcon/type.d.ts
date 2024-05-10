@@ -1,3 +1,8 @@
-import { TEXT_ICON } from '@/components/TextIcon/constants';
+import {
+  FILTER_NAME_MAP,
+  TEXT_ICON_NAME_MAP,
+} from '@/components/TextIcon/constants';
 
-export type textIconType = (typeof TEXT_ICON)[number];
+type FilterName = keyof typeof FILTER_NAME_MAP;
+
+type TextIconName = keyof typeof TEXT_ICON_NAME_MAP;

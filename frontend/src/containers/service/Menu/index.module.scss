@@ -3,13 +3,12 @@
 
 .menuWrapper {
   display: flex;
-  align-items: center;
-  position: absolute;
   z-index: 1;
+  width: 100%;
 
   @include mobile {
-    width: 100%;
-    height: menu.$height;
+    position: absolute;
+    align-items: center;
     bottom: 0;
     justify-content: space-around;
     border-top: 1px solid $gray-100;
@@ -17,38 +16,58 @@
 
   @include desktop {
     @include background($black);
-    padding: 8px 0;
-    width: menu.$width;
-    height: 100%;
-    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    height: menu.$height-desktop;
   }
 }
 
-@mixin menu($color) {
+@mixin menu($color, $height: menu.$height-desktop) {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
-  font-weight: $semi-bold;
-  height: menu.$height;
+  @include color($color);
 
-  path, div {
-    color: $color;
+  @include mobile {
+    font-size: 10px;
+    height: menu.$height-mobile;
+
+    div {
+      margin-top: 4px;
+    }
   }
 
-  div {
-    margin-top: 4px;
+  @include desktop {
+    font-size: 14px;
+    height: $height;
+    padding: 0 16px;
+
+    svg {
+      display: none;
+    }
   }
+
+  &:hover {
+    @include color($white);
+
+    @include mobile {
+      @include color($black);
+    }
+  }
+
 }
 
 .selected {
-  @include menu($white);
+  @include menu($black, menu.$height-desktop-selected);
 
-  @include mobile {
-    path, div {
-      color: $black;
-    }
+  @include desktop {
+    @include color($white);
+    border-bottom: menu.$padding-y solid $white;
+  }
+
+  div {
+    font-weight: $semi-bold;
   }
 }
 
