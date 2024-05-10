@@ -1,6 +1,6 @@
 import { api } from '@/containers/query';
 
-export const postLogin = async (isEnterprise: boolean, account: LogIn) => {
+export const postLogin = async (isEnterprise: boolean, account: Account) => {
   try {
     if (!isEnterprise) {
       const response = await api.post(false, '/api/member/b2c/login', account);
