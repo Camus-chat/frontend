@@ -1,22 +1,29 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 import { menu } from '@/containers/service/Menu/constants';
 
 import styles from './index.module.scss';
 
-interface Props {
-  selectedMenuKey: string;
-}
+const Menu = () => {
+  const [pathname, setPathname] = useState(usePathname().split('/')[2]);
 
-const Menu = ({ selectedMenuKey }: Props) => {
   return (
     <div className={styles.menuWrapper}>
       {menu.map((item) => {
         const style =
-          item.key === selectedMenuKey ? styles.selected : styles.unselected;
+          item.key === pathname ? styles.selected : styles.unselected;
 
         return (
-          <Link key={item.key} href={item.path} className={style}>
+          <Link
+            key={item.key}
+            href={item.path}
+            className={style}
+            onClick={() => setPathname(item.key)}
+          >
             <item.icon />
             <div>{item.name}</div>
           </Link>

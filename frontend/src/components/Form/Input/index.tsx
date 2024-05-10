@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import styles from './index.module.scss';
 import FormWrapper from '@/components/Form/Wrapper';
@@ -9,19 +9,24 @@ interface Props {
   type: string;
   placeholder: string;
   invalid?: boolean;
+  message?: string;
 }
 
-const Input = ({ name, type, placeholder, invalid = false }: Props) => {
-  return (
-    <FormWrapper name={name}>
-      <input
-        className={classNames(styles.inputBox, { [styles.invalid]: invalid })}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-      />
-    </FormWrapper>
-  );
-};
+const Input = forwardRef<HTMLInputElement, Props>(
+  ({ name, type, placeholder, invalid = false, message }, ref) => {
+    return (
+      <FormWrapper name={name}>
+        <input
+          className={classNames(styles.inputBox, { [styles.invalid]: invalid })}
+          name={name}
+          ref={ref}
+          type={type}
+          placeholder={placeholder}
+        />
+        {invalid && <div className={styles.message}>{message}</div>}
+      </FormWrapper>
+    );
+  },
+);
 
 export default Input;
