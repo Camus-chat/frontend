@@ -1,1 +1,1 @@
-export { default } from '../../../containers/biz/charge';
+export { default } from '@/containers/biz/charge';

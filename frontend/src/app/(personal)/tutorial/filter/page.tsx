@@ -1,1 +1,1 @@
-export { default } from '../../../../containers/(personal)/tutorial/filter';
+export { default } from '@/containers/(personal)/tutorial/filter';

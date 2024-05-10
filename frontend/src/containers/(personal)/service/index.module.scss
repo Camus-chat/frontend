@@ -1,6 +1,6 @@
-@use '../../../styles/variables' as *;
+@use '@/styles/variables' as *;
 @use 'Menu/variables' as menu;
-@use '../../../components/Header/variables' as header;
+@use '@/components/Header/variables' as header;
 
 .main {
   position: relative;
