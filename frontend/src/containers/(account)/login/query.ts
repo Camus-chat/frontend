@@ -17,5 +17,3 @@ export const requestLogin = async (isEnterprise: boolean, account: Account) => {
       console.log(err);
     });
 };
-
-// TODO : 로그인 실
