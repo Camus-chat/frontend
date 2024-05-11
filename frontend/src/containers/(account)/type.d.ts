@@ -10,5 +10,5 @@ interface EnterpriseAccount extends Account {
 
 interface PersonalAccount extends Account {
   nickname: string;
-  profileImage: string;
+  profileImg: string;
 }

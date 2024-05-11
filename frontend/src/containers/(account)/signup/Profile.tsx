@@ -1,5 +1,7 @@
+import { useRouter } from 'next/navigation';
 import { ChangeEvent, useRef, useState } from 'react';
 
+import { requestPersonalSignUp } from '@/containers/(account)/signup/query';
 import { useAccountStore } from '@/states/account';
 
 import defaultImg from './defaultImg.svg';
@@ -9,13 +11,16 @@ import Input from '@/components/Form/Input';
 import Member from '@/components/ProfileImage/Member';
 
 const Profile = () => {
-  const { setProfileImg, setNickname, clickNext } = useAccountStore(
-    (state) => ({
+  const router = useRouter();
+  const { id, password, profileImg, nickname, setProfileImg, setNickname } =
+    useAccountStore((state) => ({
       setProfileImg: state.setProfileImg,
       setNickname: state.setNickname,
-      clickNext: state.nextIndex,
-    }),
-  );
+      profileImg: state.profileImg,
+      nickname: state.nickname,
+      id: state.id,
+      password: state.password,
+    }));
 
   const [imageSrc, setImageSrc] = useState<string>(defaultImg);
   const nicknameRef = useRef<HTMLInputElement>(null);
@@ -31,11 +36,22 @@ const Profile = () => {
     }
   };
 
-  const handleClickNext = () => {
+  const handleClickNext = async () => {
     if (nicknameRef.current && imageSrc) {
       setProfileImg(imageSrc);
       setNickname(nicknameRef.current.value);
-      clickNext();
+
+      const response = await requestPersonalSignUp({
+        id,
+        password,
+        profileImg,
+        nickname,
+      });
+
+      // TODO: 자동 로그인 로직 생각해보기, api 요청 보내서 처리할건가?
+      if (response) {
+        router.push('/');
+      }
     }
   };
 
