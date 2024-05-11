@@ -20,13 +20,16 @@ const Login = () => {
 
   const handleClick = async () => {
     if (idRef.current && passwordRef.current) {
-      await requestLogin(isEnterprise, {
+      const response = await requestLogin(isEnterprise, {
         id: idRef.current.value,
         password: passwordRef.current.value,
       });
-
-      // TODO : 기업 회원일 때 라우팅 뭐임?
-      router.push(isEnterprise ? '/' : '/');
+      if (response) {
+        // TODO : 기업 회원일 때 라우팅 뭐임?
+        router.push(isEnterprise ? '/' : '/');
+      } else {
+        // TODO: 로그인 실패 알림
+      }
     }
   };
 
