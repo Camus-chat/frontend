@@ -5,12 +5,17 @@ export const requestLogin = async (isEnterprise: boolean, account: Account) => {
   return query
     .post(false, apiUrl, account)
     .then((res) => {
-      // TODO: refresh-token 에 대한 이야기
-      const acessToken = res.data.accessToken;
-      localStorage.setItem(acessToken, acessToken);
-      return res;
+      if (res.status === 200) {
+        // TODO: refresh-token 에 대한 이야기
+        const acessToken = res.data.accessToken;
+        localStorage.setItem(acessToken, acessToken);
+        return true;
+      }
+      return false;
     })
     .catch((err) => {
       console.log(err);
     });
 };
+
+// TODO : 로그인 실
