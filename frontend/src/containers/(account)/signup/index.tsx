@@ -3,14 +3,19 @@
 import { INFO_TEXT } from './constants';
 import AccountInfo from '@/containers/(account)/signup/AccountInfo';
 import Agreement from '@/containers/(account)/signup/Agreement';
-import Profile from '@/containers/(account)/signup/Profile';
+import CompleteSignup from '@/containers/(account)/signup/CompleteSignup';
+import EnterpriseProfile from '@/containers/(account)/signup/EnterpriseProfile';
+import PersonalProfile from '@/containers/(account)/signup/PersonalProfile';
 import SelectType from '@/containers/(account)/signup/SelectType';
 import { useAccountStore } from '@/states/account';
 
 import InfoTextBox from '@/components/InfoTextBox';
 
 const Signup = () => {
-  const index = useAccountStore((state) => state.index);
+  const { index, isEnterprise } = useAccountStore((state) => ({
+    index: state.index,
+    isEnterprise: state.isEnterprise,
+  }));
 
   return (
     <>
@@ -23,7 +28,9 @@ const Signup = () => {
         {index === 0 && <Agreement />}
         {index === 1 && <SelectType />}
         {index === 2 && <AccountInfo />}
-        {index === 3 && <Profile />}
+        {isEnterprise && index === 3 && <EnterpriseProfile />}
+        {!isEnterprise && index === 3 && <PersonalProfile />}
+        {index === 4 && <CompleteSignup />}
       </div>
     </>
   );

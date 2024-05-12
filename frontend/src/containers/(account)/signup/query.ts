@@ -1,25 +1,43 @@
 import { query } from '@/containers/query';
 
-export const requestEnterpriseSignUp = (account: EnterpriseAccount) => {
+export const checkId = async (id: string) => {
   return query
-    .post(false, '/member/b2b/signup', account)
+    .post<boolean, string>(false, '/member/check-id', id)
     .then((res) => {
-      if (res.status === 200) {
-        return true;
-      }
-      return false;
+      return !!res;
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      return false;
+    });
 };
 
-export const requestPersonalSignUp = (account: PersonalAccount) => {
+export const requestEnterpriseSignUp = async (account: EnterpriseAccount) => {
   return query
-    .post(false, '/member/b2b/signup', account)
+    .post<string, EnterpriseAccount>(false, '/member/b2b/signup', account)
     .then((res) => {
-      if (res.status === 200) {
+      if (res === '200') {
         return true;
       }
       return false;
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      return false;
+    });
+};
+
+export const requestPersonalSignUp = async (account: PersonalAccount) => {
+  return query
+    .post<string, PersonalAccount>(false, '/member/b2b/signup', account)
+    .then((res) => {
+      if (res === '200') {
+        return true;
+      }
+      return false;
+    })
+    .catch((err) => {
+      console.log(err);
+      return false;
+    });
 };
