@@ -25,10 +25,9 @@ const Login = () => {
         password: passwordRef.current.value,
       });
       if (response) {
-        // TODO : 기업 회원일 때 라우팅 뭐임?
-        router.push(isEnterprise ? '/' : '/');
+        router.push(isEnterprise ? 'biz/' : '/');
       } else {
-        // TODO: 로그인 실패 알림
+        // TODO: 로그인 실패 모달?
       }
     }
   };
