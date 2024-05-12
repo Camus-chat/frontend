@@ -10,17 +10,25 @@ import Button from '@/components/Button';
 import Input from '@/components/Form/Input';
 import Member from '@/components/ProfileImage/Member';
 
-const Profile = () => {
+const PersonalProfile = () => {
   const router = useRouter();
-  const { id, password, profileImg, nickname, setProfileImg, setNickname } =
-    useAccountStore((state) => ({
-      setProfileImg: state.setProfileImg,
-      setNickname: state.setNickname,
-      profileImg: state.profileImg,
-      nickname: state.nickname,
-      id: state.id,
-      password: state.password,
-    }));
+  const {
+    id,
+    password,
+    profileImg,
+    nickname,
+    setProfileImg,
+    setNickname,
+    clickNext,
+  } = useAccountStore((state) => ({
+    setProfileImg: state.setProfileImg,
+    setNickname: state.setNickname,
+    profileImg: state.profileImg,
+    nickname: state.nickname,
+    id: state.id,
+    password: state.password,
+    clickNext: state.nextIndex,
+  }));
 
   const [imageSrc, setImageSrc] = useState<string>(defaultImg);
   const nicknameRef = useRef<HTMLInputElement>(null);
@@ -48,9 +56,8 @@ const Profile = () => {
         nickname,
       });
 
-      // TODO: 자동 로그인 로직 생각해보기, api 요청 보내서 처리할건가?
       if (response) {
-        router.push('/');
+        clickNext();
       }
     }
   };
@@ -76,4 +83,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default PersonalProfile;
