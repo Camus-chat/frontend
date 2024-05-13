@@ -102,3 +102,10 @@ $desktop: 1280px;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
+
+@mixin button-wrapper-style {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
