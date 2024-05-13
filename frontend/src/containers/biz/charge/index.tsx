@@ -18,7 +18,7 @@ const Charge = () => {
           />
         </div>
         <div className={styles.cardWrapper}>
-          {INFO_CARD.map((card, index) => (
+          {INFO_CARD.map((card) => (
             <InfoCard
               key={card.title}
               title={card.title}

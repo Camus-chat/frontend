@@ -1,6 +1,6 @@
 type ButtonSize = 'small' | 'large';
 
-const _COLORS = [
+const COLORS = [
   'blue',
   'lightgray',
   'gray',
@@ -10,4 +10,4 @@ const _COLORS = [
   'black',
 ] as const;
 
-type ButtonColor = (typeof _COLORS)[number];
+type ButtonColor = (typeof COLORS)[number];

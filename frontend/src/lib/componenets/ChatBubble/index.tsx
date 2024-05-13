@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import styles from './index.module.css';
 
 interface Props {
-  children: ReactNode;
+  children?: ReactNode;
   message: string; // TODO: message class 를 받아오기 (사용자 정보, 시간이 포함된 클래스)
   isSent?: boolean;
 }

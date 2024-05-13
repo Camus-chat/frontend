@@ -1,9 +1,12 @@
 import ChatBubble from '@/lib/componenets/ChatBubble';
 import ChatInputBox from '@/lib/componenets/ChatInputBox';
 
-import styles from '@/containers/(personal)/tutorial/filter/index.module.scss';
+import {
+  FILTER_DESCRIPTION,
+  FILTER_OPTION,
+} from '@/containers/(personal)/tutorial/constants';
 
-import { FILTER_DESCRIPTION, FILTER_OPTION } from '../constants';
+import styles from './index.module.scss';
 import DropDown from '@/components/Form/DropDown';
 import InfoTextBox from '@/components/InfoTextBox';
 import Random from '@/components/ProfileImage/Random';
@@ -18,7 +21,11 @@ const Filter = () => {
           title={FILTER_DESCRIPTION.title}
           content={FILTER_DESCRIPTION.content}
         />
-        <DropDown name='필터링 강도' options={FILTER_OPTION} />
+        <DropDown
+          name='필터링 강도'
+          options={FILTER_OPTION}
+          placeholder='필터링 강도를 선택해주세요.'
+        />
       </div>
       <div className={styles.blueBox}>
         <div className={styles.contentBox}>
@@ -26,7 +33,7 @@ const Filter = () => {
             <ChatBubble message='안녕하세요 사장님' isSent={false}>
               <Random size='small' color='rose' />
             </ChatBubble>
-            <ChatBubble message='예, 안녕하세요'>''</ChatBubble>
+            <ChatBubble message='예, 안녕하세요' />
             <ChatBubble message='필터링 될 메시지' isSent={false}>
               <Random size='small' color='rose' />
             </ChatBubble>

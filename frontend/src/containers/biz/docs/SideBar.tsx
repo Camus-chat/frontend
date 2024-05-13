@@ -12,7 +12,9 @@ const SideBar = ({ menu, onClick }: Props) => {
       <div className={styles.navMenu}>
         {menu.map((item) => (
           <div key={item.key} className={styles.navItem}>
-            <button onClick={() => onClick(item.key)}>{item.name}</button>
+            <button type='button' onClick={() => onClick(item.key)}>
+              {item.name}
+            </button>
           </div>
         ))}
       </div>
