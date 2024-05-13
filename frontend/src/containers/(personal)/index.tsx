@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { DESCRIPTION } from '@/containers/(personal)/constants';
-import InfoCard from '@/containers/(personal)/InfoCard';
 
 import styles from './index.module.scss';
 import Header from '@/components/Header';
@@ -27,9 +26,7 @@ const Home = () => {
             />
           </div>
         </div>
-        <div className={styles.secondWrapper}>
-          <InfoCard />
-        </div>
+        <div className={styles.secondWrapper}>{/* <InfoCard /> */}</div>
       </div>
     </>
   );
