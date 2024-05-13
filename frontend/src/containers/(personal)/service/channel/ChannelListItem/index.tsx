@@ -2,7 +2,7 @@ import LinkIcon from '@mui/icons-material/Link';
 
 import ChannelUpdateButton from '@/containers/(personal)/service/channel/ChannelListItem/ChannelUpdateButton';
 import { FILTER_TYPE_MAP } from '@/containers/(personal)/service/channel/ChannelListItem/constants';
-import type { Channel } from '@/containers/(personal)/service/channel/ChannelListItem/type';
+import type { Channel } from '@/containers/(personal)/service/channel/type';
 
 import styles from './index.module.scss';
 import Button from '@/components/Button';
