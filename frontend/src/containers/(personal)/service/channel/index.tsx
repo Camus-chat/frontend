@@ -1,34 +1,12 @@
-'use client';
-
-import AddIcon from '@mui/icons-material/Add';
-
-import { createChannel } from '@/containers/(personal)/service/query';
+import ChannelActionPopup from '@/containers/(personal)/service/channel/ChannelActionPopup';
+import ChannelCreateButton from '@/containers/(personal)/service/channel/ChannelCreateButton';
 
 import ChannelListitem from './ChannelListItem';
-import styles from './index.module.scss';
 
 const Channel = () => {
-  const Example = {
-    type: 'group',
-    title: '이건예시',
-    content: '호호안녕하세요',
-    filterLevel: 0,
-  };
-
-  const handleClick = async () => {
-    await createChannel(Example);
-  };
-
   return (
-    <div>
-      <button
-        type='button'
-        className={styles.channelAddButton}
-        onClick={handleClick}
-      >
-        <AddIcon />
-        채널 추가
-      </button>
+    <>
+      <ChannelCreateButton />
       <ul>
         <ChannelListitem
           channel={{
@@ -40,7 +18,8 @@ const Channel = () => {
           }}
         />
       </ul>
-    </div>
+      <ChannelActionPopup />
+    </>
   );
 };
 

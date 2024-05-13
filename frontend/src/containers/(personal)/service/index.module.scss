@@ -23,7 +23,7 @@
 
   @include desktop {
     background: $gray-100;
-    padding: 24px 12px;
+    padding: 42px 12px;
     height: calc(100% - #{menu.$height-desktop});
   }
 }
