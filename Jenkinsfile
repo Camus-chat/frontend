@@ -8,6 +8,7 @@ pipeline {
                     sh '''
                         touch .env
                         echo "DOMAIN_NAME=${DOMAIN_NAME}" >> .env
+                        echo "API_URL=${API_URL}" >> .env
                     '''
                 }
             }
