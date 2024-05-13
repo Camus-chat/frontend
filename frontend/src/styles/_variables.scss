@@ -1,0 +1,104 @@
+// color
+$blue-900: #023C73;
+$blue-700: #175CA0;
+$blue-500: #0F6DD1;
+$blue-300: #117CE9;
+$blue-100: #DDECF9;
+$blue-50: #EEF5FC;
+$white: #FFFFFF;
+$gray-100: #F6F7F8;
+$gray-300: #CCCCCC;
+$gray-500: #858899;
+$black: #2B2D36;
+$green-500: #015627;
+$green-300: #07BC0C;
+$yellow-300: #F1C40F;
+$yellow-100: #FFF5CD;
+$red-100: #FFEFEF;
+$red-300: #F84D3A;
+
+// font-weight
+$thin: 100;
+$extra-light: 200;
+$light: 300;
+$regular: 400;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+$extra-bold: 800;
+
+// screen
+$tablet: 768px;
+$desktop: 1280px;
+
+@mixin mobile {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin mobile-disable {
+  @include mobile {
+    display: none;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+// shadow
+@mixin headerShadow {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.07);
+}
+
+@mixin boxShadow {
+  box-shadow: 0 1px 23px 0 rgba(0, 0, 0, 0.05);
+}
+
+// background
+@mixin background($color) {
+  background: $color;
+
+  * {
+    background: $color;
+  }
+}
+
+@mixin color($color) {
+  color: $color;
+
+  path, div {
+    color: $color;
+  }
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  @include flex-column;
+  align-items: center;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin transition-slow {
+    transition: all 0.3s;
+}
+
+@mixin text-overflow-hidden {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}

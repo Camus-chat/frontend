@@ -1,0 +1,76 @@
+@use "@/styles/variables" as *;
+@use "variables" as menu;
+
+.menuWrapper {
+  display: flex;
+  z-index: 1;
+  width: 100%;
+
+  @include mobile {
+    position: absolute;
+    align-items: center;
+    bottom: 0;
+    justify-content: space-around;
+    border-top: 1px solid $gray-100;
+  }
+
+  @include desktop {
+    @include background($black);
+    align-items: flex-end;
+    justify-content: center;
+    height: menu.$height-desktop;
+  }
+}
+
+@mixin menu($color, $height: menu.$height-desktop) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include color($color);
+
+  @include mobile {
+    font-size: 10px;
+    height: menu.$height-mobile;
+
+    div {
+      margin-top: 4px;
+    }
+  }
+
+  @include desktop {
+    font-size: 14px;
+    height: $height;
+    padding: 0 16px;
+
+    svg {
+      display: none;
+    }
+  }
+
+  &:hover {
+    @include color($white);
+
+    @include mobile {
+      @include color($black);
+    }
+  }
+
+}
+
+.selected {
+  @include menu($black, menu.$height-desktop-selected);
+
+  @include desktop {
+    @include color($white);
+    border-bottom: menu.$padding-y solid $white;
+  }
+
+  div {
+    font-weight: $semi-bold;
+  }
+}
+
+.unselected {
+  @include menu($gray-500);
+}

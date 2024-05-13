@@ -1,0 +1,52 @@
+@use '@/components/Form/variables' as *;
+@use '@/styles/variables' as *;
+
+@mixin text-style {
+  text-align: start;
+  color: $gray-500;
+}
+
+.label {
+  @include form-style;
+  @include text-style;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $white;
+  padding: 0 16px;
+  margin: 4px 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.optionList {
+  @include form-style;
+
+  background-color: $white;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  position: absolute;
+
+  .optionItem {
+    @include text-style;
+
+    width: 100%;
+    min-height: 40px;
+
+    padding: 0 16px;
+
+    background-color: transparent;
+    border-bottom: $gray-100 1px solid;
+
+    &:hover {
+      background-color: lighten($blue-100, 6%);
+      font-weight: $regular;
+      color: $blue-300;
+    }
+  }
+}

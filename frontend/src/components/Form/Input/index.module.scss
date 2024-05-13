@@ -1,0 +1,21 @@
+@use '@/styles/variables' as *;
+@use '@/components/Form/variables' as *;
+
+.inputBox {
+  @include form-style;
+  padding: 16px 20px;
+
+  &.invalid {
+    border: $red-300 1px solid;
+
+    &::placeholder {
+      color: $red-300;
+    }
+  }
+}
+
+.message {
+  margin: 4px 8px;
+  font-size: 12px;
+  color: $red-300;
+}

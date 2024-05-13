@@ -1,0 +1,12 @@
+@use '@/styles/variables' as *;
+@use '@/components/Form/variables' as *;
+
+.textBox {
+  @include form-style(120px);
+  padding: 16px 20px;
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
+}

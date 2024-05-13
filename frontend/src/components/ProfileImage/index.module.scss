@@ -1,0 +1,99 @@
+@import '@/components/ProfileImage/variables';
+@import '@/styles/variables';
+
+.profile {
+  border-radius: 50%;
+}
+
+@mixin random-profile($size) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $size;
+  height: $size;
+
+  svg {
+    width: calc($size - 12px);
+    height: calc($size - 12px);
+
+    path {
+      color: white;
+    }
+  }
+}
+
+.small {
+  @include random-profile($profile-size-small);
+}
+
+.medium {
+  @include random-profile($profile-size-medium);
+}
+
+.red {
+  @include background($profile-red)
+}
+
+.orange {
+  @include background($profile-orange)
+}
+
+.amber {
+  @include background($profile-amber)
+}
+
+.yellow {
+  @include background($profile-yellow)
+}
+
+.lime {
+  @include background($profile-lime)
+}
+
+.green {
+  @include background($profile-green)
+}
+
+.emerald {
+  @include background($profile-emerald)
+}
+
+.teal {
+  @include background($profile-teal)
+}
+
+.cyan {
+  @include background($profile-cyan)
+}
+
+.sky {
+  @include background($profile-sky)
+}
+
+.blue {
+  @include background($profile-blue)
+}
+
+.indigo {
+  @include background($profile-indigo)
+}
+
+.violet {
+  @include background($profile-violet)
+}
+
+.purple {
+  @include background($profile-purple)
+}
+
+.fuchsia {
+  @include background($profile-fuchsia)
+}
+
+.pink {
+  @include background($profile-pink)
+}
+
+.rose {
+  @include background($profile-rose)
+}

@@ -1,0 +1,122 @@
+@import '@/styles/_variables';
+
+@mixin button-color($color) {
+  @include background($color);
+  &:hover {
+    @include background(darken($color, 10%));
+  }
+
+  &:active {
+    @include background(darken($color, 15%));
+  }
+}
+
+@mixin transparent {
+  background-color: transparent;
+  color: $gray-500;
+
+  &:hover {
+    background-color: $gray-100;
+  }
+
+  &:active {
+    background-color: transparent;
+    color: $blue-300;
+  }
+}
+
+.button {
+  font-weight: $semi-bold;
+}
+
+// button size class
+.large {
+  min-width: 88px;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.small {
+  @include flex-center;
+  flex-shrink: 0;
+  margin-right: 4px;
+  padding: 4px 16px;
+  font-size: 16px;
+  font-weight: $semi-bold;
+  border-radius: 4px;
+
+  &.link {
+    padding: 0 4px;
+
+    svg {
+      height: 20px;
+      width: 20px;
+      @include color($white);
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+//button color class
+.blue {
+  @include button-color($blue-300);
+  color: $white;
+}
+
+.lightgray {
+  @include button-color($gray-100);
+  @include color($gray-500);
+
+  &:hover {
+    @include color($black);
+  }
+
+  &.red {
+    &:hover {
+      @include background($red-100);
+      color: $red-300;
+    }
+  }
+}
+
+.gray {
+  @include button-color($gray-300);
+  color: $white;
+
+  &.disable {
+    cursor: not-allowed;
+    background-color: $gray-300;
+  }
+}
+
+.skyblue {
+  @include button-color($blue-100);
+  @include color($blue-500);
+
+  &.outline {
+    border: 1px solid $blue-500;
+
+    &:hover {
+      @include background($blue-100);
+
+      cursor: default;
+    }
+  }
+}
+
+.login {
+  @include transparent;
+
+  color: $black;
+}
+
+.transparent {
+  @include transparent;
+}
+
+.black {
+  @include button-color($black);
+  color: $white;
+}

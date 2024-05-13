@@ -1,0 +1,33 @@
+@import '@/styles/_variables';
+
+@mixin text-icon-style($x, $color) {
+  padding: 4px $x;
+  background-color: $color;
+  font-size: 12px;
+  border-radius: 48px;
+  margin : 0 2px;
+  color: $white;
+  display: flex;
+  flex-shrink: 0;
+  height: min-content;
+}
+
+.private {
+  @include text-icon-style(8px, $blue-900);
+}
+
+.group {
+  @include text-icon-style(8px, $black);
+}
+
+.strong {
+  @include text-icon-style(6px, $green-300);
+}
+
+.moderate {
+  @include text-icon-style(6px, $yellow-300);
+}
+
+.weak {
+  @include text-icon-style(6px, $red-300);
+}

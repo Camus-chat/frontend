@@ -1,0 +1,149 @@
+@use '@/styles/variables' as *;
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.firstWrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  height: 560px;
+  background-color: black;
+
+  div {
+    background-color: transparent;
+  }
+
+  .description {
+    background-color: transparent;
+    color: $white;
+    font-size: 48px;
+    font-weight: $bold;
+  }
+
+  .moreButton {
+    background-color: $blue-500;
+    color: $white;
+    margin: 8px 0;
+    padding: 8px 16px;
+    border-radius: 30px;
+  }
+
+  .imageBox {
+    color: white;
+    font-size: 40pox;
+  }
+}
+
+.secondWrapper {
+  width: 100%;
+  padding: 48px 64px;
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 16px;
+
+    .description {
+      font-size: 32px;
+      font-weight: $semi-bold;
+    }
+
+    .moreButton {
+      background-color: $black;
+      padding: 0 16px;
+      color: $white;
+      border-radius: 30px;
+      font-size: 16px;
+    }
+  }
+
+  .cardWrapper {
+    margin: 32px 0;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.card {
+  @include flex-column;
+  justify-content: space-between;
+  width: 100%;
+  height: 320px;
+  margin: 0 16px;
+  padding: 32px;
+  border-radius: 20px;
+
+  .title {
+    background-color: transparent;
+    color: $white;
+    font-size: 28px;
+    font-weight: $semi-bold;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    color: $white;
+    font-size: 16px;
+  }
+
+  svg {
+    background-color: transparent;
+
+    path {
+      color: $white;
+    }
+  }
+
+  &.navy {
+    background-color: $blue-900;
+  }
+
+  &.blue {
+    background-color: $blue-700;
+  }
+
+  &.green {
+    background-color: $green-500;
+  }
+}
+
+.thirdWrapper {
+  background-color: $blue-100;
+  padding: 120px;
+
+  .description {
+    background-color: transparent;
+    font-size: 36px;
+    font-weight: $medium;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    margin-top: 32px;
+
+    p {
+      background-color: transparent;
+      font-size: 16px;
+      font-weight: $bold;
+      margin-right: 4px;
+    }
+
+    svg {
+      background-color: transparent;
+      transform: rotate(270deg);
+      width: 20px;
+
+      path {
+        color: $blue-500;
+      }
+    }
+  }
+}
