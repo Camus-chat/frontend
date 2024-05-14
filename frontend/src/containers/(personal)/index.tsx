@@ -5,6 +5,7 @@ import { DESCRIPTION } from '@/containers/(personal)/constants';
 
 import styles from './index.module.scss';
 import Header from '@/components/Header';
+import InfoCard from "@/containers/(personal)/InfoCard";
 
 const Home = () => {
   // TODO: 이미지 바꿔야함.
@@ -26,7 +27,9 @@ const Home = () => {
             />
           </div>
         </div>
-        <div className={styles.secondWrapper}>{/* <InfoCard /> */}</div>
+        <div className={styles.secondWrapper}>
+           <InfoCard />
+        </div>
       </div>
     </>
   );

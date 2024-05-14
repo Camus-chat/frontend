@@ -1,13 +1,15 @@
+'use client';
+
 import ExpandCircleDownRoundedIcon from '@mui/icons-material/ExpandCircleDownRounded';
 import classNames from 'classnames';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { INFO_CARD } from '@/containers/(personal)/constants';
 import styles from '@/containers/(personal)/index.module.scss';
+import Lottie from "react-lottie-player";
+import Image from 'next/image';
 
 const InfoCard = () => {
-  // TODO: 이미지 추가 하기
   return (
     <div className={styles.infoCardWrapper}>
       {INFO_CARD.map((item, index) => (
@@ -16,12 +18,11 @@ const InfoCard = () => {
           key={item.key}
         >
           {index % 2 === 0 && (
-            <Image
-              className={styles.img}
-              src={item.imgSrc}
-              alt='image'
-              width={item.imgWidth}
-              height={item.imgHeight}
+            <Lottie
+                loop
+                play
+              animationData={item.imgSrc}
+                style={{width: item.imgWidth, height: item.imgHeight}}
             />
           )}
           <div className={styles.content}>
@@ -34,7 +35,7 @@ const InfoCard = () => {
           {index % 2 === 1 && (
             <Image
               className={styles.img}
-              src={item.imgSrc}
+              src='./desktop.svg'
               alt='image'
               width={item.imgWidth}
               height={item.imgHeight}
