@@ -13,17 +13,16 @@ interface Props {
 }
 
 const ChannelListitem = ({ channel }: Props) => {
-  const channelTypeName = channel.private ? 'private' : 'group';
-  const filterName = FILTER_TYPE_MAP[channel.filter];
+  const filterName = FILTER_TYPE_MAP[channel.filterLevel];
 
   return (
     <li className={styles.channelListItem}>
       <div className={styles.info}>
-        <div className={styles.title}>{channel.name}</div>
-        <TextIcon name={channelTypeName} />
+        <div className={styles.title}>{channel.title}</div>
+        <TextIcon name={channel.type} />
         <TextIcon name={filterName} />
       </div>
-      <div className={styles.description}>{channel.description}</div>
+      <div className={styles.description}>{channel.content}</div>
       <div className={styles.buttons}>
         <Button size='small' color='lightgray' option='red'>
           삭제
