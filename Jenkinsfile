@@ -8,7 +8,8 @@ pipeline {
                     sh '''
                         touch .env
                         echo "DOMAIN_NAME=${DOMAIN_NAME}" >> .env
-                        echo "API_URL=${API_URL}" >> .env
+                        echo "CLIENT_SIDE_FETCH_URL=${CLIENT_SIDE_FETCH_URL}" >> .env
+                        echo "SERVER_SIDE_FETCH_URL=${SERVER_SIDE_FETCH_URL}" >> .env
                     '''
                 }
             }
