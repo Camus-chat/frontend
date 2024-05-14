@@ -1,10 +1,10 @@
 import { query } from '@/containers/query';
 
 export const checkId = async (id: string) => {
-  return query
-    .post<boolean, string>(false, '/member/check-id', id)
+  return query.clientSide
+    .post<boolean, string>('/member/check-id', id)
     .then((res) => {
-      return !!res;
+      return res;
     })
     .catch((err) => {
       console.log(err);
@@ -13,13 +13,10 @@ export const checkId = async (id: string) => {
 };
 
 export const requestEnterpriseSignUp = async (account: EnterpriseAccount) => {
-  return query
-    .post<string, EnterpriseAccount>(false, '/member/b2b/signup', account)
+  return query.clientSide
+    .post<boolean, EnterpriseAccount>('/member/b2b/signup', account)
     .then((res) => {
-      if (res === '200') {
-        return true;
-      }
-      return false;
+      return res;
     })
     .catch((err) => {
       console.log(err);
@@ -28,13 +25,10 @@ export const requestEnterpriseSignUp = async (account: EnterpriseAccount) => {
 };
 
 export const requestPersonalSignUp = async (account: PersonalAccount) => {
-  return query
-    .post<string, PersonalAccount>(false, '/member/b2b/signup', account)
+  return query.clientSide
+    .post<boolean, PersonalAccount>('/member/b2b/signup', account)
     .then((res) => {
-      if (res === '200') {
-        return true;
-      }
-      return false;
+      return res
     })
     .catch((err) => {
       console.log(err);
