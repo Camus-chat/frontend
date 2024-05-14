@@ -1,70 +1,97 @@
-const fetchClient = (requiredToken: boolean) => {
-  const prepareRequest = async <T, P = undefined>(
-    url: string,
-    method: 'GET' | 'POST' | 'PATCH' | 'DELETE',
-    data?: P,
-  ): Promise<T> => {
-    const endpoint = `${url}`;
-    const headers = new Headers({
-      'Content-Type': 'application/json',
-    });
+type Fetch = <ResponseType>(
+  endpoint: string,
+  method: 'GET' | 'POST' | 'PATCH' | 'DELETE',
+  stringfiedRequestBody?: string,
+) => Promise<ResponseType>;
 
-    if (requiredToken) {
-      const token = localStorage.getItem('token');
-      if (token) {
-        headers.append('Authorization', token);
-      }
-    }
+const clientSideFetch: Fetch = async <ResponseType>(
+  endpoint: string,
+  method: 'GET' | 'POST' | 'PATCH' | 'DELETE',
+  stringfiedRequestBody?: string,
+): Promise<ResponseType> => {
+  const headers = new Headers({
+    'Content-Type': 'application/json',
+  });
 
-    const config: RequestInit = {
-      method,
-      headers,
-      body: data ? JSON.stringify(data) : null,
-    };
+  const token = localStorage.getItem('token');
+  if (token) {
+    headers.append('Authorization', token);
+  }
 
-    if (method === 'GET') {
-      delete config.body;
-    }
-
-    try {
-      const response = await fetch(endpoint, config);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const responseData: T = await response.json();
-      return responseData;
-    } catch (error) {
-      throw new Error(`Fetch error: ${error}`);
-    }
+  const config: RequestInit = {
+    method,
+    headers,
+    body: stringfiedRequestBody,
   };
 
-  return { prepareRequest };
+  return fetch(`/api${endpoint}`, config).then((res) => res.json());
 };
 
-const query = {
-  post: async <T, P>(
-    requiredToken: boolean,
-    url: string,
-    data: P,
-  ): Promise<T> => {
-    return fetchClient(requiredToken).prepareRequest<T, P>(url, 'POST', data);
-  },
+const serverSideFetch: Fetch = async <ResponseType>(
+  endpoint: string,
+  method: 'GET' | 'POST' | 'PATCH' | 'DELETE',
+  stringfiedRequestBody?: string,
+): Promise<ResponseType> => {
+  const headers = new Headers({
+    'Content-Type': 'application/json',
+  });
 
-  get: async <T>(requiredToken: boolean, url: string): Promise<T> => {
-    return fetchClient(requiredToken).prepareRequest<T>(url, 'GET');
-  },
+  // TODO: server side localStorage
+  // const token = localStorage.getItem('token');
+  // if (token) {
+  //   headers.append('Authorization', token);
+  // }
 
-  patch: async <T, P>(
-    requiredToken: boolean,
-    url: string,
-    data: P,
-  ): Promise<T> => {
-    return fetchClient(requiredToken).prepareRequest<T, P>(url, 'PATCH', data);
-  },
+  const config: RequestInit = {
+    method,
+    headers,
+    body: stringfiedRequestBody,
+  };
 
-  delete: async <T>(requiredToken: boolean, url: string): Promise<T> => {
-    return fetchClient(requiredToken).prepareRequest<T>(url, 'DELETE');
-  },
+  return fetch(`${process.env.SERVER_SIDE_FETCH_URL}${endpoint}`, config).then(
+    (res) => res.json(),
+  );
 };
 
-export { query };
+type Method = <ResponseType>(url: string) => Promise<ResponseType>;
+
+type MethodWithRequestBody = <ResponseType, RequestBodyType>(
+  url: string,
+  requestBody: RequestBodyType,
+) => Promise<ResponseType>;
+
+class Query {
+  post: MethodWithRequestBody;
+  get: Method;
+  patch: MethodWithRequestBody;
+  delete: Method;
+
+  constructor($fetch: Fetch) {
+    this.post = async <ResponseType, RequestBodyType>(
+      url: string,
+      requestBody: RequestBodyType,
+    ): Promise<ResponseType> => {
+      return $fetch<ResponseType>(url, 'POST', JSON.stringify(requestBody));
+    };
+
+    this.get = async <ResponseType>(url: string): Promise<ResponseType> => {
+      return $fetch<ResponseType>(url, 'GET');
+    };
+
+    this.patch = async <ResponseType, RequestBodyType>(
+      url: string,
+      requestBody: RequestBodyType,
+    ): Promise<ResponseType> => {
+      return $fetch<ResponseType>(url, 'POST', JSON.stringify(requestBody));
+    };
+
+    this.delete = async <ResponseType>(url: string): Promise<ResponseType> => {
+      return $fetch<ResponseType>(url, 'GET');
+    };
+  }
+}
+
+export const query = {
+  clientSide: new Query(clientSideFetch),
+  serverSide: new Query(serverSideFetch),
+};
