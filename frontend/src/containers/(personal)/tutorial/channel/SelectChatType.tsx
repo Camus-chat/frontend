@@ -31,7 +31,7 @@ const SelectChatType = () => {
           size='large'
           color={privateColor}
           onClick={() => handleClick(PRIVATE)}
-          outline={privateColor === 'skyblue'}
+          option='outline'
         >
           <CheckCircleIcon className={styles.icon} />
           1:1채팅
@@ -40,7 +40,7 @@ const SelectChatType = () => {
           size='large'
           color={groupColor}
           onClick={() => handleClick(GROUP)}
-          outline={groupColor === 'skyblue'}
+          option='outline'
         >
           <CheckCircleIcon className={styles.icon} />
           그룹채팅

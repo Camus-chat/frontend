@@ -1,0 +1,25 @@
+@use '@/styles/variables' as *;
+
+@mixin box-style {
+  width: 100%;
+  overflow: hidden;
+
+  @include desktop {
+    @include boxShadow;
+
+    border-radius: 20px;
+    margin: 0 16px;
+    max-width: 400px;
+    padding: 20px;
+  }
+}
+
+@mixin popup-style {
+  @include box-style;
+
+  @include mobile {
+    position: absolute;
+    height: 100%;
+    z-index: 2;
+  }
+}
