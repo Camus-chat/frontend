@@ -16,8 +16,8 @@ interface channel {
 }
 
 export const createChannel = async (channelInfo: $RoomInfo) => {
-  return query
-    .post<channel, $RoomInfo>(false, '/channel/create', channelInfo)
+  return query.clientSide
+    .post<channel, $RoomInfo>('/channel/create', channelInfo)
     .then((res) => {
       console.log(res);
       return res;
