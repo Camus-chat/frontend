@@ -6,7 +6,7 @@ interface Props {
   children?: ReactNode;
   isSelected: boolean;
   chat: Chat;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 const ChatListItem = ({ children, isSelected, chat, onClick }: Props) => {
@@ -24,8 +24,13 @@ const ChatListItem = ({ children, isSelected, chat, onClick }: Props) => {
     ? styles.chatListItem_selected
     : styles.chatListItem;
 
+  const handleClick = () => {
+    setChatDetails((prev) => ({ ...prev, unreadCount: 0 }));
+    onClick();
+  };
+
   return (
-    <li className={chatListItemStyle} onClick={onClick}>
+    <li className={chatListItemStyle} onClick={handleClick} role='presentation'>
       <div className={styles.chatListItem_bg}>
         <div className={styles.profile}>{children}</div>
         <div className={styles.chatWrapper}>
@@ -40,7 +45,9 @@ const ChatListItem = ({ children, isSelected, chat, onClick }: Props) => {
           </div>
           <div className={styles.chatDetails}>
             <div className={styles.lastMessage}>{chatDetails.lastMessage}</div>
-            <div className={styles.unreadCount}>{displayedCount}</div>
+            {chatDetails.unreadCount > 0 && (
+              <div className={styles.unreadCount}>{displayedCount}</div>
+            )}
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ interface Props {
   name: string;
   placeholder: string;
   options: DropDownItems[];
-  onSelect: (option: string) => void;
+  onSelect?: (option: string) => void;
 }
 
 const DropDown = ({ name, options, placeholder, onSelect }: Props) => {
@@ -25,7 +25,10 @@ const DropDown = ({ name, options, placeholder, onSelect }: Props) => {
 
   const handleSelectOption = (item: string) => {
     setSelectedOption(item);
-    onSelect(item);
+    if (onSelect) {
+      // TODO: Fix this
+      onSelect(item);
+    }
   };
 
   return (

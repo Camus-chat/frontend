@@ -2,10 +2,12 @@ import { FILTER_TYPE_MAP } from '@/containers/(personal)/service/channel/Channel
 
 type FilterType = keyof typeof FILTER_TYPE_MAP;
 
+type ChannelType = 'private' | 'group';
+
 interface Channel {
-  name: string;
-  private: boolean;
-  filter: FilterType;
-  description: string;
+  type: ChannelType;
+  title: string;
+  content: string;
+  filterLevel: FilterType;
   link: string;
 }

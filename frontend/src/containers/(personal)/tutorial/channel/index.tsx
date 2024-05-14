@@ -28,7 +28,11 @@ const Channel = () => {
             <ChannelInfo />
           </div>
           <div>
-            <DropDown name='필터링 강도' options={FILTER_OPTION} />
+            <DropDown
+              name='필터링 강도'
+              options={FILTER_OPTION}
+              placeholder='필터링 강도를 선택해주세요.'
+            />
             <CreateButton />
           </div>
         </div>

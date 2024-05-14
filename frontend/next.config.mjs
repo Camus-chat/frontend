@@ -4,8 +4,8 @@ const nextConfig = {
     async rewrites() {
         return [
             {
-                source: "/:path*",
-                destination: `${process.env.API_URL}/:path*`,
+                source: "/api/:path*",
+                destination: `${process.env.CLIENT_SIDE_FETCH_URL}/:path*`,
             },
         ];
     },
