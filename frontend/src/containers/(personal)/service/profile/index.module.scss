@@ -1,0 +1,11 @@
+@use '@/styles/variables' as *;
+
+.profileWrapper {
+  padding-top: 50px;
+
+  .nickName {
+    font-size: 24px;
+    font-weight: $semi-bold;
+  }
+
+}
