@@ -1,17 +1,15 @@
-import { useRouter } from 'next/navigation';
 import { ChangeEvent, useRef, useState } from 'react';
 
 import { requestPersonalSignUp } from '@/containers/(account)/signup/query';
 import { useAccountStore } from '@/states/account';
 
-import defaultImg from './defaultImg.svg';
 import styles from './index.module.scss';
+import defaultProfileImg from '../../../../public/images/defaultProfileImg.svg';
 import Button from '@/components/Button';
 import Input from '@/components/Form/Input';
 import Member from '@/components/ProfileImage/Member';
 
 const PersonalProfile = () => {
-  const router = useRouter();
   const {
     id,
     password,
@@ -30,7 +28,8 @@ const PersonalProfile = () => {
     clickNext: state.nextIndex,
   }));
 
-  const [imageSrc, setImageSrc] = useState<string>(defaultImg);
+  const [imageSrc, setImageSrc] = useState<string>(defaultProfileImg);
+  const profileImgRef = useRef<HTMLInputElement>(null);
   const nicknameRef = useRef<HTMLInputElement>(null);
 
   const handleChangeImg = (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,9 +44,12 @@ const PersonalProfile = () => {
   };
 
   const handleClickNext = async () => {
-    if (nicknameRef.current && imageSrc) {
-      setProfileImg(imageSrc);
-      setNickname(nicknameRef.current.value);
+    if (nicknameRef.current && profileImgRef.current) {
+      const newFile = profileImgRef.current.files?.[0] ?? null;
+      if (newFile) {
+        setProfileImg(newFile);
+        setNickname(nicknameRef.current.value);
+      }
 
       const response = await requestPersonalSignUp({
         id,
@@ -73,7 +75,12 @@ const PersonalProfile = () => {
           </label>
         </div>
       </div>
-      <Input name='닉네임' type='text' placeholder='닉네임을 입력해 주세요' />
+      <Input
+        name='닉네임'
+        type='text'
+        placeholder='닉네임을 입력해 주세요'
+        ref={nicknameRef}
+      />
       <div className={styles.signupButton}>
         <Button size='large' color='blue' onClick={handleClickNext}>
           회원가입

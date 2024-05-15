@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
+import { requestLogin } from '@/containers/(account)/login/query';
 import styles from '@/containers/(account)/signup/index.module.scss';
 import { useAccountStore } from '@/states/account';
 
@@ -16,7 +17,7 @@ const CompleteSignup = () => {
   const router = useRouter();
 
   const handleClick = async () => {
-    const response = await requestLogin({ id, password });
+    const response = await requestLogin(isEnterprise, { id, password });
 
     if (response) {
       router.push(isEnterprise ? 'biz/' : '/');
@@ -25,7 +26,7 @@ const CompleteSignup = () => {
 
   return (
     <div className={styles.completeWrapper}>
-      <Button size='large' color='blue'>
+      <Button size='large' color='blue' onClick={handleClick}>
         확인
       </Button>
     </div>
