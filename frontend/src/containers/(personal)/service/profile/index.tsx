@@ -1,10 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState } from 'react';
+'use client';
 
 import styles from '@/containers/(personal)/service/profile/index.module.scss';
-import { requestProfile } from '@/containers/(personal)/service/profile/query';
-import type { Profiles } from '@/containers/(personal)/service/profile/type';
 
 import Member from '@/components/ProfileImage/Member';
 
@@ -21,15 +17,23 @@ const Profile = () => {
   // };
   const nickname = '민돌멩이';
 
+  const clickEditProfile = () => {
+    console.log('수정하기');
+  };
+
   return (
     <>
       <div className={styles.profileWrapper}>
         <Member imgSrc='/images/logo.svg' size='large' />
         <div className={styles.nickName}> {nickname}님</div>
       </div>
-      <div className={styles.hr} />
-      <div className={styles.navigate}>
-        <Link href='/'>프로필 수정하기 </Link>
+      <div className={styles.menuWrapper}>
+        <button type='button' onClick={clickEditProfile}>
+          프로필 수정
+        </button>
+        <button className={styles.withdrawalButton} type='button'>
+          회원탈퇴
+        </button>
       </div>
       <div className={styles.hr} />
     </>

@@ -1,11 +1,37 @@
 @use '@/styles/variables' as *;
 
 .profileWrapper {
-  padding-top: 50px;
+  padding: 32px 0;
+  border-bottom: 1px solid $gray-300;
 
   .nickName {
+    padding-top: 8px;
     font-size: 24px;
     font-weight: $semi-bold;
   }
-
 }
+
+.menuWrapper {
+  @include flex-column;
+  align-items: flex-start;
+  padding-top: 4px;
+
+  button {
+    margin: 4px 0;
+    padding: 16px 0;
+    font-size: 18px;
+
+    &:hover {
+      color: $blue-300;
+    }
+  }
+
+  .withdrawalButton {
+    color: $gray-500;
+
+    &:hover {
+      color: $red-300;
+    }
+  }
+}
+
