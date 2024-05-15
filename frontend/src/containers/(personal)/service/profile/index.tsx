@@ -1,6 +1,10 @@
 'use client';
 
+import { useState } from 'react';
+import { createPortal } from 'react-dom';
+
 import styles from '@/containers/(personal)/service/profile/index.module.scss';
+import ProfileActionPopup from '@/containers/(personal)/service/profile/ProfileActionPopup';
 
 import Member from '@/components/ProfileImage/Member';
 
@@ -16,26 +20,31 @@ const Profile = () => {
   //   setProfile(response);
   // };
   const nickname = '민돌멩이';
-
-  const clickEditProfile = () => {
-    console.log('수정하기');
-  };
+  const [isClicked, setIsClicked] = useState<boolean>(false);
 
   return (
     <>
-      <div className={styles.profileWrapper}>
-        <Member imgSrc='/images/logo.svg' size='large' />
-        <div className={styles.nickName}> {nickname}님</div>
+      <div>
+        <div className={styles.profileWrapper}>
+          <Member imgSrc='/images/logo.svg' size='large' />
+          <div className={styles.nickName}> {nickname}님</div>
+        </div>
+        <div className={styles.menuWrapper}>
+          <button type='button' onClick={() => setIsClicked(!isClicked)}>
+            프로필 수정
+          </button>
+          <button className={styles.withdrawalButton} type='button'>
+            회원탈퇴
+          </button>
+        </div>
       </div>
-      <div className={styles.menuWrapper}>
-        <button type='button' onClick={clickEditProfile}>
-          프로필 수정
-        </button>
-        <button className={styles.withdrawalButton} type='button'>
-          회원탈퇴
-        </button>
-      </div>
-      <div className={styles.hr} />
+      {isClicked &&
+        createPortal(
+          <div className={styles.content}>
+            <ProfileActionPopup clickCancel={() => setIsClicked(false)} />
+          </div>,
+          document.getElementById('content-wrapper') as HTMLDivElement,
+        )}
     </>
   );
 };
