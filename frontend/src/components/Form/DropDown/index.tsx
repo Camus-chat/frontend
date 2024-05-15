@@ -9,25 +9,24 @@ import FormWrapper from '@/components/Form/Wrapper';
 interface Props {
   name: string;
   placeholder: string;
-  options: DropDownItems[];
+  options: DropDownItem[];
   onSelect?: (option: string) => void;
 }
 
 const DropDown = ({ name, options, placeholder, onSelect }: Props) => {
   const [isClicked, setIsClicked] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string>(
-    `${placeholder}`,
-  );
+  const [selectedOption, setSelectedOption] = useState<string>(placeholder);
 
   const handleClickDropdown = () => {
-    setIsClicked(!isClicked);
+    setIsClicked((prev) => !prev);
   };
 
-  const handleSelectOption = (item: string) => {
-    setSelectedOption(item);
+  const handleSelectOption = (item: DropDownItem) => {
+    setSelectedOption(item.name);
+    setIsClicked(false);
     if (onSelect) {
       // TODO: Fix this
-      onSelect(item);
+      onSelect(item.value);
     }
   };
 
@@ -48,7 +47,7 @@ const DropDown = ({ name, options, placeholder, onSelect }: Props) => {
               key={items.value}
               type='button'
               className={styles.optionItem}
-              onClick={() => handleSelectOption(items.name)}
+              onClick={() => handleSelectOption(items)}
             >
               {items.name}
             </button>

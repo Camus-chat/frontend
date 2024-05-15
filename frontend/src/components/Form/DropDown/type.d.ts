@@ -1,4 +1,4 @@
-interface DropDownItems {
+interface DropDownItem {
   value: string;
   name: string;
 }
