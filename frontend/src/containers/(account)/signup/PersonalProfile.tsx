@@ -4,7 +4,6 @@ import { requestPersonalSignUp } from '@/containers/(account)/signup/query';
 import { useAccountStore } from '@/states/account';
 
 import styles from './index.module.scss';
-import defaultProfileImg from '../../../../public/images/defaultProfileImg.svg';
 import Button from '@/components/Button';
 import Input from '@/components/Form/Input';
 import Member from '@/components/ProfileImage/Member';
@@ -28,7 +27,9 @@ const PersonalProfile = () => {
     clickNext: state.nextIndex,
   }));
 
-  const [imageSrc, setImageSrc] = useState<string>(defaultProfileImg);
+  const [imageSrc, setImageSrc] = useState<string>(
+    'images/defaultProfileImg.svg',
+  );
   const profileImgRef = useRef<HTMLInputElement>(null);
   const nicknameRef = useRef<HTMLInputElement>(null);
 
