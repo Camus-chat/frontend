@@ -6,14 +6,19 @@ import { useState } from 'react';
 import styles from './index.module.scss';
 import FormWrapper from '@/components/Form/Wrapper';
 
-interface Props {
+interface Props<T> {
   name: string;
   placeholder: string;
-  options: DropDownItem[];
-  onSelect?: (option: string) => void;
+  options: DropDownItem<T>[];
+  onSelect?: (option: T) => void;
 }
 
-const DropDown = ({ name, options, placeholder, onSelect }: Props) => {
+const DropDown = <T = string,>({
+  name,
+  options,
+  placeholder,
+  onSelect,
+}: Props<T>) => {
   const [isClicked, setIsClicked] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string>(placeholder);
 
@@ -21,7 +26,7 @@ const DropDown = ({ name, options, placeholder, onSelect }: Props) => {
     setIsClicked((prev) => !prev);
   };
 
-  const handleSelectOption = (item: DropDownItem) => {
+  const handleSelectOption = (item: DropDownItem<T>) => {
     setSelectedOption(item.name);
     setIsClicked(false);
     if (onSelect) {
@@ -44,7 +49,7 @@ const DropDown = ({ name, options, placeholder, onSelect }: Props) => {
         <div className={styles.optionList}>
           {options.map((items) => (
             <button
-              key={items.value}
+              key={items.name}
               type='button'
               className={styles.optionItem}
               onClick={() => handleSelectOption(items)}
