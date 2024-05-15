@@ -1,5 +1,7 @@
+import { useRouter } from 'next/navigation';
 import { ChangeEvent, useRef, useState } from 'react';
 
+import { requestPersonalSignUp } from '@/containers/(account)/signup/query';
 import { useAccountStore } from '@/states/account';
 
 import defaultImg from './defaultImg.svg';
@@ -8,14 +10,25 @@ import Button from '@/components/Button';
 import Input from '@/components/Form/Input';
 import Member from '@/components/ProfileImage/Member';
 
-const Profile = () => {
-  const { setProfileImg, setNickname, clickNext } = useAccountStore(
-    (state) => ({
-      setProfileImg: state.setProfileImg,
-      setNickname: state.setNickname,
-      clickNext: state.nextIndex,
-    }),
-  );
+const PersonalProfile = () => {
+  const router = useRouter();
+  const {
+    id,
+    password,
+    profileImg,
+    nickname,
+    setProfileImg,
+    setNickname,
+    clickNext,
+  } = useAccountStore((state) => ({
+    setProfileImg: state.setProfileImg,
+    setNickname: state.setNickname,
+    profileImg: state.profileImg,
+    nickname: state.nickname,
+    id: state.id,
+    password: state.password,
+    clickNext: state.nextIndex,
+  }));
 
   const [imageSrc, setImageSrc] = useState<string>(defaultImg);
   const nicknameRef = useRef<HTMLInputElement>(null);
@@ -31,11 +44,21 @@ const Profile = () => {
     }
   };
 
-  const handleClickNext = () => {
+  const handleClickNext = async () => {
     if (nicknameRef.current && imageSrc) {
       setProfileImg(imageSrc);
       setNickname(nicknameRef.current.value);
-      clickNext();
+
+      const response = await requestPersonalSignUp({
+        id,
+        password,
+        profileImg,
+        nickname,
+      });
+
+      if (response) {
+        clickNext();
+      }
     }
   };
 
@@ -60,4 +83,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default PersonalProfile;

@@ -17,6 +17,10 @@ export const INFO_TEXT = [
     title: '계정 소유자 정보를 입력해주세요',
     content: '',
   },
+  {
+    title: '회원 가입에 성공하였습니다',
+    content: '확인을 누르면 메인화면으로 이동합니다.',
+  },
 ];
 
 export const AGREE_TEXT = [

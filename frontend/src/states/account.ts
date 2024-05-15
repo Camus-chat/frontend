@@ -8,6 +8,8 @@ interface accountState {
   password: string;
   profileImg: string;
   nickname: string;
+  companyName: string;
+  companyEmail: string;
 }
 
 interface accountAction {
@@ -18,6 +20,8 @@ interface accountAction {
   setPassword: (password: string) => void;
   setProfileImg: (profileImg: string) => void;
   setNickname: (nickname: string) => void;
+  setCompanyName: (companyName: string) => void;
+  setCompanyEmail: (companyEmail: string) => void;
 }
 
 export const useAccountStore = create<accountState & accountAction>()(
@@ -28,6 +32,8 @@ export const useAccountStore = create<accountState & accountAction>()(
     password: '',
     profileImg: '',
     nickname: '',
+    companyName: '',
+    companyEmail: '',
 
     prevIndex: () =>
       set((prev) => ({
@@ -42,5 +48,7 @@ export const useAccountStore = create<accountState & accountAction>()(
     setPassword: (password: string) => set({ password }),
     setProfileImg: (profileImg: string) => set({ profileImg }),
     setNickname: (nickname: string) => set({ nickname }),
+    setCompanyName: (companyName: string) => set({ companyName }),
+    setCompanyEmail: (companyEmail: string) => set({ companyEmail }),
   })),
 );
