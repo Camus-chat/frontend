@@ -28,7 +28,7 @@ const PersonalProfile = () => {
   }));
 
   const [imageSrc, setImageSrc] = useState<string>(
-    'images/defaultProfileImg.svg',
+    '/images/defaultProfileImg.svg',
   );
   const profileImgRef = useRef<HTMLInputElement>(null);
   const nicknameRef = useRef<HTMLInputElement>(null);
