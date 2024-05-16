@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
-import { Channel } from '@/containers/(personal)/service/channel/type';
+import type { Channel } from '@/containers/(personal)/service/channel/type';
 
 export const CREATE = true;
 export const UPDATE = false;

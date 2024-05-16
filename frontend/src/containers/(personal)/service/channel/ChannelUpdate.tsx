@@ -31,6 +31,7 @@ const ChannelUpdate = () => {
   useEffect(() => {
     title.current!.value = channel.title;
     content.current!.value = channel.content;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const requestUpdate = () => {
