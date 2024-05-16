@@ -23,7 +23,7 @@ export const Entry = ({ guest, channel }: Props) => {
 
   const handleClick = async () => {
     const roomId = await requestEnterRoom(link);
-    router.push(`chat/${roomId}`);
+    router.push(`/chat/${roomId}`);
   };
 
   const reader = new FileReader();
