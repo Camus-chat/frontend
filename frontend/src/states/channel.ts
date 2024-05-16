@@ -22,16 +22,19 @@ export const useChannelStore = create<channelState & channelAction>()(
 
     openCreate: () =>
       set((prev) => ({
+        ...prev,
         isOpen: true,
         action: CREATE,
       })),
     openUpdate: () =>
       set((prev) => ({
+        ...prev,
         isOpen: true,
         action: UPDATE,
       })),
     close: () =>
       set((prev) => ({
+        ...prev,
         isOpen: false,
       })),
   })),

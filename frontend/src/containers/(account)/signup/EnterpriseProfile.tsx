@@ -45,7 +45,7 @@ const EnterpriseProfile = () => {
     }
 
     if (companyEmailRef.current?.value.includes('@')) {
-      setIsEmptyMail(true);
+      setIsValidMail(true);
     }
   };
 

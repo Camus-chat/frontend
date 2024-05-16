@@ -12,7 +12,7 @@ interface Props {
   channel: Channel;
 }
 
-const ChannelListitem = ({ channel }: Props) => {
+const ChannelListItem = ({ channel }: Props) => {
   const filterName = FILTER_TYPE_MAP[channel.filterLevel];
 
   return (
@@ -36,4 +36,4 @@ const ChannelListitem = ({ channel }: Props) => {
   );
 };
 
-export default ChannelListitem;
+export default ChannelListItem;

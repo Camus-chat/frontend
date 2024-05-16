@@ -1,6 +1,6 @@
 'use client';
 
-import { CHANNEL_CREATE, CHANNEL_UPDATE, FILTER_OPTION } from './constants';
+import { CHANNEL_UPDATE, FILTER_OPTION } from './constants';
 import { useChannelStore } from '@/states/channel';
 
 import styles from './index.module.scss';
@@ -8,7 +8,6 @@ import Button from '@/components/Button';
 import DropDown from '@/components/Form/DropDown';
 import Input from '@/components/Form/Input';
 import InfoTextBox from '@/components/InfoTextBox';
-import ToggleButton from '@/components/ToggleButton';
 
 const ChannelUpdate = () => {
   const { close } = useChannelStore((state) => ({
