@@ -39,7 +39,7 @@
     background-color: var(---chat-list-item-selected-bg-color, #EEF5FC);
 }
 
-.chatListItem_selected * {
+.chatListItem_selected div {
     background-color: var(---chat-list-item-selected-bg-color, #EEF5FC);
 }
 
