@@ -41,7 +41,7 @@ const ChannelCreate = () => {
 
         <DropDown
           name='필터링 강도'
-          options={FILTER_OPTION}
+          options={FILTER_DROP_DOWN_OPTION}
           placeholder='필터링 강도를 선택해주세요.'
         />
       </div>

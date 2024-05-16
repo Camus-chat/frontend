@@ -1,6 +1,6 @@
 'use client';
 
-import { CHANNEL_UPDATE, FILTER_OPTION } from './constants';
+import { CHANNEL_UPDATE, FILTER_DROP_DOWN_OPTION } from './constants';
 import { useChannelStore } from '@/states/channel';
 
 import styles from './index.module.scss';
@@ -33,7 +33,7 @@ const ChannelUpdate = () => {
 
         <DropDown
           name='필터링 강도'
-          options={FILTER_OPTION}
+          options={FILTER_DROP_DOWN_OPTION}
           placeholder='필터링 강도를 선택해주세요.'
         />
       </div>
