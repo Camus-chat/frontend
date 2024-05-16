@@ -13,14 +13,12 @@ interface Props {
 }
 
 const ChannelListItem = ({ channel }: Props) => {
-  const filterClassName = FILTER_CLASS_MAP[channel.filterLevel];
-
   return (
     <li className={styles.channelListItem}>
       <div className={styles.info}>
         <div className={styles.title}>{channel.title}</div>
         <TextIcon name={channel.type} />
-        <TextIcon name={filterClassName} />
+        <TextIcon name={FILTER_CLASS_MAP[channel.filterLevel]} />
       </div>
       <div className={styles.description}>{channel.content}</div>
       <div className={styles.buttons}>

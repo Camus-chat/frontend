@@ -1,6 +1,6 @@
 import type {
   Channel,
-  RequestChannelCreate,
+  ChannelCreate,
 } from '@/containers/(personal)/service/channel/type';
 import { query } from '@/containers/query';
 
@@ -8,9 +8,9 @@ export const getChannels = async () => {
   return query.serverSide.get<Channel[]>('/channel/list');
 };
 
-export const createChannel = async (request: RequestChannelCreate) => {
+export const createChannel = async (request: ChannelCreate) => {
   await query.clientSide
-    .post<Channel, RequestChannelCreate>('/channel/create', request)
+    .post<Channel, ChannelCreate>('/channel/create', request)
     .then((res) => {
       console.log(res);
       return res;
