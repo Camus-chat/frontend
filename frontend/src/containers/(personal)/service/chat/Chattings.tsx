@@ -1,5 +1,6 @@
 'use client';
 
+import type { Chat } from '@/lib/class/Chat';
 import ChatList from '@/lib/componenets/ChatList';
 import ChatListItem from '@/lib/componenets/ChatListItem';
 import { useState } from 'react';
@@ -10,17 +11,11 @@ import styles from '@/containers/(personal)/service/index.module.scss';
 
 import Random from '@/components/ProfileImage/Random';
 
-const chattings: Chat[] = [
-  {
-    uuid: '1',
-    userList: ['user1', 'user2'],
-    tag: 'tag1',
-    lastMessage: 'lastMessage1',
-    unreadCount: 1,
-  },
-];
+interface Props {
+  chattings: Chat[];
+}
 
-const Chatting = () => {
+const Chattings = ({ chattings }: Props) => {
   const [selectedChatIndex, setSelectChatIndex] = useState<number>(-1);
 
   return (
@@ -28,7 +23,7 @@ const Chatting = () => {
       <ChatList>
         {chattings.map((chat, index) => (
           <ChatListItem
-            key={chat.uuid}
+            key={chat.get_id}
             isSelected={index === selectedChatIndex}
             chat={chat}
             onClick={() => setSelectChatIndex(index)}
@@ -37,6 +32,7 @@ const Chatting = () => {
           </ChatListItem>
         ))}
       </ChatList>
+
       {selectedChatIndex >= 0 &&
         createPortal(
           <div className={styles.content}>
@@ -48,4 +44,4 @@ const Chatting = () => {
   );
 };
 
-export default Chatting;
+export default Chattings;

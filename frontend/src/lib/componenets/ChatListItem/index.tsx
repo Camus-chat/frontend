@@ -1,3 +1,4 @@
+import type { Chat, ChatDetail } from '@/lib/class/Chat';
 import { ReactNode, useState } from 'react';
 
 import styles from './index.module.css';
@@ -38,13 +39,15 @@ const ChatListItem = ({ children, isSelected, chat, onClick }: Props) => {
             {!isGroup && (
               <div className={styles.nickname}>{chat.userList[0]}</div>
             )}
-            <div className={styles.tag}>{`#${chat.tag}`}</div>
+            <div className={styles.tag}>{`#${chat.channelTitle}`}</div>
             {isGroup && (
               <div className={styles.headcount}>{chat.userList.length}</div>
             )}
           </div>
           <div className={styles.chatDetails}>
-            <div className={styles.lastMessage}>{chatDetails.lastMessage}</div>
+            <div className={styles.lastMessage}>
+              {chatDetails.lastMessage.content}
+            </div>
             {chatDetails.unreadCount > 0 && (
               <div className={styles.unreadCount}>{displayedCount}</div>
             )}
