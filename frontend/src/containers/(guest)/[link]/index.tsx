@@ -10,6 +10,7 @@ import Logo from '@/components/Header/Logo';
 const Guest = async () => {
   const guest = await requestGuestProfile();
   const channel = await requestChannelInfo('');
+
   return (
     <>
       <Logo />
