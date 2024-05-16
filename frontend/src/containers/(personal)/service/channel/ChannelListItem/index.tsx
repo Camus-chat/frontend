@@ -25,7 +25,7 @@ const ChannelListItem = ({ channel }: Props) => {
         <Button size='small' color='lightgray' option='red'>
           삭제
         </Button>
-        <ChannelUpdateButton />
+        <ChannelUpdateButton channel={channel} />
         <Button size='small' color='blue' option='link'>
           <LinkIcon />
         </Button>
