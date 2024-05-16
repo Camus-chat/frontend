@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 import ChannelCreate from '@/containers/(personal)/service/channel/ChannelCreate';
@@ -8,10 +9,15 @@ import styles from '@/containers/(personal)/service/channel/index.module.scss';
 import { CREATE, useChannelStore } from '@/states/channel';
 
 const ChannelActionPopup = () => {
-  const { isOpen, action } = useChannelStore((state) => ({
+  const { isOpen, action, close } = useChannelStore((state) => ({
     isOpen: state.isOpen,
     action: state.action,
+    close: state.close,
   }));
+
+  useEffect(() => {
+    return close;
+  }, []);
 
   if (!isOpen) {
     return null;

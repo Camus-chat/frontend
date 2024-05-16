@@ -6,28 +6,32 @@ import { useState } from 'react';
 import styles from './index.module.scss';
 import FormWrapper from '@/components/Form/Wrapper';
 
-interface Props {
+interface Props<T> {
   name: string;
   placeholder: string;
-  options: DropDownItems[];
-  onSelect?: (option: string) => void;
+  options: DropDownItem<T>[];
+  onSelect?: (option: T) => void;
 }
 
-const DropDown = ({ name, options, placeholder, onSelect }: Props) => {
+const DropDown = <T = string,>({
+  name,
+  options,
+  placeholder,
+  onSelect,
+}: Props<T>) => {
   const [isClicked, setIsClicked] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string>(
-    `${placeholder}`,
-  );
+  const [selectedOption, setSelectedOption] = useState<string>(placeholder);
 
   const handleClickDropdown = () => {
-    setIsClicked(!isClicked);
+    setIsClicked((prev) => !prev);
   };
 
-  const handleSelectOption = (item: string) => {
-    setSelectedOption(item);
+  const handleSelectOption = (item: DropDownItem<T>) => {
+    setSelectedOption(item.name);
+    setIsClicked(false);
     if (onSelect) {
       // TODO: Fix this
-      onSelect(item);
+      onSelect(item.value);
     }
   };
 
@@ -45,10 +49,10 @@ const DropDown = ({ name, options, placeholder, onSelect }: Props) => {
         <div className={styles.optionList}>
           {options.map((items) => (
             <button
-              key={items.value}
+              key={items.name}
               type='button'
               className={styles.optionItem}
-              onClick={() => handleSelectOption(items.name)}
+              onClick={() => handleSelectOption(items)}
             >
               {items.name}
             </button>
