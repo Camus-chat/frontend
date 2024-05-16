@@ -22,7 +22,7 @@ const ChannelCreate = () => {
     close: state.close,
   }));
   const [type, setType] = useState<ChannelType>('private');
-  const [filterLevel, setFilterLevel] = useState<FilterLevel | ''>('');
+  const [filterLevel, setFilterLevel] = useState<FilterLevel | 0>(0);
   const title = useRef<HTMLInputElement>(null);
   const content = useRef<HTMLInputElement>(null);
 
