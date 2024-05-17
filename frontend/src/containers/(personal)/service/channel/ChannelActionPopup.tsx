@@ -17,6 +17,7 @@ const ChannelActionPopup = () => {
 
   useEffect(() => {
     return close;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!isOpen) {

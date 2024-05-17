@@ -1,5 +1,5 @@
 import { FILTER_LIST } from '@/containers/(personal)/service/channel/constants';
-import {
+import type {
   FilterClassName,
   FilterName,
 } from '@/containers/(personal)/service/channel/type';
