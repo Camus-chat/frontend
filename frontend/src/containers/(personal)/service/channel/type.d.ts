@@ -1,13 +1,25 @@
-import { FILTER_TYPE_MAP } from '@/containers/(personal)/service/channel/ChannelListItem/constants';
+import { FILTER_LIST } from '@/containers/(personal)/service/channel/constants';
 
-type FilterType = keyof typeof FILTER_TYPE_MAP;
+type FilterLevel = (typeof FILTER_LIST)[number][0];
+
+type FilterName = (typeof FILTER_LIST)[number][1];
+
+type FilterClassName = (typeof FILTER_LIST)[number][2];
 
 type ChannelType = 'private' | 'group';
 
-interface Channel {
-  type: ChannelType;
+interface ChannelRequest {
   title: string;
   content: string;
-  filterLevel: FilterType;
+  filterLevel: FilterLevel;
+}
+
+interface ChannelCreate extends ChannelRequest {
+  type: ChannelType;
+}
+
+interface ChannelUpdate extends ChannelRequest {
   link: string;
 }
+
+interface Channel extends ChannelCreate, ChannelUpdate {}

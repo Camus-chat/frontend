@@ -1,7 +1,7 @@
 import LinkIcon from '@mui/icons-material/Link';
 
 import ChannelUpdateButton from '@/containers/(personal)/service/channel/ChannelListItem/ChannelUpdateButton';
-import { FILTER_TYPE_MAP } from '@/containers/(personal)/service/channel/ChannelListItem/constants';
+import { FILTER_CLASS_MAP } from '@/containers/(personal)/service/channel/constants';
 import type { Channel } from '@/containers/(personal)/service/channel/type';
 
 import styles from './index.module.scss';
@@ -12,22 +12,20 @@ interface Props {
   channel: Channel;
 }
 
-const ChannelListitem = ({ channel }: Props) => {
-  const filterName = FILTER_TYPE_MAP[channel.filterLevel];
-
+const ChannelListItem = ({ channel }: Props) => {
   return (
     <li className={styles.channelListItem}>
       <div className={styles.info}>
         <div className={styles.title}>{channel.title}</div>
         <TextIcon name={channel.type} />
-        <TextIcon name={filterName} />
+        <TextIcon name={FILTER_CLASS_MAP[channel.filterLevel]} />
       </div>
       <div className={styles.description}>{channel.content}</div>
       <div className={styles.buttons}>
         <Button size='small' color='lightgray' option='red'>
           삭제
         </Button>
-        <ChannelUpdateButton />
+        <ChannelUpdateButton channel={channel} />
         <Button size='small' color='blue' option='link'>
           <LinkIcon />
         </Button>
@@ -36,4 +34,4 @@ const ChannelListitem = ({ channel }: Props) => {
   );
 };
 
-export default ChannelListitem;
+export default ChannelListItem;
