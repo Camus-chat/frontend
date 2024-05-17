@@ -1,4 +1,4 @@
-import ExpandCircleDownRoundedIcon from '@mui/icons-material/ExpandCircleDownRounded';
+// import ExpandCircleDownRoundedIcon from '@mui/icons-material/ExpandCircleDownRounded';
 import Link from 'next/link';
 
 import Cards from '@/containers/biz/Cards';
@@ -7,7 +7,7 @@ import styles from '@/containers/biz/index.module.scss';
 
 import Header from '@/components/Header';
 
-const BizHome = () => {
+const Biz = () => {
   return (
     <>
       <Header biz />
@@ -35,7 +35,7 @@ const BizHome = () => {
           <div className={styles.description}>{LANDING_DESCRIPTION.third}</div>
           <Link href='/' className={styles.link}>
             <p>문의하기</p>
-            <ExpandCircleDownRoundedIcon />
+            {/* <ExpandCircleDownRoundedIcon /> */}
           </Link>
         </div>
       </div>
@@ -43,4 +43,4 @@ const BizHome = () => {
   );
 };
 
-export default BizHome;
+export default Biz;
