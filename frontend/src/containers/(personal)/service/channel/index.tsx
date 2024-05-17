@@ -4,12 +4,13 @@ import ChannelCreateButton from '@/containers/(personal)/service/channel/Channel
 import { getChannels } from '@/containers/(personal)/service/channel/query';
 
 import ChannelListItem from './ChannelListItem';
+import styles from './index.module.scss';
 
 const ChannelPage = async () => {
   const channels: Channel[] = await getChannels();
 
   return (
-    <>
+    <div className={styles.contentList}>
       <ChannelCreateButton />
       <ul>
         {channels.map((channel) => (
@@ -17,7 +18,7 @@ const ChannelPage = async () => {
         ))}
       </ul>
       <ChannelActionPopup />
-    </>
+    </div>
   );
 };
 
