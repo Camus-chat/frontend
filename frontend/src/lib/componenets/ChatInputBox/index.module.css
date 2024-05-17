@@ -37,6 +37,10 @@
     background-color: var(--send-button-color, #117CE9);
 }
 
+.sendButton img {
+    background-color: var(--send-button-color, #117CE9);
+}
+
 .sendButtonIcon {
     --send-button-icon-size: calc(var(--input-height, 64px) * 0.375);
     width: var(--send-button-icon-size);
