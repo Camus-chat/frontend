@@ -1,3 +1,7 @@
+import ExpandCircleDownRoundedIcon from '@mui/icons-material/ExpandCircleDownRounded';
+import Link from 'next/link';
+
+import Cards from '@/containers/biz/Cards';
 import { LANDING_DESCRIPTION } from '@/containers/biz/constants';
 import styles from '@/containers/biz/index.module.scss';
 
@@ -13,9 +17,9 @@ const BizHome = () => {
             <pre className={styles.description}>
               {LANDING_DESCRIPTION.first}
             </pre>
-            {/* <button type='button' className={styles.moreButton}> */}
-            {/*  자세히 알아보기 */}
-            {/* </button> */}
+            <div className={styles.moreButton}>
+              <Link href='/docs'>자세히 알아보기</Link>
+            </div>
           </div>
           <div className={styles.imageBox}>이미지가 들어가야 합니다.</div>
         </div>
@@ -24,18 +28,15 @@ const BizHome = () => {
             <div className={styles.description}>
               {LANDING_DESCRIPTION.second}
             </div>
-            {/* <button type='button' className={styles.moreButton}> */}
-            {/*  서비스 전체보기 */}
-            {/* </button> */}
           </div>
-          {/* <Cards /> */}
+          <Cards />
         </div>
         <div className={styles.thirdWrapper}>
           <div className={styles.description}>{LANDING_DESCRIPTION.third}</div>
-          {/* <button type='button'> */}
-          {/*  <p>문의하기</p> */}
-          {/*  <ExpandCircleDownIcon /> */}
-          {/* </button> */}
+          <Link href='/' className={styles.link}>
+            <p>문의하기</p>
+            <ExpandCircleDownRoundedIcon />
+          </Link>
         </div>
       </div>
     </>
