@@ -11,16 +11,15 @@ export const requestChannelInfo = async (link: string) => {
 
 export const requestGuestProfile = async () => {
   return query.serverSide.get<GuestProfile>('/guest/profile').then((res) => {
-    // localStorage.setItem('accessToken', res.accessToken);
-    // TODO: cookie 에 refreshToken 저장
     return res;
   });
 };
 
 export const requestEnterRoom = async (link: string) => {
   return query.clientSide
-    .post<string, string>('/room/guest/enter', link)
+    .post<EnterRoom, string>('/room/guest/enter', link)
     .then((res) => {
-      return res;
+      localStorage.setItem('accessToken', res.accessToken);
+      return res.roomId;
     });
 };

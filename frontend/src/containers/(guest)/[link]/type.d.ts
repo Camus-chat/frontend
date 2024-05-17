@@ -4,12 +4,13 @@ interface ChatRoomInfo {
   channelInfo: string;
 }
 
-interface Tokens {
+interface EnterRoom {
   accessToken: string;
   refreshToken: string;
+  roomId: string;
 }
 
-interface GuestProfile extends Tokens {
+interface GuestProfile {
   profileImgColor: string;
   nickname: string;
 }

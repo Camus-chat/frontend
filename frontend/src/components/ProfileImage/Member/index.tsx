@@ -10,10 +10,12 @@ interface Props {
 }
 
 const Member = ({ imgSrc, size }: Props) => {
+  const defaultSrc = '/images/defaultProfileImg.svg';
+
   return (
     <Image
       className={styles.profile}
-      src={imgSrc}
+      src={imgSrc || defaultSrc}
       alt='profile'
       width={PROFILE_IMAGE_SIZE[size]}
       height={PROFILE_IMAGE_SIZE[size]}
