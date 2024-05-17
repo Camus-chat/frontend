@@ -1,0 +1,63 @@
+@use '@/styles/variables' as *;
+@use '@/containers/(personal)/service/variables' as service;
+
+.main {
+  @include flex-column-center;
+  @include desktop {
+    background-color: $gray-100;
+    height: 100%;
+    justify-content: center;
+  }
+
+  width: 100%;
+  height:100%;
+}
+
+.container {
+  @include flex-column;
+  @include desktop {
+    @include boxShadow;
+    max-width: 610px;
+    padding: 40px
+  }
+  justify-content: space-between;
+
+  width: 100%;
+  height: 600px;
+  padding: 40px;
+
+  background-color: $white;
+  border-radius: 20px;
+}
+
+.channelInfoWrapper {
+  margin-top: 20px;
+  padding: 0 10px;
+
+  .nickname {
+    font-size: 24px;
+    font-weight: $semi-bold;
+  }
+
+  .description {
+    font-size: 14px;
+    font-weight: $light;
+  }
+}
+
+.guestInfoWrapper {
+  @include flex-column;
+  align-items: flex-end;
+  padding: 0 10px;
+
+  .nickname {
+    font-size: 20px;
+    font-weight: $semi-bold;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
