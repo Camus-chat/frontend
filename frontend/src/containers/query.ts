@@ -80,6 +80,7 @@ type Method = <ResponseType>(
 type MethodWithRequestBody = <ResponseType, RequestBodyType>(
   url: string,
   requestBody: RequestBodyType,
+  tag?: string,
 ) => Promise<ResponseType>;
 
 class Query {
@@ -92,11 +93,13 @@ class Query {
     this.post = async <ResponseType, RequestBodyType>(
       url: string,
       requestBody: RequestBodyType,
+      tag?: string,
     ): Promise<ResponseType> => {
       return $fetch<ResponseType>({
         endpoint: url,
         method: 'POST',
         stringfiedRequestBody: JSON.stringify(requestBody),
+        tag,
       });
     };
 
