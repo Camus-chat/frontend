@@ -3,29 +3,37 @@
 import ExpandCircleDownRoundedIcon from '@mui/icons-material/ExpandCircleDownRounded';
 import classNames from 'classnames';
 import Link from 'next/link';
+import Lottie from 'react-lottie-player';
 
 import { INFO_CARD } from '@/containers/(personal)/constants';
 import styles from '@/containers/(personal)/index.module.scss';
-import Lottie from "react-lottie-player";
-import Image from 'next/image';
+import MainInfoCard from '@/containers/(personal)/MainInfoCard';
 
 const InfoCard = () => {
   return (
     <div className={styles.infoCardWrapper}>
+      <MainInfoCard />
       {INFO_CARD.map((item, index) => (
-        <div
+        <section
           className={classNames(styles.card, styles[item.color])}
           key={item.key}
         >
           {index % 2 === 0 && (
-            <Lottie
+            <div className={styles.animationBox}>
+              <Lottie
+                className={styles.lottie}
                 loop
                 play
-              animationData={item.imgSrc}
-                style={{width: item.imgWidth, height: item.imgHeight}}
-            />
+                animationData={item.imgSrc}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                }}
+              />
+            </div>
           )}
           <div className={styles.content}>
+            <div className={styles.title}>{item.title}</div>
             <pre className={styles.description}>{item.description}</pre>
             <Link href={item.path}>
               더 알아보기
@@ -33,15 +41,20 @@ const InfoCard = () => {
             </Link>
           </div>
           {index % 2 === 1 && (
-            <Image
-              className={styles.img}
-              src='./desktop.svg'
-              alt='image'
-              width={item.imgWidth}
-              height={item.imgHeight}
-            />
+            <div className={styles.animationBox}>
+              <Lottie
+                className={styles.lottie}
+                loop
+                play
+                animationData={item.imgSrc}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                }}
+              />
+            </div>
           )}
-        </div>
+        </section>
       ))}
     </div>
   );
