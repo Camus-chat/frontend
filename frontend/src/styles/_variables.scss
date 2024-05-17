@@ -17,7 +17,7 @@ $yellow-100: #FFF5CD;
 $red-100: #FFEFEF;
 $red-300: #F84D3A;
 
-// font-weight
+// font
 $thin: 100;
 $extra-light: 200;
 $light: 300;
@@ -26,6 +26,11 @@ $medium: 500;
 $semi-bold: 600;
 $bold: 700;
 $extra-bold: 800;
+
+@mixin font-size($size) {
+  font-size: $size;
+  line-height: $size;
+}
 
 // screen
 $tablet: 768px;
@@ -92,7 +97,7 @@ $desktop: 1280px;
 }
 
 @mixin transition-slow {
-    transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 @mixin text-overflow-hidden {
