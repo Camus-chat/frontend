@@ -1,5 +1,5 @@
 .chatListItem {
-    margin-bottom: 4px;
+    margin-top: 4px;
     padding: 16px 12px;
     border-radius: 12px;
     list-style: none;
@@ -13,6 +13,7 @@
 
 .chatListItem_bg {
     display: flex;
+    width: 100%;
 }
 
 .chatListItem .chatListItem_bg::after {
@@ -30,7 +31,7 @@
 }
 
 .chatListItem_selected {
-    margin-bottom: 4px;
+    margin-top: 4px;
     padding: 16px 12px;
     border-radius: 12px;
     list-style: none;
@@ -68,6 +69,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+    text-align: left;
 }
 
 .tag {

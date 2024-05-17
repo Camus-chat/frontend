@@ -1,4 +1,4 @@
-import type { Chat, ChatDetail } from '@/lib/class/Chat';
+import type { ChatRoom } from '@/lib/class/Chat';
 import { ReactNode, useState } from 'react';
 
 import styles from './index.module.css';
@@ -6,54 +6,51 @@ import styles from './index.module.css';
 interface Props {
   children?: ReactNode;
   isSelected: boolean;
-  chat: Chat;
+  chat: ChatRoom;
   onClick: () => void;
 }
 
 const ChatListItem = ({ children, isSelected, chat, onClick }: Props) => {
-  const [chatDetails, setChatDetails] = useState<ChatDetail>({
-    lastMessage: chat.lastMessage,
-    unreadCount: chat.unreadCount,
-  });
+  const [lastMessage, setLastMessage] = useState(chat.lastMessage);
+  const [unreadCount, setUnreadCount] = useState(chat.unreadCount);
 
-  const isGroup = chat.userList.length > 2;
-
-  const displayedCount =
-    chatDetails.unreadCount > 999 ? '999+' : chatDetails.unreadCount;
+  const displayedCount = unreadCount > 999 ? '999+' : unreadCount;
 
   const chatListItemStyle = isSelected
     ? styles.chatListItem_selected
     : styles.chatListItem;
 
   const handleClick = () => {
-    setChatDetails((prev) => ({ ...prev, unreadCount: 0 }));
+    setUnreadCount(0);
     onClick();
   };
 
   return (
-    <li className={chatListItemStyle} onClick={handleClick} role='presentation'>
-      <div className={styles.chatListItem_bg}>
+    <li className={chatListItemStyle}>
+      <button
+        type='button'
+        className={styles.chatListItem_bg}
+        onClick={handleClick}
+      >
         <div className={styles.profile}>{children}</div>
         <div className={styles.chatWrapper}>
           <div className={styles.chatInfo}>
-            {!isGroup && (
-              <div className={styles.nickname}>{chat.userList[0]}</div>
+            {chat.channelType === 'private' && (
+              <div className={styles.nickname}>유저 이름 조회해서 넣어라</div>
             )}
             <div className={styles.tag}>{`#${chat.channelTitle}`}</div>
-            {isGroup && (
+            {chat.channelType === 'group' && (
               <div className={styles.headcount}>{chat.userList.length}</div>
             )}
           </div>
           <div className={styles.chatDetails}>
-            <div className={styles.lastMessage}>
-              {chatDetails.lastMessage.content}
-            </div>
-            {chatDetails.unreadCount > 0 && (
+            <div className={styles.lastMessage}>{lastMessage.content}</div>
+            {unreadCount > 0 && (
               <div className={styles.unreadCount}>{displayedCount}</div>
             )}
           </div>
         </div>
-      </div>
+      </button>
     </li>
   );
 };

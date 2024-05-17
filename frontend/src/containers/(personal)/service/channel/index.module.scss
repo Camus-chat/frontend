@@ -2,6 +2,10 @@
 @use 'ChannelListItem/index.module.scss' as channel;
 @use '@/containers/(personal)/service/variables' as service;
 
+.contentList {
+  @include service.box-style;
+}
+
 .channelCreateButton {
   @include channel.container-style;
   @include color($gray-500);

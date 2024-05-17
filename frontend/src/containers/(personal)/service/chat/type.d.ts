@@ -1,7 +1,21 @@
-interface ChatRoom {
-  id: string;
-  channelName: string;
-  createTime: string;
-  userList: string[]; // TODO: user class 로 받음. 타입 수정 해야함.
-  isClosed: boolean;
+import type { LastMessage } from '@/lib/class/Chat';
+
+interface MessageListRequest {
+  roomId: string;
+  nextMessageTimeStamp: string;
+}
+
+interface Message extends LastMessage {
+  messageId: number;
+  createdDate: string;
+}
+
+interface PaginationDto {
+  nextMessageTimeStamp: string;
+  size: number;
+}
+
+interface MessageList {
+  messageList: Message[];
+  paginationDto: PaginationDto;
 }

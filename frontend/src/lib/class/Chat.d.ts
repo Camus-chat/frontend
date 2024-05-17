@@ -3,22 +3,22 @@ import type { ChannelType } from '@/containers/(personal)/service/channel/type';
 type MessageType = 'NoticeMessage' | 'CommonMessage';
 
 interface LastMessage {
-  _class: MessageType; // TODO: 삭제
-  get_class: MessageType;
+  type: MessageType;
   userId: string;
   content: string;
 }
 
-interface ChatDetail {
+interface ChatRoomDetail {
   lastMessage: LastMessage;
   unreadCount: number;
 }
 
-interface Chat extends ChatDetail {
-  _id: string; // TODO: 삭제
-  get_id: string;
+interface Chat {
+  roomId: string;
   channelType: ChannelType;
   channelTitle: string;
   userList: string[];
   closed: boolean;
 }
+
+interface ChatRoom extends Chat, ChatRoomDetail {}

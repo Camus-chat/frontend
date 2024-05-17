@@ -1,13 +1,27 @@
 @use '@/styles/variables' as *;
+@use '@/containers/(personal)/service/variables' as service;
 
 $-title-size: 24px;
-$-title-padding-bottom: 12px;
+$-title-padding-bottom: 16px;
+
+.contentList {
+  @include service.box-style(20px, 8px);
+}
+
+.chattingRoom {
+  @include service.popup-style(8px, 8px);
+  @include flex-column;
+
+  justify-content: space-between;
+}
 
 .title {
   font-size: $-title-size;
   line-height: $-title-size;
+  padding-left: 12px;
   padding-bottom: $-title-padding-bottom;
   font-weight: $bold;
+  border-bottom: 1px solid $gray-100;
 
   @include mobile-disable;
 }
@@ -19,4 +33,52 @@ $-title-padding-bottom: 12px;
   @include mobile {
     height: calc(100%);
   }
+}
+
+// ChattingRoom
+$-chat-input-box-size: 64px;
+
+$-top-font-size: 20px;
+$-top-button-height: 24px;
+$-top-padding-top: 12px;
+$-top-padding-bottom: 16px;
+$-top-size-y: $-top-button-height + $-top-padding-top + $-top-padding-bottom;
+
+.roomWrapper {
+  height: calc(100% - $-chat-input-box-size);
+}
+
+.top {
+  padding: $-top-padding-top 8px $-top-padding-bottom 4px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $gray-100;
+
+  button {
+    height: 24px;
+    display: flex;
+    align-items: center;
+
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+
+  .nickname {
+    @include font-size($-top-font-size);
+    margin-left: 8px;
+  }
+
+  .channelTitle {
+    @include font-size($-top-font-size);
+    margin-left: 8px;
+    font-weight: $semi-bold;
+  }
+}
+
+.messages {
+  @include flex-column;
+  height: calc(100% - $-top-size-y);
+  justify-content: flex-end;
+  padding: 0 12px;
 }

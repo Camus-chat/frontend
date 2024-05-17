@@ -1,6 +1,6 @@
 @use '@/styles/variables' as *;
 
-@mixin box-style {
+@mixin box-style($padding-y: 20px, $padding-x: 20px) {
   width: 100%;
   overflow: hidden;
 
@@ -10,12 +10,12 @@
     border-radius: 20px;
     margin: 0 16px;
     max-width: 400px;
-    padding: 20px;
+    padding: $padding-y $padding-x;
   }
 }
 
-@mixin popup-style {
-  @include box-style;
+@mixin popup-style($padding-y: 20px, $padding-x: 20px) {
+  @include box-style($padding-y, $padding-x);
 
   @include mobile {
     position: absolute;
