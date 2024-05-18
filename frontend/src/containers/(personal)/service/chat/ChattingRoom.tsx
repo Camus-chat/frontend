@@ -2,8 +2,9 @@ import type { Chat } from '@/lib/class/Chat';
 import ChatInputBox from '@/lib/componenets/ChatInputBox';
 import ChatMessageItem from '@/lib/componenets/ChatMessageItem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 
+import NewMessages from '@/containers/(personal)/service/chat/NewMessages';
 import { useChatStore } from '@/states/chat';
 
 import styles from './index.module.scss';
@@ -14,7 +15,6 @@ interface Props {
 }
 
 const ChattingRoom = ({ chat, onClose }: Props) => {
-  const [newMessages, setNewMessages] = useState<Message[]>([]);
   const { chattingClient, messages, unreadMessages } = useChatStore(
     (state) => ({
       chattingClient: state.chattingClient,
@@ -25,19 +25,9 @@ const ChattingRoom = ({ chat, onClose }: Props) => {
 
   const scrollRef = useRef<HTMLOListElement>(null);
 
-  const getNewMessages = (message: Message) => {
-    setNewMessages((prev) => [...prev, message]);
+  const scrollToBottom = () => {
     scrollRef.current?.scrollTo(0, scrollRef.current.scrollHeight);
   };
-
-  useEffect(() => {
-    scrollRef.current?.scrollTo(0, scrollRef.current.scrollHeight);
-    chattingClient.subscribeRoom(chat.roomId).then(() => {
-      chattingClient.receiveMessage(chat.roomId, getNewMessages);
-    });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chat]);
 
   return (
     <>
@@ -60,9 +50,7 @@ const ChattingRoom = ({ chat, onClose }: Props) => {
           {unreadMessages.map((message) => (
             <ChatMessageItem message={message} key={`u${message.messageId}`} />
           ))}
-          {newMessages.map((message) => (
-            <ChatMessageItem message={message} key={`n${message.messageId}`} />
-          ))}
+          <NewMessages roomId={chat.roomId} scrollToBottom={scrollToBottom} />
         </ol>
       </div>
       <ChatInputBox roomId={chat.roomId} chattingClient={chattingClient} />
