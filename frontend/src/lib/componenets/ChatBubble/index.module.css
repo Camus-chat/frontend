@@ -2,12 +2,14 @@
     width: 100%;
     display: flex;
     align-items: flex-end;
+    margin-top: var(--chat-bubble-margin-top, 8px);
 }
 
 .sent {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    margin-top: var(--chat-bubble-margin-top, 8px);
 }
 
 .messageWrapper {
