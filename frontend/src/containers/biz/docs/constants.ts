@@ -1,11 +1,11 @@
 export const MENU = [
   {
-    key: 'introduction',
-    name: '이해하기',
+    key: 'service',
+    name: '서비스 소개',
   },
   {
     key: 'guidance',
-    name: '설정하기',
+    name: '사용 방법',
   },
   {
     key: 'api',
@@ -38,5 +38,27 @@ export const GUIDE_DESCRIPTION = {
     title: '고객 관리 API 정책 동의',
     content:
       '카카오톡 채널 고객 관리는 사용자 정보를 기반으로 정교한 타게팅 마케팅을 돕는 기능으로 다음 API를 제공합니다.',
+  },
+};
+
+export const APIS_DESCRIPTION = {
+  first: {
+    title: 'REST API',
+    content: 'CAMUS 는 API를 제공합니다.',
+  },
+  second: {
+    title: 'GET',
+    content: 'GET 요청을 통해 어쩌고 저쩌고',
+  },
+};
+
+export const GUIS_DESCRIPTION = {
+  first: {
+    title: 'Java Script',
+    content: 'CAMUS는 채팅 컴포넌트에 대해 Java Script 파일로 제공합니다.',
+  },
+  second: {
+    title: 'CSS',
+    content: 'CSS 변수를 할당하여 어쩌고 저쩌고',
   },
 };
