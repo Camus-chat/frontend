@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next';
+// import { GetServerSideProps } from 'next';
 
 import { Entry } from '@/containers/(guest)/[link]/Entry';
 import styles from '@/containers/(guest)/[link]/index.module.scss';
@@ -9,8 +9,14 @@ import {
 
 import Logo from '@/components/Header/Logo';
 
-const Guest: GetServerSideProps = async (context) => {
-  const { link } = context.params || '';
+// interface Props {
+//   guest: GuestProfile;
+//   channel: ChatRoomInfo;
+//   link: string;
+// }
+
+const Guest = async () => {
+  const link = '';
   const guest = await requestGuestProfile();
   const channel = await requestChannelInfo(link as string);
 
@@ -23,5 +29,19 @@ const Guest: GetServerSideProps = async (context) => {
     </>
   );
 };
+
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const link = context.params || '';
+//   const guest = await requestGuestProfile();
+//   const channel = await requestChannelInfo(link as string);
+//
+//   return {
+//     props: {
+//       guest,
+//       channel,
+//       link: link as string,
+//     },
+//   };
+// };
 
 export default Guest;
