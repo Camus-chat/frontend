@@ -1,30 +1,39 @@
+'use client';
+
 import ExpandCircleDownRoundedIcon from '@mui/icons-material/ExpandCircleDownRounded';
 import classNames from 'classnames';
-import Image from 'next/image';
 import Link from 'next/link';
+import Lottie from 'react-lottie-player';
 
 import { INFO_CARD } from '@/containers/(personal)/constants';
 import styles from '@/containers/(personal)/index.module.scss';
+import MainInfoCard from '@/containers/(personal)/MainInfoCard';
 
 const InfoCard = () => {
-  // TODO: 이미지 추가 하기
   return (
     <div className={styles.infoCardWrapper}>
+      <MainInfoCard />
       {INFO_CARD.map((item, index) => (
-        <div
+        <section
           className={classNames(styles.card, styles[item.color])}
           key={item.key}
         >
           {index % 2 === 0 && (
-            <Image
-              className={styles.img}
-              src={item.imgSrc}
-              alt='image'
-              width={item.imgWidth}
-              height={item.imgHeight}
-            />
+            <div className={styles.animationBox}>
+              <Lottie
+                className={styles.lottie}
+                loop
+                play
+                animationData={item.imgSrc}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                }}
+              />
+            </div>
           )}
           <div className={styles.content}>
+            <div className={styles.title}>{item.title}</div>
             <pre className={styles.description}>{item.description}</pre>
             <Link href={item.path}>
               더 알아보기
@@ -32,15 +41,20 @@ const InfoCard = () => {
             </Link>
           </div>
           {index % 2 === 1 && (
-            <Image
-              className={styles.img}
-              src={item.imgSrc}
-              alt='image'
-              width={item.imgWidth}
-              height={item.imgHeight}
-            />
+            <div className={styles.animationBox}>
+              <Lottie
+                className={styles.lottie}
+                loop
+                play
+                animationData={item.imgSrc}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                }}
+              />
+            </div>
           )}
-        </div>
+        </section>
       ))}
     </div>
   );
