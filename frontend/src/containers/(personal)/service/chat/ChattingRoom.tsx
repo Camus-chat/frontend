@@ -1,8 +1,8 @@
-'use-client';
-
 import type { Chat } from '@/lib/class/Chat';
 import ChatInputBox from '@/lib/componenets/ChatInputBox';
+import ChatMessageItem from '@/lib/componenets/ChatMessageItem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useEffect, useRef, useState } from 'react';
 
 import { useChatStore } from '@/states/chat';
 
@@ -14,9 +14,30 @@ interface Props {
 }
 
 const ChattingRoom = ({ chat, onClose }: Props) => {
-  const { messages } = useChatStore((state) => ({
-    messages: state.messages,
-  }));
+  const [newMessages, setNewMessages] = useState<Message[]>([]);
+  const { chattingClient, messages, unreadMessages } = useChatStore(
+    (state) => ({
+      chattingClient: state.chattingClient,
+      messages: state.messages,
+      unreadMessages: state.unreadMessages,
+    }),
+  );
+
+  const scrollRef = useRef<HTMLOListElement>(null);
+
+  const getNewMessages = (message: Message) => {
+    setNewMessages((prev) => [...prev, message]);
+    scrollRef.current?.scrollTo(0, scrollRef.current.scrollHeight);
+  };
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo(0, scrollRef.current.scrollHeight);
+    chattingClient.subscribeRoom(chat.roomId).then(() => {
+      chattingClient.receiveMessage(chat.roomId, getNewMessages);
+    });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chat]);
 
   return (
     <>
@@ -32,13 +53,19 @@ const ChattingRoom = ({ chat, onClose }: Props) => {
           )}
           <div className={styles.channelTitle}>{`#${chat.channelTitle}`}</div>
         </div>
-        <ol className={styles.messages}>
+        <ol ref={scrollRef} className={styles.messages}>
           {messages.map((message) => (
-            <li key={message.messageId}>{message.content}</li>
+            <ChatMessageItem message={message} key={`m${message.messageId}`} />
+          ))}
+          {unreadMessages.map((message) => (
+            <ChatMessageItem message={message} key={`u${message.messageId}`} />
+          ))}
+          {newMessages.map((message) => (
+            <ChatMessageItem message={message} key={`n${message.messageId}`} />
           ))}
         </ol>
       </div>
-      <ChatInputBox />
+      <ChatInputBox roomId={chat.roomId} chattingClient={chattingClient} />
     </>
   );
 };
