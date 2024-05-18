@@ -23,3 +23,25 @@
     z-index: 2;
   }
 }
+
+$-title-size: 24px;
+$-title-padding-bottom: 16px;
+
+@mixin title-style {
+  font-size: $-title-size;
+  line-height: $-title-size;
+  padding-left: 12px;
+  padding-bottom: $-title-padding-bottom;
+  font-weight: $bold;
+  border-bottom: 1px solid $gray-100;
+
+  @include mobile-disable;
+}
+
+@mixin content-style {
+  height: calc(100% - $-title-size - $-title-padding-bottom);
+
+  @include mobile {
+    height: calc(100%);
+  }
+}

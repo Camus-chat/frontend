@@ -1,9 +1,6 @@
 @use '@/styles/variables' as *;
 @use '@/containers/(personal)/service/variables' as service;
 
-$-title-size: 24px;
-$-title-padding-bottom: 16px;
-
 .contentList {
   @include service.container-style(20px, 8px);
 }
@@ -16,23 +13,11 @@ $-title-padding-bottom: 16px;
 }
 
 .title {
-  font-size: $-title-size;
-  line-height: $-title-size;
-  padding-left: 12px;
-  padding-bottom: $-title-padding-bottom;
-  font-weight: $bold;
-  border-bottom: 1px solid $gray-100;
-
-  @include mobile-disable;
+  @include service.title-style;
 }
 
-
 .chat {
-  height: calc(100% - $-title-size - $-title-padding-bottom);
-
-  @include mobile {
-    height: calc(100%);
-  }
+  @include service.content-style;
 }
 
 // ChattingRoom
