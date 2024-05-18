@@ -12,7 +12,7 @@ const ServiceLayout = ({ children }: { children: ReactNode }) => {
       <main className={styles.main}>
         <Menu />
         <div className={styles.contentWrapper} id='content-wrapper'>
-          <div className={styles.contentList}>{children}</div>
+          {children}
         </div>
       </main>
     </>

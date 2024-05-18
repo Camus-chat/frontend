@@ -1,5 +1,5 @@
 .chatListItem {
-    margin-bottom: 4px;
+    margin-top: 4px;
     padding: 16px 12px;
     border-radius: 12px;
     list-style: none;
@@ -13,6 +13,7 @@
 
 .chatListItem_bg {
     display: flex;
+    width: 100%;
 }
 
 .chatListItem .chatListItem_bg::after {
@@ -30,7 +31,7 @@
 }
 
 .chatListItem_selected {
-    margin-bottom: 4px;
+    margin-top: 4px;
     padding: 16px 12px;
     border-radius: 12px;
     list-style: none;
@@ -39,7 +40,7 @@
     background-color: var(---chat-list-item-selected-bg-color, #EEF5FC);
 }
 
-.chatListItem_selected * {
+.chatListItem_selected div {
     background-color: var(---chat-list-item-selected-bg-color, #EEF5FC);
 }
 
@@ -68,6 +69,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+    text-align: left;
 }
 
 .tag {
@@ -76,11 +78,8 @@
     font-size: var(--font-size, 16px);
     font-weight: 600;
     line-height: var(--font-size, 16px);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+    display: flex;
+    flex-shrink: 0;
 }
 
 .headcount {

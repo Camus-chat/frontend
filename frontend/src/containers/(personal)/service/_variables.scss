@@ -1,0 +1,48 @@
+@use '@/styles/variables' as *;
+
+@mixin container-style($padding-y: 20px, $padding-x: 20px) {
+  width: 100%;
+  overflow: hidden;
+
+  @include desktop {
+    @include boxShadow;
+
+    border-radius: 20px;
+    margin: 0 16px;
+    max-width: 400px;
+    padding: $padding-y $padding-x;
+  }
+}
+
+@mixin popup-style($padding-y: 20px, $padding-x: 20px) {
+  @include container-style($padding-y, $padding-x);
+
+  @include mobile {
+    position: absolute;
+    height: 100%;
+    z-index: 2;
+  }
+}
+
+$-title-size: 24px;
+$-title-padding-bottom: 16px;
+
+@mixin title-style {
+  font-size: $-title-size;
+  line-height: $-title-size;
+  padding-left: 12px;
+  padding-bottom: $-title-padding-bottom;
+  font-weight: $bold;
+  border-bottom: 1px solid $gray-100;
+
+  @include mobile-disable;
+}
+
+@mixin content-style {
+  height: calc(100% - $-title-size - $-title-padding-bottom);
+
+  @include mobile {
+    height: calc(100%);
+    padding-bottom: 8px;
+  }
+}

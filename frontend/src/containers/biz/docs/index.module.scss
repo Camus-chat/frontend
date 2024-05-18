@@ -1,76 +1,78 @@
 @use '@/styles/variables' as *;
 
 .container {
+  width: 100%;
+  height: 100%;
+}
+
+.menuBar {
   display: flex;
-  height: 100%;
-  background-color: $gray-100;
-}
-
-.sideBar {
-  width: 360px;
-  height: 100%;
-
-  div {
-    padding: 12px 16px;
-  }
-
-  .title {
-    padding-left: 32px;
-    padding-bottom: 0;
-    font-size: 24px;
-    font-weight: $bold;
-  }
-
-}
-
-.contentWrapper {
+  justify-content: center;
   width: 100%;
-  background-color: transparent;
-  padding: 40px 40px 0;
-}
+  background-color: $black;
 
-
-.content {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  overflow: hidden;
-
-  .titleWrapper {
-    padding: 64px;
-    background-color: $black;
+  button {
+    background-color: transparent;
+    margin: 8px 16px;
     color: $white;
-    font-size: 60px;
-    font-weight: $semi-bold;
   }
+}
+
+.titleWrapper{
+  width: 100%;
+  padding: 64px;
+  background-color: $white;
+  color: $black;
+  font-size: 56px;
+  font-weight: $semi-bold;
+}
+
+.introductionWrapper {
+  @include flex-column;
 
   .introduce {
-    margin: 40px 64px;
+    padding: 30px 30px 0;
   }
+}
 
-  .document {
-    width: 100%;
-    height: 100%;
-    background-color: $gray-100;
-    margin: 20px 0;
-    padding: 20px;
+.guidanceWrapper {
+  @include flex-column;
+
+  .introduce {
+    padding: 30px 30px 0;
   }
+}
 
-  .hr {
-    margin-top: 32px;
-    width: 100%;
-    border-top: 1px solid $gray-100;
+.apiWrapper {
+  @include flex-column;
+
+  .introduce {
+    padding: 30px 30px 0;
+  }
+}
+
+.guiWrapper {
+  @include flex-column;
+
+  .introduce {
+    padding: 30px 30px 0;
   }
 }
 
 .infoBox {
+  background-color: $gray-100;
+  border-radius: 10px;
+  padding: 24px;
+
   .title {
+    background-color: transparent;
     font-size: 24px;
     font-weight: $semi-bold;
     padding-bottom: 8px;
   }
 
   .content {
+    background-color: transparent;
     font-size: 16px;
   }
 }

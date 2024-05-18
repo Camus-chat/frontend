@@ -4,16 +4,14 @@ import InfoBox from '@/containers/biz/docs/InfoBox';
 
 const Guidance = () => {
   return (
-    <>
+    <div className={styles.guidanceWrapper}>
       <div className={styles.introduce}>
         <InfoBox description={GUIDE_DESCRIPTION.first} />
-        <div className={styles.hr} />
       </div>
       <div className={styles.introduce}>
         <InfoBox description={GUIDE_DESCRIPTION.second} />
-        <div className={styles.document}>기능에 대한 소개를 해주세요.</div>
       </div>
-    </>
+    </div>
   );
 };
 

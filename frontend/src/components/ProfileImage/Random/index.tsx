@@ -16,9 +16,9 @@ interface Props {
 
 const Random = ({ group, size, color }: Props) => {
   return (
-    <div className={classNames(styles.profile, styles[size], styles[color])}>
+    <span className={classNames(styles.profile, styles[size], styles[color])}>
       {group ? <GroupsIcon /> : <PersonIcon />}
-    </div>
+    </span>
   );
 };
 

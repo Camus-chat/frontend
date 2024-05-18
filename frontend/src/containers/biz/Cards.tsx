@@ -1,4 +1,4 @@
-import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
+// import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
 import classNames from 'classnames';
 import Link from 'next/link';
 
@@ -16,7 +16,7 @@ const Cards = () => {
           <div className={styles.title}>{item.title}</div>
           <Link href={item.path}>
             자세히 보기
-            <NavigateNextRoundedIcon />
+            {/* <NavigateNextRoundedIcon /> */}
           </Link>
         </div>
       ))}

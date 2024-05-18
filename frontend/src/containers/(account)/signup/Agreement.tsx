@@ -29,6 +29,12 @@ const Agreement = () => {
     setPersonalInfo(e.target.checked);
   };
 
+  const handleClick = () => {
+    if (checkedAll) {
+      clickNext();
+    }
+  };
+
   return (
     <div className={styles.checkBoxWrapper}>
       <CheckBox
@@ -55,7 +61,7 @@ const Agreement = () => {
         size='large'
         color={buttonColor}
         option={buttonOption}
-        onClick={clickNext}
+        onClick={handleClick}
       >
         가입하기
       </Button>

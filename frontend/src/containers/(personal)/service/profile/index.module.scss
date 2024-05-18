@@ -1,0 +1,78 @@
+@use '@/styles/variables' as *;
+@use '@/containers/(personal)/service/variables' as service;
+
+.profileMenu {
+  @include service.container-style;
+}
+
+.profileWrapper {
+  padding: 32px 0;
+  border-bottom: 1px solid $gray-300;
+
+  .nickName {
+    padding-top: 8px;
+    font-size: 24px;
+    font-weight: $semi-bold;
+  }
+}
+
+.menuWrapper {
+  @include flex-column;
+  align-items: flex-start;
+  padding-top: 4px;
+
+  button {
+    margin: 4px 0;
+    padding: 16px 0;
+    font-size: 18px;
+
+    &:hover {
+      color: $blue-300;
+    }
+  }
+
+  .withdrawalButton {
+    color: $gray-500;
+
+    &:hover {
+      color: $red-300;
+    }
+  }
+}
+
+.content {
+  @include service.popup-style;
+}
+
+.popupWrapper {
+  @include flex-column;
+  justify-content: space-between;
+  height: 100%;
+
+  .formWrapper {
+    padding: 8px 0;
+    width: 100%;
+    position: relative;
+
+    .label {
+      font-size: 14px;
+      font-weight: $bold;
+      margin: 4px 0;
+    }
+
+    .imageBox {
+      @include flex-center;
+
+      input {
+        display: none;
+      }
+    }
+  }
+
+  .buttonWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+    margin: 8px 0;
+  }
+}

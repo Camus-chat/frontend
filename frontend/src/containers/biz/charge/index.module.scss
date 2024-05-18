@@ -1,13 +1,17 @@
 @use '@/styles/variables' as *;
 
+@mixin justify-center {
+  display: flex;
+  justify-content: center;
+}
+
 .container {
   @include flex-column-center;
   width: 100%;
 }
 
 .descriptionWrapper {
-  display: flex;
-  justify-content: center;
+  @include justify-center;
   align-items: flex-end;
   width: 100%;
   padding: 120px 120px 60px;
@@ -21,8 +25,8 @@
 }
 
 .cardWrapper {
-  @include flex-center;
-  display: flex;
+  @include justify-center;
+  align-items: flex-start;
   flex-wrap: wrap;
 }
 
@@ -52,8 +56,7 @@
   }
 
   .textBox {
-    display: flex;
-    justify-content: center;
+    @include justify-center;
 
     :first-child :first-child {
       text-align: center;

@@ -1,6 +1,7 @@
 @use '@/styles/variables' as *;
 @use 'Menu/variables' as menu;
 @use '@/components/Header/variables' as header;
+@use 'variables' as service;
 
 .main {
   position: relative;
@@ -22,38 +23,16 @@
 
   @include desktop {
     background: $gray-100;
-    padding: 24px 12px;
+    padding: 42px 12px;
     height: calc(100% - #{menu.$height-desktop});
   }
 }
 
-@mixin content-box {
-  width: 100%;
-  overflow: hidden;
-
-  @include desktop {
-    @include boxShadow;
-
-    border-radius: 20px;
-    margin: 0 16px;
-    max-width: 400px;
-  }
-}
 
 .contentList {
-  @include content-box;
-
-  @include desktop {
-    padding: 16px 16px 12px;
-  }
+  @include service.container-style;
 }
 
 .content {
-  @include content-box;
-
-  @include mobile {
-    position: absolute;
-    height: 100%;
-    z-index: 2;
-  }
+  @include service.popup-style;
 }
