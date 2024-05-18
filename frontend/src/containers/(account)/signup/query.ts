@@ -1,15 +1,7 @@
 import { query } from '@/containers/query';
 
-export const checkId = async (id: string) => {
-  return query.clientSide
-    .post<boolean, string>('/member/check-id', id)
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => {
-      console.log(err);
-      return false;
-    });
+export const checkId = async (username: string) => {
+  return query.clientSide.post<boolean, string>('/member/etc/check', username);
 };
 
 export const requestEnterpriseSignUp = async (account: EnterpriseAccount) => {
@@ -24,9 +16,9 @@ export const requestEnterpriseSignUp = async (account: EnterpriseAccount) => {
     });
 };
 
-export const requestPersonalSignUp = async (account: PersonalAccount) => {
+export const requestPersonalSignUp = async (account: FormData) => {
   return query.clientSide
-    .post<boolean, PersonalAccount>('/member/b2b/signup', account)
+    .post<boolean, FormData>('/member/b2c/signup', account)
     .then((res) => {
       console.log(res);
       return res;

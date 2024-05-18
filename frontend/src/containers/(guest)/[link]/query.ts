@@ -2,24 +2,29 @@ import { query } from '@/containers/query';
 import LocalStorage from '@/hooks/LocalStorage';
 
 const guestSignup = async () => {
-  return query.serverSide.get('/guest/signup');
-};
-
-const guestLogin = async () => {
-  return query.serverSide.get<Token>('/guest/login').then((res) => {
-    LocalStorage.setItem('accessToken', res.accessToken);
+  return query.serverSide.get<Account>('/guest/signup').then((res) => {
+    console.log(res);
+    return res;
   });
 };
 
+const guestLogin = async (account: Account) => {
+  return query.serverSide
+    .post<Token, Account>('/guest/login', account)
+    .then((res) => {
+      LocalStorage.setItem('accessToken', res.accessToken);
+    });
+};
+
 export const requestGuestProfile = async () => {
-  const token = LocalStorage.getItem('accessToken');
-  if (!token) {
-    const isSignedUp = await guestSignup();
-    if (isSignedUp) {
-      await guestLogin();
-    }
-  }
-  return query.serverSide.get<GuestProfile>('/guest/profile');
+  // const token = LocalStorage.getItem('accessToken');
+  // if (!token) {
+  //   const account = await guestSignup();
+  //   if (account !== null) {
+  //     await guestLogin(account);
+  //   }
+  // }
+  return query.serverSide.get<GuestProfile>('/guest/info');
 };
 
 export const requestChannelInfo = async (link: string) => {

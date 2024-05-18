@@ -57,7 +57,7 @@ const EnterpriseProfile = () => {
       setCompanyEmail(companyEmailRef.current.value);
 
       const response = await requestEnterpriseSignUp({
-        id,
+        username: id,
         password,
         companyName,
         companyEmail,

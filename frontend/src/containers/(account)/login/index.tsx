@@ -31,7 +31,7 @@ const Login = () => {
 
     if (idRef.current?.value !== '' && passwordRef.current?.value !== '') {
       const response = await requestLogin(isEnterprise, {
-        id: idRef.current ? idRef.current.value : '',
+        username: idRef.current ? idRef.current.value : '',
         password: passwordRef.current ? passwordRef.current.value : '',
       });
       setIsValid(response);

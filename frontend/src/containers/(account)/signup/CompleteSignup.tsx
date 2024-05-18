@@ -17,7 +17,10 @@ const CompleteSignup = () => {
   const router = useRouter();
 
   const handleClick = async () => {
-    const response = await requestLogin(isEnterprise, { id, password });
+    const response = await requestLogin(isEnterprise, {
+      username: id,
+      password,
+    });
 
     if (response) {
       router.push(isEnterprise ? 'biz/' : '/');

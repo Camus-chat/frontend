@@ -39,25 +39,32 @@ const PersonalProfile = () => {
       const reader = new FileReader();
       reader.onload = () => {
         setImageSrc(reader.result as string);
+        setProfileImg(file);
       };
       reader.readAsDataURL(file);
     }
   };
 
   const handleClickNext = async () => {
-    if (nicknameRef.current && profileImgRef.current) {
-      const newFile = profileImgRef.current.files?.[0] ?? null;
-      if (newFile) {
-        setProfileImg(newFile);
-        setNickname(nicknameRef.current.value);
-      }
+    if (nicknameRef.current) {
+      setNickname(nicknameRef.current.value);
+    }
 
-      const response = await requestPersonalSignUp({
-        id,
-        password,
-        profileImg,
-        nickname,
-      });
+    if (
+      nicknameRef.current?.value !== null &&
+      profileImgRef.current?.files?.[0] !== null
+    ) {
+      console.log('hiu');
+
+      const formData = new FormData();
+      formData.append('username', id);
+      formData.append('password', password);
+      formData.append('profileImg', profileImgRef.current?.files?.[0] || '');
+      formData.append('nickname', nicknameRef.current?.value || '');
+
+      const response = await requestPersonalSignUp(formData);
+
+      console.log(response);
 
       if (response) {
         clickNext();
