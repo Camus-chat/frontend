@@ -12,3 +12,8 @@ interface PersonalAccount extends Account {
   nickname: string;
   profileImg: File;
 }
+
+interface Token {
+  accessToken: string;
+  refreshToken: string;
+}

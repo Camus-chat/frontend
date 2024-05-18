@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import { requestLogin } from '@/containers/(account)/login/query';
 import SelectButton from '@/containers/(account)/SelectButton';
@@ -16,18 +16,27 @@ const Login = () => {
   const idRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const { isEnterprise } = useAccountStore();
+  const [isValid, setIsValid] = useState<boolean>(true);
   const router = useRouter();
+  const path = isEnterprise ? '/biz' : '/';
+
+  const checkIsValid = async () => {
+    if (idRef.current?.value === '' || passwordRef.current?.value === '') {
+      setIsValid(false);
+    }
+  };
 
   const handleClick = async () => {
-    if (idRef.current && passwordRef.current) {
+    await checkIsValid();
+
+    if (idRef.current?.value !== '' && passwordRef.current?.value !== '') {
       const response = await requestLogin(isEnterprise, {
-        id: idRef.current.value,
-        password: passwordRef.current.value,
+        id: idRef.current ? idRef.current.value : '',
+        password: passwordRef.current ? passwordRef.current.value : '',
       });
-      if (response) {
-        router.push(isEnterprise ? 'biz/' : '/');
-      } else {
-        // TODO: 로그인 실패 모달?
+      setIsValid(response);
+      if (isValid) {
+        router.push(path);
       }
     }
   };
@@ -51,6 +60,7 @@ const Login = () => {
             회원가입
           </Link>
         </div>
+        {!isValid && <p>로그인 정보를 모두 입력해주세요.</p>}
       </div>
     </>
   );
