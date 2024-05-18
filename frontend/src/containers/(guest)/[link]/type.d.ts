@@ -4,10 +4,9 @@ interface ChatRoomInfo {
   channelInfo: string;
 }
 
-interface EnterRoom {
+interface Token {
   accessToken: string;
   refreshToken: string;
-  roomId: string;
 }
 
 interface GuestProfile {

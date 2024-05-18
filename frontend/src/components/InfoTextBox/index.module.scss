@@ -14,7 +14,14 @@
 }
 
 .large {
-  @include info-text-box(64px, 32px);
+  @include info-text-box(56px, 28px);
+  .title {
+    padding-bottom: 8px;
+  }
+
+  .content {
+    padding-top: 8px;
+  }
 }
 
 .medium {
