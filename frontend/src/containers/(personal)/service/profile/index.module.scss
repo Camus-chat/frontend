@@ -2,7 +2,7 @@
 @use '@/containers/(personal)/service/variables' as service;
 
 .profileMenu {
-  @include service.box-style;
+  @include service.container-style;
 }
 
 .profileWrapper {

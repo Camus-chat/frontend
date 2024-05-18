@@ -3,7 +3,7 @@
 @use '@/containers/(personal)/service/variables' as service;
 
 .channelList {
-  @include service.box-style;
+  @include service.container-style;
 }
 
 .channelCreateButton {

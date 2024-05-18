@@ -5,7 +5,7 @@ $-title-size: 24px;
 $-title-padding-bottom: 16px;
 
 .contentList {
-  @include service.box-style(20px, 8px);
+  @include service.container-style(20px, 8px);
 }
 
 .chattingRoom {
