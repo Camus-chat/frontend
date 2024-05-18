@@ -3,33 +3,31 @@
 
 .container {
   width: 100%;
-  //height: 100%;
 }
 
-@mixin grid {
+@mixin grid($gap) {
   display: grid;
-  gap: 4px;
+  gap: $gap;
   grid-template-columns: 50% 50%;
 }
 
 @mixin blue-box {
   @include boxShadow;
-  width: 100%;
+  min-width: 480px;
   margin: 0 12px;
   background-color: $blue-100;
   border-radius: 20px;
 }
 
 .tutorialWrapper {
-  display: grid;
-  grid-template-columns: 50% 50%;
+  @include grid(20px);
   width: 100%;
   padding: 60px;
 }
 
 .textBox {
   @include flex-column;
-  width: 100%;
+  min-width: 480px;
   padding: 40px;
 }
 
@@ -72,20 +70,6 @@
   padding: 16px 20px;
 }
 
-.selectButtonWrapper {
-  @include grid;
-  width: 100%;
-  padding-top: 4px;
-
-  button {
-    @include flex-center;
-  }
-
-  .icon {
-    width: 16px;
-    margin-right: 2px;
-  }
-}
 
 .channelInfoWrapper {
   input {
@@ -94,6 +78,6 @@
 }
 
 .buttonWrapper {
-  @include grid;
+  @include grid(4px);
   margin-top: 8px;
 }

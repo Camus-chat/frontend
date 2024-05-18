@@ -32,7 +32,7 @@ const Filter = () => {
       <div className={styles.filterBlueBox}>
         <div className={styles.contentBox}>
           <div className={styles.chatBox}>
-            TODO: chatting 컴포넌트 api 연결해서 테스트 할 수 있게 해야함.
+            {/* TODO: chatting 컴포넌트 api 연결해서 테스트 할 수 있게 해야함. */}
             {/* <ChatBubble message='안녕하세요 사장님' isSent={false}> */}
             {/*  <Random size='small' color='rose' /> */}
             {/* </ChatBubble> */}
