@@ -1,15 +1,7 @@
 import type { ChannelType } from '@/containers/(personal)/service/channel/type';
 
-type MessageType = 'NoticeMessage' | 'CommonMessage';
-
-interface LastMessage {
-  type: MessageType;
-  userId: string;
-  content: string;
-}
-
 interface ChatRoomDetail {
-  lastMessage: LastMessage;
+  lastMessage: Message;
   unreadCount: number;
 }
 

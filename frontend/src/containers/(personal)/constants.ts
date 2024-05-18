@@ -1,40 +1,46 @@
-export const DESCRIPTION = 'AI 안전 채팅을 통해\n 당신을 지켜드립니다';
+import Channel from '../../../public/animations/channel.json';
+import Chatting from '../../../public/animations/chatting.json';
+import Desktop from '../../../public/animations/desktop.json';
+import Manage from '../../../public/animations/manage.json';
+
+export const TITLE = 'AI 안전 채팅 필터링';
+export const DESCRIPTION =
+  '설정한 강도에 따른 AI가 대화 분석 채팅 필터링기능 탑재!';
 
 export const INFO_CARD = [
   {
     key: 1,
-    description: '나만의 채널을 생성해요',
+    title: '채널 생성',
+    description:
+      '참여 인원, 필터링 강도 등을 설정하여 나만의 채널을 생성할 수 있어요',
     path: '/tutorial/channel',
     color: 'white',
-    imgSrc: '',
-    imgWidth: 200,
-    imgHeight: 200,
+    imgSrc: Channel,
   },
   {
     key: 2,
-    description: 'AI 안전 필터링 강도를 선택하세요',
+    title: 'AI 필터링',
+    description:
+      '강, 중, 약 내가 원하는 AI 안전 필터링 강도를 선택할 수 있어요',
     path: '/tutorial/filter',
+    imgSrc: Manage,
     color: 'yellow',
-    imgSrc: '',
-    imgWidth: 200,
-    imgHeight: 200,
   },
   {
     key: 3,
-    description: '익명의 사용자와\n안전한 대화를 진행해요',
+    title: '안전한 채팅',
+    description:
+      '채널 링크를 통해 접속한 익명의 사용자와 안전한 대화를 진행해요',
     path: '/tutorial/filter',
     color: 'white',
-    imgSrc: '',
-    imgWidth: 200,
-    imgHeight: 200,
+    imgSrc: Chatting,
   },
   {
     key: 4,
-    description: '채널과 채팅방 관리를 통해\n효과적으로 비용을 관리해요',
+    title: '쉬운 관리',
+    description: '채널 관리 페이지에서 채널정보를 수정할 수 있어요',
     path: '/tutorial/channel',
     color: 'red',
-    imgSrc: '',
-    imgWidth: 200,
-    imgHeight: 200,
+    imgSrc: Desktop,
   },
 ];

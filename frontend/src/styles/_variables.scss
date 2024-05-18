@@ -80,6 +80,11 @@ $desktop: 1280px;
   }
 }
 
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
 @mixin flex-column {
   display: flex;
   flex-direction: column;
@@ -113,4 +118,9 @@ $desktop: 1280px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
+}
+
+@mixin overflow-auto {
+  overflow: auto;
+  scrollbar-width: none;
 }

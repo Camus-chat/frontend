@@ -1,11 +1,11 @@
 export const MENU = [
   {
-    key: 'introduction',
-    name: '이해하기',
+    key: 'service',
+    name: '서비스 소개',
   },
   {
     key: 'guidance',
-    name: '설정하기',
+    name: '사용 방법',
   },
   {
     key: 'api',
@@ -24,8 +24,7 @@ export const INTRO_DESCRIPTION = {
   },
   second: {
     title: '기능 소개',
-    content:
-      '카카오톡 채널(구:플러스친구)은 카카오톡 사용자들에게 다양한 서비스 소식을 메시지와 게시물 형태로 전파할 수 있는 서비스입니다. 카카오톡 채널은 친구인 사용자들에게 마케팅(Marketing) 메시지를 보내는 기능을 제공합니다. 친구란 카카오톡 채널을 친구로 추가한 사용자를 말합니다. 카카오톡 채널 메시지는 비용 절감을 위해 사용자의 성별, 나이, 지역, 등급 등 정보를 토대로 친구 그룹을 만들어서 보다 높은 효과가 기대되는 사용자들에게만 발송하는 것도 가능합니다.',
+    content: '내용 채워넣기',
   },
 };
 
@@ -36,7 +35,28 @@ export const GUIDE_DESCRIPTION = {
   },
   second: {
     title: '고객 관리 API 정책 동의',
-    content:
-      '카카오톡 채널 고객 관리는 사용자 정보를 기반으로 정교한 타게팅 마케팅을 돕는 기능으로 다음 API를 제공합니다.',
+    content: '여기에 뭐가 들어가면 좋습니까?',
+  },
+};
+
+export const APIS_DESCRIPTION = {
+  first: {
+    title: 'REST API',
+    content: 'CAMUS 는 API를 제공합니다.',
+  },
+  second: {
+    title: 'GET',
+    content: 'GET 요청을 통해 어쩌고 저쩌고',
+  },
+};
+
+export const GUIS_DESCRIPTION = {
+  first: {
+    title: 'Java Script',
+    content: 'CAMUS는 채팅 컴포넌트에 대해 Java Script 파일로 제공합니다.',
+  },
+  second: {
+    title: 'CSS',
+    content: 'CSS 변수를 할당하여 어쩌고 저쩌고',
   },
 };

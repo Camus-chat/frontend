@@ -1,5 +1,25 @@
 @use '@/styles/variables' as *;
 
+@mixin font-style($backgroundColor, $color, $font-size, $font-weight) {
+  background-color: $backgroundColor;
+  color: $color;
+  font-size: $font-size;
+  font-weight: $font-weight;
+}
+
+@mixin svg-style($path-color){
+  background-color: transparent;
+
+  path {
+    color: $path-color;
+  }
+}
+
+@mixin link-style {
+  display: flex;
+  align-items: center;
+}
+
 .container {
   width: 100%;
   height: 100%;
@@ -18,18 +38,17 @@
   }
 
   .description {
-    background-color: transparent;
-    color: $white;
-    font-size: 48px;
-    font-weight: $bold;
+    @include font-style(transparent, $white, 48px, $bold);
   }
 
   .moreButton {
-    background-color: $blue-500;
-    color: $white;
-    margin: 8px 0;
-    padding: 8px 16px;
-    border-radius: 30px;
+    margin: 16px 0;
+
+    a {
+      @include font-style($blue-500, $white, 16px, $regular);
+      padding: 8px 16px;
+      border-radius: 30px;
+    }
   }
 
   .imageBox {
@@ -43,29 +62,18 @@
   padding: 48px 64px;
 
   .content {
-    display: flex;
-    flex-direction: row;
+    @include flex-row;
     justify-content: space-between;
     margin: 0 16px;
 
     .description {
-      font-size: 32px;
-      font-weight: $semi-bold;
-    }
-
-    .moreButton {
-      background-color: $black;
-      padding: 0 16px;
-      color: $white;
-      border-radius: 30px;
-      font-size: 16px;
+      @include font-style(transparent, $black, 32px, $semi-bold);
     }
   }
 
   .cardWrapper {
+    @include flex-row;
     margin: 32px 0;
-    display: flex;
-    flex-direction: row;
   }
 }
 
@@ -79,27 +87,18 @@
   border-radius: 20px;
 
   .title {
-    background-color: transparent;
-    color: $white;
-    font-size: 28px;
-    font-weight: $semi-bold;
+    @include font-style(transparent, $white, 28px, $semi-bold);
   }
 
-  a {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    color: $white;
-    font-size: 16px;
-  }
-
-  svg {
-    background-color: transparent;
-
-    path {
-      color: $white;
+    a {
+      @include font-style(transparent, $white, 16px, $regular);
+      @include link-style;
     }
-  }
+
+    svg {
+      @include svg-style(white);
+    }
+
 
   &.navy {
     background-color: $blue-900;
@@ -119,31 +118,24 @@
   padding: 120px;
 
   .description {
-    background-color: transparent;
-    font-size: 36px;
-    font-weight: $medium;
+    @include font-style(transparent, $black, 36px, $medium);
   }
 
-  button {
-    display: flex;
-    align-items: center;
+  .link {
+    @include link-style;
+
+    background-color: transparent;
     margin-top: 32px;
 
     p {
-      background-color: transparent;
-      font-size: 16px;
-      font-weight: $bold;
+      @include font-style(transparent, $black, 16px, $bold);
       margin-right: 4px;
     }
 
     svg {
-      background-color: transparent;
+      @include svg-style($blue-500);
       transform: rotate(270deg);
       width: 20px;
-
-      path {
-        color: $blue-500;
-      }
     }
   }
 }

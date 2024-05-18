@@ -1,6 +1,10 @@
 @use '@/styles/variables' as *;
 @use '@/containers/(personal)/service/variables' as service;
 
+.profileMenu {
+  @include service.container-style;
+}
+
 .profileWrapper {
   padding: 32px 0;
   border-bottom: 1px solid $gray-300;
