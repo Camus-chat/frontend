@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 
+import Apis from '@/containers/biz/docs/Apis';
 import { MENU } from '@/containers/biz/docs/constants';
 import Guidance from '@/containers/biz/docs/Guidance';
+import Guis from '@/containers/biz/docs/Guis';
 import styles from '@/containers/biz/docs/index.module.scss';
-import SideBar from '@/containers/biz/docs/SideBar';
+import Introduction from '@/containers/biz/docs/Introduction';
+import MenuBar from '@/containers/biz/docs/MenuBar';
 
-import Introduction from './Introduction';
 import Header from '@/components/Header';
 
 const Docs = () => {
@@ -20,16 +22,12 @@ const Docs = () => {
     <>
       <Header biz />
       <div className={styles.container}>
-        <SideBar menu={MENU} onClick={handleClick} />
-        <div className={styles.contentWrapper}>
-          <div className={styles.content}>
-            <div className={styles.titleWrapper}>AI 감정 필터링</div>
-            {isSelected === 'introduction' && <Introduction />}
-            {isSelected === 'guidance' && <Guidance />}
-            {isSelected === 'api' && <Introduction />}
-            {isSelected === 'script' && <Guidance />}
-          </div>
-        </div>
+        <div className={styles.titleWrapper}>AI 감정 필터링 서비스</div>
+        <MenuBar menu={MENU} onClick={handleClick} />
+        {isSelected === 'service' && <Introduction />}
+        {isSelected === 'guidance' && <Guidance />}
+        {isSelected === 'api' && <Apis />}
+        {isSelected === 'script' && <Guis />}
       </div>
     </>
   );
