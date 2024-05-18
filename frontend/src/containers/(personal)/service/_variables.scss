@@ -43,5 +43,6 @@ $-title-padding-bottom: 16px;
 
   @include mobile {
     height: calc(100%);
+    padding-bottom: 8px;
   }
 }
