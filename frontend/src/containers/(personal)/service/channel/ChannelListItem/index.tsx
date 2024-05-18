@@ -1,5 +1,4 @@
-import LinkIcon from '@mui/icons-material/Link';
-
+import ChannelLinkCopyButton from '@/containers/(personal)/service/channel/ChannelListItem/ChannelLinkCopyButton';
 import ChannelUpdateButton from '@/containers/(personal)/service/channel/ChannelListItem/ChannelUpdateButton';
 import { FILTER_CLASS_MAP } from '@/containers/(personal)/service/channel/constants';
 import type { Channel } from '@/containers/(personal)/service/channel/type';
@@ -26,9 +25,7 @@ const ChannelListItem = ({ channel }: Props) => {
           삭제
         </Button>
         <ChannelUpdateButton channel={channel} />
-        <Button size='small' color='blue' option='link'>
-          <LinkIcon />
-        </Button>
+        <ChannelLinkCopyButton link={channel.link} />
       </div>
     </li>
   );

@@ -1,8 +1,6 @@
 import type { Chat } from '@/lib/class/Chat';
 import { create } from 'zustand';
 
-import type { Message } from '@/containers/(personal)/service/chat/type';
-
 interface chatState {
   isSelected: boolean;
   chat: Chat;

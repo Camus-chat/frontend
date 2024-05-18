@@ -1,11 +1,6 @@
 import type { ChatRoom } from '@/lib/class/Chat';
 import { revalidateTag } from 'next/cache';
 
-import type {
-  Message,
-  MessageList,
-  MessageListRequest,
-} from '@/containers/(personal)/service/chat/type';
 import { query } from '@/containers/query';
 
 const CHAT_LIST_TAG = 'chat-list';

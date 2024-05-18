@@ -10,15 +10,21 @@ const ChannelPage = async () => {
   const channels: Channel[] = await getChannels();
 
   return (
-    <div className={styles.contentList}>
-      <ChannelCreateButton />
-      <ul>
-        {channels.map((channel) => (
-          <ChannelListItem channel={channel} key={channel.link} />
-        ))}
-      </ul>
+    <>
+      <div className={styles.channel}>
+        <div className={styles.title}>채널</div>
+        <div className={styles.list}>
+          <ChannelCreateButton />
+          <ul>
+            {channels.map((channel) => (
+              <ChannelListItem channel={channel} key={channel.link} />
+            ))}
+          </ul>
+        </div>
+      </div>
+
       <ChannelActionPopup />
-    </div>
+    </>
   );
 };
 

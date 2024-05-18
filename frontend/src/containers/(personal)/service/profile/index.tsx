@@ -23,7 +23,7 @@ const Profile = () => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
   return (
-    <>
+    <div className={styles.profileMenu}>
       <div>
         <div className={styles.profileWrapper}>
           <Member imgSrc='/images/logo.svg' size='large' />
@@ -38,6 +38,7 @@ const Profile = () => {
           </button>
         </div>
       </div>
+
       {isClicked &&
         createPortal(
           <div className={styles.content}>
@@ -45,7 +46,7 @@ const Profile = () => {
           </div>,
           document.getElementById('content-wrapper') as HTMLDivElement,
         )}
-    </>
+    </div>
   );
 };
 
