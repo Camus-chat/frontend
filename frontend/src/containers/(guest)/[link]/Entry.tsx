@@ -14,11 +14,11 @@ import type { ProfileColor } from '@/components/ProfileImage/type';
 interface Props {
   guest: GuestProfile;
   channel: ChatRoomInfo;
+  link: string;
 }
 
-export const Entry = ({ guest, channel }: Props) => {
+export const Entry = ({ guest, channel, link }: Props) => {
   const [imgSrc, setImgSrc] = useState<string>('');
-  const link = ''; // TODO: 링크 관리 좀 더 알아볼 것.
   const router = useRouter();
 
   const handleClick = async () => {
