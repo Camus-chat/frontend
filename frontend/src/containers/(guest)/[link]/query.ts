@@ -24,11 +24,11 @@ export const requestEnterRoom = async (link: string) => {
     });
 };
 
-export const geustSignup = async () => {
-  const link = '';
-  return query.serverSide.post<string, string>('/guest/signup', link);
+const guestSignup = async () => {
+  return query.serverSide.get('/guest/signup');
 };
 
 export const guestLogin = async () => {
-  return query.clientSide.get('/guest/login');
+  const response = await guestSignup();
+  return response ? query.clientSide.get('/guest/login') : console.log('error');
 };
