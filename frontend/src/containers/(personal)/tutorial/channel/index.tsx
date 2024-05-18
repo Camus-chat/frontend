@@ -1,13 +1,15 @@
 'use client';
 
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 import { FILTER_DROP_DOWN_OPTION } from '@/containers/(personal)/service/channel/constants';
-import InputForm from '@/containers/(personal)/tutorial/channel/InputForm';
 import {
+  DETAIL_IMAGES,
   CHANNEL_CREATE,
   CHANNEL_DESCRIPTION,
-} from '@/containers/(personal)/tutorial/constants';
+} from '@/containers/(personal)/tutorial/channel/constants';
+import InputForm from '@/containers/(personal)/tutorial/channel/InputForm';
 import styles from '@/containers/(personal)/tutorial/index.module.scss';
 
 import Button from '@/components/Button';
@@ -17,6 +19,7 @@ import ToggleButton from '@/components/ToggleButton';
 
 const Channel = () => {
   const [currentIdx, setCurrentIdx] = useState<number>(0);
+  const image = DETAIL_IMAGES.find((item) => item.key === currentIdx);
 
   return (
     <div className={styles.tutorialWrapper}>
@@ -73,6 +76,9 @@ const Channel = () => {
           title={CHANNEL_DESCRIPTION[currentIdx].title}
           content={CHANNEL_DESCRIPTION[currentIdx].content}
         />
+        {image && (
+          <Image src={image.src} alt='detail image' width={500} height={400} />
+        )}
       </div>
     </div>
   );
