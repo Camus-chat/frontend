@@ -23,3 +23,12 @@ export const requestEnterRoom = async (link: string) => {
       return res.roomId;
     });
 };
+
+export const geustSignup = async () => {
+  const link = '';
+  return query.serverSide.post<string, string>('/guest/signup', link);
+};
+
+export const guestLogin = async () => {
+  return query.clientSide.get('/guest/login');
+};

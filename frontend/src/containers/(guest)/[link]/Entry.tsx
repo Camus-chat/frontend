@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import styles from '@/containers/(guest)/[link]/index.module.scss';
@@ -18,7 +18,7 @@ interface Props {
 
 export const Entry = ({ guest, channel }: Props) => {
   const [imgSrc, setImgSrc] = useState<string>('');
-  const link = ''; // TODO: 링크 관리 좀 더 알아볼 것.
+  const link = usePathname();
   const router = useRouter();
 
   const handleClick = async () => {
