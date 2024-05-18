@@ -31,3 +31,8 @@ export const CHANNEL_CREATE = {
 
 export const PRIVATE = true;
 export const GROUP = false;
+
+export const MENU = [
+  { key: 'channel', path: 'channel', name: '채널 생성' },
+  { key: 'filter', path: 'filter', name: '필터링 강도' },
+];
