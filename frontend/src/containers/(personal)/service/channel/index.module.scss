@@ -2,7 +2,7 @@
 @use 'ChannelListItem/index.module.scss' as channel;
 @use '@/containers/(personal)/service/variables' as service;
 
-.contentList {
+.channelList {
   @include service.box-style;
 }
 
