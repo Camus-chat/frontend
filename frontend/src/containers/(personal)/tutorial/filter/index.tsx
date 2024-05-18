@@ -1,6 +1,6 @@
 'use client';
 
-import ChatBubble from '@/lib/componenets/ChatBubble';
+import ChatMessageBubble from '@/lib/componenets/ChatMessageBubble';
 import ChatInputBox from '@/lib/componenets/ChatInputBox';
 
 import {
@@ -33,13 +33,13 @@ const Filter = () => {
         <div className={styles.contentBox}>
           <div className={styles.chatBox}>
             {/* TODO: chatting 컴포넌트 api 연결해서 테스트 할 수 있게 해야함. */}
-            {/* <ChatBubble message='안녕하세요 사장님' isSent={false}> */}
+            {/* <ChatMessageBubble message='안녕하세요 사장님' isSent={false}> */}
             {/*  <Random size='small' color='rose' /> */}
-            {/* </ChatBubble> */}
-            {/* <ChatBubble message='예, 안녕하세요' /> */}
-            {/* <ChatBubble message='필터링 될 메시지' isSent={false}> */}
+            {/* </ChatMessageBubble> */}
+            {/* <ChatMessageBubble message='예, 안녕하세요' /> */}
+            {/* <ChatMessageBubble message='필터링 될 메시지' isSent={false}> */}
             {/*  <Random size='small' color='rose' /> */}
-            {/* </ChatBubble> */}
+            {/* </ChatMessageBubble> */}
           </div>
           <div className={styles.chatInputBox}>
             <ChatInputBox />

@@ -4,7 +4,7 @@ interface Props {
   message: Message;
 }
 
-const ChatNotice = ({ message }: Props) => {
+const ChatMessageNotice = ({ message }: Props) => {
   return (
     <div
       className={styles.message}
@@ -12,4 +12,4 @@ const ChatNotice = ({ message }: Props) => {
   );
 };
 
-export default ChatNotice;
+export default ChatMessageNotice;
