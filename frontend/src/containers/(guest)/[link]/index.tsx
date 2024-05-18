@@ -1,3 +1,5 @@
+import { GetServerSideProps } from 'next';
+
 import { Entry } from '@/containers/(guest)/[link]/Entry';
 import styles from '@/containers/(guest)/[link]/index.module.scss';
 import {
@@ -7,15 +9,16 @@ import {
 
 import Logo from '@/components/Header/Logo';
 
-const Guest = async () => {
+const Guest: GetServerSideProps = async (context) => {
+  const { link } = context.params || '';
   const guest = await requestGuestProfile();
-  const channel = await requestChannelInfo('');
+  const channel = await requestChannelInfo(link as string);
 
   return (
     <>
       <Logo />
       <main className={styles.main}>
-        <Entry guest={guest} channel={channel} />
+        <Entry guest={guest} channel={channel} link={link as string} />
       </main>
     </>
   );

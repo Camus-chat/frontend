@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import styles from '@/containers/(guest)/[link]/index.module.scss';
@@ -14,11 +14,11 @@ import type { ProfileColor } from '@/components/ProfileImage/type';
 interface Props {
   guest: GuestProfile;
   channel: ChatRoomInfo;
+  link: string;
 }
 
-export const Entry = ({ guest, channel }: Props) => {
+export const Entry = ({ guest, channel, link }: Props) => {
   const [imgSrc, setImgSrc] = useState<string>('');
-  const link = usePathname();
   const router = useRouter();
 
   const handleClick = async () => {
