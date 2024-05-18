@@ -1,8 +1,99 @@
 @use '@/styles/variables' as *;
+@use '@/components/Form/variables' as *;
 
 .container {
   width: 100%;
+  //height: 100%;
+}
+
+@mixin grid {
+  display: grid;
+  gap: 4px;
+  grid-template-columns: 50% 50%;
+}
+
+@mixin blue-box {
+  @include boxShadow;
+  width: 100%;
+  margin: 0 12px;
+  background-color: $blue-100;
+  border-radius: 20px;
+}
+
+.tutorialWrapper {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 100%;
+  padding: 60px;
+}
+
+.textBox {
+  @include flex-column;
+  width: 100%;
+  padding: 40px;
+}
+
+.blueBox {
+  @include blue-box;
+  padding: 64px 48px 0;
+}
+
+.filterBlueBox {
+  @include blue-box;
+  padding: 64px 48px;
+}
+
+.contentBox {
+  @include flex-column;
   height: 100%;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  border-radius: 20px;
+  background-color: $white;
+  padding: 32px;
+
+  .chatBox {
+    @include flex-column-center;
+  }
+}
+
+.createChannelBox {
+  @include flex-column;
+
+  border-radius: 20px 20px 0 0;
+  background-color: $white;
+  padding: 32px 24px;
+
+  div {
+    position: sticky;
+  }
+}
+
+.inputBox {
+  @include form-style;
+  padding: 16px 20px;
+}
+
+.selectButtonWrapper {
+  @include grid;
+  width: 100%;
+  padding-top: 4px;
+
+  button {
+    @include flex-center;
+  }
+
+  .icon {
+    width: 16px;
+    margin-right: 2px;
+  }
+}
+
+.channelInfoWrapper {
+  input {
+    margin-bottom: 8px;
+  }
+}
+
+.buttonWrapper {
+  @include grid;
+  margin-top: 8px;
 }
