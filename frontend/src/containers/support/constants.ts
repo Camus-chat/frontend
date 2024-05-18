@@ -14,3 +14,8 @@ export const ROUTE_OPTION = [
   { value: 'news', name: '언론 보도 기사' },
   { value: 'etc', name: '기타' },
 ];
+
+export const MENU = [
+  { key: 'assist', path: 'assist', name: '1:1 문의' },
+  { key: 'request', path: 'request', name: '도입문의' },
+];
