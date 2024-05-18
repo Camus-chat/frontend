@@ -10,7 +10,7 @@ import Member from '@/components/ProfileImage/Member';
 
 const PersonalProfile = () => {
   const {
-    id,
+    username,
     password,
     profileImg,
     nickname,
@@ -22,7 +22,7 @@ const PersonalProfile = () => {
     setNickname: state.setNickname,
     profileImg: state.profileImg,
     nickname: state.nickname,
-    id: state.id,
+    username: state.username,
     password: state.password,
     clickNext: state.nextIndex,
   }));
@@ -46,8 +46,9 @@ const PersonalProfile = () => {
   };
 
   const handleClickNext = async () => {
-    if (nicknameRef.current) {
+    if (nicknameRef.current && profileImgRef.current?.files) {
       setNickname(nicknameRef.current.value);
+      setProfileImg(profileImgRef.current.files[0]);
     }
 
     if (
@@ -57,10 +58,10 @@ const PersonalProfile = () => {
       console.log('hiu');
 
       const formData = new FormData();
-      formData.append('username', id);
+      formData.append('username', username);
       formData.append('password', password);
-      formData.append('profileImg', profileImgRef.current?.files?.[0] || '');
-      formData.append('nickname', nicknameRef.current?.value || '');
+      formData.append('profileImg', profileImg);
+      formData.append('nickname', nickname);
 
       const response = await requestPersonalSignUp(formData);
 

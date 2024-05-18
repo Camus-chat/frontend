@@ -19,7 +19,7 @@ const EnterpriseProfile = () => {
     setCompanyEmail,
     clickNext,
   } = useAccountStore((state) => ({
-    id: state.id,
+    id: state.username,
     password: state.password,
     companyName: state.companyName,
     companyEmail: state.companyEmail,

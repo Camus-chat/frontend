@@ -12,15 +12,14 @@ const AccountInfo = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
   const checkPasswordRef = useRef<HTMLInputElement>(null);
 
-  const { id, setId, setPassword, clickPrev, clickNext } = useAccountStore(
-    (state) => ({
-      id: state.id,
-      setId: state.setId,
+  const { username, setUsername, setPassword, clickPrev, clickNext } =
+    useAccountStore((state) => ({
+      username: state.username,
+      setUsername: state.setUsername,
       setPassword: state.setPassword,
       clickPrev: state.prevIndex,
       clickNext: state.nextIndex,
-    }),
-  );
+    }));
 
   const [isExistingId, setIsExistingId] = useState<boolean>(false);
   const [isInvalidId, setIsInvalidId] = useState<boolean>(false);
@@ -31,7 +30,7 @@ const AccountInfo = () => {
     : '중복된 id 입니다.';
 
   const handleClickNext = async () => {
-    const isTrue = await checkId(id);
+    const isTrue = await checkId(username);
     setIsExistingId(!isTrue);
 
     let isValid = true;
@@ -62,7 +61,7 @@ const AccountInfo = () => {
     }
 
     if (!isExistingId && isValid) {
-      setId(idRef.current?.value ?? '');
+      setUsername(idRef.current?.value ?? '');
       setPassword(passwordRef.current?.value ?? '');
       clickNext();
     }

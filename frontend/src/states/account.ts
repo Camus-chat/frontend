@@ -6,7 +6,7 @@ import defaultProfileImg from '../../public/images/defaultProfileImg.svg';
 interface accountState {
   index: number;
   isEnterprise: boolean;
-  id: string;
+  username: string;
   password: string;
   profileImg: File;
   nickname: string;
@@ -18,7 +18,7 @@ interface accountAction {
   prevIndex: () => void;
   nextIndex: () => void;
   setIsEnterprise: (isEnterprise: boolean) => void;
-  setId: (id: string) => void;
+  setUsername: (username: string) => void;
   setPassword: (password: string) => void;
   setProfileImg: (profileImg: File) => void;
   setNickname: (nickname: string) => void;
@@ -30,7 +30,7 @@ export const useAccountStore = create<accountState & accountAction>()(
   devtools((set) => ({
     index: 0,
     isEnterprise: true,
-    id: '',
+    username: '',
     password: '',
     profileImg: defaultProfileImg,
     nickname: '',
@@ -46,7 +46,7 @@ export const useAccountStore = create<accountState & accountAction>()(
         index: prev.index + 1,
       })),
     setIsEnterprise: (isEnterprise: boolean) => set({ isEnterprise }),
-    setId: (id: string) => set({ id }),
+    setUsername: (username: string) => set({ username }),
     setPassword: (password: string) => set({ password }),
     setProfileImg: (profileImg: File) => set({ profileImg }),
     setNickname: (nickname: string) => set({ nickname }),
