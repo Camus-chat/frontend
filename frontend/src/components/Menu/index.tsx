@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-import styles from '@/components/Header/index.module.scss';
+import styles from '@/components/Menu/index.module.scss';
 
 interface Props {
   menu: Navigation[];
