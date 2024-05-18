@@ -27,9 +27,9 @@ const AccountInfo = () => {
   const [isValid, setIsValid] = useState<boolean>(false);
   const [isInvalidPwd, setIsInvalidPwd] = useState<boolean>(false);
   const [isCheckedPwd, setIsCheckedPwd] = useState<boolean>(false);
-  const idMessage = isExistingId
-    ? '중복된 id 입니다.'
-    : '글자수를 확인해주세요.';
+  const idMessage = isInvalidId
+    ? '글자수를 확인해주세요.'
+    : '중복된 id 입니다.';
 
   const checkIsValid = async () => {
     setIsExistingId(await checkId(id));
@@ -40,16 +40,22 @@ const AccountInfo = () => {
     ) {
       setIsInvalidId(true);
       setIsValid(false);
+    } else {
+      setIsInvalidId(false);
     }
 
     if ((passwordRef.current?.value.length as number) < 8) {
       setIsInvalidPwd(true);
       setIsValid(false);
+    } else {
+      setIsInvalidPwd(false);
     }
 
     if (checkPasswordRef.current?.value !== passwordRef.current?.value) {
       setIsCheckedPwd(true);
       setIsValid(false);
+    } else {
+      setIsCheckedPwd(false);
     }
   };
 

@@ -28,7 +28,8 @@ export const requestPersonalSignUp = async (account: PersonalAccount) => {
   return query.clientSide
     .post<boolean, PersonalAccount>('/member/b2b/signup', account)
     .then((res) => {
-      return res
+      console.log(res);
+      return res;
     })
     .catch((err) => {
       console.log(err);
