@@ -114,3 +114,8 @@ $desktop: 1280px;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
+
+@mixin overflow-auto {
+  overflow: auto;
+  scrollbar-width: none;
+}

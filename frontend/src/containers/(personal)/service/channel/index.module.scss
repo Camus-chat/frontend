@@ -14,10 +14,9 @@ $-padding-x: 8px;
 
 .list {
   @include service.content-style;
+  @include overflow-auto;
 
   padding: 0 #{20px - $-padding-x};
-  overflow: auto;
-  scrollbar-width: none;
 }
 
 .channelCreateButton {
