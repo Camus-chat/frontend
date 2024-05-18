@@ -9,7 +9,7 @@ interface Props {
   menu: Navigation[];
 }
 
-const ListMenu = ({ menu }: Props) => {
+const Menu = ({ menu }: Props) => {
   const [pathname, setPathname] = useState<string>('');
   return (
     <div className={styles.listMenu}>
@@ -31,4 +31,4 @@ const ListMenu = ({ menu }: Props) => {
   );
 };
 
-export default ListMenu;
+export default Menu;

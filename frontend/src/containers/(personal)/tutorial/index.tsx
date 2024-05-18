@@ -4,7 +4,7 @@ import { MENU } from '@/containers/(personal)/tutorial/constants';
 
 import styles from './index.module.scss';
 import Header from '@/components/Header';
-import ListMenu from '@/components/Header/ListMenu';
+import Menu from '@/components/Menu';
 
 interface Props {
   children: ReactNode;
@@ -14,7 +14,7 @@ const Tutorial = ({ children }: Props) => {
   return (
     <>
       <Header />
-      <ListMenu menu={MENU} />
+      <Menu menu={MENU} />
       <div className={styles.container}>{children}</div>
     </>
   );

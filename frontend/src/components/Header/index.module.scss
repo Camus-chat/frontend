@@ -192,31 +192,3 @@ $-nav-belt-padding-y-mobile: 4px;
     font-size: 18px;
   }
 }
-
-
-.listMenu {
-  display: flex;
-  justify-content: center;
-  background-color: $blue-300;
-  height: 32px;
-
-  a {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    color: $blue-100;
-    height: 100%;
-    margin: 0 12px;
-  }
-
-  a:hover {
-    color: $white;
-    border-bottom: 3px solid $white;
-  }
-
-  .selected {
-    color: $white;
-    border-bottom: 3px solid $white;
-  }
-
-}
