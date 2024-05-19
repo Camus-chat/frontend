@@ -1,16 +1,28 @@
 @use '@/styles/variables' as *;
 @use '@/containers/(personal)/service/variables' as service;
+@use '@/components/Header/variables' as header;
+
+$-header-padding: 12px;
+$-container-padding-x-mobile: 30px;
+
+header .wrapper {
+  padding: $-header-padding 0;
+
+  @include mobile {
+    padding: 0 calc(#{$-container-padding-x-mobile} - #{header.$nav-padding-x});
+  }
+}
 
 .main {
   @include flex-column-center;
   @include desktop {
     background-color: $gray-100;
-    height: 100%;
+    height: calc(100% - #{header.$logo-size-desktop} - #{$-header-padding * 2});
     justify-content: center;
   }
 
   width: 100%;
-  height:100%;
+  height: 100%;
 }
 
 .container {
@@ -18,13 +30,13 @@
   @include desktop {
     @include boxShadow;
     max-width: 610px;
-    padding: 40px
+    padding: 60px 50px;
   }
   justify-content: space-between;
 
   width: 100%;
   height: 600px;
-  padding: 40px;
+  padding: 30px;
 
   background-color: $white;
   border-radius: 20px;
@@ -53,11 +65,20 @@
   .nickname {
     font-size: 20px;
     font-weight: $semi-bold;
-    margin-top: 8px;
-    margin-bottom: 16px;
+    margin: 0 8px;
   }
 
   button {
     width: 100%;
+  }
+}
+
+.guestInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+
+  span {
+    margin-right: 4px;
   }
 }
