@@ -9,16 +9,19 @@ interface Props {
   chattingClient?: CamusClient;
   roomId: string;
   onClick?: () => void;
+  token: string;
 }
 
-const ChatInputBox = ({ chattingClient, roomId, onClick }: Props) => {
+const ChatInputBox = ({ chattingClient, roomId, onClick, token }: Props) => {
   const input = useRef<HTMLInputElement>(null);
 
   const sendMessage = () => {
     if (input.current?.value && chattingClient) {
-      chattingClient.sendMessage(roomId, input.current.value).then(() => {
-        input.current!.value = '';
-      });
+      chattingClient
+        .sendMessage(roomId, input.current.value, token)
+        .then(() => {
+          input.current!.value = '';
+        });
     }
 
     if (!chattingClient && onClick) {

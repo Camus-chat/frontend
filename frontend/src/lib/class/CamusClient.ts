@@ -34,21 +34,23 @@ export class CamusClient {
     this.stompClient.deactivate();
   }
 
-  async sendMessage(roomId: string, message: string) {
+  async sendMessage(roomId: string, message: string, token: string) {
     this.stompClient.publish({
       destination: '/pub/message_send',
       body: JSON.stringify({
         roomId,
         content: message,
+        userToken: token,
       }),
     });
   }
 
-  async subscribeRoom(roomId: string) {
+  async subscribeRoom(roomId: string, token: string) {
     this.stompClient.publish({
       destination: '/pub/message_received',
       body: JSON.stringify({
         roomId,
+        userToken: token,
       }),
     });
   }

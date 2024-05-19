@@ -9,6 +9,7 @@ import { createPortal } from 'react-dom';
 import ChattingRoom from '@/containers/(personal)/service/chat/ChattingRoom';
 import styles from '@/containers/(personal)/service/chat/index.module.scss';
 import {
+  exitChatRoom,
   getMessages,
   getUnreadMessages,
 } from '@/containers/(personal)/service/chat/query';
@@ -29,6 +30,7 @@ const Chattings = ({ chattings }: Props) => {
     enterChatting,
     close,
     setConnected,
+    setToken,
   } = useChatStore((state) => ({
     chattingClient: state.chattingClient,
     isSelected: state.isSelected,
@@ -36,12 +38,13 @@ const Chattings = ({ chattings }: Props) => {
     enterChatting: state.enterChatting,
     close: state.close,
     setConnected: state.setConnected,
+    setToken: state.setToken,
   }));
 
   const handleClickChatListItem = async (item: Chat) => {
-    // if (chat.roomId) {
-    //   await exitChatRoom(chat.roomId);
-    // }
+    if (chat.roomId) {
+      await exitChatRoom(chat.roomId);
+    }
     const unreadMesageList = await getUnreadMessages(item.roomId);
     const { messageList, paginationDto } = await getMessages(
       item.roomId,
@@ -51,8 +54,9 @@ const Chattings = ({ chattings }: Props) => {
   };
 
   useEffect(() => {
-    getTokenClientSide().then((res) => {
-      chattingClient.activate(res, setConnected);
+    getTokenClientSide().then((token) => {
+      setToken(token);
+      chattingClient.activate(token, setConnected);
     });
 
     return () => {
@@ -61,6 +65,12 @@ const Chattings = ({ chattings }: Props) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const closeChattingRoom = async () => {
+    await exitChatRoom(chat.roomId).then(() => {
+      close();
+    });
+  };
 
   return (
     <>
@@ -80,7 +90,7 @@ const Chattings = ({ chattings }: Props) => {
       {isSelected &&
         createPortal(
           <div className={styles.chattingRoom}>
-            <ChattingRoom onClose={close} />
+            <ChattingRoom onClose={closeChattingRoom} />
           </div>,
           document.getElementById('content-wrapper') as HTMLDivElement,
         )}

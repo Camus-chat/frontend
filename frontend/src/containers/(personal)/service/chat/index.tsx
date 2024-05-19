@@ -3,8 +3,11 @@ import { getChatList } from '@/containers/(personal)/service/chat/query';
 
 import styles from './index.module.scss';
 
-const Chat = async () => {
-  const chattings = await getChatList();
+const ChatPage = async () => {
+  const chattings = await getChatList().then((res) => {
+    console.log(res);
+    return res;
+  });
 
   return (
     <div className={styles.contentList}>
@@ -16,4 +19,4 @@ const Chat = async () => {
   );
 };
 
-export default Chat;
+export default ChatPage;
