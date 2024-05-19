@@ -22,7 +22,10 @@ export class CamusClient {
     });
   }
 
-  activate() {
+  activate(access: string) {
+    this.stompClient.connectHeaders = {
+      access,
+    };
     this.stompClient.activate();
   }
 

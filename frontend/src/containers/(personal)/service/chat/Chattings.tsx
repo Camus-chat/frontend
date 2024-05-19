@@ -12,6 +12,7 @@ import {
   getMessages,
   getUnreadMessages,
 } from '@/containers/(personal)/service/chat/query';
+import { getTokenClientSide } from '@/containers/query';
 import { useChatStore } from '@/states/chat';
 
 import Random from '@/components/ProfileImage/Random';
@@ -43,7 +44,9 @@ const Chattings = ({ chattings }: Props) => {
   };
 
   useEffect(() => {
-    chattingClient.activate();
+    getTokenClientSide().then((res) => {
+      chattingClient.activate(res);
+    });
 
     return () => {
       chattingClient.deactivate();
