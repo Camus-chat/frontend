@@ -10,7 +10,7 @@ import Member from '@/components/ProfileImage/Member';
 
 const PersonalProfile = () => {
   const {
-    id,
+    username,
     password,
     profileImg,
     nickname,
@@ -22,7 +22,7 @@ const PersonalProfile = () => {
     setNickname: state.setNickname,
     profileImg: state.profileImg,
     nickname: state.nickname,
-    id: state.id,
+    username: state.username,
     password: state.password,
     clickNext: state.nextIndex,
   }));
@@ -39,25 +39,31 @@ const PersonalProfile = () => {
       const reader = new FileReader();
       reader.onload = () => {
         setImageSrc(reader.result as string);
+        setProfileImg(file);
       };
       reader.readAsDataURL(file);
     }
   };
 
   const handleClickNext = async () => {
-    if (nicknameRef.current && profileImgRef.current) {
-      const newFile = profileImgRef.current.files?.[0] ?? null;
-      if (newFile) {
-        setProfileImg(newFile);
-        setNickname(nicknameRef.current.value);
-      }
+    if (nicknameRef.current?.value && profileImgRef.current?.files) {
+      setNickname(nicknameRef.current.value as string);
+      setProfileImg(profileImgRef.current.files[0]);
+    }
 
-      const response = await requestPersonalSignUp({
-        id,
-        password,
-        profileImg,
-        nickname,
-      });
+    if (
+      nicknameRef.current?.value !== null &&
+      profileImgRef.current?.files?.[0] !== null
+    ) {
+      console.log('hiu');
+
+      const formData = new FormData();
+      formData.append('username', username);
+      formData.append('password', password);
+      formData.append('profileImage', profileImg);
+      formData.append('nickname', nicknameRef.current?.value as string);
+
+      const response = await requestPersonalSignUp(formData);
 
       if (response) {
         clickNext();

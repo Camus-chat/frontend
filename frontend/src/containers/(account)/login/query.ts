@@ -1,18 +1,17 @@
 import { query } from '@/containers/query';
-
-interface ResponseToken {
-  accessToken: string;
-  refreshToken: string;
-}
+import { getCookie, setCookie } from '@/hooks/useCookie';
 
 export const requestLogin = async (isEnterprise: boolean, account: Account) => {
   const apiUrl = isEnterprise ? '/member/b2b/login' : '/member/b2c/login';
   return query.clientSide
-    .post<ResponseToken, Account>(apiUrl, account)
+    .post<string, Account>(apiUrl, account)
     .then((res) => {
-      // TODO: refresh-token 에 대한 이야기 나눠볼 것. 김세진과
-      localStorage.setItem('accessToken', res.accessToken);
-      return true;
+      // localStorage.setItem('accessToken', res.accessToken);
+      // setCookie('refreshToken', res.refreshToken);
+      console.log(res);
+      // console.log(res.accessToken);
+      // console.log(res.refreshToken);
+      return !!res;
     })
     .catch((err) => {
       console.log(err);

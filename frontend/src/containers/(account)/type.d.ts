@@ -1,5 +1,5 @@
 interface Account {
-  id: string;
+  username: string;
   password: string;
 }
 
@@ -11,4 +11,9 @@ interface EnterpriseAccount extends Account {
 interface PersonalAccount extends Account {
   nickname: string;
   profileImg: File;
+}
+
+interface Token {
+  accessToken: string;
+  refreshToken: string;
 }

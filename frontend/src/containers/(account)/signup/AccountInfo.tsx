@@ -12,55 +12,62 @@ const AccountInfo = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
   const checkPasswordRef = useRef<HTMLInputElement>(null);
 
-  const { id, setId, setPassword, clickPrev, clickNext } = useAccountStore(
-    (state) => ({
-      id: state.id,
-      setId: state.setId,
+  const { username, setUsername, setPassword, clickPrev, clickNext } =
+    useAccountStore((state) => ({
+      username: state.username,
+      setUsername: state.setUsername,
       setPassword: state.setPassword,
       clickPrev: state.prevIndex,
       clickNext: state.nextIndex,
-    }),
-  );
+    }));
 
   const [isExistingId, setIsExistingId] = useState<boolean>(false);
   const [isInvalidId, setIsInvalidId] = useState<boolean>(false);
-  const [isValid, setIsValid] = useState<boolean>(false);
   const [isInvalidPwd, setIsInvalidPwd] = useState<boolean>(false);
-  const [isCheckedPwd, setIsCheckedPwd] = useState<boolean>(false);
-  const idMessage = isExistingId
-    ? '중복된 id 입니다.'
-    : '글자수를 확인해주세요.';
+  const [isCheckedPwd, setIsCheckedPwd] = useState<boolean>(true);
+  const idMessage = isInvalidId
+    ? '글자수를 확인해주세요.'
+    : '중복된 id 입니다.';
 
-  const checkIsValid = async () => {
-    setIsExistingId(await checkId(id));
+  const handleClickNext = async () => {
+    const isTrue = await checkId(username);
+    setIsExistingId(!isTrue);
+
+    let isValid = true;
 
     if (
       (idRef.current?.value.length as number) < 5 ||
       (idRef.current?.value.length as number) > 10
     ) {
       setIsInvalidId(true);
-      setIsValid(false);
+      isValid = false;
+    } else {
+      setIsInvalidId(false);
     }
 
     if ((passwordRef.current?.value.length as number) < 8) {
       setIsInvalidPwd(true);
-      setIsValid(false);
+
+      isValid = false;
+    } else {
+      setIsInvalidPwd(false);
     }
 
     if (checkPasswordRef.current?.value !== passwordRef.current?.value) {
+      setIsCheckedPwd(false);
+      isValid = false;
+    } else {
       setIsCheckedPwd(true);
-      setIsValid(false);
     }
-  };
 
-  const handleClickNext = async () => {
-    setIsValid(true);
-    await checkIsValid();
-    if (isValid) {
-      setId(idRef.current?.value ?? '');
+    if (!isExistingId && isValid) {
+      setUsername(idRef.current?.value ?? '');
       setPassword(passwordRef.current?.value ?? '');
       clickNext();
     }
+
+    console.log(idRef.current?.value);
+    console.log(passwordRef.current?.value);
   };
 
   return (
@@ -86,7 +93,7 @@ const AccountInfo = () => {
         ref={checkPasswordRef}
         type='password'
         placeholder='비밀번호를 다시 입력해 주세요'
-        invalid={isCheckedPwd}
+        invalid={!isCheckedPwd}
         message='비밀번호가 일치하지 않습니다'
       />
       <ButtonBox

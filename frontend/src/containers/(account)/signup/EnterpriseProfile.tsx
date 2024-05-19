@@ -19,7 +19,7 @@ const EnterpriseProfile = () => {
     setCompanyEmail,
     clickNext,
   } = useAccountStore((state) => ({
-    id: state.id,
+    id: state.username,
     password: state.password,
     companyName: state.companyName,
     companyEmail: state.companyEmail,
@@ -52,15 +52,21 @@ const EnterpriseProfile = () => {
   const handleClick = async () => {
     checkIsEmpty();
 
-    if (companyRef.current && companyEmailRef.current) {
+    if (companyRef.current?.value && companyEmailRef.current?.value) {
       setCompanyName(companyRef.current.value);
       setCompanyEmail(companyEmailRef.current.value);
 
+      // console.log(companyRef.current.value);
+      // console.log(companyEmailRef.current.value);
+      //
+      // console.log(companyName);
+      // console.log(companyEmail);
+
       const response = await requestEnterpriseSignUp({
-        id,
+        username: id,
         password,
-        companyName,
-        companyEmail,
+        companyName: companyRef.current.value,
+        companyEmail: companyEmailRef.current.value,
       });
 
       if (response) clickNext();
