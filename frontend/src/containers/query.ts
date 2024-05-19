@@ -68,7 +68,9 @@ const serverSideFetch: Fetch = async <ResponseType>({
   });
 
   const token = await getTokenServerSide();
-  headers.append('access', token);
+  if (token) {
+    headers.append('access', token);
+  }
 
   let config: RequestInit = {
     method,

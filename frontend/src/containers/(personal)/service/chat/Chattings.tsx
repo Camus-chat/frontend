@@ -22,14 +22,21 @@ interface Props {
 }
 
 const Chattings = ({ chattings }: Props) => {
-  const { chattingClient, isSelected, chat, enterChatting, close } =
-    useChatStore((state) => ({
-      chattingClient: state.chattingClient,
-      isSelected: state.isSelected,
-      chat: state.chat,
-      enterChatting: state.enterChatting,
-      close: state.close,
-    }));
+  const {
+    chattingClient,
+    isSelected,
+    chat,
+    enterChatting,
+    close,
+    setConnected,
+  } = useChatStore((state) => ({
+    chattingClient: state.chattingClient,
+    isSelected: state.isSelected,
+    chat: state.chat,
+    enterChatting: state.enterChatting,
+    close: state.close,
+    setConnected: state.setConnected,
+  }));
 
   const handleClickChatListItem = async (item: Chat) => {
     // if (chat.roomId) {
@@ -45,7 +52,7 @@ const Chattings = ({ chattings }: Props) => {
 
   useEffect(() => {
     getTokenClientSide().then((res) => {
-      chattingClient.activate(res);
+      chattingClient.activate(res, setConnected);
     });
 
     return () => {
@@ -73,7 +80,7 @@ const Chattings = ({ chattings }: Props) => {
       {isSelected &&
         createPortal(
           <div className={styles.chattingRoom}>
-            <ChattingRoom chat={chat} onClose={close} />
+            <ChattingRoom onClose={close} />
           </div>,
           document.getElementById('content-wrapper') as HTMLDivElement,
         )}
