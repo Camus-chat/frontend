@@ -15,7 +15,7 @@ export const getChannels = async () => {
 };
 
 export const createChannel = async (request: ChannelCreate) => {
-  await query.clientSide
+  return query.clientSide
     .post<Channel, ChannelCreate>('/channel/create', request)
     .then((res) => {
       console.log(res);

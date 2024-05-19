@@ -9,7 +9,11 @@ interface FetchParams {
 
 type Fetch = <ResponseType>(params: FetchParams) => Promise<ResponseType>;
 
-export const getTokenClientSide = async () => {
+export const getTokenClientSide = async (endpoint?: string) => {
+  if (endpoint?.startsWith('/member')) {
+    return '';
+  }
+
   return fetch(`/api/reissue`, {
     method: 'POST',
     headers: {
@@ -32,7 +36,7 @@ const clientSideFetch: Fetch = async <ResponseType>({
     'Content-Type': 'application/json',
   });
 
-  const token = await getTokenClientSide();
+  const token = await getTokenClientSide(endpoint);
   if (token) {
     headers.append('access', token);
   }

@@ -18,8 +18,9 @@ import InfoTextBox from '@/components/InfoTextBox';
 import ToggleButton from '@/components/ToggleButton';
 
 const ChannelCreate = () => {
-  const { close } = useChannelStore((state) => ({
+  const { close, addNewChannel } = useChannelStore((state) => ({
     close: state.close,
+    addNewChannel: state.addNewChannel,
   }));
   const [type, setType] = useState<ChannelType>('private');
   const [filterLevel, setFilterLevel] = useState<FilterLevel | 0>(0);
@@ -31,15 +32,15 @@ const ChannelCreate = () => {
       return;
     }
     if (!title.current.value) {
-      // TODO: Show error message
+      alert('채널명을 입력해주세요.');
       return;
     }
     if (!content.current.value) {
-      // TODO: Show error message
+      alert('소개글을 입력해주세요.');
       return;
     }
     if (!filterLevel) {
-      // TODO: Show error message
+      alert('필터링 강도를 선택해주세요.');
       return;
     }
     createChannel({
@@ -47,6 +48,8 @@ const ChannelCreate = () => {
       title: title.current.value,
       content: content.current.value,
       filterLevel,
+    }).then((res) => {
+      addNewChannel(res);
     });
   };
 

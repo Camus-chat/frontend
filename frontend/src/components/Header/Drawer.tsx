@@ -8,13 +8,15 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import styles from '@/components/Header/index.module.scss';
+import LoginMemberInfo from '@/components/Header/LoginMemberInfo';
 
 interface Props {
   navItems: Navigation[];
-  signedIn?: boolean;
+  signedIn: boolean;
+  loginMemberInfo: MemberInfo;
 }
 
-const Drawer = ({ navItems, signedIn }: Props) => {
+const Drawer = ({ navItems, signedIn, loginMemberInfo }: Props) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -44,19 +46,24 @@ const Drawer = ({ navItems, signedIn }: Props) => {
               </button>
             </div>
             <div className={styles.loginBox}>
-              <Link href='/'>
-                로그인해주세요
-                <ExpandMoreIcon />
-              </Link>
+              {!signedIn && (
+                <Link href='/login'>
+                  로그인해주세요
+                  <ExpandMoreIcon />
+                </Link>
+              )}
+              <LoginMemberInfo signedIn={signedIn} info={loginMemberInfo} />
             </div>
             {navItems.map((item) => (
               <Link key={item.key} href={item.path} className={styles.nav}>
                 {item.name}
               </Link>
             ))}
-            <Link href='/' className={styles.nav}>
-              회원가입
-            </Link>
+            {!signedIn && (
+              <Link href='/signup' className={styles.nav}>
+                회원가입
+              </Link>
+            )}
           </div>
         </div>
       )}

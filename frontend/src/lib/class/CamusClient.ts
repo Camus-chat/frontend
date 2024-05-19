@@ -22,7 +22,10 @@ export class CamusClient {
     });
   }
 
-  activate() {
+  activate(access: string) {
+    this.stompClient.connectHeaders = {
+      access,
+    };
     this.stompClient.activate();
   }
 
@@ -30,7 +33,7 @@ export class CamusClient {
     this.stompClient.deactivate();
   }
 
-  sendMessage(roomId: string, message: string) {
+  async sendMessage(roomId: string, message: string) {
     this.stompClient.publish({
       destination: '/pub/message_send',
       body: JSON.stringify({

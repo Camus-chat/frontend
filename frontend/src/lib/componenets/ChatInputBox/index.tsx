@@ -15,7 +15,9 @@ const ChatInputBox = ({ chattingClient, roomId }: Props) => {
 
   const sendMessage = () => {
     if (input.current?.value) {
-      chattingClient.sendMessage(roomId, input.current.value);
+      chattingClient.sendMessage(roomId, input.current.value).then(() => {
+        input.current!.value = '';
+      });
     }
   };
 

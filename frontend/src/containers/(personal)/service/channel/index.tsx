@@ -1,6 +1,7 @@
 import type { Channel } from './type';
 import ChannelActionPopup from '@/containers/(personal)/service/channel/ChannelActionPopup';
 import ChannelCreateButton from '@/containers/(personal)/service/channel/ChannelCreateButton';
+import NewChannels from '@/containers/(personal)/service/channel/NewChannels';
 import { getChannels } from '@/containers/(personal)/service/channel/query';
 
 import ChannelListItem from './ChannelListItem';
@@ -19,6 +20,7 @@ const ChannelPage = async () => {
             {channels.map((channel) => (
               <ChannelListItem channel={channel} key={channel.link} />
             ))}
+            <NewChannels />
           </ul>
         </div>
       </div>
