@@ -1,44 +1,30 @@
-// import { GetServerSideProps } from 'next';
-
-import {Entry} from '@/containers/guest/[link]/Entry';
+import { Entry } from '@/containers/guest/[link]/Entry';
 import styles from '@/containers/guest/[link]/index.module.scss';
-import {requestChannelInfo, requestGuestProfile,} from '@/containers/guest/[link]/query';
+import {
+  requestChannelInfo,
+  requestGuestProfile,
+} from '@/containers/guest/[link]/query';
 
 import Logo from '@/components/Header/Logo';
 
-// interface Props {
-//   guest: GuestProfile;
-//   channel: ChatRoomInfo;
-//   link: string;
-// }
+interface Props {
+  params: {
+    link: string;
+  };
+}
 
-const Guest = async () => {
-  const link = '';
+const Guest = async ({ params }: Props) => {
   const guest = await requestGuestProfile();
-  const channel = await requestChannelInfo(link as string);
+  const channel = await requestChannelInfo(params.link);
 
   return (
     <>
       <Logo />
       <main className={styles.main}>
-        <Entry guest={guest} channel={channel} link={link as string} />
+        <Entry guest={guest} channel={channel} link={params.link} />
       </main>
     </>
   );
 };
-
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   const link = context.params || '';
-//   const guest = await requestGuestProfile();
-//   const channel = await requestChannelInfo(link as string);
-//
-//   return {
-//     props: {
-//       guest,
-//       channel,
-//       link: link as string,
-//     },
-//   };
-// };
 
 export default Guest;
