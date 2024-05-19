@@ -3,8 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-import styles from '@/containers/(guest)/[link]/index.module.scss';
-import { requestEnterRoom } from '@/containers/(guest)/[link]/query';
+import styles from '@/containers/guest/[link]/index.module.scss';
+import { requestEnterRoom } from '@/containers/guest/[link]/query';
 
 import Button from '@/components/Button';
 import Member from '@/components/ProfileImage/Member';
