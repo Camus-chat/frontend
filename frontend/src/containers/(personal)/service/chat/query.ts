@@ -11,12 +11,9 @@ export const getChatList = async () => {
 };
 
 export const getUnreadMessages = async (roomId: string) => {
-  return query.clientSide.post<Message[], MessageListRequest>(
+  return query.clientSide.post<Message[], { roomId: string }>(
     `/chat/data/unread`,
-    {
-      roomId,
-      nextMessageTimeStamp: '0-0',
-    },
+    { roomId },
   );
 };
 
@@ -31,8 +28,7 @@ export const getMessages = async (
 };
 
 export const exitChatRoom = async (roomId: string) => {
-  return query.clientSide.post<string, MessageListRequest>('/chat/room/exit', {
+  return query.clientSide.post<string, { roomId: string }>('/chat/room/exit', {
     roomId,
-    nextMessageTimeStamp: '0-0',
   });
 };
