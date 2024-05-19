@@ -21,7 +21,7 @@ const Biz = () => {
               <Link href='/docs'>자세히 알아보기</Link>
             </div>
           </div>
-          <div className={styles.imageBox}>이미지가 들어가야 합니다.</div>
+          <div className={styles.imageBox} />
         </div>
         <div className={styles.secondWrapper}>
           <div className={styles.content}>

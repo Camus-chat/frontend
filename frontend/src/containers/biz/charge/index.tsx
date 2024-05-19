@@ -12,10 +12,13 @@ const Charge = () => {
       <div className={styles.container}>
         <div className={styles.descriptionWrapper}>
           <InfoTextBox
-            size='medium'
+            size='large'
             title={DESCRIPTIONS.title}
             content={DESCRIPTIONS.content}
           />
+          <div className={styles.additionals}>
+            CAMUS는 자유로운 서비스 중단 및 재시작을 지원합니다.
+          </div>
         </div>
         <div className={styles.cardWrapper}>
           {INFO_CARD.map((card) => (
@@ -24,6 +27,7 @@ const Charge = () => {
               title={card.title}
               content={card.content}
               color={card.color}
+              imgSrc={card.imgSrc}
             />
           ))}
         </div>
