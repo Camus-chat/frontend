@@ -1,3 +1,5 @@
+import { getTokenServerSide } from '@/containers/utils';
+
 interface FetchParams {
   endpoint: string;
   method: 'GET' | 'POST' | 'PATCH' | 'DELETE';
@@ -6,6 +8,19 @@ interface FetchParams {
 }
 
 type Fetch = <ResponseType>(params: FetchParams) => Promise<ResponseType>;
+
+const getToeknClientSide = async () => {
+  return fetch(`/api/reissue`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+  }).then((res) => {
+    const accessToken = res.headers.get('access');
+    return accessToken || '';
+  });
+};
 
 const clientSideFetch: Fetch = async <ResponseType>({
   endpoint,
@@ -17,10 +32,8 @@ const clientSideFetch: Fetch = async <ResponseType>({
     'Content-Type': 'application/json',
   });
 
-  const token = localStorage.getItem('token');
-  if (token) {
-    headers.append('Authorization', token);
-  }
+  const token = await getToeknClientSide();
+  headers.append('access', token);
 
   let config: RequestInit = {
     method,
@@ -48,11 +61,8 @@ const serverSideFetch: Fetch = async <ResponseType>({
     'Content-Type': 'application/json',
   });
 
-  // TODO: server side localStorage
-  // const token = localStorage.getItem('token');
-  // if (token) {
-  //   headers.append('Authorization', token);
-  // }
+  const token = await getTokenServerSide();
+  headers.append('access', token);
 
   let config: RequestInit = {
     method,
