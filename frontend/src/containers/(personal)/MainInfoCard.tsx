@@ -10,7 +10,7 @@ const MainInfoCard = () => {
       <div className={styles.imageBox}>
         <div className={styles.chatBubble}>
           <Image
-            src='/images/chatBubbles.svg'
+            src='/images/chatbubbles.svg'
             alt='이미지'
             width={1460}
             height={480}
