@@ -3,8 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-import styles from '@/containers/(guest)/[link]/index.module.scss';
-import { requestEnterRoom } from '@/containers/(guest)/[link]/query';
+import styles from '@/containers/guest/[link]/index.module.scss';
+import { requestEnterRoom } from '@/containers/guest/[link]/query';
 
 import Button from '@/components/Button';
 import Member from '@/components/ProfileImage/Member';
@@ -14,16 +14,16 @@ import type { ProfileColor } from '@/components/ProfileImage/type';
 interface Props {
   guest: GuestProfile;
   channel: ChatRoomInfo;
+  link: string;
 }
 
-export const Entry = ({ guest, channel }: Props) => {
+export const Entry = ({ guest, channel, link }: Props) => {
   const [imgSrc, setImgSrc] = useState<string>('');
-  const link = ''; // TODO: 링크 관리 좀 더 알아볼 것.
   const router = useRouter();
 
   const handleClick = async () => {
     const roomId = await requestEnterRoom(link);
-    router.push(`/link/chat/${roomId}`);
+    router.push(`/${link}/chat/${roomId}`);
   };
 
   const reader = new FileReader();

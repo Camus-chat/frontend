@@ -10,12 +10,15 @@ interface channelState {
   isOpen: boolean;
   action: boolean;
   channel: Channel;
+  newChannels: Channel[];
 }
 
 interface channelAction {
   openCreate: () => void;
   openUpdate: (channel: Channel) => void;
   close: () => void;
+  addNewChannel: (channel: Channel) => void;
+  resetNewChannels: () => void;
 }
 
 export const useChannelStore = create<channelState & channelAction>()(
@@ -23,6 +26,7 @@ export const useChannelStore = create<channelState & channelAction>()(
     isOpen: false,
     action: CREATE,
     channel: {} as Channel,
+    newChannels: [],
 
     openCreate: () =>
       set((prev) => ({
@@ -41,6 +45,16 @@ export const useChannelStore = create<channelState & channelAction>()(
       set((prev) => ({
         ...prev,
         isOpen: false,
+      })),
+    addNewChannel: (channel: Channel) =>
+      set((prev) => ({
+        ...prev,
+        newChannels: [...prev.newChannels, channel],
+      })),
+    resetNewChannels: () =>
+      set((prev) => ({
+        ...prev,
+        newChannels: [],
       })),
   })),
 );

@@ -9,15 +9,22 @@ import { useAccountStore } from '@/states/account';
 import Button from '@/components/Button';
 
 const CompleteSignup = () => {
-  const { isEnterprise, id, password } = useAccountStore((state) => ({
+  const { isEnterprise, username, password } = useAccountStore((state) => ({
     isEnterprise: state.isEnterprise,
-    id: state.id,
+    username: state.username,
     password: state.password,
   }));
   const router = useRouter();
 
   const handleClick = async () => {
-    const response = await requestLogin(isEnterprise, { id, password });
+    console.log(isEnterprise);
+    console.log(username);
+    console.log(password);
+
+    const response = await requestLogin(isEnterprise, {
+      username,
+      password,
+    });
 
     if (response) {
       router.push(isEnterprise ? 'biz/' : '/');

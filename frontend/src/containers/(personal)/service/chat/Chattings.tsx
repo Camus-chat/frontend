@@ -12,6 +12,7 @@ import {
   getMessages,
   getUnreadMessages,
 } from '@/containers/(personal)/service/chat/query';
+import { getTokenClientSide } from '@/containers/query';
 import { useChatStore } from '@/states/chat';
 
 import Random from '@/components/ProfileImage/Random';
@@ -21,24 +22,36 @@ interface Props {
 }
 
 const Chattings = ({ chattings }: Props) => {
-  const { isSelected, chat, enterChatting, close } = useChatStore((state) => ({
-    isSelected: state.isSelected,
-    chat: state.chat,
-    enterChatting: state.enterChatting,
-    close: state.close,
-  }));
+  const { chattingClient, isSelected, chat, enterChatting, close } =
+    useChatStore((state) => ({
+      chattingClient: state.chattingClient,
+      isSelected: state.isSelected,
+      chat: state.chat,
+      enterChatting: state.enterChatting,
+      close: state.close,
+    }));
 
   const handleClickChatListItem = async (item: Chat) => {
+    // if (chat.roomId) {
+    //   await exitChatRoom(chat.roomId);
+    // }
     const unreadMesageList = await getUnreadMessages(item.roomId);
     const { messageList, paginationDto } = await getMessages(
       item.roomId,
       '0-0',
     );
-    enterChatting(item, [...unreadMesageList, ...messageList]);
+    enterChatting(item, messageList, unreadMesageList);
   };
 
   useEffect(() => {
-    return close;
+    getTokenClientSide().then((res) => {
+      chattingClient.activate(res);
+    });
+
+    return () => {
+      chattingClient.deactivate();
+      close();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

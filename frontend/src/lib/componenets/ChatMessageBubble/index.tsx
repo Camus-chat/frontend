@@ -8,7 +8,7 @@ interface Props {
   isSent?: boolean;
 }
 
-const ChatBubble = ({ children, message, isSent }: Props) => {
+const ChatMessageBubble = ({ children, message, isSent }: Props) => {
   // TODO: 내가 보낸 메시지인지 받은 메시지인지 구별하는 로직 필요
   const wrapperStyle = isSent ? styles.sent : styles.received;
 
@@ -22,10 +22,10 @@ const ChatBubble = ({ children, message, isSent }: Props) => {
           {!isSent && <div className={styles.nickname}>민돌멩이</div>}
           <div className={styles.text}>{message.content}</div>
         </div>
-        <div className={styles.time}>12:34</div>
+        <div className={styles.time}>{message.createdDate}</div>
       </div>
     </div>
   );
 };
 
-export default ChatBubble;
+export default ChatMessageBubble;
