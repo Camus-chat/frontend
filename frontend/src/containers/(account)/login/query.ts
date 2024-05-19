@@ -1,5 +1,4 @@
 import { query } from '@/containers/query';
-import { getCookie, setCookie } from '@/hooks/useCookie';
 
 export const requestLogin = async (isEnterprise: boolean, account: Account) => {
   const apiUrl = isEnterprise ? '/member/b2b/login' : '/member/b2c/login';
