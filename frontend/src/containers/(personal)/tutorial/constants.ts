@@ -5,9 +5,35 @@ export const FILTER_OPTION = [
 ];
 
 export const FILTER_DESCRIPTION = {
-  title: '필터링 강도에 대한 어쩌고 저쩌고',
-  content: '필터링 강도를 설정하여 안전한 대화를 어쩌고 저쩌고',
+  title: '감정 필터링 강도',
+  content:
+    '필터링 강도를 골라주세요.\n 안전한 커뮤니티 분위기를 조성할 수 있습니다.',
 };
+
+export const FILTER_MESSAGES = [
+  {
+    targetId: '',
+    noticeType: '',
+    senderId: '',
+    filteredLevel: 100,
+    type: 'CommonMessage' as MessageType,
+    userId: '',
+    content: '필터링 강도를 설정하고',
+    messageId: 0,
+    createdDate: '',
+  },
+  {
+    targetId: '',
+    noticeType: '',
+    senderId: '',
+    filteredLevel: 100,
+    type: 'CommonMessage' as MessageType,
+    userId: '',
+    content: '여기에 채팅을 보내보세요!',
+    messageId: 1,
+    createdDate: '',
+  },
+];
 
 export const MENU = [
   { key: 'channel', path: 'channel', name: '채널 생성' },

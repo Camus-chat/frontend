@@ -10,7 +10,7 @@ const InfoTextBox = ({ size, title, content }: Props) => {
   return (
     <div className={styles[size]}>
       <div className={styles.title}>{title}</div>
-      <pre className={styles.content}>{content}</pre>
+      <div className={styles.content}>{content}</div>
     </div>
   );
 };

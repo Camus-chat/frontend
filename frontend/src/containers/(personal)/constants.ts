@@ -3,9 +3,13 @@ import Chatting from '../../../public/animations/chatting.json';
 import Desktop from '../../../public/animations/desktop.json';
 import Manage from '../../../public/animations/manage.json';
 
-export const TITLE = 'AI 안전 채팅 필터링';
+export const TITLE_CONTENT = {
+  title: 'AI 안전 채팅 필터링',
+  description: '설정한 강도에 따른 AI가 대화 분석 채팅 필터링기능 탑재!',
+};
+
 export const DESCRIPTION =
-  '설정한 강도에 따른 AI가 대화 분석 채팅 필터링기능 탑재!';
+  '사용자의 니즈에 맞춘 필터링 서비스를 통해 커뮤니티 분위기를 조율하세요';
 
 export const INFO_CARD = [
   {

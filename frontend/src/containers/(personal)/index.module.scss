@@ -36,22 +36,38 @@
 
 .mainCardWrapper {
   @include flex-column-center;
-  background-color: $blue-100;
+  background-color: $blue-50;
   padding: 12px 120px;
   position: sticky;
   top: 0;
 
-  .content {
-    padding: 200px 0;
+  .imageBox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .chatBubble {
+    background-color: $blue-50;
+    :first-child {
+      background-color: transparent;
+    }
+  }
+
+  .titleContent {
+    @include flex-column-center;
+    position: absolute;
+    top: 40%;
+    left: 20%;
     background-color: transparent;
 
     .title {
-      @include content-style(transparent, 52px, $bold);
+      @include content-style(transparent, 60px, $bold);
+      padding-bottom: 16px;
     }
 
     .description {
-      @include content-style(transparent, 36px, $light);
-      padding-bottom: 16px;
+      @include content-style(transparent, 40px, $regular);
     }
   }
 
@@ -109,7 +125,6 @@
         }
       }
     }
-
 
     &.white {
       background-color: $white;
