@@ -1,12 +1,12 @@
-// import { Entry } from '@/containers/guest/[link]/Entry';
+import { Entry } from '@/containers/guest/[link]/Entry';
 import styles from '@/containers/guest/[link]/index.module.scss';
+import {
+  requestChannelInfo,
+  requestGuestProfile,
+} from '@/containers/guest/[link]/query';
 
-// import {
-//   requestChannelInfo,
-//   requestGuestProfile,
-// } from '@/containers/guest/[link]/query';
-import defaultImage from '../../../../public/images/defaultProfileImg.svg';
-import Logo from '@/components/Header/Logo';
+import Member from '@/components/ProfileImage/Member';
+import Random from '@/components/ProfileImage/Random';
 
 interface Props {
   params: {
@@ -15,21 +15,26 @@ interface Props {
 }
 
 const Guest = async ({ params }: Props) => {
-  // const guest = await requestGuestProfile();
-  // const channel = await requestChannelInfo(params.link);
-  const channel = {
-    userProfileImg: defaultImage,
-    userNickname: '사장',
-    channelInfo: '어쩙치일',
-  };
+  const guest = await requestGuestProfile();
+  const channel = await requestChannelInfo(params.link);
 
   return (
-    <>
-      <Logo />
-      <main className={styles.main}>
-        {/* <Entry guest={guest} channel={channel} link={params.link} /> */}
-      </main>
-    </>
+    <div className={styles.container}>
+      <div className={styles.channelInfoWrapper}>
+        <Member imgSrc={channel.ownerProfileImage} size='large' />
+        <div className={styles.nickname}>
+          {channel.ownerNickname}님과 대화를 시작합니다
+        </div>
+        <div className={styles.description}>{channel.channelContent}</div>
+      </div>
+      <div className={styles.guestInfoWrapper}>
+        <div className={styles.guestInfo}>
+          <div className={styles.nickname}>{guest.nickname}</div>
+          <Random size='medium' color={guest.profileImageColor} />
+        </div>
+        <Entry link={params.link} token={guest.accessToken} />
+      </div>
+    </div>
   );
 };
 

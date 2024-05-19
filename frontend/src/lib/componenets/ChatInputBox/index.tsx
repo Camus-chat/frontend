@@ -6,18 +6,23 @@ import styles from './index.module.css';
 import sendIcon from './send.svg';
 
 interface Props {
-  chattingClient: CamusClient;
+  chattingClient?: CamusClient;
   roomId: string;
+  onClick?: () => void;
 }
 
-const ChatInputBox = ({ chattingClient, roomId }: Props) => {
+const ChatInputBox = ({ chattingClient, roomId, onClick }: Props) => {
   const input = useRef<HTMLInputElement>(null);
 
   const sendMessage = () => {
-    if (input.current?.value) {
+    if (input.current?.value && chattingClient) {
       chattingClient.sendMessage(roomId, input.current.value).then(() => {
         input.current!.value = '';
       });
+    }
+
+    if (!chattingClient && onClick) {
+      onClick();
     }
   };
 

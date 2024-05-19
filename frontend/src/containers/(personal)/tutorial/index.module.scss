@@ -13,23 +13,48 @@
 
 @mixin blue-box {
   @include boxShadow;
-  min-width: 480px;
+  min-width: 600px;
   margin: 0 12px;
   background-color: $blue-100;
   border-radius: 20px;
 }
 
+@mixin font-style($font-weight, $font-size) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  color: $black;
+}
+
 .tutorialWrapper {
-  @include grid(20px);
+  @include flex-row;
+  justify-content: center;
   width: 100%;
   padding: 60px;
 }
 
 .textBox {
   @include flex-column;
-  min-width: 480px;
+  align-items: center;
+  min-width: 600px;
   max-height: 600px;
   padding: 40px;
+  margin-left: 20px;
+
+  .title {
+    @include font-style($semi-bold, 56px);
+    margin-bottom: 24px;
+  }
+
+  .description {
+    @include font-style($light, 28px);
+    background-color: transparent;
+    text-align: center;
+  }
+
+  .dropdown {
+    padding-top: 60px;
+    width: 100%;
+  }
 }
 
 .blueBox {

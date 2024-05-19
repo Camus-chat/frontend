@@ -1,18 +1,37 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import ChattingRoom from '@/containers/(personal)/service/chat/ChattingRoom';
 import { useChatStore } from '@/states/chat';
 
-const Index = () => {
-  const { chat, close } = useChatStore((state) => ({
-    chat: state.chat,
-    close: state.close,
-  }));
+import styles from './index.module.scss';
+
+const GuestChat = () => {
+  const { chattingClient, setConnected, setDisconnectd } = useChatStore(
+    (state) => ({
+      chattingClient: state.chattingClient,
+      setConnected: state.setConnected,
+      setDisconnectd: state.setDisconnected,
+    }),
+  );
+
+  useEffect(() => {
+    chattingClient.activate('', setConnected);
+
+    return () => {
+      chattingClient.deactivate();
+      setDisconnectd();
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div>
-      <ChattingRoom chat={chat} onClose={close} />
+    <div className={styles.container}>
+      <ChattingRoom />
     </div>
   );
 };
 
-export default Index;
+export default GuestChat;

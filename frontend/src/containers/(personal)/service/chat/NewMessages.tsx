@@ -9,8 +9,9 @@ interface Props {
 }
 
 const NewMessages = ({ roomId, scrollToBottom }: Props) => {
-  const { chattingClient } = useChatStore((state) => ({
+  const { chattingClient, isConnected } = useChatStore((state) => ({
     chattingClient: state.chattingClient,
+    isConnected: state.isConnected,
   }));
 
   const [newMessages, setNewMessages] = useState<Message[]>([]);
@@ -27,12 +28,14 @@ const NewMessages = ({ roomId, scrollToBottom }: Props) => {
 
   useEffect(() => {
     scrollToBottom();
-    chattingClient.subscribeRoom(roomId).then(() => {
-      chattingClient.receiveMessage(roomId, callback);
-    });
+    if (isConnected) {
+      chattingClient.subscribeRoom(roomId).then(() => {
+        chattingClient.receiveMessage(roomId, callback);
+      });
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isConnected]);
 
   return newMessages.map((message) => (
     <ChatMessageItem message={message} key={message.messageId} />

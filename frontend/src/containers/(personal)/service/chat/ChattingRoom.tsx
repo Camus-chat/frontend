@@ -1,4 +1,5 @@
-import type { Chat } from '@/lib/class/Chat';
+'use client';
+
 import ChatInputBox from '@/lib/componenets/ChatInputBox';
 import ChatMessageItem from '@/lib/componenets/ChatMessageItem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -10,13 +11,13 @@ import { useChatStore } from '@/states/chat';
 import styles from './index.module.scss';
 
 interface Props {
-  chat: Chat;
   onClose?: () => void;
 }
 
-const ChattingRoom = ({ chat, onClose }: Props) => {
-  const { chattingClient, messages, unreadMessages } = useChatStore(
+const ChattingRoom = ({ onClose }: Props) => {
+  const { chat, chattingClient, messages, unreadMessages } = useChatStore(
     (state) => ({
+      chat: state.chat,
       chattingClient: state.chattingClient,
       messages: state.messages,
       unreadMessages: state.unreadMessages,

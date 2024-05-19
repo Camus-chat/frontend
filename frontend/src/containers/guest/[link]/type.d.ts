@@ -1,10 +1,17 @@
-interface ChatRoomInfo {
-  userProfileImg: File;
-  userNickname: string;
-  channelInfo: string;
+interface ChannelInfo {
+  channelTitle: string;
+  channelContent: string;
+  ownerNickname: string;
+  ownerProfileImage: string;
 }
 
-interface GuestProfile {
-  profileImgColor: string;
+interface GuestAccount {
+  username: string;
+  password: string;
+}
+
+interface GuestInfo {
   nickname: string;
+  profileImageColor: ProfileColor;
+  accessToken: string;
 }

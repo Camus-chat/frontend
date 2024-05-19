@@ -71,11 +71,12 @@ const Channel = () => {
         </div>
       </div>
       <div className={styles.textBox}>
-        <InfoTextBox
-          size='large'
-          title={CHANNEL_DESCRIPTION[currentIdx].title}
-          content={CHANNEL_DESCRIPTION[currentIdx].content}
-        />
+        <div className={styles.title}>
+          {CHANNEL_DESCRIPTION[currentIdx].title}
+        </div>
+        <pre className={styles.description}>
+          {CHANNEL_DESCRIPTION[currentIdx].content}
+        </pre>
         {image && (
           <Image src={image.src} alt='detail image' width={500} height={400} />
         )}

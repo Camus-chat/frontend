@@ -1,44 +1,53 @@
+import type { Chat } from '@/lib/class/Chat';
+
 import { query } from '@/containers/query';
 
-const guestSignup = async () => {
-  return query.serverSide.get<Account>('/guest/signup').then((res) => {
-    console.log(res);
-    return res;
-  });
+export const requestChannelInfo = async (link: string) => {
+  return query.serverSide.post<ChannelInfo, string>('/channel/info', link);
 };
 
-const guestLogin = async (account: Account) => {
+export const requestGuestProfile = async (): Promise<GuestInfo> => {
   return query.serverSide
-    .post<{ role: string }, Account>('/guest/login', account)
-    .then((res) => {
-      return res.role.length > 0;
+    .get<GuestAccount>('/guest/signup')
+    .then((account) => {
+      return fetch(`${process.env.SERVER_SIDE_FETCH_URL}/guest/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(account),
+      }).then((res) => res.headers.get('access') as string);
+    })
+    .then((token) => {
+      const headers = new Headers({
+        'Content-Type': 'application/json',
+      });
+      headers.append('access', token);
+
+      return fetch(`${process.env.SERVER_SIDE_FETCH_URL}/guest/info`, {
+        method: 'GET',
+        headers,
+      }).then((res) => {
+        return res.json().then((guestInfo: GuestInfo) => {
+          guestInfo.accessToken = token;
+          return guestInfo;
+        });
+      });
     });
 };
 
-// export const requestGuestProfile = async () => {
-//   const token = LocalStorage.getItem('accessToken');
-//   if (!token) {
-//     const account = await guestSignup();
-//     if (account !== null) {
-//       await guestLogin(account);
-//     }
-//   }
-//   return query.serverSide.get<GuestProfile>('/guest/info');
-// };
+export const requestEnterRoom = async (
+  link: string,
+  token: string,
+): Promise<Chat> => {
+  const headers = new Headers({
+    'Content-Type': 'application/json',
+  });
+  headers.append('access', token);
 
-// export const requestChannelInfo = async (link: string) => {
-//   return query.serverSide
-//     .post<ChatRoomInfo, string>('/guest/channel-info', link)
-//     .then((res) => {
-//       console.log(res);
-//       return res;
-//     });
-// };
-
-export const requestEnterRoom = async (link: string) => {
-  return query.clientSide
-    .post<{ roomId: string }, string>('/room/guest/enter', link)
-    .then((res) => {
-      return res.roomId;
-    });
+  return fetch('/api/room/guest/enter', {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(link),
+  }).then((res) => res.json());
 };
