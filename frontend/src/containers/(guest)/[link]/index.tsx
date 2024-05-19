@@ -3,7 +3,7 @@
 import { Entry } from '@/containers/(guest)/[link]/Entry';
 import styles from '@/containers/(guest)/[link]/index.module.scss';
 import {
-  requestChannelInfo,
+  // requestChannelInfo,
   requestGuestProfile,
 } from '@/containers/(guest)/[link]/query';
 

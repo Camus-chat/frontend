@@ -40,7 +40,9 @@ export const requestPersonalSignUp = async (account: FormData) => {
       return response;
     }
     console.error('Error: ', response.statusText);
+    return false;
   } catch (err) {
     console.error('Fetch Error: ', err);
+    return false;
   }
 };
