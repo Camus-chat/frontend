@@ -1,10 +1,10 @@
-import { Entry } from '@/containers/guest/[link]/Entry';
+// import { Entry } from '@/containers/guest/[link]/Entry';
 import styles from '@/containers/guest/[link]/index.module.scss';
-import {
-  // requestChannelInfo,
-  requestGuestProfile,
-} from '@/containers/guest/[link]/query';
 
+// import {
+//   requestChannelInfo,
+//   requestGuestProfile,
+// } from '@/containers/guest/[link]/query';
 import defaultImage from '../../../../public/images/defaultProfileImg.svg';
 import Logo from '@/components/Header/Logo';
 
@@ -15,7 +15,7 @@ interface Props {
 }
 
 const Guest = async ({ params }: Props) => {
-  const guest = await requestGuestProfile();
+  // const guest = await requestGuestProfile();
   // const channel = await requestChannelInfo(params.link);
   const channel = {
     userProfileImg: defaultImage,
@@ -27,7 +27,7 @@ const Guest = async ({ params }: Props) => {
     <>
       <Logo />
       <main className={styles.main}>
-        <Entry guest={guest} channel={channel} link={params.link} />
+        {/* <Entry guest={guest} channel={channel} link={params.link} /> */}
       </main>
     </>
   );
