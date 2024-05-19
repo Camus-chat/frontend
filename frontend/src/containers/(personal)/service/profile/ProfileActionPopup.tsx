@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
 import { POPUP_DESCRIPTION } from '@/containers/(personal)/service/profile/constants';
 import styles from '@/containers/(personal)/service/profile/index.module.scss';
@@ -14,22 +14,25 @@ import InfoTextBox from '@/components/InfoTextBox';
 import Member from '@/components/ProfileImage/Member';
 
 interface Props {
+  memberInfo: MemberInfo;
   clickCancel: () => void;
 }
 
-const ProfileActionPopup = ({ clickCancel }: Props) => {
+const ProfileActionPopup = ({ memberInfo, clickCancel }: Props) => {
   const nicknameRef = useRef<HTMLInputElement>(null);
   const profileImgRef = useRef<HTMLInputElement>(null);
-  const { profileImg, nickname, setProfileImg, setNickname } = useAccountStore(
-    (state) => ({
-      profileImg: state.profileImg,
-      nickname: state.nickname,
-      setProfileImg: state.setProfileImg,
-      setNickname: state.setNickname,
-    }),
-  );
+  const { profileImg, setProfileImg } = useAccountStore((state) => ({
+    profileImg: state.profileImg,
+    setProfileImg: state.setProfileImg,
+  }));
 
-  const [imageSrc, setImageSrc] = useState<string>('');
+  useEffect(() => {
+    nicknameRef.current!.value = memberInfo.nickname;
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const [imageSrc, setImageSrc] = useState<string>(memberInfo.profileLink);
 
   const handleChangeImg = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -43,11 +46,11 @@ const ProfileActionPopup = ({ clickCancel }: Props) => {
   };
 
   const handleClickUpdate = async () => {
-    if (nicknameRef.current && nicknameRef.current.value !== nickname) {
-      const response = await updateNickname(nicknameRef.current?.value);
-      if (response) {
-        setNickname(nicknameRef.current?.value);
-      }
+    if (
+      nicknameRef.current &&
+      nicknameRef.current.value !== memberInfo.nickname
+    ) {
+      await updateNickname(nicknameRef.current?.value);
     }
 
     if (profileImgRef.current) {
@@ -90,7 +93,7 @@ const ProfileActionPopup = ({ clickCancel }: Props) => {
         <Input
           name='닉네임'
           type='text'
-          placeholder={nickname}
+          placeholder='닉네임을 입력해주세요'
           ref={nicknameRef}
         />
       </div>
