@@ -28,12 +28,14 @@ export const requestGuestProfile = async () => {
 };
 
 export const requestChannelInfo = async (link: string) => {
-  return query.serverSide
-    .post<ChatRoomInfo, string>('/guest/channel-info', link)
-    .then((res) => {
-      console.log(res);
-      return res;
-    });
+  return true;
+  // TODO: channel-info api 연결
+  // return query.serverSide
+  //   .post<ChatRoomInfo, string>('/guest/channel-info', link)
+  //   .then((res) => {
+  //     console.log(res);
+  //     return res;
+  //   });
 };
 
 export const requestEnterRoom = async (link: string) => {

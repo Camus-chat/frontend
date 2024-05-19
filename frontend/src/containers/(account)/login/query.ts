@@ -1,17 +1,13 @@
 import { query } from '@/containers/query';
-import { getCookie, setCookie } from '@/hooks/useCookie';
 
 export const requestLogin = async (isEnterprise: boolean, account: Account) => {
   const apiUrl = isEnterprise ? '/member/b2b/login' : '/member/b2c/login';
   return query.clientSide
-    .post<string, Account>(apiUrl, account)
+    .post<{ role: string }, Account>(apiUrl, account)
     .then((res) => {
-      // localStorage.setItem('accessToken', res.accessToken);
-      // setCookie('refreshToken', res.refreshToken);
+      const isValid = res.role.length > 0;
       console.log(res);
-      // console.log(res.accessToken);
-      // console.log(res.refreshToken);
-      return !!res;
+      return isValid;
     })
     .catch((err) => {
       console.log(err);

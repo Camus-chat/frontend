@@ -17,6 +17,10 @@ const CompleteSignup = () => {
   const router = useRouter();
 
   const handleClick = async () => {
+    console.log(isEnterprise);
+    console.log(username);
+    console.log(password);
+
     const response = await requestLogin(isEnterprise, {
       username,
       password,

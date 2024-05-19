@@ -35,6 +35,7 @@ const Login = () => {
         password: passwordRef.current ? passwordRef.current.value : '',
       });
       setIsValid(response);
+      console.log(response);
       if (isValid) {
         router.push(path);
       }

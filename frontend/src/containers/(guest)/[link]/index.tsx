@@ -7,6 +7,7 @@ import {
   requestGuestProfile,
 } from '@/containers/(guest)/[link]/query';
 
+import defaultImage from '../../../../public/images/defaultProfileImg.svg';
 import Logo from '@/components/Header/Logo';
 
 // interface Props {
@@ -18,7 +19,12 @@ import Logo from '@/components/Header/Logo';
 const Guest = async () => {
   const link = '';
   const guest = await requestGuestProfile();
-  const channel = await requestChannelInfo(link as string);
+  // const channel = await requestChannelInfo(link as string);
+  const channel = {
+    userProfileImg: defaultImage,
+    userNickname: 'string',
+    channelInfo: 'string',
+  };
 
   return (
     <>
