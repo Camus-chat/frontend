@@ -1,11 +1,8 @@
 import { Entry } from '@/containers/guest/[link]/Entry';
-import styles from '@/containers/guest/[link]/index.module.scss';
 import {
   requestChannelInfo,
   requestGuestProfile,
 } from '@/containers/guest/[link]/query';
-
-import Logo from '@/components/Header/Logo';
 
 interface Props {
   params: {
@@ -18,16 +15,7 @@ const Guest = async ({ params }: Props) => {
   const channel = await requestChannelInfo(params.link);
 
   return (
-    <>
-      <header>
-        <div className={styles.wrapper}>
-          <Logo />
-        </div>
-      </header>
-      <main className={styles.main}>
-        <Entry guest={guest} channel={channel} link={params.link} />
-      </main>
-    </>
+    <Entry guest={guest} channel={channel} link={params.link} />
   );
 };
 

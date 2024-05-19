@@ -24,7 +24,7 @@ export const Entry = ({ guest, channel, link }: Props) => {
   };
 
   return (
-    <div className={styles.container}>
+    <>
       <div className={styles.channelInfoWrapper}>
         <Member imgSrc={channel.ownerProfileImage} size='large' />
         <div className={styles.nickname}>
@@ -41,6 +41,6 @@ export const Entry = ({ guest, channel, link }: Props) => {
           참여하기
         </Button>
       </div>
-    </div>
+    </>
   );
 };
