@@ -1,8 +1,12 @@
 import { Entry } from '@/containers/guest/[link]/Entry';
+import styles from '@/containers/guest/[link]/index.module.scss';
 import {
   requestChannelInfo,
   requestGuestProfile,
 } from '@/containers/guest/[link]/query';
+
+import Member from '@/components/ProfileImage/Member';
+import Random from '@/components/ProfileImage/Random';
 
 interface Props {
   params: {
@@ -15,7 +19,22 @@ const Guest = async ({ params }: Props) => {
   const channel = await requestChannelInfo(params.link);
 
   return (
-    <Entry guest={guest} channel={channel} link={params.link} />
+    <>
+      <div className={styles.channelInfoWrapper}>
+        <Member imgSrc={channel.ownerProfileImage} size='large' />
+        <div className={styles.nickname}>
+          {channel.ownerNickname}님과 대화를 시작합니다
+        </div>
+        <div className={styles.description}>{channel.channelContent}</div>
+      </div>
+      <div className={styles.guestInfoWrapper}>
+        <div className={styles.guestInfo}>
+          <div className={styles.nickname}>{guest.nickname}</div>
+          <Random size='medium' color={guest.profileImageColor} />
+        </div>
+        <Entry link={params.link} />
+      </div>
+    </>
   );
 };
 
