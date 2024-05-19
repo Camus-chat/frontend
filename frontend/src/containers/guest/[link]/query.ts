@@ -17,13 +17,6 @@ const guestLogin = async (account: Account) => {
 };
 
 export const requestGuestProfile = async () => {
-  // const token = LocalStorage.getItem('accessToken');
-  // if (!token) {
-  //   const account = await guestSignup();
-  //   if (account !== null) {
-  //     await guestLogin(account);
-  //   }
-  // }
   return query.serverSide.get<GuestProfile>('/guest/info');
 };
 
