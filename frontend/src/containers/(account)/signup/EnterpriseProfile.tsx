@@ -13,8 +13,8 @@ const EnterpriseProfile = () => {
   const {
     id,
     password,
-    companyName,
-    companyEmail,
+    // companyName,
+    // companyEmail,
     setCompanyName,
     setCompanyEmail,
     clickNext,

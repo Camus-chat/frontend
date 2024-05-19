@@ -13,7 +13,7 @@ const PersonalProfile = () => {
     username,
     password,
     profileImg,
-    nickname,
+    // nickname,
     setProfileImg,
     setNickname,
     clickNext,

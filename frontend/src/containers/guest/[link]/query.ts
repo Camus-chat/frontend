@@ -10,29 +10,36 @@ const guestSignup = async () => {
 
 const guestLogin = async (account: Account) => {
   return query.serverSide
-    .post<Token, Account>('/guest/login', account)
+    .post<{ role: string }, Account>('/guest/login', account)
     .then((res) => {
-      LocalStorage.setItem('accessToken', res.accessToken);
+      return res.role.length > 0;
     });
 };
 
 export const requestGuestProfile = async () => {
+  const token = LocalStorage.getItem('accessToken');
+  if (!token) {
+    const account = await guestSignup();
+    if (account !== null) {
+      await guestLogin(account);
+    }
+  }
   return query.serverSide.get<GuestProfile>('/guest/info');
 };
 
-export const requestChannelInfo = async (link: string) => {
-  return query.serverSide
-    .post<ChatRoomInfo, string>('/guest/channel-info', link)
-    .then((res) => {
-      console.log(res);
-      return res;
-    });
-};
+// export const requestChannelInfo = async (link: string) => {
+//   return query.serverSide
+//     .post<ChatRoomInfo, string>('/guest/channel-info', link)
+//     .then((res) => {
+//       console.log(res);
+//       return res;
+//     });
+// };
 
 export const requestEnterRoom = async (link: string) => {
   return query.clientSide
-    .post<string, string>('/room/guest/enter', link)
+    .post<{ roomId: string }, string>('/room/guest/enter', link)
     .then((res) => {
-      return res;
+      return res.roomId;
     });
 };
