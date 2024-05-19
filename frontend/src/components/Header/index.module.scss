@@ -95,6 +95,16 @@ $-nav-belt-padding-y-mobile: 4px;
   }
 }
 
+.userInfo {
+  @include flex-center;
+  justify-content: flex-start;
+
+  .nickname {
+    margin-left: 8px;
+    font-weight: $bold;
+  }
+}
+
 .loginMenu {
   @include mobile-disable;
 
@@ -146,7 +156,7 @@ $-nav-belt-padding-y-mobile: 4px;
 @mixin drawer-top {
   @include background($black);
 
-  path, a {
+  path, a, span {
     color: $white;
   }
 }
