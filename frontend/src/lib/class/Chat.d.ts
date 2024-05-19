@@ -11,6 +11,7 @@ interface Chat {
   channelTitle: string;
   userList: string[];
   closed: boolean;
+  filteredLevel: number;
 }
 
 interface ChatRoom extends Chat, ChatRoomDetail {}

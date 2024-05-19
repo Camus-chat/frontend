@@ -14,13 +14,15 @@ interface Props {
 
 export const Entry = ({ link, token }: Props) => {
   const router = useRouter();
-  const { enterChatting } = useChatStore((state) => ({
+  const { enterChatting, setToken } = useChatStore((state) => ({
     chattingClient: state.chattingClient,
     enterChatting: state.enterChatting,
+    setToken: state.setToken,
   }));
 
   const handleClick = async () => {
     await requestEnterRoom(link, token).then((chat) => {
+      setToken(token);
       enterChatting(chat, [], []);
       router.push(`${link}/chat`);
     });

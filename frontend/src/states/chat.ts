@@ -9,6 +9,7 @@ interface chatState {
   messages: Message[];
   unreadMessages: Message[];
   isConnected: boolean;
+  token: string;
 }
 
 interface chatAction {
@@ -20,6 +21,7 @@ interface chatAction {
   close: () => void;
   setConnected: () => void;
   setDisconnected: () => void;
+  setToken: (token: string) => void;
 }
 
 export const useChatStore = create<chatState & chatAction>((set) => ({
@@ -29,6 +31,7 @@ export const useChatStore = create<chatState & chatAction>((set) => ({
   messages: [],
   unreadMessages: [],
   isConnected: false,
+  token: '',
 
   enterChatting: (chat: Chat, messages: Message[], unreadMessages: Message[]) =>
     set(() => ({
@@ -40,4 +43,5 @@ export const useChatStore = create<chatState & chatAction>((set) => ({
   close: () => set(() => ({ isSelected: false, chat: {} as Chat })),
   setConnected: () => set(() => ({ isConnected: true })),
   setDisconnected: () => set(() => ({ isConnected: false })),
+  setToken: (token: string) => set(() => ({ token })),
 }));

@@ -1,4 +1,4 @@
-type MessageType = 'NoticeMessage' | 'CommonMessage';
+type MessageType = 'NoticeMessage' | 'CommonMessage' | 'FilteredMessage';
 
 interface Notice {
   targetId: string;
@@ -14,6 +14,6 @@ interface Message extends Notice, Common {
   type: MessageType;
   userId: string;
   content: string;
-  messageId: number;
+  messageId: number | string;
   createdDate: string;
 }

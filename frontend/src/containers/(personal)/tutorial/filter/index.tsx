@@ -12,7 +12,6 @@ import {
 import styles from '@/containers/(personal)/tutorial/index.module.scss';
 
 import DropDown from '@/components/Form/DropDown';
-import InfoTextBox from '@/components/InfoTextBox';
 import Random from '@/components/ProfileImage/Random';
 
 const Filter = () => {
@@ -45,7 +44,7 @@ const Filter = () => {
             </ChatMessageBubble>
           </div>
           <div>
-            <ChatInputBox onClick={handleClick} roomId='' />
+            <ChatInputBox onClick={handleClick} roomId='' token='' />
           </div>
         </div>
       </div>

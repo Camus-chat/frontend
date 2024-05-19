@@ -9,15 +9,31 @@ interface Props {
 }
 
 const NewMessages = ({ roomId, scrollToBottom }: Props) => {
-  const { chattingClient, isConnected } = useChatStore((state) => ({
-    chattingClient: state.chattingClient,
-    isConnected: state.isConnected,
-  }));
+  const { chattingClient, isConnected, token, chat } = useChatStore(
+    (state) => ({
+      chattingClient: state.chattingClient,
+      isConnected: state.isConnected,
+      token: state.token,
+      chat: state.chat,
+    }),
+  );
 
   const [newMessages, setNewMessages] = useState<Message[]>([]);
 
-  const receiveMessage = async (message: Message) => {
-    setNewMessages((prev) => [...prev, message]);
+  const receiveMessage = async (newMessage: Message) => {
+    if (newMessage.type !== 'FilteredMessage') {
+      setNewMessages((prev) => [...prev, newMessage]);
+      return;
+    }
+
+    setNewMessages((prev) =>
+      prev.map((item) => {
+        if (`filtered:${item.messageId}` === newMessage.messageId) {
+          item.filteredLevel = newMessage.filteredLevel;
+        }
+        return item;
+      }),
+    );
   };
 
   const callback = (message: Message) => {
@@ -29,16 +45,20 @@ const NewMessages = ({ roomId, scrollToBottom }: Props) => {
   useEffect(() => {
     scrollToBottom();
     if (isConnected) {
-      chattingClient.subscribeRoom(roomId).then(() => {
+      chattingClient.subscribeRoom(roomId, token).then(() => {
         chattingClient.receiveMessage(roomId, callback);
       });
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isConnected]);
+  }, [isConnected, chat]);
 
   return newMessages.map((message) => (
-    <ChatMessageItem message={message} key={message.messageId} />
+    <ChatMessageItem
+      message={message}
+      key={message.messageId}
+      roomFilterLevel={chat.filteredLevel}
+    />
   ));
 };
 
