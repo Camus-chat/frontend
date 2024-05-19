@@ -46,8 +46,8 @@ const PersonalProfile = () => {
   };
 
   const handleClickNext = async () => {
-    if (nicknameRef.current && profileImgRef.current?.files) {
-      setNickname(nicknameRef.current.value);
+    if (nicknameRef.current?.value && profileImgRef.current?.files) {
+      setNickname(nicknameRef.current.value as string);
       setProfileImg(profileImgRef.current.files[0]);
     }
 
@@ -60,12 +60,10 @@ const PersonalProfile = () => {
       const formData = new FormData();
       formData.append('username', username);
       formData.append('password', password);
-      formData.append('profileImg', profileImg);
-      formData.append('nickname', nickname);
+      formData.append('profileImage', profileImg);
+      formData.append('nickname', nicknameRef.current?.value as string);
 
       const response = await requestPersonalSignUp(formData);
-
-      console.log(response);
 
       if (response) {
         clickNext();
