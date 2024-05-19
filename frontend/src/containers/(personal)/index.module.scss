@@ -1,4 +1,5 @@
 @use '@/styles/variables' as *;
+@use '@/components/ProfileImage/variables' as *;
 
 @mixin content-style($background-color, $font-size, $font-weight){
   background-color: $background-color;
@@ -127,15 +128,15 @@
     }
 
     &.white {
-      background-color: $white;
+      background: linear-gradient(90deg, $white, $gray-100, $blue-100);
     }
 
     &.yellow {
-      background-color: $yellow-100;
+      background: linear-gradient(135deg, $yellow-100, $blue-100, $yellow-100);
     }
 
     &.red {
-      background-color: $red-100;
+      background: linear-gradient(45deg, $blue-100, $red-100);
     }
 
     .animationBox {
