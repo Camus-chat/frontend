@@ -8,7 +8,7 @@ import Header from '@/components/Header';
 const ServiceLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
-      <Header signedIn />
+      <Header />
       <main className={styles.main}>
         <Menu />
         <div className={styles.contentWrapper} id='content-wrapper'>

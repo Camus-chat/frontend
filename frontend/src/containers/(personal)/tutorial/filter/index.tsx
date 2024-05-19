@@ -1,7 +1,7 @@
 'use client';
 
-import ChatMessageBubble from '@/lib/componenets/ChatMessageBubble';
-import ChatInputBox from '@/lib/componenets/ChatInputBox';
+// import ChatMessageBubble from '@/lib/componenets/ChatMessageBubble';
+// import ChatInputBox from '@/lib/componenets/ChatInputBox';
 
 import {
   FILTER_DESCRIPTION,
@@ -11,7 +11,6 @@ import styles from '@/containers/(personal)/tutorial/index.module.scss';
 
 import DropDown from '@/components/Form/DropDown';
 import InfoTextBox from '@/components/InfoTextBox';
-import Random from '@/components/ProfileImage/Random';
 
 const Filter = () => {
   return (
@@ -41,9 +40,7 @@ const Filter = () => {
             {/*  <Random size='small' color='rose' /> */}
             {/* </ChatMessageBubble> */}
           </div>
-          <div className={styles.chatInputBox}>
-            <ChatInputBox />
-          </div>
+          <div className={styles.chatInputBox}>{/* <ChatInputBox /> */}</div>
         </div>
       </div>
     </div>
