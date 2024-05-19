@@ -1,9 +1,10 @@
-'use-client';
-
 import type { Chat } from '@/lib/class/Chat';
 import ChatInputBox from '@/lib/componenets/ChatInputBox';
+import ChatMessageItem from '@/lib/componenets/ChatMessageItem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useRef } from 'react';
 
+import NewMessages from '@/containers/(personal)/service/chat/NewMessages';
 import { useChatStore } from '@/states/chat';
 
 import styles from './index.module.scss';
@@ -14,9 +15,19 @@ interface Props {
 }
 
 const ChattingRoom = ({ chat, onClose }: Props) => {
-  const { messages } = useChatStore((state) => ({
-    messages: state.messages,
-  }));
+  const { chattingClient, messages, unreadMessages } = useChatStore(
+    (state) => ({
+      chattingClient: state.chattingClient,
+      messages: state.messages,
+      unreadMessages: state.unreadMessages,
+    }),
+  );
+
+  const scrollRef = useRef<HTMLOListElement>(null);
+
+  const scrollToBottom = () => {
+    scrollRef.current?.scrollTo(0, scrollRef.current.scrollHeight);
+  };
 
   return (
     <>
@@ -32,13 +43,17 @@ const ChattingRoom = ({ chat, onClose }: Props) => {
           )}
           <div className={styles.channelTitle}>{`#${chat.channelTitle}`}</div>
         </div>
-        <ol className={styles.messages}>
+        <ol ref={scrollRef} className={styles.messages}>
           {messages.map((message) => (
-            <li key={message.messageId}>{message.content}</li>
+            <ChatMessageItem message={message} key={`m${message.messageId}`} />
           ))}
+          {unreadMessages.map((message) => (
+            <ChatMessageItem message={message} key={`u${message.messageId}`} />
+          ))}
+          <NewMessages roomId={chat.roomId} scrollToBottom={scrollToBottom} />
         </ol>
       </div>
-      <ChatInputBox />
+      <ChatInputBox roomId={chat.roomId} chattingClient={chattingClient} />
     </>
   );
 };

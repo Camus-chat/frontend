@@ -29,3 +29,10 @@ export const getMessages = async (
     nextMessageTimeStamp,
   });
 };
+
+export const exitChatRoom = async (roomId: string) => {
+  return query.clientSide.post<string, MessageListRequest>('/chat/room/exit', {
+    roomId,
+    nextMessageTimeStamp: '0-0',
+  });
+};
