@@ -1,4 +1,17 @@
 @use '@/styles/variables' as *;
+@use '@/containers/guest/index.module' as guest;
+
+.container {
+  @include guest.container-style;
+  @include flex-column;
+  @include desktop {
+    padding: 60px 50px;
+  }
+
+  padding: 30px;
+  min-height: 600px;
+  justify-content: space-between;
+}
 
 .channelInfoWrapper {
   margin-top: 20px;

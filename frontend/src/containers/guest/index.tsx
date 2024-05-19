@@ -16,9 +16,7 @@ const GuestLayout = ({ children }: Props) => {
           <Logo />
         </div>
       </header>
-      <main className={styles.main}>
-        <div className={styles.container}>{children}</div>
-      </main>
+      <main className={styles.main}>{children}</main>
     </>
   );
 };

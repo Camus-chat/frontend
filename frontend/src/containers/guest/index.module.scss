@@ -19,25 +19,20 @@ header .wrapper {
     background-color: $gray-100;
     height: calc(100% - #{header.$logo-size-desktop} - #{$-header-padding * 2});
     justify-content: center;
+    padding: 42px 12px;
   }
 
   width: 100%;
-  height: 100%;
+  height: calc(100% - #{header.$nav-height-mobile});
 }
 
-.container {
-  @include flex-column;
+@mixin container-style {
   @include desktop {
     @include boxShadow;
     max-width: 610px;
-    padding: 60px 50px;
   }
-  justify-content: space-between;
 
   width: 100%;
-  min-height: 600px;
-  padding: 30px;
-
   background-color: $white;
   border-radius: 20px;
 }

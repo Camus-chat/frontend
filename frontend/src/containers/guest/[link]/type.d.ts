@@ -13,4 +13,5 @@ interface GuestAccount {
 interface GuestInfo {
   nickname: string;
   profileImageColor: ProfileColor;
+  accessToken: string;
 }

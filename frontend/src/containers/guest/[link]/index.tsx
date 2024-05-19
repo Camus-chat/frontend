@@ -19,7 +19,7 @@ const Guest = async ({ params }: Props) => {
   const channel = await requestChannelInfo(params.link);
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.channelInfoWrapper}>
         <Member imgSrc={channel.ownerProfileImage} size='large' />
         <div className={styles.nickname}>
@@ -32,9 +32,9 @@ const Guest = async ({ params }: Props) => {
           <div className={styles.nickname}>{guest.nickname}</div>
           <Random size='medium' color={guest.profileImageColor} />
         </div>
-        <Entry link={params.link} />
+        <Entry link={params.link} token={guest.accessToken} />
       </div>
-    </>
+    </div>
   );
 };
 

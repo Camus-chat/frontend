@@ -1,0 +1,8 @@
+@use '@/containers/guest/index.module' as guest;
+
+.container {
+  @include guest.container-style;
+
+  padding: 8px;
+  height: 100%;
+}

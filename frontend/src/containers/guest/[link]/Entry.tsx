@@ -3,19 +3,27 @@
 import { useRouter } from 'next/navigation';
 
 import { requestEnterRoom } from '@/containers/guest/[link]/query';
+import { useChatStore } from '@/states/chat';
 
 import Button from '@/components/Button';
 
 interface Props {
   link: string;
+  token: string;
 }
 
-export const Entry = ({ link }: Props) => {
+export const Entry = ({ link, token }: Props) => {
   const router = useRouter();
+  const { enterChatting } = useChatStore((state) => ({
+    chattingClient: state.chattingClient,
+    enterChatting: state.enterChatting,
+  }));
 
   const handleClick = async () => {
-    const roomId = await requestEnterRoom(link);
-    router.push(`/${link}/chat/${roomId}`);
+    await requestEnterRoom(link, token).then((chat) => {
+      enterChatting(chat, [], []);
+      router.push(`${link}/chat`);
+    });
   };
 
   return (
