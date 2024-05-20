@@ -5,9 +5,10 @@ import ChatMessageNotice from '@/lib/componenets/ChatMessageNotice';
 interface Props {
   message: Message;
   roomFilterLevel: number;
+  myId: string;
 }
 
-const ChatMessageItem = ({ message, roomFilterLevel }: Props) => {
+const ChatMessageItem = ({ message, roomFilterLevel, myId }: Props) => {
   if (message.type === 'NoticeMessage') {
     return (
       <li>
@@ -22,7 +23,7 @@ const ChatMessageItem = ({ message, roomFilterLevel }: Props) => {
 
   return (
     <li>
-      <ChatMessageBubble message={message} />
+      <ChatMessageBubble message={message} isSent={myId === message.userId} />
     </li>
   );
 };

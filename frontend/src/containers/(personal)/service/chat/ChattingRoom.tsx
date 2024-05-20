@@ -15,13 +15,14 @@ interface Props {
 }
 
 const ChattingRoom = ({ onClose }: Props) => {
-  const { chat, chattingClient, messages, unreadMessages, token } =
+  const { chat, chattingClient, messages, unreadMessages, token, myId } =
     useChatStore((state) => ({
       chat: state.chat,
       chattingClient: state.chattingClient,
       messages: state.messages,
       unreadMessages: state.unreadMessages,
       token: state.token,
+      myId: state.myId,
     }));
 
   const scrollRef = useRef<HTMLOListElement>(null);
@@ -50,6 +51,7 @@ const ChattingRoom = ({ onClose }: Props) => {
               message={message}
               key={`m${message.messageId}`}
               roomFilterLevel={chat.filteredLevel}
+              myId={myId}
             />
           ))}
           {unreadMessages.map((message) => (
@@ -57,6 +59,7 @@ const ChattingRoom = ({ onClose }: Props) => {
               message={message}
               key={`u${message.messageId}`}
               roomFilterLevel={chat.filteredLevel}
+              myId={myId}
             />
           ))}
           <NewMessages roomId={chat.roomId} scrollToBottom={scrollToBottom} />

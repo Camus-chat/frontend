@@ -10,7 +10,7 @@ interface FetchParams {
 type Fetch = <ResponseType>(params: FetchParams) => Promise<ResponseType>;
 
 export const getTokenClientSide = async (endpoint?: string) => {
-  if (endpoint?.startsWith('/member')) {
+  if (endpoint !== '/member/b2c/info' && endpoint?.startsWith('/member')) {
     return '';
   }
 

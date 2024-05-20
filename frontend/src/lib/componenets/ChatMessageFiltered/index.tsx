@@ -14,6 +14,10 @@ const ChatMessageFiltered = ({ children, message, isSent }: Props) => {
   const wrapperStyle = isSent ? styles.sent : styles.received;
   const messageStyle = isFiltered ? styles.filtered : styles.nofilter;
   const bubbleMessage = isFiltered ? '필터링 되었습니다.' : message.content;
+  const time = new Date(message.createdDate).toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 
   const handleNoFilter = () => {
     setIsFiltered(false);
@@ -36,7 +40,7 @@ const ChatMessageFiltered = ({ children, message, isSent }: Props) => {
             )}
           </div>
         </div>
-        <div className={styles.time}>{message.createdDate}</div>
+        <div className={styles.time}>{time}</div>
       </div>
     </div>
   );

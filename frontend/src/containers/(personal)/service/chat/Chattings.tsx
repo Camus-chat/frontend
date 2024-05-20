@@ -11,6 +11,7 @@ import styles from '@/containers/(personal)/service/chat/index.module.scss';
 import {
   exitChatRoom,
   getMessages,
+  getMyInfo,
   getUnreadMessages,
 } from '@/containers/(personal)/service/chat/query';
 import { getTokenClientSide } from '@/containers/query';
@@ -31,6 +32,8 @@ const Chattings = ({ chattings }: Props) => {
     close,
     setConnected,
     setToken,
+    setMyId,
+    setUserList,
   } = useChatStore((state) => ({
     chattingClient: state.chattingClient,
     isSelected: state.isSelected,
@@ -39,12 +42,21 @@ const Chattings = ({ chattings }: Props) => {
     close: state.close,
     setConnected: state.setConnected,
     setToken: state.setToken,
+    setMyId: state.setMyId,
+    setUserList: state.setUserList,
   }));
 
   const handleClickChatListItem = async (item: Chat) => {
     if (chat.roomId) {
       await exitChatRoom(chat.roomId);
     }
+    // setUserList(
+    //   await Promise.all(
+    //     item.userList.map(async (userid) => {
+    //       return getUserInfo(userid);
+    //     }),
+    //   ),
+    // );
     const unreadMesageList = await getUnreadMessages(item.roomId);
     const { messageList, paginationDto } = await getMessages(
       item.roomId,
@@ -57,6 +69,9 @@ const Chattings = ({ chattings }: Props) => {
     getTokenClientSide().then((token) => {
       setToken(token);
       chattingClient.activate(token, setConnected);
+    });
+    getMyInfo().then((myInfo) => {
+      setMyId(myInfo.myUuid);
     });
 
     return () => {

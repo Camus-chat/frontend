@@ -9,12 +9,13 @@ interface Props {
 }
 
 const NewMessages = ({ roomId, scrollToBottom }: Props) => {
-  const { chattingClient, isConnected, token, chat } = useChatStore(
+  const { chattingClient, isConnected, token, chat, myId } = useChatStore(
     (state) => ({
       chattingClient: state.chattingClient,
       isConnected: state.isConnected,
       token: state.token,
       chat: state.chat,
+      myId: state.myId,
     }),
   );
 
@@ -58,6 +59,7 @@ const NewMessages = ({ roomId, scrollToBottom }: Props) => {
       message={message}
       key={message.messageId}
       roomFilterLevel={chat.filteredLevel}
+      myId={myId}
     />
   ));
 };
