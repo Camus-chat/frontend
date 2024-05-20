@@ -25,14 +25,3 @@ header .wrapper {
   width: 100%;
   height: calc(100% - #{header.$nav-height-mobile});
 }
-
-@mixin container-style {
-  @include desktop {
-    @include boxShadow;
-    max-width: 610px;
-  }
-
-  width: 100%;
-  background-color: $white;
-  border-radius: 20px;
-}
