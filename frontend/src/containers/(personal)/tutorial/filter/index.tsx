@@ -36,12 +36,16 @@ const Filter = () => {
         <div className={styles.contentBox}>
           <div className={styles.chatBox}>
             {/* TODO: chatting 컴포넌트 api 연결해서 테스트 할 수 있게 해야함. */}
-            <ChatMessageBubble message={FILTER_MESSAGES[0]} isSent={false}>
-              <Random size='small' color='rose' />
-            </ChatMessageBubble>
-            <ChatMessageBubble message={FILTER_MESSAGES[1]} isSent={false}>
-              <Random size='small' color='yellow' />
-            </ChatMessageBubble>
+            {FILTER_MESSAGES.map((item) => (
+              <ChatMessageBubble
+                message={item}
+                senderNickname='CAMUS'
+                receiverId='rid'
+                key={item.content}
+              >
+                <Random size='small' color='yellow' />
+              </ChatMessageBubble>
+            ))}
           </div>
           <div>
             <ChatInputBox onClick={handleClick} roomId='' token='' />

@@ -39,3 +39,14 @@ export const exitChatRoom = async (roomId: string) => {
     roomId,
   });
 };
+
+export const getUserInfo = async (userId: string) => {
+  return query.clientSide.post<UserProfile, { memberUuid: string }>(
+    '/member/etc/info',
+    { memberUuid: userId },
+  );
+};
+
+export const getMyInfo = async () => {
+  return query.clientSide.get<UserProfile>('/member/b2c/info');
+};

@@ -10,28 +10,26 @@ export const FILTER_DESCRIPTION = {
     '필터링 강도를 골라주세요.\n 안전한 커뮤니티 분위기를 조성할 수 있습니다.',
 };
 
-export const FILTER_MESSAGES = [
+export const FILTER_MESSAGES: Message[] = [
   {
     targetId: '',
     noticeType: '',
-    senderId: '',
+    senderId: 'sid',
     filteredLevel: 100,
     type: 'CommonMessage' as MessageType,
-    userId: '',
     content: '필터링 강도를 설정하고',
     messageId: 0,
-    createdDate: '',
+    createdDate: new Date().toString(),
   },
   {
     targetId: '',
     noticeType: '',
-    senderId: '',
+    senderId: 'sid',
     filteredLevel: 100,
     type: 'CommonMessage' as MessageType,
-    userId: '',
     content: '여기에 채팅을 보내보세요!',
     messageId: 1,
-    createdDate: '',
+    createdDate: new Date().toString(),
   },
 ];
 

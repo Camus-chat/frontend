@@ -11,7 +11,9 @@ import styles from '@/containers/(personal)/service/chat/index.module.scss';
 import {
   exitChatRoom,
   getMessages,
+  getMyInfo,
   getUnreadMessages,
+  getUserInfo,
 } from '@/containers/(personal)/service/chat/query';
 import { getTokenClientSide } from '@/containers/query';
 import { useChatStore } from '@/states/chat';
@@ -31,6 +33,8 @@ const Chattings = ({ chattings }: Props) => {
     close,
     setConnected,
     setToken,
+    setMyId,
+    userMap,
   } = useChatStore((state) => ({
     chattingClient: state.chattingClient,
     isSelected: state.isSelected,
@@ -39,24 +43,35 @@ const Chattings = ({ chattings }: Props) => {
     close: state.close,
     setConnected: state.setConnected,
     setToken: state.setToken,
+    setMyId: state.setMyId,
+    userMap: state.userMap,
   }));
 
   const handleClickChatListItem = async (item: Chat) => {
     if (chat.roomId) {
       await exitChatRoom(chat.roomId);
     }
+
+    item.userList.forEach(async (userid) => {
+      const userInfo = await getUserInfo(userid);
+      userMap.set(userid, userInfo);
+    });
+
     const unreadMesageList = await getUnreadMessages(item.roomId);
     const { messageList, paginationDto } = await getMessages(
       item.roomId,
       '0-0',
     );
-    enterChatting(item, messageList, unreadMesageList);
+    enterChatting(item, [...messageList, ...unreadMesageList]);
   };
 
   useEffect(() => {
     getTokenClientSide().then((token) => {
       setToken(token);
       chattingClient.activate(token, setConnected);
+    });
+    getMyInfo().then((myInfo) => {
+      setMyId(myInfo.myUuid);
     });
 
     return () => {

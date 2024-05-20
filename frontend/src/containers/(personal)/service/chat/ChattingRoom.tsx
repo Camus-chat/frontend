@@ -15,14 +15,16 @@ interface Props {
 }
 
 const ChattingRoom = ({ onClose }: Props) => {
-  const { chat, chattingClient, messages, unreadMessages, token } =
-    useChatStore((state) => ({
+  const { chat, chattingClient, messages, token, myId, userMap } = useChatStore(
+    (state) => ({
       chat: state.chat,
       chattingClient: state.chattingClient,
       messages: state.messages,
-      unreadMessages: state.unreadMessages,
       token: state.token,
-    }));
+      myId: state.myId,
+      userMap: state.userMap,
+    }),
+  );
 
   const scrollRef = useRef<HTMLOListElement>(null);
 
@@ -45,20 +47,19 @@ const ChattingRoom = ({ onClose }: Props) => {
           <div className={styles.channelTitle}>{`#${chat.channelTitle}`}</div>
         </div>
         <ol ref={scrollRef} className={styles.messages}>
-          {messages.map((message) => (
-            <ChatMessageItem
-              message={message}
-              key={`m${message.messageId}`}
-              roomFilterLevel={chat.filteredLevel}
-            />
-          ))}
-          {unreadMessages.map((message) => (
-            <ChatMessageItem
-              message={message}
-              key={`u${message.messageId}`}
-              roomFilterLevel={chat.filteredLevel}
-            />
-          ))}
+          {messages.map((message) => {
+            const userId = message.senderId || message.targetId;
+
+            return (
+              <ChatMessageItem
+                message={message}
+                key={message.messageId}
+                roomFilterLevel={chat.filteredLevel}
+                receiverId={myId}
+                senderInfo={userMap.get(userId)!}
+              />
+            );
+          })}
           <NewMessages roomId={chat.roomId} scrollToBottom={scrollToBottom} />
         </ol>
       </div>

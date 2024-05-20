@@ -1,4 +1,4 @@
-@use '@/containers/guest/index.module' as guest;
+@use '@/containers/guest/variable' as guest;
 
 .container {
   @include guest.container-style;

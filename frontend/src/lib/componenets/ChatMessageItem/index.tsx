@@ -5,24 +5,44 @@ import ChatMessageNotice from '@/lib/componenets/ChatMessageNotice';
 interface Props {
   message: Message;
   roomFilterLevel: number;
+  receiverId: string;
+  senderInfo: UserProfile;
 }
 
-const ChatMessageItem = ({ message, roomFilterLevel }: Props) => {
+const ChatMessageItem = ({
+  message,
+  roomFilterLevel,
+  receiverId,
+  senderInfo,
+}: Props) => {
   if (message.type === 'NoticeMessage') {
     return (
       <li>
-        <ChatMessageNotice message={message} />
+        <ChatMessageNotice
+          message={message}
+          targetNickname={senderInfo.nickname}
+        />
       </li>
     );
   }
 
   if (message.filteredLevel && message.filteredLevel <= roomFilterLevel) {
-    return <ChatMessageFiltered message={message} />;
+    return (
+      <ChatMessageFiltered
+        message={message}
+        receiverId={receiverId}
+        senderNickname={senderInfo.nickname}
+      />
+    );
   }
 
   return (
     <li>
-      <ChatMessageBubble message={message} />
+      <ChatMessageBubble
+        message={message}
+        receiverId={receiverId}
+        senderNickname={senderInfo.nickname}
+      />
     </li>
   );
 };

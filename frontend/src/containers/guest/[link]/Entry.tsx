@@ -23,7 +23,7 @@ export const Entry = ({ link, token }: Props) => {
   const handleClick = async () => {
     await requestEnterRoom(link, token).then((chat) => {
       setToken(token);
-      enterChatting(chat, [], []);
+      enterChatting(chat, []);
       router.push(`${link}/chat`);
     });
   };
