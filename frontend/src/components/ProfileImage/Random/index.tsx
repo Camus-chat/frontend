@@ -1,3 +1,5 @@
+'use client';
+
 import GroupsIcon from '@mui/icons-material/Groups';
 import PersonIcon from '@mui/icons-material/Person';
 import classNames from 'classnames';
