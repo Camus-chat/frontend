@@ -12,7 +12,6 @@ interface Common {
 
 interface Message extends Notice, Common {
   type: MessageType;
-  userId: string;
   content: string;
   messageId: number | string;
   createdDate: string;

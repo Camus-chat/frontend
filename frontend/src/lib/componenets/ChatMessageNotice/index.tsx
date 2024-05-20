@@ -2,13 +2,14 @@ import styles from './index.module.css';
 
 interface Props {
   message: Message;
+  targetNickname: string;
 }
 
-const ChatMessageNotice = ({ message }: Props) => {
+const ChatMessageNotice = ({ message, targetNickname }: Props) => {
   return (
     <div
       className={styles.message}
-    >{`'유저이름 넣어라'${message.content}`}</div>
+    >{`${targetNickname}${message.content}`}</div>
   );
 };
 

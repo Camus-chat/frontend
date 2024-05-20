@@ -5,12 +5,18 @@ import styles from './index.module.css';
 interface Props {
   children?: ReactNode;
   message: Message;
-  isSent?: boolean;
+  receiverId: string;
+  senderNickname: string;
 }
 
-const ChatMessageBubble = ({ children, message, isSent }: Props) => {
-  // TODO: 내가 보낸 메시지인지 받은 메시지인지 구별하는 로직 필요
-  const wrapperStyle = isSent ? styles.sent : styles.received;
+const ChatMessageBubble = ({
+  children,
+  message,
+  receiverId,
+  senderNickname,
+}: Props) => {
+  const isSentMessage = message.senderId === receiverId;
+  const wrapperStyle = isSentMessage ? styles.sent : styles.received;
   const time = new Date(message.createdDate).toLocaleTimeString('en-US', {
     hour: '2-digit',
     minute: '2-digit',
@@ -18,12 +24,14 @@ const ChatMessageBubble = ({ children, message, isSent }: Props) => {
 
   return (
     <div className={wrapperStyle}>
-      {!isSent && children && (
+      {!isSentMessage && children && (
         <div className={styles.profileImageWrapper}>{children}</div>
       )}
       <div className={styles.messageWrapper}>
         <div className={styles.message}>
-          {!isSent && <div className={styles.nickname}>민돌멩이</div>}
+          {!isSentMessage && (
+            <div className={styles.nickname}>{senderNickname}</div>
+          )}
           <div className={styles.text}>{message.content}</div>
         </div>
         <div className={styles.time}>{time}</div>

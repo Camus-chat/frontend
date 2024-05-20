@@ -9,15 +9,15 @@ interface Props {
 }
 
 const NewMessages = ({ roomId, scrollToBottom }: Props) => {
-  const { chattingClient, isConnected, token, chat, myId } = useChatStore(
-    (state) => ({
+  const { chattingClient, isConnected, token, chat, myId, userMap } =
+    useChatStore((state) => ({
       chattingClient: state.chattingClient,
       isConnected: state.isConnected,
       token: state.token,
       chat: state.chat,
       myId: state.myId,
-    }),
-  );
+      userMap: state.userMap,
+    }));
 
   const [newMessages, setNewMessages] = useState<Message[]>([]);
 
@@ -54,14 +54,19 @@ const NewMessages = ({ roomId, scrollToBottom }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isConnected, chat]);
 
-  return newMessages.map((message) => (
-    <ChatMessageItem
-      message={message}
-      key={message.messageId}
-      roomFilterLevel={chat.filteredLevel}
-      myId={myId}
-    />
-  ));
+  return newMessages.map((message) => {
+    const userId = message.senderId || message.targetId;
+
+    return (
+      <ChatMessageItem
+        message={message}
+        key={message.messageId}
+        roomFilterLevel={chat.filteredLevel}
+        receiverId={myId}
+        senderInfo={userMap.get(userId)!}
+      />
+    );
+  });
 };
 
 export default NewMessages;

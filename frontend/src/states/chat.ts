@@ -7,25 +7,19 @@ interface chatState {
   isSelected: boolean;
   chat: Chat;
   messages: Message[];
-  unreadMessages: Message[];
   isConnected: boolean;
   token: string;
   myId: string;
-  userList: UserProfile[];
+  userMap: Map<string, UserProfile>;
 }
 
 interface chatAction {
-  enterChatting: (
-    chat: Chat,
-    messages: Message[],
-    unreadMessages: Message[],
-  ) => void;
+  enterChatting: (chat: Chat, messages: Message[]) => void;
   close: () => void;
   setConnected: () => void;
   setDisconnected: () => void;
   setToken: (token: string) => void;
   setMyId: (myId: string) => void;
-  setUserList: (userList: UserProfile[]) => void;
 }
 
 export const useChatStore = create<chatState & chatAction>((set) => ({
@@ -33,23 +27,20 @@ export const useChatStore = create<chatState & chatAction>((set) => ({
   isSelected: false,
   chat: {} as Chat,
   messages: [],
-  unreadMessages: [],
   isConnected: false,
   token: '',
   myId: '',
-  userList: [],
+  userMap: new Map<string, UserProfile>(),
 
-  enterChatting: (chat: Chat, messages: Message[], unreadMessages: Message[]) =>
+  enterChatting: (chat: Chat, messages: Message[]) =>
     set(() => ({
       isSelected: true,
       chat,
       messages,
-      unreadMessages,
     })),
   close: () => set(() => ({ isSelected: false, chat: {} as Chat })),
   setConnected: () => set(() => ({ isConnected: true })),
   setDisconnected: () => set(() => ({ isConnected: false })),
   setToken: (token: string) => set(() => ({ token })),
   setMyId: (myId: string) => set(() => ({ myId })),
-  setUserList: (userList: UserProfile[]) => set(() => ({ userList })),
 }));
