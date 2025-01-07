@@ -24,7 +24,8 @@ AI 기반 텍스트, 문맥 분석을 통한 SafeChat 시스템을 제공한다.
 
 <!-- TODO: notion - 기획서 - 기획 배경 참고, 변경 필요 -->
 
-- 강력한 AI 모델이 등장했으나 기존 기업의 AI 도입은 늦어지고 있다. 이는 비용, 전문가부재, 데이터부족, 기존시스템과의 비호환에서 비롯된다. 따라서 **보편적 서비스에 AI를 도입한 기업용 솔루션**의 필요성이 높아지고 있는 시점이다.
+- 강력한 AI 모델이 등장했으나 기존 기업의 AI 도입은 늦어지고 있다. 이는 비용, 전문가부재, 데이터부족, 기존시스템과의 비호환에서 비롯된다. 따라서 **보편적 서비스에 AI를 도입한 기업용 솔루션**의
+  필요성이 높아지고 있는 시점이다.
 - 가장 보편적인 서비스인 채팅에 AI를 도입하여, 필터링 기능을 발전시키고 이러한 서비스를 기존 서비스에 도입할 수 있도록 가공한 프로덕트를 제작하는 것이 목표이다.
 
 ---
@@ -33,8 +34,8 @@ AI 기반 텍스트, 문맥 분석을 통한 SafeChat 시스템을 제공한다.
 
 ## 🙇 팀원 소개
 
-|           [김세진](https://github.com/nijesmik)           |          [전민정](https://github.com/dolmeengii)          | 
-| :--------------------------------------------------------: | :----------------------------------------------------: |
+|            [김세진](https://github.com/nijesmik)             |           [전민정](https://github.com/dolmeengii)            | 
+|:---------------------------------------------------------:|:---------------------------------------------------------:|
 | <img src="https://github.com/nijesmik.png" width="120" /> | <img src="https://github.com/dolmeengii.png" width="120"> | 
 
 ---
@@ -77,58 +78,55 @@ npm run build
 
 ### 🖥️ 랜딩 페이지 - `전민정`
 
-|                    개인 회원                     |                      기업 회원                       |
-|:--------------------------------------------:|:------------------------------------------------:|
-| <img src="assets/landing.gif" width='500px'> | <img src="assets/landing-biz.gif" width='500px'> |
-
+|                                                개인 회원                                                |                                                  기업 회원                                                  |
+|:---------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/landing.gif" width='500px'> | <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/landing-biz.gif" width='500px'> |
 
 ### 🔑 로그인 페이지 - `전민정`
 
-|                         로그인                         |
-|:---------------------------------------------------:|
-| <img src="assets/login-personal.gif" width='400px'> |
+|                                                    로그인                                                     |
+|:----------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/login-personal.gif" width='400px'> |
 
 ### 👤 회원 가입 페이지 - `전민정`
 
-|                        개인 회원                         |                      기업회원                       |
-|:----------------------------------------------------:|:-----------------------------------------------:|
-| <img src="assets/signup-personal.gif" width='400px'> | <img src="assets/signup-biz.gif" width='400px'> |
+|                                                    개인 회원                                                    |                                                  기업회원                                                  |
+|:-----------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/signup-personal.gif" width='400px'> | <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/signup-biz.gif" width='400px'> |
 
 ### 🧾 튜토리얼 페이지- `전민정`
 
-|                         채널 생성                         |                        필터링 강도                        |
-|:-----------------------------------------------------:|:----------------------------------------------------:|
-| <img src="assets/tutorial-channel.gif" width='400px'> | <img src="assets/tutorial-filter.gif" width='400px'> |
+|                                                    채널 생성                                                     |                                                   필터링 강도                                                    |
+|:------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/tutorial-channel.gif" width='400px'> | <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/tutorial-filter.gif" width='400px'> |
 
 ### 🙋‍♂️ 채팅 페이지 - `김세진`
 
-|                       채팅 리스트                       |                     채팅 방                      |
-|:--------------------------------------------------:|:---------------------------------------------:|
-| <img src="assets/chatting-list.png" width='200px'> | <img src="assets/chatting.gif" width='600px'> |
-
+|                                                  채팅 리스트                                                   |                                                 채팅 방                                                 |
+|:---------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/chatting-list.png" width='200px'> | <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/chatting.gif" width='600px'> |
 
 ### 🕊️ 채널 관리 페이지 - `김세진`
 
-|                      채널 리스트                       |                        채널 생성                        |
-|:-------------------------------------------------:|:---------------------------------------------------:|
-| <img src="assets/channel-list.png" width='200px'> | <img src="assets/channel-create.gif" width='600px'> | 
+|                                                  채널 리스트                                                  |                                                   채널 생성                                                    |
+|:--------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/channel-list.png" width='200px'> | <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/channel-create.gif" width='600px'> | 
 
-|                        채널 수정                        |                     채널 링크 공유                      |
-|:---------------------------------------------------:|:-------------------------------------------------:|
-| <img src="assets/channel-update.gif" width='400px'> | <img src='assets/channel-link.gif' width='400px'> |
-
+|                                                   채널 수정                                                    |                     채널 링크 공유                      |
+|:----------------------------------------------------------------------------------------------------------:|:-------------------------------------------------:|
+| <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/channel-update.gif" width='400px'> | <img src='assets/channel-link.gif' width='400px'> |
 
 ### 🗂️ 프로필 페이지 - `전민정`, `김세진`
 
-|                        프로필                        |                       프로필 수정                        |
-|:-------------------------------------------------:|:---------------------------------------------------:|
-| <img src="assets/profile-page.png" width='200px'> | <img src="assets/profile-update.gif" width='600px'> |
+|                                                   프로필                                                    |                                                   프로필 수정                                                   |
+|:--------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/profile-page.png" width='200px'> | <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/profile-update.gif" width='600px'> |
 
 ### ⚙️ 문의하기 페이지 - `전민정`
 
-|                        일반 문의                        |                        도입 문의                         |
-|:---------------------------------------------------:|:----------------------------------------------------:|
-| <img src="assets/support-assist.gif" width='400px'> | <img src="assets/support-request.gif" width='400px'> |
+|                                                   일반 문의                                                    |                                                    도입 문의                                                    |
+|:----------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/support-assist.gif" width='400px'> | <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/support-request.gif" width='400px'> |
 
 [//]: # (### 🃏 docs 페이지 - `전민정`)
 
@@ -138,12 +136,11 @@ npm run build
 
 [//]: # (| <img src="assets/gifs/home-card.gif" width="400px"> |)
 
-
 ### 🧾 요금 페이지 - `전민정`
 
-|                    요금 소개                    |
-|:-------------------------------------------:|
-| <img src="assets/charge.gif" width='400px'> |
+|                                               요금 소개                                                |
+|:--------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/Camus-chat/.github/blob/main/profile/asset/charge.gif" width='400px'> |
 
 ### 📂 폴더 구조 및 아키텍처 설계 - `김세진`
 
