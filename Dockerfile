@@ -7,8 +7,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
-COPY package.json ./
-COPY frontend/package-lock.json* ./
+COPY package.json package-lock.json* ./
 RUN \
   if [ -f package-lock.json ]; then npm ci; \
   else echo "Lockfile not found." && exit 1; \
@@ -19,7 +18,7 @@ RUN \
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY frontend .
+COPY . .
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
