@@ -8,3 +8,4 @@ npm-debug.log
 .gitignore
 .idea
 .prettierrc
+.eslintrc.json
