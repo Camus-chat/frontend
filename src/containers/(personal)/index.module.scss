@@ -1,7 +1,7 @@
 @use '@/styles/variables' as *;
 @use '@/components/ProfileImage/variables' as *;
 
-@mixin content-style($background-color, $font-size, $font-weight){
+@mixin content-style($background-color, $font-size, $font-weight) {
   background-color: $background-color;
   font-size: $font-size;
   font-weight: $font-weight;
@@ -25,7 +25,7 @@
   @include child-transparent;
   transform: rotate($rotate-deg);
 
-  path{
+  path {
     color: $color;
   }
 }
@@ -50,6 +50,7 @@
 
   .chatBubble {
     background-color: $blue-50;
+
     :first-child {
       background-color: transparent;
     }
@@ -97,7 +98,7 @@
     align-items: center;
 
     position: sticky;
-    top:0;
+    top: 0;
     height: 100vh;
 
     padding: 140px 120px;

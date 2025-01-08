@@ -7,7 +7,7 @@
   font-weight: $font-weight;
 }
 
-@mixin svg-style($path-color){
+@mixin svg-style($path-color) {
   background-color: transparent;
 
   path {
@@ -90,14 +90,14 @@
     @include font-style(transparent, $white, 28px, $semi-bold);
   }
 
-    a {
-      @include font-style(transparent, $white, 16px, $regular);
-      @include link-style;
-    }
+  a {
+    @include font-style(transparent, $white, 16px, $regular);
+    @include link-style;
+  }
 
-    svg {
-      @include svg-style(white);
-    }
+  svg {
+    @include svg-style(white);
+  }
 
 
   &.navy {
