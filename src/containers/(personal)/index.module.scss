@@ -1,0 +1,152 @@
+@use '@/styles/variables' as *;
+@use '@/components/ProfileImage/variables' as *;
+
+@mixin content-style($background-color, $font-size, $font-weight) {
+  background-color: $background-color;
+  font-size: $font-size;
+  font-weight: $font-weight;
+}
+
+@mixin flex-row-around {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+@mixin child-transparent {
+  background: transparent;
+
+  :first-child {
+    background: transparent;
+  }
+}
+
+@mixin svg-style($rotate-deg, $color) {
+  @include child-transparent;
+  transform: rotate($rotate-deg);
+
+  path {
+    color: $color;
+  }
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.mainCardWrapper {
+  @include flex-column-center;
+  background-color: $blue-50;
+  padding: 12px 120px;
+  position: sticky;
+  top: 0;
+
+  .imageBox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .chatBubble {
+    background-color: $blue-50;
+
+    :first-child {
+      background-color: transparent;
+    }
+  }
+
+  .titleContent {
+    @include flex-column-center;
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    background-color: transparent;
+
+    .title {
+      @include content-style(transparent, 60px, $bold);
+      padding-bottom: 16px;
+    }
+
+    .description {
+      @include content-style(transparent, 40px, $regular);
+    }
+  }
+
+  .scrollPointer {
+    @include content-style(transparent, 16px, $semi-bold);
+    @include flex-column-center;
+
+    color: $blue-300;
+
+    svg {
+      @include svg-style(90deg, $blue-300);
+    }
+  }
+}
+
+.infoCardWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.infoCardWrapper {
+  height: 100vh;
+  overflow-x: hidden;
+
+  .card {
+    @include flex-row-around;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
+    padding: 140px 120px;
+
+    .content {
+      @include flex-column;
+      background-color: transparent;
+
+      .title {
+        @include content-style(transparent, 32px, $medium);
+      }
+
+      .description {
+        @include content-style(transparent, 24px, $light);
+      }
+
+      a {
+        @include content-style(transparent, 16px, $bold);
+        display: flex;
+        align-items: center;
+
+        svg {
+          @include svg-style(-90deg, $blue-300);
+          width: 20px;
+
+        }
+      }
+    }
+
+    &.white {
+      background: linear-gradient(90deg, $white, $gray-100, $blue-100);
+    }
+
+    &.yellow {
+      background: linear-gradient(135deg, $yellow-100, $blue-100, $yellow-100);
+    }
+
+    &.red {
+      background: linear-gradient(45deg, $blue-100, $red-100);
+    }
+
+    .animationBox {
+      background-color: transparent;
+      width: 440px;
+
+      .lottie {
+        @include child-transparent;
+      }
+    }
+  }
+}
