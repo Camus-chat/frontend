@@ -2,12 +2,14 @@
 
 import ExpandCircleDownRoundedIcon from '@mui/icons-material/ExpandCircleDownRounded';
 import classNames from 'classnames';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import Lottie from 'react-lottie-player';
 
 import { INFO_CARD } from '@/containers/(personal)/constants';
 import styles from '@/containers/(personal)/index.module.scss';
 import MainInfoCard from '@/containers/(personal)/MainInfoCard';
+
+const Lottie = dynamic(() => import('react-lottie-player'), { ssr: false });
 
 const InfoCard = () => {
   return (
