@@ -10,8 +10,6 @@ html, body {
   padding: 0;
   border: 0;
   box-sizing: border-box;
-  font-family: 'Pretendard', sans-serif;
-  font-weight: $regular;
   color: $black;
   background: $white;
   text-decoration: none;
@@ -40,9 +38,4 @@ header {
   }
 
   width: 100%;
-}
-
-@font-face {
-  font-family: 'Pretendard';
-  src: url('/fonts/PretendardVariable.woff2');
 }
