@@ -14,7 +14,7 @@ const Button = ({ children, size, color, onClick }: Props) => {
   return (
     <button
       type='button'
-      className={`font-semibold duration-300 ${styles.size[size]} ${styles.color[color]}`}
+      className={`font-medium duration-300 ${styles.size[size]} ${styles.color[color]}`}
       onClick={onClick}
     >
       {children}
