@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 
+import NavigationBar from '@/features/nav-bar/ui';
+
 import styles from './index.module.scss';
-import Logo from '@/components/Header/Logo';
 
 interface Props {
   children: ReactNode;
@@ -10,10 +11,8 @@ interface Props {
 const AccountLayout = ({ children }: Props) => {
   return (
     <>
-      <header>
-        <div className={styles.wrapper}>
-          <Logo />
-        </div>
+      <header className='max-md:px-2 xl:pt-8 xl:pb-1 xl:drop-shadow-sm'>
+        <NavigationBar />
       </header>
       <main className={styles.main}>
         <div className={styles.container}>{children}</div>
