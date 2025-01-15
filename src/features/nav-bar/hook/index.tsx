@@ -12,7 +12,7 @@ export const useNavigationBar = async () => {
 
   const NavigationBar = ({ children }: Props) => {
     return (
-      <div className='flex items-center justify-between max-w-screen-xl mx-auto max-md:py-4 md:h-[56px] px-5 md:px-7 xl:px-5'>
+      <div className='flex items-center justify-between wrapper max-md:py-4 md:h-[56px]'>
         <Logo business={isBizDomain} />
         {children}
       </div>
