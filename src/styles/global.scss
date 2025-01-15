@@ -30,12 +30,3 @@ li {
 input:focus {
   outline: none;
 }
-
-header {
-  @include headerShadow;
-  @include desktop {
-    padding: 0 20px;
-  }
-
-  width: 100%;
-}

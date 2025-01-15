@@ -9,8 +9,7 @@ import Guis from '@/containers/biz/docs/Guis';
 import styles from '@/containers/biz/docs/index.module.scss';
 import Introduction from '@/containers/biz/docs/Introduction';
 import MenuBar from '@/containers/biz/docs/MenuBar';
-
-import Header from '@/components/Header';
+import Header from '@/widgets/header';
 
 const Docs = () => {
   const [isSelected, setIsSelected] = useState('introduction');

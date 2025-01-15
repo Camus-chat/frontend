@@ -2,8 +2,7 @@ import { ReactNode } from 'react';
 
 import styles from '@/containers/(personal)/service/index.module.scss';
 import Menu from '@/containers/(personal)/service/Menu';
-
-import Header from '@/components/Header';
+import Header from '@/widgets/header';
 
 const ServiceLayout = ({ children }: { children: ReactNode }) => {
   return (

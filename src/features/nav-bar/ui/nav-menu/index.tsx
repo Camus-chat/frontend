@@ -10,7 +10,7 @@ const NavigationMenu = ({ business }: Props) => {
   const menuItems = business ? NAVIGATIONS.business : NAVIGATIONS.personal;
 
   return (
-    <nav className='h-full flex'>
+    <nav className='h-full flex mx-auto'>
       {menuItems.map((item) => (
         <Link
           className='px-4 text-sm font-medium h-full flex items-center hover:text-blue-700'
