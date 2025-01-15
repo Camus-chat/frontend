@@ -9,7 +9,7 @@ interface Props {
 }
 
 const AccountLayout = async ({ children }: Props) => {
-  const { NavigationBar } = await useNavigationBar();
+  const { NavigationBar } = useNavigationBar();
 
   return (
     <>

@@ -7,8 +7,8 @@ interface Props {
   business?: boolean;
 }
 
-const Header = async ({ business }: Props) => {
-  const { NavigationBar, NavigationMenu } = await useNavigationBar();
+const Header = ({ business }: Props) => {
+  const { NavigationBar, NavigationMenu } = useNavigationBar(business);
 
   return (
     <header>
