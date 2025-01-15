@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function ComingSoon(){
   return (
     <div className="m-0 w-full h-full bg-white flex justify-around">
-      <div className="bg-transparent flex items-center [&>*]:bg-transparent ml-28">
+      <div className="bg-transparent flex items-center [&>*]:bg-transparent ml-52">
         <Image src="/images/comingsoon.svg" alt="이미지" width={480} height={720} />
       </div>
       <div className=" bg-transparent flex flex-col justify-center pb-20 mr-52">
