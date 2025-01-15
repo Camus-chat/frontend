@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
 import { NAVIGATIONS } from './constants';
+import LoginMenu from '@/features/login/ui';
 
 import styles from './index.module.scss';
 // import Drawer from '@/components/Header/Drawer';
 // import LoginMemberInfo from '@/components/Header/LoginMemberInfo';
-import LoginMenu from '@/components/Header/LoginMenu';
 import Logo from '@/components/Header/Logo';
 import NavMenu from '@/components/Header/NavMenu';
 
