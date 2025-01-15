@@ -1,7 +1,7 @@
-import Link from 'next/link';
-
 import Login from '@/features/login';
 import { useNavigationBar } from '@/features/nav-bar';
+
+import NaviationBelt from './nav-belt';
 
 interface Props {
   business?: boolean;
@@ -12,15 +12,7 @@ const Header = ({ business }: Props) => {
 
   return (
     <header>
-      <div className='wrapper flex text-xs py-2 max-md:hidden'>
-        <div className='text-gray-500'>패밀리 서비스</div>
-        <Link className='ml-3 hover:text-blue-700' href='/public'>
-          개인용
-        </Link>
-        <Link className='ml-3 hover:text-blue-700' href='/biz'>
-          기업용
-        </Link>
-      </div>
+      <NaviationBelt business={!!business} />
       <NavigationBar>
         <div className='size-full flex items-center max-md:hidden'>
           <NavigationMenu />
