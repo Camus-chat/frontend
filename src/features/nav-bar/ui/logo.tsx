@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { getIsBizDomain } from '@/features/nav-bar/api/getIsBizDomain';
+interface Props {
+  business?: boolean;
+}
 
-const Logo = async () => {
-  const isBizDomain = await getIsBizDomain();
-
+const Logo = ({ business }: Props) => {
   return (
     <Link href='/' className='flex items-end'>
       <Image
@@ -16,9 +16,7 @@ const Logo = async () => {
         height={1}
       />
       <span className='text-sm md:text-3xl font-semibold'>CAMUS</span>
-      {isBizDomain && (
-        <span className='text-sm md:text-3xl font-light'>BIZ</span>
-      )}
+      {business && <span className='text-sm md:text-3xl font-light'>BIZ</span>}
     </Link>
   );
 };

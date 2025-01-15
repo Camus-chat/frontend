@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import NavigationBar from '@/features/nav-bar/ui';
+import { useNavigationBar } from '@/features/nav-bar/hook';
 
 import styles from './index.module.scss';
 
@@ -8,7 +8,9 @@ interface Props {
   children: ReactNode;
 }
 
-const AccountLayout = ({ children }: Props) => {
+const AccountLayout = async ({ children }: Props) => {
+  const { NavigationBar } = await useNavigationBar();
+
   return (
     <>
       <header className='max-md:px-2 xl:pt-8 xl:pb-1 xl:drop-shadow-sm'>

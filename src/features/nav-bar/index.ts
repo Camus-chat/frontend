@@ -1,1 +1,1 @@
-export { default } from '@/features/nav-bar/ui';
+export { useNavigationBar } from '@/features/nav-bar/hook';
