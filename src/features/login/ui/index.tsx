@@ -10,13 +10,13 @@ const Login = () => {
   return (
     <div className='grid grid-cols-2 gap-1'>
       <Button
-        size='large'
+        size='md'
         color='transparent'
         onClick={() => router.push('/signup')}
       >
         회원가입
       </Button>
-      <Button size='large' color='black' onClick={() => router.push('/login')}>
+      <Button size='md' color='black' onClick={() => router.push('/login')}>
         로그인
       </Button>
     </div>

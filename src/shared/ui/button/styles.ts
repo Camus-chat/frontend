@@ -1,5 +1,6 @@
 const sizeVariants = {
   large: 'min-w-[88px] h-[44px] px-4 text-base rounded-lg',
+  md: 'min-w-[4rem] h-[38px] px-4 text-sm rounded-lg',
   small:
     'flex items-center justify-center shrink-0 mr-1 px-4 py-1.5 rounded-md',
 };
