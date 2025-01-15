@@ -13,7 +13,7 @@ const AccountLayout = async ({ children }: Props) => {
 
   return (
     <>
-      <header className='max-md:px-2 xl:pt-8 xl:pb-1 xl:drop-shadow-sm'>
+      <header className='max-md:px-2 xl:pt-8 md:py-1 xl:drop-shadow-sm'>
         <NavigationBar />
       </header>
       <main className={styles.main}>
