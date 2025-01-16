@@ -17,7 +17,7 @@ const Drawer = ({ children, className }: Props) => {
   return (
     <>
       <aside
-        className={`${translateX} transition-transform z-50 absolute top-0 right-0 w-[300px] h-full flex flex-col ${className}`}
+        className={`${translateX} transition-transform z-50 absolute top-0 right-0 w-[300px] h-full flex flex-col bg-white ${className}`}
       >
         {children}
       </aside>
