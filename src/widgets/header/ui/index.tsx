@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
 import { Drawer, DrawerClose, DrawerOpen } from '@/features/drawer';
-import Login from '@/features/login';
 import NavigationBar from '@/features/logo-bar';
 
 import DrawerLogin from './drawer-item/login';
 import NaviationBelt from './nav-belt';
+import Login from './nav-login';
 import { NAVIGATIONS } from '../config/navigation';
 
 interface Props {
