@@ -1,8 +1,7 @@
 import { ReactNode } from 'react';
 
 import styles from '@/containers/guest/index.module.scss';
-
-import Logo from '@/components/Header/Logo';
+import Logo from '@/features/logo-bar';
 
 interface Props {
   children: ReactNode;
@@ -11,10 +10,8 @@ interface Props {
 const GuestLayout = ({ children }: Props) => {
   return (
     <>
-      <header>
-        <div className={styles.wrapper}>
-          <Logo />
-        </div>
+      <header className='max-md:px-2 xl:pt-8 md:py-1 xl:drop-shadow-sm'>
+        <Logo business={false} />
       </header>
       <main className={styles.main}>{children}</main>
     </>
