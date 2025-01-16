@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { NAVIGATIONS } from './config';
+import { NAVIGATIONS } from '@/shared/config';
 
 interface Props {
   business?: boolean;
