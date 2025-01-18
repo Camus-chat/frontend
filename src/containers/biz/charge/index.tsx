@@ -1,8 +1,8 @@
 import { DESCRIPTIONS, INFO_CARD } from '@/containers/biz/charge/constants';
 import InfoCard from '@/containers/biz/charge/InfoCard';
+import Header from '@/widgets/header';
 
 import styles from './index.module.scss';
-import Header from '@/components/Header';
 import InfoTextBox from '@/components/InfoTextBox';
 
 const Charge = () => {

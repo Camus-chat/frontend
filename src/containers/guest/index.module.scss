@@ -5,14 +5,6 @@
 $-header-padding: 12px;
 $-container-padding-x-mobile: 30px;
 
-header .wrapper {
-  padding: $-header-padding 0;
-
-  @include mobile {
-    padding: 0 calc(#{$-container-padding-x-mobile} - #{header.$nav-padding-x});
-  }
-}
-
 .main {
   @include flex-column-center;
   @include desktop {

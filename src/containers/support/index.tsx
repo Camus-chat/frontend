@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 
 import { MENU } from '@/containers/support/constants';
+import Header from '@/widgets/header';
 
 import styles from './index.module.scss';
-import Header from '@/components/Header';
 import Menu from '@/components/Menu';
 
 interface Props {

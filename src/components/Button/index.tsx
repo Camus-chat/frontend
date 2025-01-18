@@ -1,5 +1,7 @@
 import classNames from 'classnames';
-import { ReactNode } from 'react';
+
+import { Button } from '@/shared/ui';
+import type { ReactNode } from 'react';
 
 import styles from './index.module.scss';
 
@@ -11,7 +13,44 @@ interface Props {
   onClick?: () => void;
 }
 
-const Button = ({ children, size, color, option = 'none', onClick }: Props) => {
+const getButtonColor = (c: ButtonColor, o: string) => {
+  if (c === 'skyblue' && o === 'outline') {
+    return 'selected';
+  }
+  if (o === 'red') {
+    return 'danger';
+  }
+  switch (c) {
+    case 'lightgray':
+      return 'gray';
+    case 'gray':
+      return 'disable';
+    case 'login':
+      return 'transparent';
+    default:
+      return c;
+  }
+};
+
+const OldButton = ({
+  children,
+  size,
+  color,
+  option = 'none',
+  onClick,
+}: Props) => {
+  if (size === 'large') {
+    return (
+      <Button
+        color={getButtonColor(color, option)}
+        size={size}
+        onClick={onClick}
+      >
+        {children}
+      </Button>
+    );
+  }
+
   return (
     <button
       type='button'
@@ -28,4 +67,4 @@ const Button = ({ children, size, color, option = 'none', onClick }: Props) => {
   );
 };
 
-export default Button;
+export default OldButton;
