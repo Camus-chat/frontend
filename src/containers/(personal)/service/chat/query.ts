@@ -1,13 +1,8 @@
-import type { ChatRoom } from '@/lib/class/Chat';
-import { revalidateTag } from 'next/cache';
-
 import { query } from '@/containers/query';
-
-const CHAT_LIST_TAG = 'chat-list';
+import type { ChatRoom } from '@/lib/class/Chat';
 
 export const getChatList = async () => {
-  revalidateTag(CHAT_LIST_TAG);
-  return query.serverSide.get<ChatRoom[]>('/room/list', CHAT_LIST_TAG);
+  return query.serverSide.get<ChatRoom[]>('/room/list');
 };
 
 export const getUnreadMessages = async (roomId: string) => {

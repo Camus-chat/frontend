@@ -1,5 +1,3 @@
-import { revalidateTag } from 'next/cache';
-
 import type {
   Channel,
   ChannelCreate,
@@ -7,11 +5,8 @@ import type {
 } from '@/containers/(personal)/service/channel/type';
 import { query } from '@/containers/query';
 
-const CHANNEL_LIST_TAG = 'channel-list';
-
 export const getChannels = async () => {
-  revalidateTag(CHANNEL_LIST_TAG);
-  return query.serverSide.get<Channel[]>('/channel/list', CHANNEL_LIST_TAG);
+  return query.serverSide.get<Channel[]>('/channel/list');
 };
 
 export const createChannel = async (request: ChannelCreate) => {
