@@ -9,7 +9,7 @@ import { menu } from '@/containers/(personal)/service/Menu/constants';
 import styles from './index.module.scss';
 
 const Menu = () => {
-  const [pathname, setPathname] = useState(usePathname().split('/')[2]);
+  const [pathname, setPathname] = useState(usePathname()?.split('/')[2]);
 
   return (
     <div className={styles.menuWrapper}>

@@ -3,7 +3,8 @@
 import { cookies } from 'next/headers';
 
 export const getTokenServerSide = async () => {
-  const refreshToken = cookies().get('refresh')?.value;
+  const cookieStore = await cookies();
+  const refreshToken = cookieStore.get('refresh')?.value;
 
   return fetch(`${process.env.SERVER_SIDE_FETCH_URL}/reissue`, {
     method: 'POST',

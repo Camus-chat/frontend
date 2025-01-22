@@ -1,3 +1,5 @@
+import Member from '@/components/ProfileImage/Member';
+import Random from '@/components/ProfileImage/Random';
 import { Entry } from '@/containers/guest/[link]/Entry';
 import styles from '@/containers/guest/[link]/index.module.scss';
 import {
@@ -5,18 +7,16 @@ import {
   requestGuestProfile,
 } from '@/containers/guest/[link]/query';
 
-import Member from '@/components/ProfileImage/Member';
-import Random from '@/components/ProfileImage/Random';
-
 interface Props {
-  params: {
+  params: Promise<{
     link: string;
-  };
+  }>;
 }
 
 const Guest = async ({ params }: Props) => {
+  const { link } = await params;
   const guest = await requestGuestProfile();
-  const channel = await requestChannelInfo(params.link);
+  const channel = await requestChannelInfo(link);
 
   return (
     <div className={styles.container}>
@@ -32,7 +32,7 @@ const Guest = async ({ params }: Props) => {
           <div className={styles.nickname}>{guest.nickname}</div>
           <Random size='medium' color={guest.profileImageColor} />
         </div>
-        <Entry link={params.link} token={guest.accessToken} />
+        <Entry link={link} token={guest.accessToken} />
       </div>
     </div>
   );
