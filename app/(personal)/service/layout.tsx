@@ -1,1 +1,1 @@
-export { default } from '@/containers/(personal)/service';
+export { default } from '@/app/layouts/with-header';

@@ -1,15 +1,12 @@
+import InfoTextBox from '@/components/InfoTextBox';
 import { DESCRIPTIONS, INFO_CARD } from '@/containers/biz/charge/constants';
 import InfoCard from '@/containers/biz/charge/InfoCard';
-import Header from '@/widgets/header';
 
 import styles from './index.module.scss';
-import InfoTextBox from '@/components/InfoTextBox';
 
 const Charge = () => {
   return (
-    <>
-      <Header biz />
-      <div className={styles.container}>
+    <div className={styles.container}>
         <div className={styles.descriptionWrapper}>
           <InfoTextBox
             size='large'
@@ -32,7 +29,6 @@ const Charge = () => {
           ))}
         </div>
       </div>
-    </>
   );
 };
 

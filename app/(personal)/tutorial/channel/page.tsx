@@ -1,1 +1,1 @@
-export { default } from '@/containers/(personal)/tutorial/channel';
+export { default } from '@/pages/coming-soon';
