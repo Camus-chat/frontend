@@ -11,7 +11,7 @@ const NavigationBelt = ({ business }: Props) => {
   const defaultPath = !business ? '/' : DOMAIN_NAME;
 
   return (
-    <div className='wrapper flex text-xs py-2 max-md:hidden'>
+    <div className='wrapper flex py-2 text-xs max-md:hidden'>
       <div className='text-gray-500'>패밀리 서비스</div>
       <Link className='ml-3 hover:text-blue-700' href={defaultPath}>
         개인용
