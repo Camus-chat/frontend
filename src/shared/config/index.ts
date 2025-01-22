@@ -1,4 +1,3 @@
-export const { BASE_URL } = process.env;
+export const { BASE_URL, NODE_ENV, DOMAIN_NAME, BIZ_DOMAIN_NAME } = process.env;
 
-export const DOMAIN_NAME = process.env.DOMAIN_NAME || '/error';
-export const BIZ_DOMAIN_NAME = process.env.BIZ_DOMAIN_NAME || '/biz';
+export const BIZ_PATH = NODE_ENV === 'development' ? '/biz' : '/';

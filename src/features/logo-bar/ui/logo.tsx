@@ -1,13 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { BIZ_PATH } from '@/shared/config';
+
 interface Props {
   business: boolean;
 }
 
 const Logo = ({ business }: Props) => {
+  const path = business ? BIZ_PATH : '/';
+
   return (
-    <Link href='/' className='flex items-end'>
+    <Link href={path} className='flex items-end'>
       <Image
         className='mr-0.5 h-[24px] w-[24px] md:mr-1 md:h-[40px] md:w-[40px]'
         src='/images/logo.svg'
