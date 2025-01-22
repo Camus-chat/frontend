@@ -7,5 +7,5 @@ npm-debug.log
 .git
 .gitignore
 .idea
-.prettierrc
+.prettierrc.cjs
 .eslintrc.json

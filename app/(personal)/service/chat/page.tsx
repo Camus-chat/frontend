@@ -1,1 +1,1 @@
-export { default } from '@/containers/(personal)/service/chat';
+export { default } from '@/pages/coming-soon';
