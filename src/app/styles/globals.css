@@ -10,7 +10,7 @@
     }
 
     body {
-        @apply h-screen w-screen tracking-tight;
+        @apply h-screen w-screen tracking-tight overflow-x-hidden;
     }
 
     .wrapper {
