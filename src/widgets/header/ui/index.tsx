@@ -38,7 +38,7 @@ const Header = ({ business }: Props) => {
         </span>
         <DrawerOpen className='ml-auto md:hidden' />
       </NavigationBar>
-      <Drawer className='text-lg font-semibold md:hidden'>
+      <Drawer className='fixed text-lg font-semibold md:hidden'>
         <div className='flex flex-col items-end bg-neutral-800'>
           <DrawerClose className='m-3 bg-transparent fill-white' />
           <DrawerLogin />
