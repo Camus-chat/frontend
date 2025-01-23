@@ -1,7 +1,7 @@
-import type { buttonColor, buttonSize } from './props';
 import type { ReactNode } from 'react';
 
-import styles from './styles';
+import type { buttonColor, buttonSize } from './props';
+import { button } from './styles';
 
 interface Props {
   children: ReactNode;
@@ -12,11 +12,7 @@ interface Props {
 
 const Button = ({ children, size, color, onClick }: Props) => {
   return (
-    <button
-      type='button'
-      className={`font-medium duration-300 ${styles.size[size]} ${styles.color[color]}`}
-      onClick={onClick}
-    >
+    <button type='button' className={button({ size, color })} onClick={onClick}>
       {children}
     </button>
   );
