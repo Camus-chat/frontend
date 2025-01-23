@@ -13,7 +13,7 @@ const Logo = ({ business }: Props) => {
   return (
     <Link href={path} className='flex items-end'>
       <Image
-        className='mr-0.5 h-[24px] w-[24px] md:mr-1 md:h-[40px] md:w-[40px]'
+        className='mr-0.5 size-6 md:mr-1 md:size-10'
         src='/images/logo.svg'
         alt='logo'
         width={1}

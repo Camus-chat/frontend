@@ -12,8 +12,10 @@
     body {
         @apply h-screen w-screen tracking-tight overflow-x-hidden;
     }
+}
 
+@layer components {
     .wrapper {
-        @apply max-w-screen-xl mx-auto px-5 md:px-7 xl:px-5;
+        @apply max-w-screen-xl mx-auto px-5 md:max-xl:px-7;
     }
 }
