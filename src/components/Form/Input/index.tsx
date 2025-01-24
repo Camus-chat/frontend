@@ -1,8 +1,5 @@
-import classNames from 'classnames';
-import React, { forwardRef } from 'react';
-
-import styles from './index.module.scss';
-import FormWrapper from '@/components/Form/Wrapper';
+import { Input } from '@heroui/input';
+import type { FC, RefObject } from 'react';
 
 interface Props {
   name?: string;
@@ -10,23 +7,35 @@ interface Props {
   placeholder: string;
   invalid?: boolean;
   message?: string;
+  ref: RefObject<HTMLInputElement>;
 }
 
-const Input = forwardRef<HTMLInputElement, Props>(
-  ({ name, type, placeholder, invalid = false, message }, ref) => {
-    return (
-      <FormWrapper name={name}>
-        <input
-          className={classNames(styles.inputBox, { [styles.invalid]: invalid })}
-          name={name}
-          ref={ref}
-          type={type}
-          placeholder={placeholder}
-        />
-        {invalid && <div className={styles.message}>{message}</div>}
-      </FormWrapper>
-    );
-  },
-);
+const TextField: FC<Props> = ({
+  name,
+  type,
+  placeholder,
+  invalid,
+  message,
+  ref,
+}) => {
+  return (
+    <Input
+      label={name}
+      type={type}
+      placeholder={placeholder}
+      isInvalid={invalid}
+      errorMessage={message}
+      baseRef={ref}
+      variant='bordered'
+      radius='sm'
+      classNames={{
+        inputWrapper: 'px-4 h-11 border',
+        mainWrapper: 'my-2',
+        label: 'font-semibold',
+      }}
+      labelPlacement='outside'
+    />
+  );
+};
 
-export default Input;
+export default TextField;
