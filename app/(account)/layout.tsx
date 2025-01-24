@@ -1,1 +1,1 @@
-export { default } from '@/containers/(account)';
+export { default } from '@/app/layouts/auth';
