@@ -7,7 +7,7 @@ import { useRef, useState } from 'react';
 import { requestLogin } from '@/pages/login/api/query';
 
 import styles from '../../../containers/(account)/login/index.module.scss';
-import Button from '@/components/Button';
+import Button from '@/shared/ui/button';
 import Input from '@/components/Form/Input';
 
 const Login = () => {
