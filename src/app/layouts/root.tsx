@@ -1,5 +1,7 @@
-import '@/app/styles';
+import { HeroUIProvider } from '@heroui/system';
 import type { ReactNode } from 'react';
+
+import '@/app/styles';
 
 export const metadata = {
   title: 'CAMUS',
@@ -12,7 +14,11 @@ export const metadata = {
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang='en'>
-      <body>{children}</body>
+      <body>
+        <HeroUIProvider className='h-screen w-screen'>
+          {children}
+        </HeroUIProvider>
+      </body>
     </html>
   );
 };
