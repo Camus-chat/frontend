@@ -41,7 +41,7 @@ const Login = () => {
 
   return (
     <>
-      <div className={styles.title}> 로그인</div>
+      <h1 className={styles.title}> 로그인</h1>
       <div className={styles.inputWrapper}>
         <Input type='text' placeholder='아이디를 입력해주세요' ref={idRef} />
         <Input
