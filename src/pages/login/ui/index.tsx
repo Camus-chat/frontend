@@ -15,7 +15,6 @@ const Login = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
   const [isValid, setIsValid] = useState<boolean>(true);
   const router = useRouter();
-  const path = '/';
 
   const checkIsValid = async () => {
     if (idRef.current?.value === '' || passwordRef.current?.value === '') {
@@ -34,7 +33,7 @@ const Login = () => {
       setIsValid(response);
       console.log(response);
       if (isValid) {
-        router.push(path);
+        router.push('/');
       }
     }
   };
