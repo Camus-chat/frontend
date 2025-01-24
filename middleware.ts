@@ -1,6 +1,4 @@
-import { NextResponse } from 'next/server';
-
-import type { NextRequest } from 'next/server'; // This function can be marked `async` if using `await` inside
+import { type NextRequest, NextResponse } from 'next/server';
 
 export const config = {
   matcher: [
@@ -15,19 +13,19 @@ export const config = {
   ],
 };
 
+const excludedPaths = ['/login', '/signup'];
+
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host');
+  const { pathname } = request.nextUrl;
 
-  if (hostname !== process.env.DOMAIN_NAME) {
-    const subdomain = hostname?.split('.')[0];
-
-    if (subdomain === 'www') {
-      return NextResponse.next();
-    }
-
+  if (
+    hostname?.startsWith('biz') &&
+    !excludedPaths.some((path) => pathname.startsWith(path))
+  ) {
     return NextResponse.rewrite(
-      new URL(`${subdomain}${request.nextUrl.pathname}`, request.url),
+      new URL(`/biz${request.nextUrl.pathname}`, request.url),
     );
   }
 
