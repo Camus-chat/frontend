@@ -59,6 +59,14 @@
     }
   },
   "rules": {
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 0,
+        "maxBOF": 0
+      }
+    ],
     "arrow-body-style": "off",
     "no-plusplus": "off",
     "react/display-name": "off",

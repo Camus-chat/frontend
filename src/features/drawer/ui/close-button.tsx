@@ -4,6 +4,8 @@ import CloseIcon from '@mui/icons-material/Close';
 
 import { useDrawerStore } from '@/features/drawer/store/open';
 
+import { button } from './styles';
+
 interface Props {
   className?: string;
 }
@@ -13,7 +15,7 @@ const Open = ({ className }: Props) => {
 
   return (
     <button
-      className={`flex items-center ${className}`}
+      className={button({ class: className })}
       type='button'
       onClick={closeDrawer}
     >

@@ -1,5 +1,6 @@
-import Logo from '@/features/logo-bar/ui/logo';
 import type { ReactNode } from 'react';
+
+import Logo from './logo';
 
 interface Props {
   children?: ReactNode;
@@ -8,7 +9,7 @@ interface Props {
 
 const Bar = ({ children, business }: Props) => {
   return (
-    <div className='grid grid-cols-[auto,1fr] items-center wrapper max-md:py-4 md:h-[56px]'>
+    <div className='wrapper grid h-14 grid-cols-[auto,1fr] items-center'>
       <Logo business={business} />
       {children}
     </div>

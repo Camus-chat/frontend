@@ -4,6 +4,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import { useDrawerStore } from '@/features/drawer/store/open';
 
+import { button } from './styles';
+
 interface Props {
   className?: string;
 }
@@ -13,7 +15,7 @@ const Open = ({ className }: Props) => {
 
   return (
     <button
-      className={`flex items-center ${className}`}
+      className={button({ class: className })}
       type='button'
       onClick={openDrawer}
     >
