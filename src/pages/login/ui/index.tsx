@@ -5,8 +5,6 @@ import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 
 import { requestLogin } from '@/pages/login/api/query';
-import SelectButton from '@/containers/(account)/SelectButton';
-import { useAccountStore } from '@/states/account';
 
 import styles from '../../../containers/(account)/login/index.module.scss';
 import Button from '@/components/Button';
@@ -15,10 +13,9 @@ import Input from '@/components/Form/Input';
 const Login = () => {
   const idRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const { isEnterprise } = useAccountStore();
   const [isValid, setIsValid] = useState<boolean>(true);
   const router = useRouter();
-  const path = isEnterprise ? '/biz' : '/';
+  const path = '/';
 
   const checkIsValid = async () => {
     if (idRef.current?.value === '' || passwordRef.current?.value === '') {
@@ -30,7 +27,7 @@ const Login = () => {
     await checkIsValid();
 
     if (idRef.current?.value !== '' && passwordRef.current?.value !== '') {
-      const response = await requestLogin(isEnterprise, {
+      const response = await requestLogin(false, {
         username: idRef.current ? idRef.current.value : '',
         password: passwordRef.current ? passwordRef.current.value : '',
       });
@@ -45,7 +42,6 @@ const Login = () => {
   return (
     <>
       <div className={styles.title}> 로그인</div>
-      <SelectButton />
       <div className={styles.inputWrapper}>
         <Input type='text' placeholder='아이디를 입력해주세요' ref={idRef} />
         <Input
