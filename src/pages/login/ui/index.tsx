@@ -4,11 +4,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 
-import { requestLogin } from '@/containers/(account)/login/query';
+import { requestLogin } from '@/pages/login/api/query';
 import SelectButton from '@/containers/(account)/SelectButton';
 import { useAccountStore } from '@/states/account';
 
-import styles from './index.module.scss';
+import styles from '../../../containers/(account)/login/index.module.scss';
 import Button from '@/components/Button';
 import Input from '@/components/Form/Input';
 
