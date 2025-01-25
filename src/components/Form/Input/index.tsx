@@ -1,6 +1,8 @@
 import { Input } from '@heroui/input';
 import type { FC, RefObject } from 'react';
 
+import { input } from '@/shared/ui/input/styles';
+
 interface Props {
   name?: string;
   type: string;
@@ -26,14 +28,7 @@ const TextField: FC<Props> = ({
       isInvalid={invalid}
       errorMessage={message}
       baseRef={ref}
-      variant='bordered'
-      radius='sm'
-      classNames={{
-        inputWrapper: 'px-4 h-11 border',
-        mainWrapper: 'my-2',
-        label: 'font-semibold',
-      }}
-      labelPlacement='outside'
+      {...input}
     />
   );
 };
