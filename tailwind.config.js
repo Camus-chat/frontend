@@ -39,7 +39,19 @@ const config = {
       },
     },
   },
-  plugins: [heroui()],
+  plugins: [
+    heroui({
+      themes: {
+        light: {
+          colors: {
+            danger: {
+              DEFAULT: '#f84d3a',
+            },
+          },
+        },
+      },
+    }),
+  ],
 };
 
 export default config;
