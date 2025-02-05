@@ -8,11 +8,16 @@ interface Props {
   size: buttonSize;
   color: buttonColor;
   onClick?: () => void;
+  className?: string;
 }
 
-const Button = ({ children, size, color, onClick }: Props) => {
+const Button = ({ children, size, color, onClick, className }: Props) => {
   return (
-    <button type='button' className={button({ size, color })} onClick={onClick}>
+    <button
+      type='button'
+      className={button({ size, color, class: className })}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
