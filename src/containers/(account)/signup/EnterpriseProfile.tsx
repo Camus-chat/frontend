@@ -79,14 +79,14 @@ const EnterpriseProfile = () => {
         type='text'
         placeholder='회사명을 입력해주세요.'
         ref={companyRef}
-        invalid={isEmptyName}
+        isInvalid={isEmptyName}
       />
       <Input
         label='회사 이메일'
         type='text'
         placeholder='회사 이메일을 입력해주세요.'
         ref={companyEmailRef}
-        invalid={isEmptyMail}
+        isInvalid={isEmptyMail}
         message={mailMessage}
       />
       <div className={styles.signupButton}>

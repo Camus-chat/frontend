@@ -7,7 +7,7 @@ interface Props {
   label?: string;
   type: string;
   placeholder: string;
-  invalid?: boolean;
+  isInvalid?: boolean;
   message?: string;
   ref: RefObject<HTMLInputElement>;
 }
@@ -16,7 +16,7 @@ const TextField: FC<Props> = ({
   label,
   type,
   placeholder,
-  invalid,
+  isInvalid,
   message,
   ref,
 }) => {
@@ -25,7 +25,7 @@ const TextField: FC<Props> = ({
       label={label}
       type={type}
       placeholder={placeholder}
-      isInvalid={invalid}
+      isInvalid={isInvalid}
       errorMessage={message}
       baseRef={ref}
       {...input}
