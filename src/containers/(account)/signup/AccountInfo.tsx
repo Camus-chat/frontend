@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react';
 
-import ButtonBox from '@/containers/(account)/signup/ButtonBox';
 import styles from '@/containers/(account)/signup/index.module.scss';
 import { checkId } from '@/containers/(account)/signup/query';
 import { Input } from '@/shared/ui';
 import { useAccountStore } from '@/states/account';
+
+import StepButton from './ui/step-button';
 
 const AccountInfo = () => {
   const idRef = useRef<HTMLInputElement>(null);
@@ -95,7 +96,7 @@ const AccountInfo = () => {
         isInvalid={!isCheckedPwd}
         errorMessage='비밀번호가 일치하지 않습니다'
       />
-      <ButtonBox />
+      <StepButton />
     </div>
   );
 };

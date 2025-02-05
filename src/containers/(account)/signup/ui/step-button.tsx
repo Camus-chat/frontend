@@ -1,12 +1,12 @@
 import { Button } from '@/shared/ui';
 
-import { useStepStore } from './store/step';
+import { useStepStore } from '../store/step';
 
 interface Props {
   disabled?: boolean;
 }
 
-const ButtonBox = ({ disabled }: Props) => {
+const StepButton = ({ disabled }: Props) => {
   const { clickPrev, nextStep } = useStepStore((state) => ({
     clickPrev: state.prevStep,
     nextStep: state.nextStep,
@@ -26,4 +26,4 @@ const ButtonBox = ({ disabled }: Props) => {
   );
 };
 
-export default ButtonBox;
+export default StepButton;
