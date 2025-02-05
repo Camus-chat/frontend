@@ -2,7 +2,11 @@
 
 import { useRef, useState } from 'react';
 
-import { CHANNEL_CREATE, FILTER_DROP_DOWN_OPTION } from './constants';
+import Button from '@/components/Button';
+import DropDown from '@/components/Form/DropDown';
+import Input from '@/components/Form/Input';
+import InfoTextBox from '@/components/InfoTextBox';
+import ToggleButton from '@/components/ToggleButton';
 import { createChannel } from '@/containers/(personal)/service/channel/query';
 import type {
   ChannelType,
@@ -10,12 +14,8 @@ import type {
 } from '@/containers/(personal)/service/channel/type';
 import { useChannelStore } from '@/states/channel';
 
+import { CHANNEL_CREATE, FILTER_DROP_DOWN_OPTION } from './constants';
 import styles from './index.module.scss';
-import Button from '@/components/Button';
-import DropDown from '@/components/Form/DropDown';
-import Input from '@/components/Form/Input';
-import InfoTextBox from '@/components/InfoTextBox';
-import ToggleButton from '@/components/ToggleButton';
 
 const ChannelCreate = () => {
   const { close, addNewChannel } = useChannelStore((state) => ({
@@ -75,14 +75,14 @@ const ChannelCreate = () => {
 
         <Input
           ref={title}
-          name='채널명'
+          label='채널명'
           type='text'
           placeholder='채널명을 입력해주세요.'
         />
 
         <Input
           ref={content}
-          name='소개글'
+          label='소개글'
           type='text'
           placeholder='한 줄 소개를 작성해주세요.'
         />

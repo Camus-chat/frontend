@@ -2,20 +2,20 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+import Button from '@/components/Button';
+import DropDown from '@/components/Form/DropDown';
+import Input from '@/components/Form/Input';
+import InfoTextBox from '@/components/InfoTextBox';
+import { updateChannel } from '@/containers/(personal)/service/channel/query';
+import type { FilterLevel } from '@/containers/(personal)/service/channel/type';
+import { useChannelStore } from '@/states/channel';
+
 import {
   CHANNEL_UPDATE,
   FILTER_DROP_DOWN_OPTION,
   FILTER_OPTION_MAP,
 } from './constants';
-import { updateChannel } from '@/containers/(personal)/service/channel/query';
-import type { FilterLevel } from '@/containers/(personal)/service/channel/type';
-import { useChannelStore } from '@/states/channel';
-
 import styles from './index.module.scss';
-import Button from '@/components/Button';
-import DropDown from '@/components/Form/DropDown';
-import Input from '@/components/Form/Input';
-import InfoTextBox from '@/components/InfoTextBox';
 
 const ChannelUpdate = () => {
   const { channel, close } = useChannelStore((state) => ({
@@ -65,14 +65,14 @@ const ChannelUpdate = () => {
 
         <Input
           ref={title}
-          name='채널명'
+          label='채널명'
           type='text'
           placeholder='채널명을 입력해주세요.'
         />
 
         <Input
           ref={content}
-          name='소개글'
+          label='소개글'
           type='text'
           placeholder='한 줄 소개를 작성해주세요.'
         />

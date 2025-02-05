@@ -4,7 +4,7 @@ import type { FC, RefObject } from 'react';
 import { input } from '@/shared/ui/input/styles';
 
 interface Props {
-  name?: string;
+  label?: string;
   type: string;
   placeholder: string;
   invalid?: boolean;
@@ -13,7 +13,7 @@ interface Props {
 }
 
 const TextField: FC<Props> = ({
-  name,
+  label,
   type,
   placeholder,
   invalid,
@@ -22,7 +22,7 @@ const TextField: FC<Props> = ({
 }) => {
   return (
     <Input
-      label={name}
+      label={label}
       type={type}
       placeholder={placeholder}
       isInvalid={invalid}

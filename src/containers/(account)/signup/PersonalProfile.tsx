@@ -1,12 +1,12 @@
 import { ChangeEvent, useRef, useState } from 'react';
 
+import Button from '@/components/Button';
+import Input from '@/components/Form/Input';
+import Member from '@/components/ProfileImage/Member';
 import { requestPersonalSignUp } from '@/containers/(account)/signup/query';
 import { useAccountStore } from '@/states/account';
 
 import styles from './index.module.scss';
-import Button from '@/components/Button';
-import Input from '@/components/Form/Input';
-import Member from '@/components/ProfileImage/Member';
 
 const PersonalProfile = () => {
   const {
@@ -83,7 +83,7 @@ const PersonalProfile = () => {
         </div>
       </div>
       <Input
-        name='닉네임'
+        label='닉네임'
         type='text'
         placeholder='닉네임을 입력해 주세요'
         ref={nicknameRef}

@@ -1,11 +1,10 @@
 import { useRef, useState } from 'react';
 
+import Input from '@/components/Form/Input';
 import ButtonBox from '@/containers/(account)/signup/ButtonBox';
 import styles from '@/containers/(account)/signup/index.module.scss';
 import { checkId } from '@/containers/(account)/signup/query';
 import { useAccountStore } from '@/states/account';
-
-import Input from '@/components/Form/Input';
 
 const AccountInfo = () => {
   const idRef = useRef<HTMLInputElement>(null);
@@ -73,7 +72,7 @@ const AccountInfo = () => {
   return (
     <div className={styles.contentWrapper}>
       <Input
-        name='아이디'
+        label='아이디'
         ref={idRef}
         type='text'
         placeholder='아이디를 입력해 주세요 (5글자 이상 10글자 이하)'
@@ -81,7 +80,7 @@ const AccountInfo = () => {
         message={idMessage}
       />
       <Input
-        name='비밀번호'
+        label='비밀번호'
         ref={passwordRef}
         type='password'
         placeholder='비밀번호를 입력해 주세요 (8글자 이상)'
@@ -89,7 +88,7 @@ const AccountInfo = () => {
         message='8글자 이상 입력해주세요.'
       />
       <Input
-        name='비밀번호 확인'
+        label='비밀번호 확인'
         ref={checkPasswordRef}
         type='password'
         placeholder='비밀번호를 다시 입력해 주세요'

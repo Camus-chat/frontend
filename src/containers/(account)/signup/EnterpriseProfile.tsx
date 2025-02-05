@@ -1,11 +1,10 @@
 import { useRef, useState } from 'react';
 
+import Button from '@/components/Button';
+import Input from '@/components/Form/Input';
 import styles from '@/containers/(account)/signup/index.module.scss';
 import { requestEnterpriseSignUp } from '@/containers/(account)/signup/query';
 import { useAccountStore } from '@/states/account';
-
-import Button from '@/components/Button';
-import Input from '@/components/Form/Input';
 
 const EnterpriseProfile = () => {
   const companyRef = useRef<HTMLInputElement>(null);
@@ -76,14 +75,14 @@ const EnterpriseProfile = () => {
   return (
     <div className={styles.profileWrapper}>
       <Input
-        name='회사명'
+        label='회사명'
         type='text'
         placeholder='회사명을 입력해주세요.'
         ref={companyRef}
         invalid={isEmptyName}
       />
       <Input
-        name='회사 이메일'
+        label='회사 이메일'
         type='text'
         placeholder='회사 이메일을 입력해주세요.'
         ref={companyEmailRef}
