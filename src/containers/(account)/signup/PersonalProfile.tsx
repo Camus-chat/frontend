@@ -1,9 +1,9 @@
 import { ChangeEvent, useRef, useState } from 'react';
 
 import Button from '@/components/Button';
-import Input from '@/components/Form/Input';
 import Member from '@/components/ProfileImage/Member';
 import { requestPersonalSignUp } from '@/containers/(account)/signup/query';
+import { Input } from '@/shared/ui';
 import { useAccountStore } from '@/states/account';
 
 import styles from './index.module.scss';

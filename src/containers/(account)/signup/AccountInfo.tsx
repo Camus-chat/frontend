@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
 
-import Input from '@/components/Form/Input';
 import ButtonBox from '@/containers/(account)/signup/ButtonBox';
 import styles from '@/containers/(account)/signup/index.module.scss';
 import { checkId } from '@/containers/(account)/signup/query';
+import { Input } from '@/shared/ui';
 import { useAccountStore } from '@/states/account';
 
 const AccountInfo = () => {

@@ -1,7 +1,6 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
 import Button from '@/components/Button';
-import Input from '@/components/Form/Input';
 import InfoTextBox from '@/components/InfoTextBox';
 import Member from '@/components/ProfileImage/Member';
 import { POPUP_DESCRIPTION } from '@/containers/(personal)/service/profile/constants';
@@ -10,6 +9,7 @@ import {
   updateNickname,
   updateProfileImg,
 } from '@/containers/(personal)/service/profile/query';
+import { Input } from '@/shared/ui';
 import { useAccountStore } from '@/states/account';
 
 interface Props {

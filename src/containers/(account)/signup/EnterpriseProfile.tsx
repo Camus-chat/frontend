@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
 
 import Button from '@/components/Button';
-import Input from '@/components/Form/Input';
 import styles from '@/containers/(account)/signup/index.module.scss';
 import { requestEnterpriseSignUp } from '@/containers/(account)/signup/query';
+import { Input } from '@/shared/ui';
 import { useAccountStore } from '@/states/account';
 
 const EnterpriseProfile = () => {

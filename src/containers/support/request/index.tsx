@@ -1,8 +1,8 @@
 import Button from '@/components/Button';
 import Dropdown from '@/components/Form/DropDown';
-import Input from '@/components/Form/Input';
 import TextArea from '@/components/Form/TextArea';
 import { MEMBER_OPTION, ROUTE_OPTION } from '@/containers/support/constants';
+import { Input } from '@/shared/ui';
 
 import styles from './index.module.scss';
 
