@@ -87,7 +87,7 @@ const EnterpriseProfile = () => {
         placeholder='회사 이메일을 입력해주세요.'
         ref={companyEmailRef}
         isInvalid={isEmptyMail}
-        message={mailMessage}
+        errorMessage={mailMessage}
       />
       <div className={styles.signupButton}>
         <Button size='large' color='blue' onClick={handleClick}>

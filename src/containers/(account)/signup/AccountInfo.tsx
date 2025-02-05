@@ -77,7 +77,7 @@ const AccountInfo = () => {
         type='text'
         placeholder='아이디를 입력해 주세요 (5글자 이상 10글자 이하)'
         isInvalid={isExistingId || isInvalidId}
-        message={idMessage}
+        errorMessage={idMessage}
       />
       <Input
         label='비밀번호'
@@ -85,7 +85,7 @@ const AccountInfo = () => {
         type='password'
         placeholder='비밀번호를 입력해 주세요 (8글자 이상)'
         isInvalid={isInvalidPwd}
-        message='8글자 이상 입력해주세요.'
+        errorMessage='8글자 이상 입력해주세요.'
       />
       <Input
         label='비밀번호 확인'
@@ -93,7 +93,7 @@ const AccountInfo = () => {
         type='password'
         placeholder='비밀번호를 다시 입력해 주세요'
         isInvalid={!isCheckedPwd}
-        message='비밀번호가 일치하지 않습니다'
+        errorMessage='비밀번호가 일치하지 않습니다'
       />
       <ButtonBox
         clickPrev={clickPrev}
