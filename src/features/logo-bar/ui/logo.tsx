@@ -1,14 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { BIZ_PATH } from '@/shared/config';
-
 interface Props {
   business: boolean;
 }
 
 const Logo = ({ business }: Props) => {
-  const path = business ? BIZ_PATH : '/';
+  let path = '/';
+
+  if (process.env.NODE_ENV === 'development') {
+    if (business) {
+      path = '/biz';
+    }
+  }
 
   return (
     <Link href={path} className='flex items-end'>
