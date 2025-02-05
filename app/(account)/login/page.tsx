@@ -1,1 +1,1 @@
-export { default } from '@/pages/login/ui';
+export { default } from '@/pages/login';
