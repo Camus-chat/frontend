@@ -2,7 +2,6 @@
 
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-import styles from '@/containers/(account)/login/index.module.scss';
 import { useAccountStore } from '@/states/account';
 
 import { ENTERPRISE, PERSONAL } from './login/constants';
@@ -22,14 +21,14 @@ const SelectButton = () => {
   };
 
   return (
-    <div className={styles.selectButtonWrapper}>
+    <div className="py-2 w-full grid gap-2 grid-cols-2">
       <Button
         size='large'
         color={enterpriseColor}
         onClick={() => handleClick(ENTERPRISE)}
         option='outline'
       >
-        <CheckCircleIcon className={styles.icon} />
+        <CheckCircleIcon className="w-4 mr-0.5"/>
         기업회원
       </Button>
       <Button
@@ -38,7 +37,7 @@ const SelectButton = () => {
         onClick={() => handleClick(PERSONAL)}
         option='outline'
       >
-        <CheckCircleIcon className={styles.icon} />
+        <CheckCircleIcon className="w-4 mr-0.5"/>
         개인회원
       </Button>
     </div>

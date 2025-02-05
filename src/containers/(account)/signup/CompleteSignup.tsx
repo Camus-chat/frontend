@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { requestLogin } from '@/containers/(account)/login/query';
+import { requestLogin } from '@/pages/login/api/query';
 import styles from '@/containers/(account)/signup/index.module.scss';
 import { useAccountStore } from '@/states/account';
 
