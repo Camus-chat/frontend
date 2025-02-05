@@ -1,14 +1,13 @@
 'use client';
 
+import { useUncontrolledInput } from '@/shared/hook';
 import { Button, Input, Password } from '@/shared/ui';
-
-import { useInputState } from '../hook/useInputState';
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 const Login = () => {
-  const [$email, emailError, setEmailError] = useInputState();
-  const [$password, passwordError, setPasswordError] = useInputState();
+  const [$email, emailError, setEmailError] = useUncontrolledInput();
+  const [$password, passwordError, setPasswordError] = useUncontrolledInput();
 
   const validate = (email: string, password: string) => {
     if (!email) {
