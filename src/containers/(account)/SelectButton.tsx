@@ -2,7 +2,6 @@
 
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-// import styles from '@/containers/(account)/login/index.module.scss';
 import { useAccountStore } from '@/states/account';
 
 import { ENTERPRISE, PERSONAL } from './login/constants';
