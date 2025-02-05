@@ -10,12 +10,14 @@ import SelectType from '@/containers/(account)/signup/SelectType';
 import { useAccountStore } from '@/states/account';
 
 import { INFO_TEXT } from '../constants';
+import Step from './step';
+import { useStepStore } from '../store/step';
 
 const SignupPage = () => {
-  const { index, isEnterprise } = useAccountStore((state) => ({
-    index: state.index,
+  const { isEnterprise } = useAccountStore((state) => ({
     isEnterprise: state.isEnterprise,
   }));
+  const { index } = useStepStore((state) => ({ index: state.step }));
 
   return (
     <>
@@ -25,12 +27,21 @@ const SignupPage = () => {
         content={INFO_TEXT[index].content}
       />
       <div>
-        {index === 0 && <Agreement />}
-        {index === 1 && <SelectType />}
-        {index === 2 && <AccountInfo />}
-        {isEnterprise && index === 3 && <EnterpriseProfile />}
-        {!isEnterprise && index === 3 && <PersonalProfile />}
-        {index === 4 && <CompleteSignup />}
+        <Step index={0}>
+          <Agreement />
+        </Step>
+        <Step index={1}>
+          <SelectType />
+        </Step>
+        <Step index={2}>
+          <AccountInfo />
+        </Step>
+        <Step index={3}>
+          {isEnterprise ? <EnterpriseProfile /> : <PersonalProfile />}
+        </Step>
+        <Step index={4}>
+          <CompleteSignup />
+        </Step>
       </div>
     </>
   );

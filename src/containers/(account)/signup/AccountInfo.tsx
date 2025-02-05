@@ -95,11 +95,7 @@ const AccountInfo = () => {
         isInvalid={!isCheckedPwd}
         errorMessage='비밀번호가 일치하지 않습니다'
       />
-      <ButtonBox
-        clickPrev={clickPrev}
-        clickNext={handleClickNext}
-        nextColor='blue'
-      />
+      <ButtonBox />
     </div>
   );
 };

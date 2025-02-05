@@ -1,29 +1,27 @@
-import classNames from 'classnames';
+import { Button } from '@/shared/ui';
 
-import styles from '@/containers/(account)/signup/index.module.scss';
-
-import Button from '@/components/Button';
+import { useStepStore } from './store/step';
 
 interface Props {
-  prev?: string;
-  clickPrev?: () => void;
-  clickNext: () => void;
-  nextColor: ButtonColor;
+  disabled?: boolean;
 }
 
-const ButtonBox = ({ prev, clickPrev, clickNext, nextColor }: Props) => {
+const ButtonBox = ({ disabled }: Props) => {
+  const { clickPrev, nextStep } = useStepStore((state) => ({
+    clickPrev: state.prevStep,
+    nextStep: state.nextStep,
+  }));
+  const clickNext = disabled ? () => {} : nextStep;
+  const nextColor = disabled ? 'disable' : 'blue';
+
   return (
-    <div className={styles.buttonWrapper}>
-      <div className={classNames(styles.prevButton, { [styles.prev]: prev })}>
-        <Button size='large' color='login' onClick={clickPrev}>
-          이전
-        </Button>
-      </div>
-      <div className={styles.nextButton}>
-        <Button size='large' color={nextColor} onClick={clickNext}>
-          다음
-        </Button>
-      </div>
+    <div className='mt-40 flex justify-between'>
+      <Button size='large' color='transparent' onClick={clickPrev}>
+        이전
+      </Button>
+      <Button size='large' color={nextColor} onClick={clickNext}>
+        다음
+      </Button>
     </div>
   );
 };
