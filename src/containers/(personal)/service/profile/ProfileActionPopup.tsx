@@ -1,17 +1,16 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
+import Button from '@/components/Button';
+import InfoTextBox from '@/components/InfoTextBox';
+import Member from '@/components/ProfileImage/Member';
 import { POPUP_DESCRIPTION } from '@/containers/(personal)/service/profile/constants';
 import styles from '@/containers/(personal)/service/profile/index.module.scss';
 import {
   updateNickname,
   updateProfileImg,
 } from '@/containers/(personal)/service/profile/query';
+import { Input } from '@/shared/ui';
 import { useAccountStore } from '@/states/account';
-
-import Button from '@/components/Button';
-import Input from '@/components/Form/Input';
-import InfoTextBox from '@/components/InfoTextBox';
-import Member from '@/components/ProfileImage/Member';
 
 interface Props {
   memberInfo: MemberInfo;
@@ -91,7 +90,7 @@ const ProfileActionPopup = ({ memberInfo, clickCancel }: Props) => {
           </label>
         </div>
         <Input
-          name='닉네임'
+          label='닉네임'
           type='text'
           placeholder='닉네임을 입력해주세요'
           ref={nicknameRef}
