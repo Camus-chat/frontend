@@ -1,9 +1,8 @@
 'use client';
 
+import { EMAIL_REGEX } from '@/shared/config';
 import { useUncontrolledInput } from '@/shared/hook';
 import { Button, Input, Password } from '@/shared/ui';
-
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 const Login = () => {
   const [$email, emailError, setEmailError] = useUncontrolledInput();
@@ -14,7 +13,7 @@ const Login = () => {
       return setEmailError('아이디(메일)를 입력해주세요.');
     }
 
-    if (!emailRegex.test(email)) {
+    if (!EMAIL_REGEX.test(email)) {
       return setEmailError('아이디(메일)를 정확히 입력해주세요.');
     }
 
