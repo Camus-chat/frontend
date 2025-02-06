@@ -15,7 +15,7 @@ const StepButton = ({ disabled }: Props) => {
   const nextColor = disabled ? 'disable' : 'blue';
 
   return (
-    <div className='mt-40 flex justify-between'>
+    <div className='flex justify-between'>
       <Button size='large' color='transparent' onClick={clickPrev}>
         이전
       </Button>

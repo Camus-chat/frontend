@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react';
 
-import styles from '@/containers/(account)/signup/index.module.scss';
 import { checkId } from '@/containers/(account)/signup/query';
 import { Input } from '@/shared/ui';
 import { useAccountStore } from '@/states/account';
 
 import StepButton from './ui/step-button';
+import { wrapper } from './ui/styles';
 
 const AccountInfo = () => {
   const idRef = useRef<HTMLInputElement>(null);
@@ -71,31 +71,33 @@ const AccountInfo = () => {
   };
 
   return (
-    <div className={styles.contentWrapper}>
-      <Input
-        label='아이디'
-        ref={idRef}
-        type='text'
-        placeholder='아이디를 입력해 주세요 (5글자 이상 10글자 이하)'
-        isInvalid={isExistingId || isInvalidId}
-        errorMessage={idMessage}
-      />
-      <Input
-        label='비밀번호'
-        ref={passwordRef}
-        type='password'
-        placeholder='비밀번호를 입력해 주세요 (8글자 이상)'
-        isInvalid={isInvalidPwd}
-        errorMessage='8글자 이상 입력해주세요.'
-      />
-      <Input
-        label='비밀번호 확인'
-        ref={checkPasswordRef}
-        type='password'
-        placeholder='비밀번호를 다시 입력해 주세요'
-        isInvalid={!isCheckedPwd}
-        errorMessage='비밀번호가 일치하지 않습니다'
-      />
+    <div className={wrapper()}>
+      <div className='flex flex-col gap-3'>
+        <Input
+          label='아이디'
+          ref={idRef}
+          type='text'
+          placeholder='아이디를 입력해 주세요 (5글자 이상 10글자 이하)'
+          isInvalid={isExistingId || isInvalidId}
+          errorMessage={idMessage}
+        />
+        <Input
+          label='비밀번호'
+          ref={passwordRef}
+          type='password'
+          placeholder='비밀번호를 입력해 주세요 (8글자 이상)'
+          isInvalid={isInvalidPwd}
+          errorMessage='8글자 이상 입력해주세요.'
+        />
+        <Input
+          label='비밀번호 확인'
+          ref={checkPasswordRef}
+          type='password'
+          placeholder='비밀번호를 다시 입력해 주세요'
+          isInvalid={!isCheckedPwd}
+          errorMessage='비밀번호가 일치하지 않습니다'
+        />
+      </div>
       <StepButton />
     </div>
   );

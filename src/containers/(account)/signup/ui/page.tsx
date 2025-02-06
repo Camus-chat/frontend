@@ -26,23 +26,21 @@ const SignupPage = () => {
         title={INFO_TEXT[index].title}
         content={INFO_TEXT[index].content}
       />
-      <div>
-        <Step index={0}>
-          <Agreement />
-        </Step>
-        <Step index={1}>
-          <SelectType />
-        </Step>
-        <Step index={2}>
-          <AccountInfo />
-        </Step>
-        <Step index={3}>
-          {isEnterprise ? <EnterpriseProfile /> : <PersonalProfile />}
-        </Step>
-        <Step index={4}>
-          <CompleteSignup />
-        </Step>
-      </div>
+      <Step index={0}>
+        <Agreement />
+      </Step>
+      <Step index={1}>
+        <SelectType />
+      </Step>
+      <Step index={2}>
+        <AccountInfo />
+      </Step>
+      <Step index={3}>
+        {isEnterprise ? <EnterpriseProfile /> : <PersonalProfile />}
+      </Step>
+      <Step index={4}>
+        <CompleteSignup />
+      </Step>
     </>
   );
 };
