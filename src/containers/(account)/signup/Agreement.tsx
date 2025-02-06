@@ -1,16 +1,16 @@
 import { ChangeEvent, useState } from 'react';
 
+import Button from '@/components/Button';
 import CheckBox from '@/containers/(account)/signup/CheckBox';
 import { AGREE_TEXT } from '@/containers/(account)/signup/constants';
-import { useAccountStore } from '@/states/account';
+import { useStepStore } from '@/containers/(account)/signup/store/step';
 
 import styles from './index.module.scss';
-import Button from '@/components/Button';
 
 const Agreement = () => {
   const [service, setService] = useState(false);
   const [personalInfo, setPersonalInfo] = useState(false);
-  const clickNext = useAccountStore((state) => state.nextIndex);
+  const clickNext = useStepStore((state) => state.nextStep);
 
   const checkedAll = service && personalInfo;
   const buttonColor = checkedAll ? 'blue' : 'gray';
