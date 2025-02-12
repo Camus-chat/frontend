@@ -15,7 +15,7 @@ const EnterpriseSelect = ({ onSelect, selectedKey }: Props) => {
   return (
     <div className='grid w-full grid-cols-2 gap-2'>
       <Button
-        size='large'
+        size='md'
         color={selectedKey === PERSONAL ? 'selected' : 'gray'}
         onClick={() => onSelect(PERSONAL)}
       >
@@ -23,7 +23,7 @@ const EnterpriseSelect = ({ onSelect, selectedKey }: Props) => {
         Personal
       </Button>
       <Button
-        size='large'
+        size='md'
         color={selectedKey === ENTERPRISE ? 'selected' : 'gray'}
         onClick={() => onSelect(ENTERPRISE)}
       >
