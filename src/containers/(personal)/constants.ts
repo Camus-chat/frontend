@@ -1,4 +1,4 @@
-import Manage from '@/containers/(account)/signup/ui/banner/manage.json';
+import Manage from '@/pages/signup/ui/banner/manage.json';
 
 import Channel from '../../../public/animations/channel.json';
 import Chatting from '../../../public/animations/chatting.json';
