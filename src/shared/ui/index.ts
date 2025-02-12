@@ -8,3 +8,4 @@ export { auth } from './style/auth';
 
 // icons
 export { CheckIcon } from './icon/check';
+export { CheckCircleIcon } from './icon/check-circle';
