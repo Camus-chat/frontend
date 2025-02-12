@@ -1,8 +1,7 @@
 import { ReactNode } from 'react';
 
 import Logo from '@/features/logo-bar';
-
-import { auth } from './styles';
+import { auth } from '@/shared/ui';
 
 interface Props {
   children: ReactNode;

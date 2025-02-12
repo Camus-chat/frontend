@@ -85,7 +85,7 @@ const Password = (props: InputProps) => {
         </button>
       }
       {...props}
-      variant='bordered'
+      variant='underlined'
       type={isVisible ? 'text' : 'password'}
     />
   );

@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import Button from '@/shared/ui/button';
+import { Button } from '@/shared/ui';
 
 const Login = () => {
   const router = useRouter();

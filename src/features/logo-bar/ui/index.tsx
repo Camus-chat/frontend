@@ -9,7 +9,7 @@ interface Props {
 
 const Bar = ({ children, business }: Props) => {
   return (
-    <div className='wrapper grid h-14 grid-cols-[auto,1fr] items-center'>
+    <div className='grid grid-cols-[auto,1fr] items-center'>
       <Logo business={business} />
       {children}
     </div>
