@@ -53,7 +53,7 @@ const SignupForm = () => {
   }, []);
 
   return (
-    <div className='flex max-w-[448px] flex-col gap-1 rounded-md border p-6'>
+    <>
       <div className='mb-4 flex justify-end'>
         <span className='mr-1 text-xs text-gray-500'>
           Already have an account?
@@ -87,7 +87,7 @@ const SignupForm = () => {
       >
         Create account
       </Button>
-    </div>
+    </>
   );
 };
 

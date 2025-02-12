@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 import { EMAIL_REGEX } from '@/shared/config';
 import { useUncontrolledInput } from '@/shared/hook';
 import { Button, Input, Password } from '@/shared/ui';
@@ -37,13 +39,21 @@ const Login = () => {
   };
 
   return (
-    <div className='flex flex-col gap-3'>
-      <Input ref={$email} {...emailError} placeholder='아이디(이메일)' />
-      <Password ref={$password} {...passwordError} placeholder='비밀번호' />
-      <Button className='mt-2' size='large' color='blue' onClick={handleClick}>
-        로그인
+    <>
+      <div className='flex justify-end'>
+        <span className='mr-1 text-xs text-gray-500'>
+          {`Don't have an account?`}
+        </span>
+        <Link href='/signup' className='text-xs font-medium text-blue-600'>
+          Sign up
+        </Link>
+      </div>
+      <Input ref={$email} {...emailError} label='Email' />
+      <Password ref={$password} {...passwordError} label='Password' />
+      <Button className='mt-6' size='large' color='blue' onClick={handleClick}>
+        Sign in
       </Button>
-    </div>
+    </>
   );
 };
 

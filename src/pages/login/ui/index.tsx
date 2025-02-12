@@ -1,21 +1,28 @@
 import Link from 'next/link';
 
 import Login from '@/features/login';
+import LogoBar from '@/features/logo-bar';
+import { auth } from '@/shared/ui';
 
 const LoginPage = () => {
+  const { wrapper, header, main, title, box } = auth();
   return (
-    <>
-      <h1 className='mb-4 text-[28px] font-bold'> 로그인</h1>
-      <Login />
-      <div className='flex justify-end pt-4'>
-        <Link
-          className='text-[14px] text-gray-600 hover:text-blue-600'
-          href='/signup'
-        >
-          회원가입
-        </Link>
-      </div>
-    </>
+    <div className={wrapper()}>
+      <header className={header()}>
+        <LogoBar business={false} />
+      </header>
+      <main className={main()}>
+        <h1 className={title({ class: 'mb-6' })}>Sign into your account</h1>
+        <div className={box()}>
+          <Login />
+        </div>
+        <div className='py-6'>
+          <Link className='text-small font-medium text-blue-500' href='/forgot'>
+            Forgot your password?
+          </Link>
+        </div>
+      </main>
+    </div>
   );
 };
 
