@@ -1,8 +1,8 @@
-import SignupForm from '@/containers/(account)/signup/ui/SignupForm';
 import LogoBar from '@/features/logo-bar';
 import { auth } from '@/shared/ui';
 
 import Banner from './banner';
+import SignupForm from './signup-form';
 
 const SignupPage = () => {
   const { wrapper, header, main } = auth();
