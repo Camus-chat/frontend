@@ -58,7 +58,7 @@ const SignupForm = () => {
         <span className='mr-1 text-xs text-gray-500'>
           Already have an account?
         </span>
-        <Link href='/login' className='text-xs font-medium text-blue-600'>
+        <Link href='/signin' className='text-xs font-medium text-blue-600'>
           Sign in
         </Link>
       </div>

@@ -16,7 +16,7 @@ const Login = () => {
       >
         회원가입
       </Button>
-      <Button size='md' color='black' onClick={() => router.push('/login')}>
+      <Button size='md' color='black' onClick={() => router.push('/signin')}>
         로그인
       </Button>
     </div>
