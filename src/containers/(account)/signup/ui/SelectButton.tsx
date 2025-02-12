@@ -3,7 +3,7 @@
 import { Button } from '@/shared/ui';
 import { useAccountStore } from '@/states/account';
 
-import { ENTERPRISE, PERSONAL } from './login/constants';
+import { ENTERPRISE, PERSONAL } from '../../login/constants';
 
 const CheckCircleIcon = () => {
   return (

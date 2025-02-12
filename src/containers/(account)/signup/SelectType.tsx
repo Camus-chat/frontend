@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import DropDown from '@/components/Form/DropDown';
 import FormWrapper from '@/components/Form/Wrapper';
-import SelectButton from '@/containers/(account)/SelectButton';
+import SelectButton from '@/containers/(account)/signup/ui/SelectButton';
 import { COUNTRY } from '@/containers/(account)/signup/constants';
 
 import StepButton from './ui/step-button';

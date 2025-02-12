@@ -1,7 +1,7 @@
 import Channel from '../../../public/animations/channel.json';
 import Chatting from '../../../public/animations/chatting.json';
 import Desktop from '../../../public/animations/desktop.json';
-import Manage from '../../../public/animations/manage.json';
+import Manage from '../(account)/signup/ui/manage.json';
 
 export const TITLE_CONTENT = {
   title: 'AI 안전 채팅 필터링',
