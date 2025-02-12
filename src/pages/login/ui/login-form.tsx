@@ -6,7 +6,7 @@ import { EMAIL_REGEX } from '@/shared/config';
 import { useUncontrolledInput } from '@/shared/hook';
 import { Button, Input, Password } from '@/shared/ui';
 
-const Login = () => {
+const LoginForm = () => {
   const [$email, emailError, setEmailError] = useUncontrolledInput();
   const [$password, passwordError, setPasswordError] = useUncontrolledInput();
 
@@ -57,4 +57,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginForm;
