@@ -2,8 +2,11 @@
 
 import { Input, type InputProps } from '@heroui/input';
 import { useState } from 'react';
+import { tv } from 'tailwind-variants';
 
-import { icon, input } from './styles';
+const icon = tv({
+  base: 'pointer-events-none text-2xl text-default-400',
+});
 
 const EyeSlashFilledIcon = () => {
   return (
@@ -82,7 +85,7 @@ const Password = (props: InputProps) => {
         </button>
       }
       {...props}
-      {...input}
+      variant='bordered'
       type={isVisible ? 'text' : 'password'}
     />
   );
