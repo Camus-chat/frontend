@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
-import LogoBar from '@/features/logo-bar';
-import { auth } from '@/shared/ui';
+import { Logo, auth } from '@/shared/ui';
 
 import LoginForm from './login-form';
 
@@ -10,7 +9,7 @@ const LoginPage = () => {
   return (
     <div className={wrapper()}>
       <header className={header()}>
-        <LogoBar business={false} />
+        <Logo business={false} />
       </header>
       <main className={main()}>
         <h1 className={title({ class: 'mb-6' })}>Sign into your account</h1>

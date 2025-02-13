@@ -1,5 +1,4 @@
-import LogoBar from '@/features/logo-bar';
-import { auth } from '@/shared/ui';
+import { Logo, auth } from '@/shared/ui';
 
 import Banner from './banner';
 import SignupForm from './signup-form';
@@ -11,7 +10,7 @@ const SignupPage = () => {
     <div className='grid size-full grid-cols-[1fr,auto]'>
       <div className={wrapper()}>
         <header className={header()}>
-          <LogoBar business={false} />
+          <Logo business={false} />
         </header>
         <div className={main()}>
           <h1 className={title()}>Create Your CAMUS Account</h1>
