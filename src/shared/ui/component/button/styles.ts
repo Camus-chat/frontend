@@ -4,8 +4,8 @@ export const button = tv({
   base: 'flex items-center justify-center font-medium duration-300',
   variants: {
     size: {
-      large: 'h-[44px] min-w-[88px] rounded-lg px-4 text-base',
-      md: 'h-[38px] min-w-[4rem] rounded-lg px-4 text-sm',
+      large: 'h-12 min-w-[88px] rounded-lg px-4 text-base',
+      md: 'h-10 min-w-[4rem] rounded-lg px-4 text-sm',
       small: 'mr-1 shrink-0 rounded-md px-4 py-1.5',
     },
     color: {

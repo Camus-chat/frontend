@@ -1,9 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { tv } from 'tailwind-variants';
 
 interface Props {
   business: boolean;
 }
+
+const text = tv({
+  base: 'text-xl font-semibold leading-none md:text-3xl',
+});
 
 const Logo = ({ business }: Props) => {
   let path = '/';
@@ -23,8 +28,8 @@ const Logo = ({ business }: Props) => {
         width={1}
         height={1}
       />
-      <span className='text-sm font-semibold md:text-3xl'>CAMUS</span>
-      {business && <span className='text-sm font-light md:text-3xl'>BIZ</span>}
+      <span className={text()}>CAMUS</span>
+      {business && <span className={text({ class: 'font-light' })}>BIZ</span>}
     </Link>
   );
 };

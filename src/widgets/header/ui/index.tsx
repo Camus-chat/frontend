@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { Drawer, DrawerClose, DrawerOpen } from '@/features/drawer';
-import NavigationBar from '@/features/logo-bar';
+import { Logo } from '@/shared/ui';
 
 import { NAVIGATIONS } from '../config/navigation';
 import DrawerLogin from './drawer-item/login';
@@ -21,7 +21,8 @@ const Header = ({ business }: Props) => {
   return (
     <header>
       <NaviationBelt business={isBusiness} />
-      <NavigationBar business={isBusiness}>
+      <div className='wrapper grid h-14 grid-cols-[auto,1fr] items-center'>
+        <Logo business={isBusiness} />
         <span className='flex size-full items-center max-md:hidden'>
           <nav className='mx-auto flex h-full'>
             {navigationMenuItems.map((item) => (
@@ -37,7 +38,7 @@ const Header = ({ business }: Props) => {
           <Login />
         </span>
         <DrawerOpen className='ml-auto md:hidden' />
-      </NavigationBar>
+      </div>
       <Drawer className='fixed text-lg font-semibold md:hidden'>
         <div className='flex flex-col items-end bg-neutral-800'>
           <DrawerClose className='m-3 bg-transparent fill-white' />

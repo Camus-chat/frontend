@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import Button from '@/shared/ui/button';
+import { Button } from '@/shared/ui';
 
 const Login = () => {
   const router = useRouter();
@@ -16,7 +16,7 @@ const Login = () => {
       >
         회원가입
       </Button>
-      <Button size='md' color='black' onClick={() => router.push('/login')}>
+      <Button size='md' color='black' onClick={() => router.push('/signin')}>
         로그인
       </Button>
     </div>
