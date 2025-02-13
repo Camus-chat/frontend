@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { Logo, auth } from '@/shared/ui';
 
 import Banner from './banner';
@@ -18,6 +20,17 @@ const SignupPage = () => {
             Try free for 30 days or get started with our Developer plan
           </span>
           <div className={box()}>
+            <div className='mb-4 flex justify-end'>
+              <span className='mr-1 text-xs text-gray-500'>
+                Already have an account?
+              </span>
+              <Link
+                href='/signin'
+                className='text-xs font-medium text-blue-600'
+              >
+                Sign in
+              </Link>
+            </div>
             <SignupForm />
           </div>
         </div>

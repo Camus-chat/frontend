@@ -58,14 +58,6 @@ const SignupForm = () => {
 
   return (
     <>
-      <div className='mb-4 flex justify-end'>
-        <span className='mr-1 text-xs text-gray-500'>
-          Already have an account?
-        </span>
-        <Link href='/signin' className='text-xs font-medium text-blue-600'>
-          Sign in
-        </Link>
-      </div>
       <EnterpriseSelect selectedKey={isEnterprise} onSelect={setIsEnterprise} />
       <Input ref={$name} {...nameError} label='Name' />
       <Input ref={$email} {...emailError} label='Email' />
