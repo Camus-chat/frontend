@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import Logo from './logo';
+import { Logo } from '@/shared/ui/';
 
 interface Props {
   children?: ReactNode;
