@@ -7,17 +7,18 @@ import { EMAIL_REGEX } from '@/shared/config';
 import { useUncontrolledInput } from '@/shared/hook';
 import { Button, Input, Password } from '@/shared/ui';
 
+import { signUp } from '../api/sign-up';
 import { PERSONAL } from '../constants';
 import EnterpriseSelect from './enterprise-select';
 
 const SignupForm = () => {
-  const [business, setBusiness] = useState(PERSONAL);
+  const [isEnterprise, setIsEnterprise] = useState(PERSONAL);
   const [$name, nameError, setNameError] = useUncontrolledInput();
   const [$email, emailError, setEmailError] = useUncontrolledInput();
   const [$password, passwordError, setPasswordError] = useUncontrolledInput();
 
   const validate = useCallback(
-    (name: string, email: string, password: string) => {
+    ({ nickname: name, username: email, password }: SignUp) => {
       if (!name) {
         return setNameError('이름을 입력해주세요.');
       }
@@ -44,11 +45,14 @@ const SignupForm = () => {
   );
 
   const handleClick = useCallback(() => {
-    const name = $name.current?.value || '';
-    const email = $email.current?.value || '';
-    const password = $password.current?.value || '';
-    if (validate(name, email, password)) {
-      // 회원가입 요청
+    const requestBody: SignUp = {
+      nickname: $name.current?.value || '',
+      username: $email.current?.value || '',
+      password: $password.current?.value || '',
+      isEnterprise,
+    };
+    if (validate(requestBody)) {
+      signUp(requestBody);
     }
   }, []);
 
@@ -62,7 +66,7 @@ const SignupForm = () => {
           Sign in
         </Link>
       </div>
-      <EnterpriseSelect selectedKey={business} onSelect={setBusiness} />
+      <EnterpriseSelect selectedKey={isEnterprise} onSelect={setIsEnterprise} />
       <Input ref={$name} {...nameError} label='Name' />
       <Input ref={$email} {...emailError} label='Email' />
       <Password ref={$password} {...passwordError} label='Password' />
@@ -79,12 +83,7 @@ const SignupForm = () => {
           ' which includes my consent to receive marketing information from CAMUS. I can unsubscribe from marketing communications at any time.'
         }
       </p>
-      <Button
-        className='mt-5'
-        size='large'
-        color='disable'
-        onClick={handleClick}
-      >
+      <Button className='mt-5' size='large' color='blue' onClick={handleClick}>
         Create account
       </Button>
     </>
