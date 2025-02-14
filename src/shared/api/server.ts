@@ -3,10 +3,10 @@
 import axios from 'axios';
 import { cookies } from 'next/headers';
 
-import { ACCESS_TOKEN } from '@/shared/config';
+import { ACCESS_TOKEN, API_BASE_URL } from '@/shared/config';
 
 const server = axios.create({
-  baseURL: process.env.SERVER_SIDE_FETCH_URL,
+  baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },

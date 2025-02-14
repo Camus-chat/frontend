@@ -1,9 +1,9 @@
 import axios from 'axios';
 
+import { API_BASE_URL } from '@/shared/config';
+
 const baseURL =
-  process.env.NODE_ENV === 'development'
-    ? '/client'
-    : process.env.SERVER_SIDE_FETCH_URL;
+  process.env.NODE_ENV === 'development' ? '/client' : API_BASE_URL;
 
 export const auth = axios.create({
   baseURL,
@@ -16,7 +16,7 @@ export const auth = axios.create({
 if (process.env.NODE_ENV === 'development') {
   auth.interceptors.request.use((config) => {
     if (config.url?.startsWith('/member/login')) {
-      config.baseURL = process.env.SERVER_SIDE_FETCH_URL;
+      config.baseURL = API_BASE_URL;
     }
     return config;
   });
