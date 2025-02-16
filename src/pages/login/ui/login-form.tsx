@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 
@@ -49,14 +48,6 @@ const LoginForm = () => {
 
   return (
     <>
-      <div className='flex justify-end'>
-        <span className='mr-1 text-xs text-gray-500'>
-          {`Don't have an account?`}
-        </span>
-        <Link href='/signup' className='text-xs font-medium text-blue-600'>
-          Sign up
-        </Link>
-      </div>
       <Input ref={$email} {...emailError} label='Email' />
       <Password ref={$password} {...passwordError} label='Password' />
       <Button className='mt-6' size='large' color='blue' onClick={handleClick}>
