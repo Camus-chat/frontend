@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
 
 import { EMAIL_REGEX } from '@/shared/config';
@@ -16,6 +17,7 @@ const SignupForm = () => {
   const [$name, nameError, setNameError] = useUncontrolledInput();
   const [$email, emailError, setEmailError] = useUncontrolledInput();
   const [$password, passwordError, setPasswordError] = useUncontrolledInput();
+  const router = useRouter();
 
   const validate = useCallback(
     ({ nickname: name, username: email, password }: SignUp) => {
@@ -44,7 +46,7 @@ const SignupForm = () => {
     [],
   );
 
-  const handleClick = useCallback(() => {
+  const handleClick = useCallback(async () => {
     const requestBody: SignUp = {
       nickname: $name.current?.value || '',
       username: $email.current?.value || '',
@@ -52,7 +54,9 @@ const SignupForm = () => {
       isEnterprise,
     };
     if (validate(requestBody)) {
-      signUp(requestBody);
+      const res = await signUp(requestBody);
+      const url = res === 'SIGNUP' ? '/signin' : '/signup';
+      router.push(url);
     }
   }, []);
 
