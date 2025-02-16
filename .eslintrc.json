@@ -76,6 +76,7 @@
         "namedComponents": "arrow-function"
       }
     ],
+    "react-hooks/exhaustive-deps": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-filename-extension": [
       "error",
