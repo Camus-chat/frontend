@@ -1,7 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useCallback } from 'react';
 
+import { signIn } from '@/pages/login/api/sign-in';
 import { EMAIL_REGEX } from '@/shared/config';
 import { useUncontrolledInput } from '@/shared/hook';
 import { Button, Input, Password } from '@/shared/ui';
@@ -9,8 +12,9 @@ import { Button, Input, Password } from '@/shared/ui';
 const LoginForm = () => {
   const [$email, emailError, setEmailError] = useUncontrolledInput();
   const [$password, passwordError, setPasswordError] = useUncontrolledInput();
+  const router = useRouter();
 
-  const validate = (email: string, password: string) => {
+  const validate = useCallback(({ username: email, password }: LogIn) => {
     if (!email) {
       return setEmailError('아이디(메일)를 입력해주세요.');
     }
@@ -28,15 +32,20 @@ const LoginForm = () => {
       setPasswordError('');
     }
     return true;
-  };
+  }, []);
 
-  const handleClick = () => {
-    const email = $email.current?.value || '';
-    const password = $password.current?.value || '';
-    if (validate(email, password)) {
-      // 로그인 요청
+  const handleClick = useCallback(async () => {
+    const requestBody: LogIn = {
+      username: $email.current?.value || '',
+      password: $password.current?.value || '',
+    };
+
+    if (validate(requestBody)) {
+      const res = await signIn(requestBody);
+      const url = res ? '/service/chat' : '/signin';
+      router.push(url);
     }
-  };
+  }, []);
 
   return (
     <>
