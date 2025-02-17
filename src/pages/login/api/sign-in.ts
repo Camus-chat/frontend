@@ -1,21 +1,23 @@
-'use client';
+'use server';
+
+import { cookies } from 'next/headers';
 
 import { callAPI } from '@/shared/api';
-import { useAuthStore } from '@/shared/store';
+import { ACCESS_TOKEN } from '@/shared/config';
 
 export const signIn = async (data: LogIn) => {
-  return callAPI
-    .auth('/api/login', data)
-    .then((res) => {
-      const token = res.data;
-      const { setToken } = useAuthStore.getState();
-      setToken(token);
-      return true;
-    })
-    .catch((err) => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log(err);
-      }
-      return false;
+  const cookieStore = await cookies();
+
+  return callAPI.auth('/member/login', data).then((res) => {
+    const { accessToken } = res.data;
+
+    cookieStore.set(ACCESS_TOKEN, accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      path: '/',
     });
+
+    return accessToken;
+  });
 };

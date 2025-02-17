@@ -6,6 +6,7 @@ import { useCallback } from 'react';
 import { signIn } from '@/pages/login/api/sign-in';
 import { EMAIL_REGEX } from '@/shared/config';
 import { useUncontrolledInput } from '@/shared/hook';
+import { useAuthStore } from '@/shared/store';
 import { Button, Input, Password } from '@/shared/ui';
 
 const LoginForm = () => {
@@ -42,12 +43,18 @@ const LoginForm = () => {
     if (!validate(requestBody)) {
       return;
     }
-    const isSuccess = await signIn(requestBody);
-    if (isSuccess) {
-      router.push('/service/chat');
-    } else {
-      alert('로그인에 실패했습니다.');
-    }
+    signIn(requestBody)
+      .then((res) => {
+        const { setToken } = useAuthStore.getState();
+        setToken(res);
+        router.push('/service/chat');
+      })
+      .catch((err) => {
+        if (process.env.NODE_ENV === 'development') {
+          console.log(err);
+        }
+        alert('로그인에 실패했습니다.');
+      });
   }, []);
 
   return (
