@@ -53,10 +53,14 @@ const SignupForm = () => {
       password: $password.current?.value || '',
       isEnterprise,
     };
-    if (validate(requestBody)) {
-      const res = await signUp(requestBody);
-      const url = res === 'SIGNUP' ? '/signin' : '/signup';
-      router.push(url);
+    if (!validate(requestBody)) {
+      return;
+    }
+    const isSuccess = await signUp(requestBody);
+    if (isSuccess) {
+      router.push('/signin');
+    } else {
+      alert('회원가입에 실패했습니다.');
     }
   }, []);
 

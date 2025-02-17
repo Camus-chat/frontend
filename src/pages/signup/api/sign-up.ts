@@ -4,10 +4,12 @@ export const signUp = async (data: SignUp) => {
   return api
     .auth('/member/signup', data)
     .then((res) => {
-      return res.data;
+      return res.data === 'SIGNUP';
     })
     .catch((err) => {
-      console.log(err);
-      alert('회원가입에 실패했습니다.');
+      if (process.env.NODE_ENV === 'development') {
+        console.log(err);
+      }
+      return false;
     });
 };
