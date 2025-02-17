@@ -1,13 +1,21 @@
+'use client';
+
 import { api } from '@/shared/api';
+import { useAuthStore } from '@/shared/store';
 
 export const signIn = async (data: LogIn) => {
   return api
-    .auth('/member/login', data)
+    .auth('/api/login', data)
     .then((res) => {
-      return res.data;
+      const token = res.data;
+      const { setToken } = useAuthStore.getState();
+      setToken(token);
+      return true;
     })
     .catch((err) => {
-      console.log(err);
-      alert('로그인에 실패했습니다.');
+      if (process.env.NODE_ENV === 'development') {
+        console.log(err);
+      }
+      return false;
     });
 };

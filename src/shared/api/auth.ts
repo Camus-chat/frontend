@@ -12,3 +12,10 @@ export const auth = axios.create({
   },
   withCredentials: true,
 });
+
+auth.interceptors.request.use((config) => {
+  if (config.url?.startsWith('/api')) {
+    config.baseURL = '/';
+  }
+  return config;
+});

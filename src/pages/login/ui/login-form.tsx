@@ -39,10 +39,14 @@ const LoginForm = () => {
       password: $password.current?.value || '',
     };
 
-    if (validate(requestBody)) {
-      const res = await signIn(requestBody);
-      const url = res ? '/service/chat' : '/signin';
-      router.push(url);
+    if (!validate(requestBody)) {
+      return;
+    }
+    const isSuccess = await signIn(requestBody);
+    if (isSuccess) {
+      router.push('/service/chat');
+    } else {
+      alert('로그인에 실패했습니다.');
     }
   }, []);
 
