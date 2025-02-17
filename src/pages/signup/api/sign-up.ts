@@ -1,7 +1,7 @@
-import { api } from '@/shared/api';
+import { callAPI } from '@/shared/api';
 
 export const signUp = async (data: SignUp) => {
-  return api
+  return callAPI
     .auth('/member/signup', data)
     .then((res) => {
       return res.data === 'SIGNUP';

@@ -1,10 +1,10 @@
 'use client';
 
-import { api } from '@/shared/api';
+import { callAPI } from '@/shared/api';
 import { useAuthStore } from '@/shared/store';
 
 export const signIn = async (data: LogIn) => {
-  return api
+  return callAPI
     .auth('/api/login', data)
     .then((res) => {
       const token = res.data;
