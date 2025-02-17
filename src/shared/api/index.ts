@@ -1,8 +1,7 @@
-import { post as auth } from './auth';
-import { get, post } from './client';
+import { auth } from './auth';
+import { client } from './client';
 
 export const api = {
-  auth,
-  post,
-  get,
+  auth: auth.post,
+  clientSide: client,
 };
