@@ -6,7 +6,6 @@ export const useUncontrolledInput = () => {
   const setErrorMessage = useCallback((errorMessage: string) => {
     const isInvalid = Boolean(errorMessage);
     setError({ errorMessage, isInvalid });
-    return isInvalid;
   }, []);
   return [ref, error, setErrorMessage] as const;
 };

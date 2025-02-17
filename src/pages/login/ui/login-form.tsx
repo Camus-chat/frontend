@@ -15,16 +15,19 @@ const LoginForm = () => {
 
   const validate = useCallback(({ username: email, password }: LogIn) => {
     if (!email) {
-      return setEmailError('아이디(메일)를 입력해주세요.');
+      setEmailError('아이디(메일)를 입력해주세요.');
+      return false;
     }
 
     if (!EMAIL_REGEX.test(email)) {
-      return setEmailError('아이디(메일)를 정확히 입력해주세요.');
+      setEmailError('아이디(메일)를 정확히 입력해주세요.');
+      return false;
     }
 
     if (!password) {
       setEmailError('');
-      return setPasswordError('비밀번호를 입력해주세오.');
+      setPasswordError('비밀번호를 입력해주세오.');
+      return false;
     }
 
     if (passwordError.errorMessage) {
