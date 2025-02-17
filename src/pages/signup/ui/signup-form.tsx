@@ -3,10 +3,10 @@
 import { Checkbox } from '@heroui/checkbox';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useCallback, useState } from 'react';
+import { type ChangeEvent, useCallback, useMemo, useState } from 'react';
 
 import { EMAIL_REGEX } from '@/shared/config';
-import { useUncontrolledInput } from '@/shared/hook';
+import { useControlledInput } from '@/shared/hook';
 import { Button, Input, Password } from '@/shared/ui';
 
 import { signUp } from '../api/sign-up';
@@ -15,50 +15,65 @@ import EnterpriseSelect from './enterprise-select';
 
 const SignupForm = () => {
   const [isEnterprise, setIsEnterprise] = useState(PERSONAL);
-  const [$name, nameError, setNameError] = useUncontrolledInput();
-  const [$email, emailError, setEmailError] = useUncontrolledInput();
-  const [$password, passwordError, setPasswordError] = useUncontrolledInput();
+  const [name, setName, nameError, setNameError] = useControlledInput();
+  const [email, setEmail, emailError, setEmailError] = useControlledInput();
+  const [password, setPassword, passwordError, setPasswordError] =
+    useControlledInput();
   const [isAgree, setIsAgree] = useState(false);
   const router = useRouter();
 
-  const validate = useCallback(
-    ({ nickname: name, username: email, password }: SignUp) => {
-      if (!name) {
-        return setNameError('이름을 입력해주세요.');
-      }
+  const handleNameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setName(value);
+    if (!value) {
+      setNameError('Enter your name.');
+      return;
+    }
+    setNameError('');
+  }, []);
 
-      if (!email) {
-        return setEmailError('아이디(메일)를 입력해주세요.');
-      }
+  const handleEmailChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setEmail(value);
+    if (!value) {
+      setEmailError('Enter your email address.');
+      return;
+    }
+    if (!EMAIL_REGEX.test(value)) {
+      setEmailError('Enter a valid email address.');
+      return;
+    }
+    setEmailError('');
+  }, []);
 
-      if (!EMAIL_REGEX.test(email)) {
-        return setEmailError('아이디(메일)를 정확히 입력해주세요.');
-      }
-
-      if (!password) {
-        setEmailError('');
-        return setPasswordError('비밀번호를 입력해주세오.');
-      }
-
-      if (passwordError.errorMessage) {
-        setPasswordError('');
-      }
-      return true;
+  const handlePasswordChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const { value } = e.target;
+      setPassword(value);
+      // TODO: password validation
+      setPasswordError('');
     },
     [],
   );
 
+  const isInvalid = useMemo(
+    () =>
+      emailError.isInvalid || nameError.isInvalid || passwordError.isInvalid,
+    [emailError, nameError, passwordError],
+  );
+
+  const validate = !isInvalid && isAgree && name && email && password;
+
   const handleClick = useCallback(async () => {
-    const requestBody: SignUp = {
-      nickname: $name.current?.value || '',
-      username: $email.current?.value || '',
-      password: $password.current?.value || '',
-      isEnterprise,
-    };
-    if (!validate(requestBody)) {
+    if (!validate) {
       return;
     }
-    const isSuccess = await signUp(requestBody);
+    const isSuccess = await signUp({
+      nickname: name,
+      username: email,
+      password,
+      isEnterprise,
+    });
     if (isSuccess) {
       router.push('/signin');
     } else {
@@ -69,11 +84,26 @@ const SignupForm = () => {
   return (
     <>
       <EnterpriseSelect selectedKey={isEnterprise} onSelect={setIsEnterprise} />
-      <Input ref={$name} {...nameError} label='Name' />
-      <Input ref={$email} {...emailError} label='Email' />
-      <Password ref={$password} {...passwordError} label='Password' />
+      <Input
+        value={name}
+        {...nameError}
+        label='Name'
+        onChange={handleNameChange}
+      />
+      <Input
+        value={email}
+        {...emailError}
+        label='Email'
+        onChange={handleEmailChange}
+      />
+      <Password
+        value={password}
+        {...passwordError}
+        label='Password'
+        onChange={handlePasswordChange}
+      />
       <Checkbox
-        className='mt-1.5 max-w-full items-start pr-0'
+        className='mt-2 max-w-full items-start pr-0'
         isSelected={isAgree}
         onValueChange={setIsAgree}
       >
@@ -91,7 +121,12 @@ const SignupForm = () => {
           }
         </p>
       </Checkbox>
-      <Button className='mt-5' size='large' color='blue' onClick={handleClick}>
+      <Button
+        className='mt-5'
+        size='large'
+        color={validate ? 'blue' : 'disable'}
+        onClick={handleClick}
+      >
         Create account
       </Button>
     </>
