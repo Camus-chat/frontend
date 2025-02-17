@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 import { signIn } from '@/pages/login/api/sign-in';
 import { EMAIL_REGEX } from '@/shared/config';
@@ -11,6 +11,7 @@ import { Button, Input, Password } from '@/shared/ui';
 const LoginForm = () => {
   const [$email, emailError, setEmailError] = useUncontrolledInput();
   const [$password, passwordError, setPasswordError] = useUncontrolledInput();
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const validate = useCallback(({ username: email, password }: LogIn) => {
@@ -42,14 +43,16 @@ const LoginForm = () => {
       password: $password.current?.value || '',
     };
 
-    if (!validate(requestBody)) {
+    if (isLoading || !validate(requestBody)) {
       return;
     }
+    setIsLoading(true);
     const isSuccess = await signIn(requestBody);
     if (isSuccess) {
       router.push('/service/chat');
     } else {
       alert('로그인에 실패했습니다.');
+      setIsLoading(false);
     }
   }, []);
 
@@ -57,7 +60,13 @@ const LoginForm = () => {
     <>
       <Input ref={$email} {...emailError} label='Email' />
       <Password ref={$password} {...passwordError} label='Password' />
-      <Button className='mt-6' size='large' color='blue' onClick={handleClick}>
+      <Button
+        className='mt-6'
+        size='large'
+        color='blue'
+        onClick={handleClick}
+        disabled={isLoading}
+      >
         Sign in
       </Button>
     </>
