@@ -8,11 +8,6 @@ export const server = axios.create({
 });
 
 server.interceptors.request.use((config) => {
-  if (config.headers['X-Bypass-Interceptor']) {
-    delete config.headers['X-Bypass-Interceptor'];
-    return config;
-  }
-
   // TODO: Add token
 
   return config;
