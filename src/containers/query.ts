@@ -1,4 +1,5 @@
 import { getTokenServerSide } from '@/containers/utils';
+import { API_BASE_URL } from '@/shared/config';
 
 interface FetchParams {
   endpoint: string;
@@ -85,9 +86,7 @@ const serverSideFetch: Fetch = async <ResponseType>({
     };
   }
 
-  return fetch(`${process.env.SERVER_SIDE_FETCH_URL}${endpoint}`, config).then(
-    (res) => res.json(),
-  );
+  return fetch(`${API_BASE_URL}${endpoint}`, config).then((res) => res.json());
 };
 
 type Method = <ResponseType>(

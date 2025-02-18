@@ -1,11 +1,10 @@
 import axios from 'axios';
 
+import { API_BASE_URL } from '@/shared/config';
 import { useAuthStore } from '@/shared/store';
 
 const baseURL =
-  process.env.NODE_ENV === 'development'
-    ? '/client'
-    : process.env.SERVER_SIDE_FETCH_URL;
+  process.env.NODE_ENV === 'development' ? '/client' : API_BASE_URL;
 
 export const client = axios.create({
   baseURL,

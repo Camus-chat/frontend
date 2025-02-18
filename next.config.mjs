@@ -6,7 +6,7 @@ const nextConfig = {
     return [
       {
         source: '/client/:path*',
-        destination: `${process.env.CLIENT_SIDE_FETCH_URL}/:path*`,
+        destination: `${process.env.API_BASE_URL}/:path*`,
       },
     ];
   },

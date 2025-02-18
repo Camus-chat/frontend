@@ -2,11 +2,13 @@
 
 import { cookies } from 'next/headers';
 
+import { API_BASE_URL } from '@/shared/config';
+
 export const getTokenServerSide = async () => {
   const cookieStore = await cookies();
   const refreshToken = cookieStore.get('refresh')?.value;
 
-  return fetch(`${process.env.SERVER_SIDE_FETCH_URL}/reissue`, {
+  return fetch(`${API_BASE_URL}/reissue`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

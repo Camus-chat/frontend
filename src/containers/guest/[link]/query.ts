@@ -1,6 +1,6 @@
-import type { Chat } from '@/lib/class/Chat';
-
 import { query } from '@/containers/query';
+import type { Chat } from '@/lib/class/Chat';
+import { API_BASE_URL } from '@/shared/config';
 
 export const requestChannelInfo = async (link: string) => {
   return query.serverSide.post<ChannelInfo, string>('/channel/info', link);
@@ -10,7 +10,7 @@ export const requestGuestProfile = async (): Promise<GuestInfo> => {
   return query.serverSide
     .get<GuestAccount>('/guest/signup')
     .then((account) => {
-      return fetch(`${process.env.SERVER_SIDE_FETCH_URL}/guest/login`, {
+      return fetch(`${API_BASE_URL}/guest/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export const requestGuestProfile = async (): Promise<GuestInfo> => {
       });
       headers.append('access', token);
 
-      return fetch(`${process.env.SERVER_SIDE_FETCH_URL}/guest/info`, {
+      return fetch(`${API_BASE_URL}/guest/info`, {
         method: 'GET',
         headers,
       }).then((res) => {
