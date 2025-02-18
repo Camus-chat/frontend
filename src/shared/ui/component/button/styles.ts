@@ -16,11 +16,14 @@ export const button = tv({
       black: 'bg-gray-950 text-white hover:bg-gray-900 active:bg-gray-800',
       transparent:
         'bg-transparent text-gray-500 hover:bg-gray-100 hover:text-gray-800 active:bg-gray-200',
-      disable: 'bg-gray-200 text-gray-400 hover:cursor-not-allowed',
+      disable: 'pointer-events-none bg-gray-200 text-gray-400',
       selected:
         'border border-solid border-blue-700 bg-blue-100 text-blue-700 hover:cursor-default',
       danger:
         'bg-gray-100 text-gray-500 hover:bg-red-50 hover:text-red-500 active:bg-red-100 active:text-red-600',
+    },
+    disabled: {
+      true: 'pointer-events-none opacity-disabled',
     },
   },
 });
