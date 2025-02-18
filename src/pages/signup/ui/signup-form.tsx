@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { type ChangeEvent, useCallback, useMemo, useState } from 'react';
 
-import { EMAIL_REGEX } from '@/shared/config';
+import { EMAIL_REGEX, PASSWORD_REGEX } from '@/shared/config';
 import { useControlledInput } from '@/shared/hook';
 import { Button, Input, Password } from '@/shared/ui';
 
@@ -50,7 +50,14 @@ const SignupForm = () => {
     (e: ChangeEvent<HTMLInputElement>) => {
       const { value } = e.target;
       setPassword(value);
-      // TODO: password validation
+      if (!value) {
+        setPasswordError('Enter your password.');
+        return;
+      }
+      if (!PASSWORD_REGEX.test(value)) {
+        setPasswordError('Enter a valid password');
+        return;
+      }
       setPasswordError('');
     },
     [],
