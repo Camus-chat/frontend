@@ -13,7 +13,7 @@ export const config = {
   ],
 };
 
-const excludedPaths = ['/login', '/signup', '/biz'];
+const excludedPaths = ['/signin', '/signup', '/biz'];
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {

@@ -5,10 +5,10 @@ import Link from 'next/link';
 
 const Login = () => {
   return (
-    <span className='p-5 bg-transparent w-full'>
-      <Link href='/login' className='bg-transparent text-white'>
+    <span className='w-full bg-transparent p-5'>
+      <Link href='/signin' className='bg-transparent text-white'>
         로그인해주세요
-        <ExpandMoreIcon className='fill-white ml-1 -rotate-90 bg-transparent' />
+        <ExpandMoreIcon className='ml-1 -rotate-90 bg-transparent fill-white' />
       </Link>
     </span>
   );
