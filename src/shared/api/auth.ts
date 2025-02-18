@@ -13,9 +13,11 @@ export const auth = axios.create({
   withCredentials: true,
 });
 
-auth.interceptors.request.use((config) => {
-  if (config.url?.startsWith('/api')) {
-    config.baseURL = '/';
-  }
-  return config;
-});
+if (process.env.NODE_ENV === 'development') {
+  auth.interceptors.request.use((config) => {
+    if (config.url?.startsWith('/member/login')) {
+      config.baseURL = process.env.SERVER_SIDE_FETCH_URL;
+    }
+    return config;
+  });
+}

@@ -1,19 +1,25 @@
-import axios from 'axios';
+'use server';
 
-export const server = axios.create({
+import axios from 'axios';
+import { cookies } from 'next/headers';
+
+import { ACCESS_TOKEN } from '@/shared/config';
+
+const server = axios.create({
   baseURL: process.env.SERVER_SIDE_FETCH_URL,
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 });
 
-server.interceptors.request.use((config) => {
-  if (config.headers['X-Bypass-Interceptor']) {
-    delete config.headers['X-Bypass-Interceptor'];
-    return config;
-  }
+export const get = async (url: string) => {
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get(ACCESS_TOKEN)?.value;
 
-  // TODO: Add token
-
-  return config;
-});
+  return server.get(url, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+};
