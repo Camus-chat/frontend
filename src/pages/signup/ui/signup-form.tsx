@@ -55,7 +55,9 @@ const SignupForm = () => {
         return;
       }
       if (!PASSWORD_REGEX.test(value)) {
-        setPasswordError('Enter a valid password');
+        setPasswordError(
+          'Password must be 8-16 characters, with uppercase, lowercase, digit, and special character (!@#$%^&*).',
+        );
         return;
       }
       setPasswordError('');
