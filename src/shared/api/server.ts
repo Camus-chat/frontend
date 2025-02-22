@@ -13,13 +13,12 @@ const server = axios.create({
   withCredentials: true,
 });
 
-export const get = async (url: string) => {
+server.interceptors.request.use(async (config) => {
   const cookieStore = await cookies();
   const accessToken = cookieStore.get(ACCESS_TOKEN)?.value;
+  config.headers.Authorization = `bearer ${accessToken}`;
 
-  return server.get(url, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-};
+  return config;
+});
+
+export default server;
