@@ -16,7 +16,7 @@ const server = axios.create({
 server.interceptors.request.use(async (config) => {
   const cookieStore = await cookies();
   const accessToken = cookieStore.get(ACCESS_TOKEN)?.value;
-  config.headers.Authorization = `bearer ${accessToken}`;
+  config.headers.Authorization = `Bearer ${accessToken}`;
 
   return config;
 });
