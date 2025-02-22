@@ -1,3 +1,5 @@
+'use client';
+
 import { type ChangeEvent } from 'react';
 
 import { EMAIL_REGEX } from '@/shared/config';

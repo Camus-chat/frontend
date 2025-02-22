@@ -1,3 +1,5 @@
+'use client';
+
 import { Checkbox } from '@heroui/checkbox';
 import Link from 'next/link';
 
