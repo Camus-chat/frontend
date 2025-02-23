@@ -9,9 +9,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+
+      - name: Checkout config repository
+        uses: actions/checkout@v4
+        with:
+          repository: Camus-chat/config
+          path: config
+
+      - name: Copy .env file
+        run: cp config/frontend/.env .env
 
       - name: Build Docker image
         run: |
