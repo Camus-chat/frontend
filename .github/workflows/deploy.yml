@@ -47,6 +47,6 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           script: |
             docker pull $AWS_ECR_URL/camus-frontend:latest
-            docker stop nextjs-app || true
-            docker rm nextjs-app || true
-            docker run -d -p 3000:3000 --name nextjs-app $AWS_ECR_URL/camus-frontend:latest
+            docker stop frontend || true
+            docker rm frontend-app || true
+            docker run -d -p 3000:3000 --name frontend $AWS_ECR_URL/camus-frontend:latest
