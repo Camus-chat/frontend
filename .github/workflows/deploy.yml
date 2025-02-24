@@ -41,11 +41,11 @@ jobs:
 
       - name: Tag Docker image
         run: |
-          docker tag camus-frontend:latest $AWS_ECR_URL/camus-frontend:latest
+          docker tag camus-frontend:latest $AWS_ECR_URL/camus-fe:latest
 
       - name: Push Docker image to ECR
         run: |
-          docker push $AWS_ECR_URL/camus-frontend:latest
+          docker push $AWS_ECR_URL/camus-fe:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            docker pull $AWS_ECR_URL/camus-frontend:latest
+            docker pull $AWS_ECR_URL/camus-fe:latest
             docker stop frontend || true
             docker rm frontend || true
-            docker run -d -p 3000:3000 --name frontend $AWS_ECR_URL/camus-frontend:latest
+            docker run -d -p 3000:3000 --name frontend $AWS_ECR_URL/camus-fe:latest
