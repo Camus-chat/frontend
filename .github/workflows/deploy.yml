@@ -53,8 +53,16 @@ jobs:
       ECR_REPO_URI: ${{ secrets.AWS_ECR_URL }}/camus-fe
 
     steps:
+      - name: Add GitHub Actions IP
+        run: |
+          aws ec2 authorize-security-group-ingress \
+          --group-id ${{ secrets.SECURITY_GROUP_ID }} \
+          --protocol tcp \
+          --port 22 \
+          --cidr ${{ steps.ip.outputs.ipv4 }}/32
+
       - name: Deploy Docker container to EC2
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@1.2.0
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
@@ -64,3 +72,12 @@ jobs:
             docker stop frontend || true
             docker rm frontend || true
             docker run -d -p 3000:3000 --name frontend $ECR_REPO_URI:latest
+
+      - name: Remove GitHub Actions IP
+        if: always()
+        run: |
+          aws ec2 revoke-security-group-ingress \
+              --group-id ${{ secrets.SECURITY_GROUP_ID }} \
+              --protocol tcp \
+              --port 22 \
+              --cidr ${{ steps.ip.outputs.ipv4 }}/32
