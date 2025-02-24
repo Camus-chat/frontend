@@ -62,7 +62,7 @@ jobs:
           --cidr ${{ steps.ip.outputs.ipv4 }}/32
 
       - name: Deploy Docker container to EC2
-        uses: appleboy/ssh-action@1.2.0
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
