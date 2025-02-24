@@ -24,7 +24,7 @@ const Button = ({
     <button
       type='button'
       className={button({ size, color, disabled, class: className })}
-      onClick={onClick}
+      onClick={() => !disabled && onClick && onClick()}
     >
       {children}
     </button>

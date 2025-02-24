@@ -1,7 +1,9 @@
+'use client';
+
 import classNames from 'classnames';
+import type { ReactNode } from 'react';
 
 import { Button } from '@/shared/ui';
-import type { ReactNode } from 'react';
 
 import styles from './index.module.scss';
 

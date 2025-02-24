@@ -2,8 +2,13 @@ import Link from 'next/link';
 
 import AuthLayout from '@/widgets/auth-layout';
 
+import Agreement from './agreement';
 import Banner from './banner';
-import SignupForm from './signup-form';
+import EnterpriseSelect from './enterprise-select';
+import InputEmail from './input-email';
+import InputName from './input-name';
+import InputPassword from './input-password';
+import SignupButton from './signup-button';
 
 const SignupPage = () => {
   return (
@@ -20,7 +25,12 @@ const SignupPage = () => {
             Sign in
           </Link>
         </div>
-        <SignupForm />
+        <EnterpriseSelect />
+        <InputName />
+        <InputEmail />
+        <InputPassword />
+        <Agreement />
+        <SignupButton />
       </AuthLayout>
       <aside>
         <Banner />
