@@ -49,8 +49,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    env:
-      ECR_REPO_URI: ${{ secrets.AWS_ECR_URL }}/camus-fe
 
     steps:
       - name: Get Public IP
@@ -79,14 +77,14 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            docker pull $ECR_REPO_URI:latest
+            docker pull ${{ secrets.AWS_ECR_URL }}/camus-fe:latest
             docker stop frontend || true
             docker rm frontend || true
             docker run -d \
               -p 3000:3000 \
               --name frontend \
               --network ${{ secrets.DOCKER_NETWORK }} \
-              $ECR_REPO_URI:latest
+              ${{ secrets.AWS_ECR_URL }}/camus-fe:latest
 
       - name: Remove GitHub Actions IP
         if: always()
