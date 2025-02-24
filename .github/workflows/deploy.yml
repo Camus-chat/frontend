@@ -35,17 +35,18 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_ECR_URL: ${{ secrets.AWS_ECR_URL }}
+          ECR_REPO_URI: ${{ secrets.AWS_ECR_URL }}/camus-fe
           AWS_REGION: ${{ secrets.AWS_REGION }}
         run: |
           aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ECR_URL
 
       - name: Tag Docker image
         run: |
-          docker tag camus-frontend:latest $AWS_ECR_URL/camus-fe:latest
+          docker tag camus-frontend:latest $ECR_REPO_URI:latest
 
       - name: Push Docker image to ECR
         run: |
-          docker push $AWS_ECR_URL/camus-fe:latest
+          docker push $ECR_REPO_URI:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -59,7 +60,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            docker pull $AWS_ECR_URL/camus-fe:latest
+            docker pull $ECR_REPO_URI:latest
             docker stop frontend || true
             docker rm frontend || true
-            docker run -d -p 3000:3000 --name frontend $AWS_ECR_URL/camus-fe:latest
+            docker run -d -p 3000:3000 --name frontend $ECR_REPO_URI:latest
