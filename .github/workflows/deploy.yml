@@ -82,7 +82,11 @@ jobs:
             docker pull $ECR_REPO_URI:latest
             docker stop frontend || true
             docker rm frontend || true
-            docker run -d -p 3000:3000 --name frontend $ECR_REPO_URI:latest
+            docker run -d \
+              -p 3000:3000 \
+              --name frontend \
+              --network ${{ secrets.DOCKER_NETWORK }} \
+              $ECR_REPO_URI:latest
 
       - name: Remove GitHub Actions IP
         if: always()
