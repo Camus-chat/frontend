@@ -21,6 +21,7 @@ jobs:
         with:
           repository: Camus-chat/config
           path: config
+          token: ${{ secrets.GH_PAT }}
 
       - name: Copy .env file
         run: cp config/frontend/.env .env
