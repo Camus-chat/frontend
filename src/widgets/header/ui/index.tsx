@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { Drawer, DrawerClose, DrawerOpen } from '@/features/drawer';
 import { Logo } from '@/shared/ui';
+import { fetchMemberInfo } from '@/widgets/header/api/member-info';
 
 import { NAVIGATIONS } from '../config/navigation';
 import DrawerLogin from './drawer-item/login';
@@ -12,11 +13,12 @@ interface Props {
   business?: boolean;
 }
 
-const Header = ({ business }: Props) => {
+const Header = async ({ business }: Props) => {
   const isBusiness = !!business;
   const navigationMenuItems = business
     ? NAVIGATIONS.business
     : NAVIGATIONS.personal;
+  const member = await fetchMemberInfo();
 
   return (
     <header>
@@ -35,7 +37,7 @@ const Header = ({ business }: Props) => {
               </Link>
             ))}
           </nav>
-          <Login />
+          <Login member={member} />
         </span>
         <DrawerOpen className='ml-auto md:hidden' />
       </div>

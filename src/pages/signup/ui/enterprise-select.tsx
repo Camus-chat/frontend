@@ -1,17 +1,14 @@
 'use client';
 
-import type { Dispatch, SetStateAction } from 'react';
-
+import { useSignupDataStore } from '@/pages/signup/store/signup-data';
 import { Button, CheckCircleIcon } from '@/shared/ui';
 
 import { ENTERPRISE, PERSONAL } from '../constants';
 
-interface Props {
-  onSelect: Dispatch<SetStateAction<boolean>>;
-  selectedKey: boolean;
-}
+const EnterpriseSelect = () => {
+  const selectedKey = useSignupDataStore((state) => state.isEnterprise);
+  const onSelect = useSignupDataStore((state) => state.setIsEnterprise);
 
-const EnterpriseSelect = ({ onSelect, selectedKey }: Props) => {
   return (
     <div className='grid w-full grid-cols-2 gap-2'>
       <Button
