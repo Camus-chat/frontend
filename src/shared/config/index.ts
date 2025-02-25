@@ -1,4 +1,5 @@
-export const { DOMAIN_NAME, BIZ_DOMAIN_NAME } = process.env;
+export const { DOMAIN_NAME, BIZ_DOMAIN_NAME, BACKEND_INTERNAL_URL } =
+  process.env;
 
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
