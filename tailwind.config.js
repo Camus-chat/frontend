@@ -44,6 +44,12 @@ const config = {
       themes: {
         light: {
           colors: {
+            primary: {
+              DEFAULT: '#117ce9',
+            },
+            secondary: {
+              DEFAULT: '#000000',
+            },
             danger: {
               DEFAULT: '#f84d3a',
             },
