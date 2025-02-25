@@ -2,16 +2,14 @@
 
 import { useRef, useState } from 'react';
 
-import Button from '@/components/Button';
 import DropDown from '@/components/Form/DropDown';
 import InfoTextBox from '@/components/InfoTextBox';
-import ToggleButton from '@/components/ToggleButton';
 import { createChannel } from '@/containers/(personal)/service/channel/query';
 import type {
   ChannelType,
   FilterLevel,
 } from '@/containers/(personal)/service/channel/type';
-import { Input } from '@/shared/ui';
+import { Button, Input } from '@/shared/ui';
 import { useChannelStore } from '@/states/channel';
 
 import { CHANNEL_CREATE, FILTER_DROP_DOWN_OPTION } from './constants';
@@ -57,21 +55,21 @@ const ChannelCreate = () => {
     <>
       <div>
         <InfoTextBox
-          size='small'
+          size='sm'
           title={CHANNEL_CREATE.title}
           content={CHANNEL_CREATE.content}
         />
 
-        <ToggleButton
-          leftButtonLabel='1:1 채팅'
-          onClickLeft={() => {
-            setType('private');
-          }}
-          rightButtonLabel='그룹 채팅'
-          onClickRight={() => {
-            setType('group');
-          }}
-        />
+        {/* <ToggleButton */}
+        {/*  leftButtonLabel='1:1 채팅' */}
+        {/*  onClickLeft={() => { */}
+        {/*    setType('private'); */}
+        {/*  }} */}
+        {/*  rightButtonLabel='그룹 채팅' */}
+        {/*  onClickRight={() => { */}
+        {/*    setType('group'); */}
+        {/*  }} */}
+        {/* /> */}
 
         <Input
           ref={title}
@@ -96,10 +94,10 @@ const ChannelCreate = () => {
       </div>
 
       <div className={styles.buttonWrapper}>
-        <Button size='large' color='lightgray' onClick={close}>
+        <Button size='lg' variant='flat' onClick={close}>
           취소하기
         </Button>
-        <Button size='large' color='blue' onClick={handleClick}>
+        <Button size='lg' color='primary' onClick={handleClick}>
           생성하기
         </Button>
       </div>

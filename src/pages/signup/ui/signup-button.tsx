@@ -44,10 +44,10 @@ const SignupButton = () => {
   return (
     <Button
       className='mt-5'
-      size='large'
-      color={isInvalid ? 'disable' : 'blue'}
+      size='lg'
+      color={isInvalid ? 'default' : 'primary'}
       onClick={handleClick}
-      disabled={isInvalid || isLoading}
+      isDisabled={isInvalid || isLoading}
     >
       Create account
     </Button>

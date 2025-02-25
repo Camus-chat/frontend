@@ -1,8 +1,7 @@
-import Button from '@/components/Button';
 import Dropdown from '@/components/Form/DropDown';
 import TextArea from '@/components/Form/TextArea';
 import { MEMBER_OPTION, ROUTE_OPTION } from '@/containers/support/constants';
-import { Input } from '@/shared/ui';
+import { Button, Input } from '@/shared/ui';
 
 import styles from './index.module.scss';
 
@@ -26,7 +25,7 @@ const Request = () => {
       <Dropdown name='유입 경로' options={ROUTE_OPTION} placeholder='-' />
       <Input label='문의 제목' type='text' placeholder='제목을 입력해 주세요' />
       <TextArea name='문의 내용' />
-      <Button size='large' color='blue'>
+      <Button size='lg' color='primary'>
         문의하기
       </Button>
     </>

@@ -2,7 +2,7 @@
 
 import LinkIcon from '@mui/icons-material/Link';
 
-import Button from '@/components/Button';
+import { Button } from '@/shared/ui';
 
 interface Props {
   link: string;
@@ -18,7 +18,7 @@ const ChannelLinkCopyButton = ({ link }: Props) => {
   };
 
   return (
-    <Button size='small' color='blue' option='link' onClick={handleClick}>
+    <Button size='sm' color='primary' isIconOnly onClick={handleClick}>
       <LinkIcon />
     </Button>
   );

@@ -1,34 +1,11 @@
-import type { ReactNode } from 'react';
+import { Button, type ButtonProps } from '@heroui/button';
 
-import type { buttonColor, buttonSize } from './props';
-import { button } from './styles';
-
-interface Props {
-  children: ReactNode;
-  size: buttonSize;
-  color: buttonColor;
-  disabled?: boolean;
+interface Props extends Omit<ButtonProps, 'onPress' | 'onClick'> {
   onClick?: () => void;
-  className?: string;
 }
 
-const Button = ({
-  children,
-  size,
-  color,
-  onClick,
-  className,
-  disabled,
-}: Props) => {
-  return (
-    <button
-      type='button'
-      className={button({ size, color, disabled, class: className })}
-      onClick={() => !disabled && onClick && onClick()}
-    >
-      {children}
-    </button>
-  );
+const $Button = ({ onClick, radius = 'sm', ...props }: Props) => {
+  return <Button radius={radius} onPress={onClick} {...props} />;
 };
 
-export default Button;
+export default $Button;
