@@ -65,7 +65,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <Input ref={$email} {...emailError} label='Email' />
+      <Input variant='underlined' ref={$email} {...emailError} label='Email' />
       <Password ref={$password} {...passwordError} label='Password' />
       <Button
         className='mt-6'
