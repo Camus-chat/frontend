@@ -12,7 +12,12 @@ const ChannelUpdateButton = ({ channel }: Props) => {
   const openUpdate = useChannelStore((state) => state.openUpdate);
 
   return (
-    <Button size='sm' color='skyblue' onClick={() => openUpdate(channel)}>
+    <Button
+      size='sm'
+      color='primary'
+      variant='flat'
+      onClick={() => openUpdate(channel)}
+    >
       수정
     </Button>
   );
