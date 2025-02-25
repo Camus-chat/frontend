@@ -14,6 +14,10 @@ const server = axios.create({
 });
 
 server.interceptors.request.use(async (config) => {
+  if (config.headers['X-Bypass-Authorization']) {
+    return config;
+  }
+
   const cookieStore = await cookies();
   const accessToken = cookieStore.get(ACCESS_TOKEN)?.value;
   config.headers.Authorization = `Bearer ${accessToken}`;
