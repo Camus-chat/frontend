@@ -47,7 +47,8 @@ const SignupButton = () => {
       size='lg'
       color={isInvalid ? 'default' : 'primary'}
       onClick={handleClick}
-      isDisabled={isInvalid || isLoading}
+      isDisabled={isInvalid}
+      isLoading={isLoading}
     >
       Create account
     </Button>
