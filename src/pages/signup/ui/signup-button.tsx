@@ -13,13 +13,13 @@ const SignupButton = () => {
   const [isLoading, setIsLoading] = useState(false);
   const isInvalid = useSignupDataStore(
     (state) =>
-      Boolean(state.nicknameError) &&
-      Boolean(state.usernameError) &&
-      Boolean(state.passwordError) &&
-      !state.nickname &&
-      !state.username &&
-      !state.password &&
-      state.isAgreed,
+      Boolean(state.nicknameError) ||
+      Boolean(state.usernameError) ||
+      Boolean(state.passwordError) ||
+      !state.nickname ||
+      !state.username ||
+      !state.password ||
+      !state.isAgreed,
   );
 
   const handleClick = useCallback(async () => {
