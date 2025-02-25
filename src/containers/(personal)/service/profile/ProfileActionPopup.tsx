@@ -1,6 +1,5 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
-import Button from '@/components/Button';
 import InfoTextBox from '@/components/InfoTextBox';
 import Member from '@/components/ProfileImage/Member';
 import { POPUP_DESCRIPTION } from '@/containers/(personal)/service/profile/constants';
@@ -9,7 +8,7 @@ import {
   updateNickname,
   updateProfileImg,
 } from '@/containers/(personal)/service/profile/query';
-import { Input } from '@/shared/ui';
+import { Button, Input } from '@/shared/ui';
 import { useAccountStore } from '@/states/account';
 
 interface Props {
@@ -97,10 +96,10 @@ const ProfileActionPopup = ({ memberInfo, clickCancel }: Props) => {
         />
       </div>
       <div className={styles.buttonWrapper}>
-        <Button size='large' color='lightgray' onClick={clickCancel}>
+        <Button size='lg' variant='flat' onClick={clickCancel}>
           취소하기
         </Button>
-        <Button size='large' color='blue' onClick={handleClickUpdate}>
+        <Button size='lg' color='primary' onClick={handleClickUpdate}>
           수정하기
         </Button>
       </div>

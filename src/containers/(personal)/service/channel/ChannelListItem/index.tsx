@@ -1,11 +1,11 @@
+import TextIcon from '@/components/TextIcon';
 import ChannelLinkCopyButton from '@/containers/(personal)/service/channel/ChannelListItem/ChannelLinkCopyButton';
 import ChannelUpdateButton from '@/containers/(personal)/service/channel/ChannelListItem/ChannelUpdateButton';
 import { FILTER_CLASS_MAP } from '@/containers/(personal)/service/channel/constants';
 import type { Channel } from '@/containers/(personal)/service/channel/type';
+import { Button } from '@/shared/ui';
 
 import styles from './index.module.scss';
-import Button from '@/components/Button';
-import TextIcon from '@/components/TextIcon';
 
 interface Props {
   channel: Channel;
@@ -21,7 +21,7 @@ const ChannelListItem = ({ channel }: Props) => {
       </div>
       <div className={styles.description}>{channel.content}</div>
       <div className={styles.buttons}>
-        <Button size='small' color='lightgray' option='red'>
+        <Button size='sm' variant='flat' className='hover:text-red-500'>
           삭제
         </Button>
         <ChannelUpdateButton channel={channel} />

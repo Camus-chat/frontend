@@ -1,4 +1,7 @@
-export const { DOMAIN_NAME, BIZ_DOMAIN_NAME, API_BASE_URL } = process.env;
+export const { DOMAIN_NAME, BIZ_DOMAIN_NAME, BACKEND_INTERNAL_URL } =
+  process.env;
+
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const BIZ_PATH = process.env.NODE_ENV === 'development' ? '/biz' : '/';
 

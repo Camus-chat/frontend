@@ -2,12 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-import Button from '@/components/Button';
 import DropDown from '@/components/Form/DropDown';
 import InfoTextBox from '@/components/InfoTextBox';
 import { updateChannel } from '@/containers/(personal)/service/channel/query';
 import type { FilterLevel } from '@/containers/(personal)/service/channel/type';
-import { Input } from '@/shared/ui';
+import { Button, Input } from '@/shared/ui';
 import { useChannelStore } from '@/states/channel';
 
 import {
@@ -58,7 +57,7 @@ const ChannelUpdate = () => {
     <>
       <div>
         <InfoTextBox
-          size='small'
+          size='sm'
           title={CHANNEL_UPDATE.title}
           content={CHANNEL_UPDATE.content}
         />
@@ -86,10 +85,10 @@ const ChannelUpdate = () => {
       </div>
 
       <div className={styles.buttonWrapper}>
-        <Button size='large' color='lightgray' onClick={close}>
+        <Button size='lg' variant='flat' onClick={close}>
           취소하기
         </Button>
-        <Button size='large' color='blue' onClick={requestUpdate}>
+        <Button size='lg' color='primary' onClick={requestUpdate}>
           수정하기
         </Button>
       </div>

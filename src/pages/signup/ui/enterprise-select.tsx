@@ -1,9 +1,24 @@
 'use client';
 
+import { tv } from 'tailwind-variants';
+
 import { useSignupDataStore } from '@/pages/signup/store/signup-data';
-import { Button, CheckCircleIcon } from '@/shared/ui';
+import { CheckCircleIcon } from '@/shared/ui';
 
 import { ENTERPRISE, PERSONAL } from '../constants';
+
+const style = tv({
+  base: [
+    'flex items-center justify-center font-medium duration-300',
+    'h-10 min-w-[4rem] rounded-lg px-4 text-sm',
+  ],
+  variants: {
+    selected: {
+      true: 'border border-solid border-blue-700 bg-blue-100 text-blue-700 hover:cursor-default',
+      false: 'bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-600',
+    },
+  },
+});
 
 const EnterpriseSelect = () => {
   const selectedKey = useSignupDataStore((state) => state.isEnterprise);
@@ -11,22 +26,22 @@ const EnterpriseSelect = () => {
 
   return (
     <div className='grid w-full grid-cols-2 gap-2'>
-      <Button
-        size='md'
-        color={selectedKey === PERSONAL ? 'selected' : 'gray'}
+      <button
+        type='button'
+        className={style({ selected: selectedKey === PERSONAL })}
         onClick={() => onSelect(PERSONAL)}
       >
         <CheckCircleIcon />
         Personal
-      </Button>
-      <Button
-        size='md'
-        color={selectedKey === ENTERPRISE ? 'selected' : 'gray'}
+      </button>
+      <button
+        type='button'
+        className={style({ selected: selectedKey === ENTERPRISE })}
         onClick={() => onSelect(ENTERPRISE)}
       >
         <CheckCircleIcon />
         Enterprise
-      </Button>
+      </button>
     </div>
   );
 };

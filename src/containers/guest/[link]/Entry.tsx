@@ -3,9 +3,8 @@
 import { useRouter } from 'next/navigation';
 
 import { requestEnterRoom } from '@/containers/guest/[link]/query';
+import { Button } from '@/shared/ui';
 import { useChatStore } from '@/states/chat';
-
-import Button from '@/components/Button';
 
 interface Props {
   link: string;
@@ -29,7 +28,7 @@ export const Entry = ({ link, token }: Props) => {
   };
 
   return (
-    <Button size='large' color='blue' onClick={handleClick}>
+    <Button size='lg' color='primary' onClick={handleClick}>
       참여하기
     </Button>
   );

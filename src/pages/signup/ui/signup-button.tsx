@@ -13,13 +13,13 @@ const SignupButton = () => {
   const [isLoading, setIsLoading] = useState(false);
   const isInvalid = useSignupDataStore(
     (state) =>
-      Boolean(state.nicknameError) &&
-      Boolean(state.usernameError) &&
-      Boolean(state.passwordError) &&
-      !state.nickname &&
-      !state.username &&
-      !state.password &&
-      state.isAgreed,
+      Boolean(state.nicknameError) ||
+      Boolean(state.usernameError) ||
+      Boolean(state.passwordError) ||
+      !state.nickname ||
+      !state.username ||
+      !state.password ||
+      !state.isAgreed,
   );
 
   const handleClick = useCallback(async () => {
@@ -44,10 +44,11 @@ const SignupButton = () => {
   return (
     <Button
       className='mt-5'
-      size='large'
-      color={isInvalid ? 'disable' : 'blue'}
+      size='lg'
+      color={isInvalid ? 'default' : 'primary'}
       onClick={handleClick}
-      disabled={isInvalid || isLoading}
+      isDisabled={isInvalid}
+      isLoading={isLoading}
     >
       Create account
     </Button>

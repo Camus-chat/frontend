@@ -25,12 +25,16 @@ const Login = ({ member }: Props) => {
       <div className='grid grid-cols-2 gap-1'>
         <Button
           size='md'
-          color='transparent'
+          variant='light'
           onClick={() => router.push('/signup')}
         >
           회원가입
         </Button>
-        <Button size='md' color='black' onClick={() => router.push('/signin')}>
+        <Button
+          size='md'
+          color='secondary'
+          onClick={() => router.push('/signin')}
+        >
           로그인
         </Button>
       </div>
