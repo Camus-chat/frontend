@@ -1,28 +1,35 @@
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 import { Drawer, DrawerClose, DrawerOpen } from '@/features/drawer';
 import { Logo } from '@/shared/ui';
-import { fetchMemberInfo } from '@/widgets/header/api/member-info';
 
+import { fetchMemberInfo } from '../api/member-info';
 import { NAVIGATIONS } from '../config/navigation';
 import DrawerLogin from './drawer-item/login';
-import NaviationBelt from './nav-belt';
+import NavigationBelt from './nav-belt';
 import Login from './nav-login';
 
 interface Props {
   business?: boolean;
+  LogedInOnly?: boolean;
 }
 
-const Header = async ({ business }: Props) => {
+const Header = async ({ business, LogedInOnly }: Props) => {
   const isBusiness = !!business;
   const navigationMenuItems = business
     ? NAVIGATIONS.business
     : NAVIGATIONS.personal;
   const member = await fetchMemberInfo();
+  if (process.env.NODE_ENV === 'production') {
+    if (LogedInOnly && !member) {
+      redirect('/signin');
+    }
+  }
 
   return (
     <header>
-      <NaviationBelt business={isBusiness} />
+      <NavigationBelt business={isBusiness} />
       <div className='wrapper grid h-14 grid-cols-[auto,1fr] items-center'>
         <Logo business={isBusiness} />
         <span className='flex size-full items-center max-md:hidden'>
