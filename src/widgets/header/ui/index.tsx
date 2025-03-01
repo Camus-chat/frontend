@@ -13,17 +13,17 @@ import Login from './nav-login';
 
 interface Props {
   business?: boolean;
-  LogedInOnly?: boolean;
+  loggedInOnly?: boolean;
 }
 
-const Header = async ({ business, LogedInOnly }: Props) => {
+const Header = async ({ business, loggedInOnly }: Props) => {
   const isBusiness = !!business;
   const navigationMenuItems = business
     ? NAVIGATIONS.business
     : NAVIGATIONS.personal;
   const member = await fetchMemberInfo();
   if (process.env.NODE_ENV === 'production') {
-    if (LogedInOnly && !member) {
+    if (loggedInOnly && !member) {
       redirect(ROUTE.login);
     }
   }
