@@ -1,3 +1,4 @@
+import { ROUTE } from '@/shared/config';
 import { MailBoxIcon, MessagesIcon, ProfileCardIcon } from '@/shared/ui';
 
 interface Menu {
@@ -11,19 +12,19 @@ export const SERVICE_MENU: Menu[] = [
   {
     key: 'chat',
     name: '채팅',
-    path: '/service/chat',
+    path: ROUTE.chat,
     icon: MessagesIcon,
   },
   {
     key: 'channel',
     name: '채널',
-    path: '/service/channel',
+    path: ROUTE.channel,
     icon: MailBoxIcon,
   },
   {
     key: 'profile',
     name: '프로필',
-    path: '/service/profile',
+    path: ROUTE.profile,
     icon: ProfileCardIcon,
   },
 ];

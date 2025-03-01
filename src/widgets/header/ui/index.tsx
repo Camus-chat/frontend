@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
 import { Drawer, DrawerClose, DrawerOpen } from '@/features/drawer';
+import { ROUTE } from '@/shared/config';
 import { Logo } from '@/shared/ui';
 
 import { fetchMemberInfo } from '../api/member-info';
@@ -23,7 +24,7 @@ const Header = async ({ business, LogedInOnly }: Props) => {
   const member = await fetchMemberInfo();
   if (process.env.NODE_ENV === 'production') {
     if (LogedInOnly && !member) {
-      redirect('/signin');
+      redirect(ROUTE.login);
     }
   }
 

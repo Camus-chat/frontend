@@ -9,6 +9,7 @@ import {
 import { User } from '@heroui/user';
 import { useRouter } from 'next/navigation';
 
+import { ROUTE } from '@/shared/config';
 import { Button } from '@/shared/ui';
 
 import { logout } from '../api/logout';
@@ -26,14 +27,14 @@ const Login = ({ member }: Props) => {
         <Button
           size='md'
           variant='light'
-          onClick={() => router.push('/signup')}
+          onClick={() => router.push(ROUTE.signup)}
         >
           회원가입
         </Button>
         <Button
           size='md'
           color='secondary'
-          onClick={() => router.push('/signin')}
+          onClick={() => router.push(ROUTE.login)}
         >
           로그인
         </Button>

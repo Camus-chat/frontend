@@ -11,3 +11,11 @@ export const PASSWORD_REGEX =
   /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,16}$/;
 
 export const ACCESS_TOKEN = 'a-t';
+
+export const ROUTE = {
+  login: '/signin',
+  signup: '/signup',
+  chat: '/service/chat',
+  channel: '/service/channel',
+  profile: '/service/profile',
+};
