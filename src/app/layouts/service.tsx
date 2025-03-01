@@ -1,6 +1,6 @@
 import type { FC, ReactNode } from 'react';
 
-import Menu from '@/containers/(personal)/service/Menu';
+import Menu from '@/features/service-menu';
 import Header from '@/widgets/header';
 
 interface Props {
