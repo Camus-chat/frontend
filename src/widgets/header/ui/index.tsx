@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { tv } from 'tailwind-variants';
 
 import { Drawer, DrawerClose, DrawerOpen } from '@/features/drawer';
 import { ROUTE } from '@/shared/config';
@@ -14,9 +15,14 @@ import Login from './nav-login';
 interface Props {
   business?: boolean;
   loggedInOnly?: boolean;
+  className?: string;
 }
 
-const Header = async ({ business, loggedInOnly }: Props) => {
+const wrapper = tv({
+  base: 'wrapper flex h-14 items-center justify-between',
+});
+
+const Header = async ({ business, loggedInOnly, className }: Props) => {
   const isBusiness = !!business;
   const navigationMenuItems = business
     ? NAVIGATIONS.business
@@ -30,24 +36,22 @@ const Header = async ({ business, loggedInOnly }: Props) => {
 
   return (
     <header>
-      <NavigationBelt business={isBusiness} />
-      <div className='wrapper grid h-14 grid-cols-[auto,1fr] items-center'>
+      {!loggedInOnly && <NavigationBelt business={isBusiness} />}
+      <div className={wrapper({ className })}>
         <Logo business={isBusiness} />
-        <span className='flex size-full items-center max-md:hidden'>
-          <nav className='mx-auto flex h-full'>
-            {navigationMenuItems.map((item) => (
-              <Link
-                className='flex h-full items-center px-4 text-sm font-medium hover:text-blue-700'
-                key={item.key}
-                href={item.path}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-          <Login member={member} />
-        </span>
-        <DrawerOpen className='ml-auto md:hidden' />
+        <nav className='flex h-full max-md:hidden'>
+          {navigationMenuItems.map((item) => (
+            <Link
+              className='flex h-full items-center px-4 text-sm font-medium hover:text-blue-700'
+              key={item.key}
+              href={item.path}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </nav>
+        <Login member={member} className='max-md:hidden' />
+        <DrawerOpen className='md:hidden' />
       </div>
       <Drawer className='fixed text-lg font-semibold md:hidden'>
         <div className='flex flex-col items-end bg-neutral-800'>
