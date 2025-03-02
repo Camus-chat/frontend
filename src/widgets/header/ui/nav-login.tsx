@@ -8,6 +8,7 @@ import {
 } from '@heroui/dropdown';
 import { User } from '@heroui/user';
 import { useRouter } from 'next/navigation';
+import { tv } from 'tailwind-variants';
 
 import { ROUTE } from '@/shared/config';
 import { Button } from '@/shared/ui';
@@ -16,14 +17,23 @@ import { logout } from '../api/logout';
 
 interface Props {
   member: Member | null;
+  className?: string;
 }
 
-const Login = ({ member }: Props) => {
+const style = tv({
+  slots: {
+    wrapper: 'grid grid-cols-2 gap-1',
+    trigger: 'cursor-pointer',
+  },
+});
+
+const Login = ({ member, className }: Props) => {
   const router = useRouter();
+  const { wrapper, trigger } = style();
 
   if (member === null) {
     return (
-      <div className='grid grid-cols-2 gap-1'>
+      <div className={wrapper({ className })}>
         <Button
           size='md'
           variant='light'
@@ -44,7 +54,7 @@ const Login = ({ member }: Props) => {
 
   return (
     <Dropdown>
-      <DropdownTrigger className='cursor-pointer'>
+      <DropdownTrigger className={trigger({ className })}>
         <User name={member.nickname} description={member.username} />
       </DropdownTrigger>
       <DropdownMenu variant='flat' disabledKeys={['chat', 'channel']}>
