@@ -1,3 +1,4 @@
+import { CHANNEL_TYPE_LIST } from '@/components/TextIcon/constants';
 import { FILTER_LIST } from '@/containers/(personal)/service/channel/constants';
 
 type FilterLevel = (typeof FILTER_LIST)[number][0];
@@ -6,7 +7,7 @@ type FilterName = (typeof FILTER_LIST)[number][1];
 
 type FilterClassName = (typeof FILTER_LIST)[number][2];
 
-type ChannelType = 'private' | 'group';
+type ChannelClassName = (typeof CHANNEL_TYPE_LIST)[number][0];
 
 interface ChannelRequest {
   title: string;
@@ -15,7 +16,7 @@ interface ChannelRequest {
 }
 
 interface ChannelCreate extends ChannelRequest {
-  type: ChannelType;
+  type: ChannelClassName;
 }
 
 interface ChannelUpdate extends ChannelRequest {

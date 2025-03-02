@@ -15,9 +15,9 @@ export const CHANNEL_UPDATE = {
 };
 
 export const FILTER_LIST = [
-  [100, '약', 'weak'],
-  [200, '중', 'moderate'],
-  [300, '강', 'strong'],
+  [100, '약', 'weak', 'danger'],
+  [200, '중', 'moderate', 'warning'],
+  [300, '강', 'strong', 'success'],
 ] as const;
 
 export const FILTER_DROP_DOWN_OPTION: DropDownItem<FilterLevel>[] =
