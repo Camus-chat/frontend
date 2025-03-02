@@ -54,13 +54,12 @@ const ChannelUpdate = () => {
 
   return (
     <>
-      <div>
-        <InfoTextBox
-          size='sm'
-          title={CHANNEL_UPDATE.title}
-          content={CHANNEL_UPDATE.content}
-        />
-
+      <InfoTextBox
+        size='small'
+        title={CHANNEL_UPDATE.title}
+        content={CHANNEL_UPDATE.content}
+      />
+      <div className='flex flex-col gap-2'>
         <Input
           ref={title}
           label='채널명'
@@ -83,7 +82,7 @@ const ChannelUpdate = () => {
         />
       </div>
 
-      <div className="w-full grid grid-cols-2 gap-2">
+      <div className='my-2 grid w-full grid-cols-2 gap-2'>
         <Button size='lg' variant='flat' onClick={close}>
           취소하기
         </Button>
