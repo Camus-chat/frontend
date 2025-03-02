@@ -1,3 +1,5 @@
+import { Card, CardBody, CardFooter, CardHeader } from '@heroui/card';
+
 import TextIcon from '@/components/TextIcon';
 import ChannelLinkCopyButton from '@/containers/(personal)/service/channel/ChannelListItem/ChannelLinkCopyButton';
 import ChannelUpdateButton from '@/containers/(personal)/service/channel/ChannelListItem/ChannelUpdateButton';
@@ -11,8 +13,11 @@ interface Props {
 
 const ChannelListItem = ({ channel }: Props) => {
   return (
-    <li className='hover:shadow-[0 1px 4px 0 rgba(0, 0, 0, 0.07)] m-2 flex min-h-[110px] flex-col rounded-lg border border-gray-100 p-4 hover:transition-all hover:duration-300'>
-      <div className='flex items-center'>
+    <Card
+      fullWidth
+      className='hover:shadow-[0_1px_4px_rgba(0, 0, 0, 0.07)] m-2 flex min-h-[110px] flex-col rounded-lg border border-gray-100 p-2 shadow-none hover:transition-all hover:duration-300'
+    >
+      <CardHeader className='mt-1 flex items-center'>
         <div className='mr-0.5 overflow-hidden text-ellipsis text-xl font-semibold'>
           {channel.title}
         </div>
@@ -20,16 +25,16 @@ const ChannelListItem = ({ channel }: Props) => {
           <TextIcon name={channel.type} />
           <TextIcon name={FILTER_CLASS_MAP[channel.filterLevel]} />
         </div>
-      </div>
-      <div className='py-1'>{channel.content}</div>
-      <div className='flex justify-start gap-1'>
+      </CardHeader>
+      <CardBody className='py-0 font-light'>{channel.content}</CardBody>
+      <CardFooter className='flex justify-start gap-1.5'>
         <Button size='sm' variant='flat' className='hover:text-red-500'>
           삭제
         </Button>
         <ChannelUpdateButton channel={channel} />
         <ChannelLinkCopyButton link={channel.link} />
-      </div>
-    </li>
+      </CardFooter>
+    </Card>
   );
 };
 
