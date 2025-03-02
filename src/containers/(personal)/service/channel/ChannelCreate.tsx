@@ -13,7 +13,6 @@ import { Button, Input } from '@/shared/ui';
 import { useChannelStore } from '@/states/channel';
 
 import { CHANNEL_CREATE, FILTER_DROP_DOWN_OPTION } from './constants';
-import styles from './index.module.scss';
 
 const ChannelCreate = () => {
   const { close, addNewChannel } = useChannelStore((state) => ({
@@ -53,13 +52,13 @@ const ChannelCreate = () => {
 
   return (
     <>
-      <div>
-        <InfoTextBox
-          size='sm'
-          title={CHANNEL_CREATE.title}
-          content={CHANNEL_CREATE.content}
-        />
+      <InfoTextBox
+        size='small'
+        title={CHANNEL_CREATE.title}
+        content={CHANNEL_CREATE.content}
+      />
 
+      <div className='flex flex-col gap-2'>
         {/* <ToggleButton */}
         {/*  leftButtonLabel='1:1 채팅' */}
         {/*  onClickLeft={() => { */}
@@ -93,7 +92,7 @@ const ChannelCreate = () => {
         />
       </div>
 
-      <div className={styles.buttonWrapper}>
+      <div className='my-2 grid w-full grid-cols-2 gap-2'>
         <Button size='lg' variant='flat' onClick={close}>
           취소하기
         </Button>
