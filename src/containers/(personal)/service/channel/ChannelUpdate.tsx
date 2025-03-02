@@ -14,7 +14,6 @@ import {
   FILTER_DROP_DOWN_OPTION,
   FILTER_OPTION_MAP,
 } from './constants';
-import styles from './index.module.scss';
 
 const ChannelUpdate = () => {
   const { channel, close } = useChannelStore((state) => ({
@@ -84,7 +83,7 @@ const ChannelUpdate = () => {
         />
       </div>
 
-      <div className={styles.buttonWrapper}>
+      <div className="w-full grid grid-cols-2 gap-2">
         <Button size='lg' variant='flat' onClick={close}>
           취소하기
         </Button>
