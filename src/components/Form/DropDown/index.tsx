@@ -1,10 +1,7 @@
 'use client';
 
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Select, SelectItem } from '@heroui/select';
 import { useState } from 'react';
-
-import styles from './index.module.scss';
-import FormWrapper from '@/components/Form/Wrapper';
 
 interface Props<T> {
   name: string;
@@ -22,44 +19,31 @@ const DropDown = <T = string,>({
   const [isClicked, setIsClicked] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string>(placeholder);
 
-  const handleClickDropdown = () => {
-    setIsClicked((prev) => !prev);
-  };
-
-  const handleSelectOption = (item: DropDownItem<T>) => {
-    setSelectedOption(item.name);
+  const handleSelectOption = (e: { target: { value: string } }) => {
+    setSelectedOption(e.target.value);
     setIsClicked(false);
     if (onSelect) {
       // TODO: Fix this
-      onSelect(item.value);
+      // onSelect(e.target.value);
     }
   };
 
   return (
-    <FormWrapper name={name}>
-      <button
-        className={styles.label}
-        type='button'
-        onClick={handleClickDropdown}
-      >
-        {selectedOption}
-        <ExpandMoreIcon />
-      </button>
-      {isClicked && (
-        <div className={styles.optionList}>
-          {options.map((items) => (
-            <button
-              key={items.name}
-              type='button'
-              className={styles.optionItem}
-              onClick={() => handleSelectOption(items)}
-            >
-              {items.name}
-            </button>
-          ))}
-        </div>
-      )}
-    </FormWrapper>
+    <Select
+      fullWidth
+      placeholder={placeholder}
+      label={name}
+      selectedKeys={selectedOption}
+      selectionMode='single'
+      onChange={handleSelectOption}
+      onOpenChange={setIsClicked}
+    >
+      {options.map((item) => (
+        <SelectItem key={item.name} className='captialize'>
+          {item.name}
+        </SelectItem>
+      ))}
+    </Select>
   );
 };
 
