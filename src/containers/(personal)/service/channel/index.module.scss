@@ -20,7 +20,7 @@ $-padding-x: 8px;
 }
 
 .channelCreateButton {
-  @include channel.container-style;
+  //@include channel.container-style;
   @include color($gray-500);
 
   width: 100%;
