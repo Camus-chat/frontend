@@ -6,7 +6,7 @@ import DropDown from '@/components/Form/DropDown';
 import InfoTextBox from '@/components/InfoTextBox';
 import { createChannel } from '@/containers/(personal)/service/channel/query';
 import type {
-  ChannelType,
+  ChannelClassName,
   FilterLevel,
 } from '@/containers/(personal)/service/channel/type';
 import { Button, Input } from '@/shared/ui';
@@ -20,7 +20,7 @@ const ChannelCreate = () => {
     close: state.close,
     addNewChannel: state.addNewChannel,
   }));
-  const [type, setType] = useState<ChannelType>('private');
+  const [type, setType] = useState<ChannelClassName>('private');
   const [filterLevel, setFilterLevel] = useState<FilterLevel | 0>(0);
   const title = useRef<HTMLInputElement>(null);
   const content = useRef<HTMLInputElement>(null);
