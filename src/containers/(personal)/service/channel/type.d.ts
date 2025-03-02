@@ -7,7 +7,13 @@ type FilterName = (typeof FILTER_LIST)[number][1];
 
 type FilterClassName = (typeof FILTER_LIST)[number][2];
 
+type FilterColor = (typeof FILTER_LIST)[number][3];
+
 type ChannelClassName = (typeof CHANNEL_TYPE_LIST)[number][0];
+
+type ChannelName = (typeof CHANNEL_TYPE_LIST)[number][1];
+
+type ChannelColor = (typeof CHANNEL_TYPE_LIST)[number][2];
 
 interface ChannelRequest {
   title: string;

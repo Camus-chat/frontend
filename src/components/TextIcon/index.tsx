@@ -1,6 +1,6 @@
 import { Chip } from '@heroui/chip';
 
-import { ICON_TYPE, TEXT_ICON_NAME_MAP } from '@/components/TextIcon/constants';
+import { TEXT_ICON_NAME_MAP } from '@/components/TextIcon/constants';
 import { TextIconName } from '@/components/TextIcon/type';
 
 interface Props {
@@ -8,18 +8,17 @@ interface Props {
 }
 
 const TextIcon = ({ name }: Props) => {
-  const { type, name: iconName, color, variant } = TEXT_ICON_NAME_MAP[name];
+  const { name: iconName, color } = TEXT_ICON_NAME_MAP[name];
 
   return (
-    <div className='m-1'>
-      <Chip
-        variant={variant}
-        color={color}
-        classNames={{ content: ICON_TYPE[type].style }}
-      >
-        {iconName}
-      </Chip>
-    </div>
+    <Chip
+      size='sm'
+      variant='solid'
+      color={color}
+      classNames={{ content: 'text-white' }}
+    >
+      {iconName}
+    </Chip>
   );
 };
 

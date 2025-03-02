@@ -16,11 +16,13 @@ const ChannelListItem = ({ channel }: Props) => {
         <div className='mr-0.5 overflow-hidden text-ellipsis text-xl font-semibold'>
           {channel.title}
         </div>
-        <TextIcon name={channel.type} />
-        <TextIcon name={FILTER_CLASS_MAP[channel.filterLevel]} />
+        <div className='mx-2 flex items-center gap-1'>
+          <TextIcon name={channel.type} />
+          <TextIcon name={FILTER_CLASS_MAP[channel.filterLevel]} />
+        </div>
       </div>
       <div className='py-1'>{channel.content}</div>
-      <div className='flex justify-start'>
+      <div className='flex justify-start gap-1'>
         <Button size='sm' variant='flat' className='hover:text-red-500'>
           삭제
         </Button>
