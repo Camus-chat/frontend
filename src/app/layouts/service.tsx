@@ -10,7 +10,7 @@ interface Props {
 const ServiceLayout: FC<Props> = ({ children }) => {
   return (
     <div className='grid size-full grid-rows-[auto,1fr]'>
-      <Header loggedInOnly />
+      <Header className='max-w-none md:h-16' loggedInOnly />
       <main className='relative md:bg-default-100'>
         <Menu />
         {children}
