@@ -1,11 +1,11 @@
 import { Card, CardBody, CardFooter, CardHeader } from '@heroui/card';
 
 import TextIcon from '@/components/TextIcon';
+import ChannelDeleteButton from '@/containers/(personal)/service/channel/ChannelListItem/ChannelDeleteButton';
 import ChannelLinkCopyButton from '@/containers/(personal)/service/channel/ChannelListItem/ChannelLinkCopyButton';
 import ChannelUpdateButton from '@/containers/(personal)/service/channel/ChannelListItem/ChannelUpdateButton';
 import { FILTER_CLASS_MAP } from '@/containers/(personal)/service/channel/constants';
 import type { Channel } from '@/containers/(personal)/service/channel/type';
-import { Button } from '@/shared/ui';
 
 interface Props {
   channel: Channel;
@@ -28,9 +28,7 @@ const ChannelListItem = ({ channel }: Props) => {
       </CardHeader>
       <CardBody className='py-0 font-light'>{channel.content}</CardBody>
       <CardFooter className='flex justify-start gap-1.5'>
-        <Button size='sm' variant='flat' className='hover:text-red-500'>
-          삭제
-        </Button>
+        <ChannelDeleteButton channel={channel} />
         <ChannelUpdateButton channel={channel} />
         <ChannelLinkCopyButton link={channel.link} />
       </CardFooter>
