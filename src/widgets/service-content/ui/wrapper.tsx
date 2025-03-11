@@ -7,7 +7,7 @@ interface Props {
 
 const ServiceContent = ({ children }: Props) => {
   return (
-    <div className='pb-service-menu relative flex h-full items-start justify-center md:items-center'>
+    <div className='pb-service-menu relative flex h-full items-start justify-center gap-5 md:items-center md:px-5'>
       {children}
     </div>
   );
