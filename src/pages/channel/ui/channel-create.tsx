@@ -5,10 +5,7 @@ import { useRef, useState } from 'react';
 import DropDown from '@/components/Form/DropDown';
 import InfoTextBox from '@/components/InfoTextBox';
 import { createChannel } from '@/containers/(personal)/service/channel/query';
-import type {
-  ChannelType,
-  FilterLevel,
-} from '@/containers/(personal)/service/channel/type';
+import type { FilterLevel } from '@/containers/(personal)/service/channel/type';
 import { Button, Input } from '@/shared/ui';
 import { useChannelStore } from '@/states/channel';
 
