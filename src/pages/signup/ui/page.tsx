@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { ROUTE } from '@/shared/config';
 import AuthLayout from '@/widgets/auth-layout';
 
 import Agreement from './agreement';
@@ -21,7 +22,10 @@ const SignupPage = () => {
           <span className='mr-1 text-xs text-gray-500'>
             Already have an account?
           </span>
-          <Link href='/signin' className='text-xs font-medium text-blue-600'>
+          <Link
+            href={ROUTE.login}
+            className='text-xs font-medium text-blue-600'
+          >
             Sign in
           </Link>
         </div>

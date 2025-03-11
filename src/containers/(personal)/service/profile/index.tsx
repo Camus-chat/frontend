@@ -1,17 +1,16 @@
+import Member from '@/components/ProfileImage/Member';
 import styles from '@/containers/(personal)/service/profile/index.module.scss';
 import ProfileUpdateButton from '@/containers/(personal)/service/profile/ProfileUpdateButton';
 import { query } from '@/containers/query';
 
-import Member from '@/components/ProfileImage/Member';
-
 const Profile = async () => {
-  const memberInfo = await query.serverSide.get<MemberInfo>('/member/b2c/info');
+  const memberInfo = await query.serverSide.get<Member>('/member/b2c/info');
 
   return (
     <div className={styles.profileMenu}>
       <div>
         <div className={styles.profileWrapper}>
-          <Member imgSrc={memberInfo.profileLink} size='large' />
+          <Member imgSrc={memberInfo.profileLink || ''} size='large' />
           <div className={styles.nickName}> {memberInfo.nickname}님</div>
         </div>
         <div className={styles.menuWrapper}>

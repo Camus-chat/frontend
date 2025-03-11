@@ -5,6 +5,12 @@ import { useState } from 'react';
 
 import styles from '@/components/Menu/index.module.scss';
 
+interface Navigation {
+  key: string;
+  name: string;
+  path: string;
+}
+
 interface Props {
   menu: Navigation[];
 }

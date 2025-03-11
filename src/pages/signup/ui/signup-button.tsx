@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
 
 import { signUp } from '@/pages/signup/api/sign-up';
+import { ROUTE } from '@/shared/config';
 import { Button } from '@/shared/ui';
 
 import { useSignupDataStore } from '../store/signup-data';
@@ -34,7 +35,7 @@ const SignupButton = () => {
       isEnterprise,
     });
     if (isSuccess) {
-      router.push('/signin');
+      router.push(ROUTE.login);
     } else {
       alert('회원가입에 실패했습니다.');
       setIsLoading(false);
