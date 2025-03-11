@@ -11,6 +11,9 @@ const config = {
   ],
   theme: {
     extend: {
+      spacing: {
+        'service-menu': '4rem',
+      },
       colors: {
         blue: {
           50: '#f0f6ff',

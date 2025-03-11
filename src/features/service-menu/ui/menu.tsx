@@ -9,14 +9,14 @@ import { SERVICE_MENU } from '../config';
 
 const wrapper = tv({
   base: [
-    'absolute bottom-0 flex w-full max-md:justify-around',
-    'md:left-0 md:h-full md:w-fit md:flex-col md:gap-2 md:bg-default-900 md:pt-2',
+    'flex w-full max-md:absolute max-md:bottom-0 max-md:justify-around',
+    'md:h-full md:w-fit md:flex-col md:gap-2 md:bg-default-900 md:pt-2',
   ],
 });
 
 const link = tv({
   base: [
-    'flex h-16 flex-col items-center justify-center gap-1 px-3 text-xs text-default-500',
+    'h-service-menu flex flex-col items-center justify-center gap-1 px-3 text-xs text-default-500',
     'hover:text-default-800 md:hover:text-default-200',
     'md:text-sm',
   ],
