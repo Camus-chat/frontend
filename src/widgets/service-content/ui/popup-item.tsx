@@ -7,13 +7,13 @@ import { useServicePopup } from '../store/popup';
 
 interface Props {
   children: ReactNode;
-  key: string;
+  id: string;
 }
 
-const PopupItem = ({ children, key }: Props) => {
+const PopupItem = ({ children, id }: Props) => {
   const openKey = useServicePopup((state) => state.key);
 
-  if (openKey === key) {
+  if (openKey === id) {
     return (
       <Card shadow='sm' className={wrapper({ popup: true })}>
         {children}
