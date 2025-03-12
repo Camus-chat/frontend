@@ -3,7 +3,20 @@ import { query } from '@/containers/query';
 import { callAPI } from '@/shared/api';
 
 export const getChannels = async () => {
-  return query.serverSide.get<Channel[]>('/channel/list');
+  return callAPI.serverSide
+    .get<Channel[]>('/channel/list')
+    .then((res) => {
+      if (process.env.NODE_ENV === 'development') {
+        console.log('channel list:', res.data);
+      }
+      return res.data;
+    })
+    .catch((err) => {
+      if (process.env.NODE_ENV === 'development') {
+        console.log('channel list:', err.response?.data);
+      }
+      return null;
+    });
 };
 
 export const createChannel = async (
