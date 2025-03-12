@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-type State = Omit<Channel, 'link'>;
+type State = ChannelCreateRequest;
 
 interface Actions {
   setTitle: (title: string) => void;

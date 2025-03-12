@@ -7,3 +7,5 @@ interface Channel {
   filterLevel: number;
   link: string;
 }
+
+type ChannelCreateRequest = Omit<Channel, 'link'>;
