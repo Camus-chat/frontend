@@ -10,7 +10,7 @@ export const titleStyle = tv({
 });
 
 export const descriptionStyle = tv({
-  base: 'text-lg',
+  base: 'text-sm',
 });
 
 export const inputStyleProps = {
