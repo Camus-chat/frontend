@@ -2,7 +2,7 @@
 
 import { Card } from '@heroui/card';
 
-import { wrapper } from './styles';
+import { itemWrapperStyle } from './styles';
 import { useServicePopup } from '../store/popup';
 
 interface Props {
@@ -15,7 +15,7 @@ const PopupItem = ({ children, id }: Props) => {
 
   if (openKey === id) {
     return (
-      <Card shadow='sm' className={wrapper({ popup: true })}>
+      <Card shadow='sm' className={itemWrapperStyle({ popup: true })}>
         {children}
       </Card>
     );
