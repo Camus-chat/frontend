@@ -1,5 +1,4 @@
 import type {
-  Channel,
   ChannelCreate,
   ChannelUpdate,
 } from '@/containers/(personal)/service/channel/type';

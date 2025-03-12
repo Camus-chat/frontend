@@ -1,103 +1,71 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { CardBody, CardFooter, CardHeader } from '@heroui/card';
 
-import DropDown from '@/components/Form/DropDown';
-import InfoTextBox from '@/components/InfoTextBox';
-import { createChannel } from '@/containers/(personal)/service/channel/query';
-import type { FilterLevel } from '@/containers/(personal)/service/channel/type';
-import { Button, Input } from '@/shared/ui';
-import { useChannelStore } from '@/states/channel';
+import { Button } from '@/shared/ui';
+import { useServicePopup } from '@/widgets/service-content';
 
-import { CHANNEL_CREATE, FILTER_DROP_DOWN_OPTION } from './constants';
-import styles from './index.module.scss';
+import ChannelDescriptionInput from './channel-description-input';
+import ChannelFilterLevelSlider from './channel-filter-level-slider';
+import ChannelNameInput from './channel-name-input';
+import { descriptionStyle, titleStyle } from './styles';
+import { createChannel } from '../api/channel';
+import { useChannelFormStore } from '../store/form';
 
-const ChannelCreate = () => {
-  const { close, addNewChannel } = useChannelStore((state) => ({
-    close: state.close,
-    addNewChannel: state.addNewChannel,
-  }));
-  const [type, setType] = useState<ChannelType>('private');
-  const [filterLevel, setFilterLevel] = useState<FilterLevel | 0>(0);
-  const title = useRef<HTMLInputElement>(null);
-  const content = useRef<HTMLInputElement>(null);
+const CreateButton = () => {
+  const isInvalid = useChannelFormStore(
+    (state) => !state.title || !state.content,
+  );
 
   const handleClick = () => {
-    if (title.current === null || content.current === null) {
-      return;
-    }
-    if (!title.current.value) {
-      alert('채널명을 입력해주세요.');
-      return;
-    }
-    if (!content.current.value) {
-      alert('소개글을 입력해주세요.');
-      return;
-    }
-    if (!filterLevel) {
-      alert('필터링 강도를 선택해주세요.');
-      return;
-    }
+    const { type, title, content, filterLevel } =
+      useChannelFormStore.getState();
+
     createChannel({
       type,
-      title: title.current.value,
-      content: content.current.value,
+      title,
+      content,
       filterLevel,
     }).then((res) => {
-      addNewChannel(res);
+      // addNewChannel(res);
     });
   };
 
   return (
+    <Button
+      size='lg'
+      color='primary'
+      onClick={handleClick}
+      isDisabled={isInvalid}
+    >
+      생성하기
+    </Button>
+  );
+};
+
+const ChannelCreate = () => {
+  const close = useServicePopup((state) => state.close);
+
+  return (
     <>
-      <div>
-        <InfoTextBox
-          size='sm'
-          title={CHANNEL_CREATE.title}
-          content={CHANNEL_CREATE.content}
-        />
-
-        {/* <ToggleButton */}
-        {/*  leftButtonLabel='1:1 채팅' */}
-        {/*  onClickLeft={() => { */}
-        {/*    setType('private'); */}
-        {/*  }} */}
-        {/*  rightButtonLabel='그룹 채팅' */}
-        {/*  onClickRight={() => { */}
-        {/*    setType('group'); */}
-        {/*  }} */}
-        {/* /> */}
-
-        <Input
-          ref={title}
-          label='채널명'
-          type='text'
-          placeholder='채널명을 입력해주세요.'
-        />
-
-        <Input
-          ref={content}
-          label='소개글'
-          type='text'
-          placeholder='한 줄 소개를 작성해주세요.'
-        />
-
-        <DropDown
-          name='필터링 강도'
-          options={FILTER_DROP_DOWN_OPTION}
-          placeholder='필터링 강도를 선택해주세요.'
-          onSelect={(level: FilterLevel) => setFilterLevel(level)}
-        />
-      </div>
-
-      <div className={styles.buttonWrapper}>
+      <CardHeader className='flex-col items-start'>
+        <h3 className={titleStyle()}>채널 생성</h3>
+        <p className={descriptionStyle()}>
+          채팅 채널 생성에 필요한 정보를 입력해주세요.
+        </p>
+      </CardHeader>
+      <CardBody className='gap-3'>
+        {/* TODO: add channel type */}
+        <ChannelNameInput />
+        <ChannelDescriptionInput />
+        <ChannelFilterLevelSlider />
+      </CardBody>
+      <CardFooter className='grid grid-cols-2 gap-3'>
         <Button size='lg' variant='flat' onClick={close}>
           취소하기
         </Button>
-        <Button size='lg' color='primary' onClick={handleClick}>
-          생성하기
-        </Button>
-      </div>
+        <CreateButton />
+      </CardFooter>
     </>
   );
 };
