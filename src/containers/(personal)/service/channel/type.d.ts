@@ -12,10 +12,6 @@ interface ChannelRequest {
   filterLevel: FilterLevel;
 }
 
-interface ChannelCreate extends ChannelRequest {
-  type: ChannelType;
-}
-
 interface ChannelUpdate extends ChannelRequest {
   link: string;
 }

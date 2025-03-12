@@ -2,6 +2,7 @@
 
 import { CardBody, CardFooter, CardHeader } from '@heroui/card';
 
+import { useChannelListStore } from '@/pages/channel/store/list';
 import { Button } from '@/shared/ui';
 import { useServicePopup } from '@/widgets/service-content';
 
@@ -17,18 +18,21 @@ const CreateButton = () => {
     (state) => !state.title || !state.content,
   );
 
-  const handleClick = () => {
+  const handleClick = async () => {
     const { type, title, content, filterLevel } =
       useChannelFormStore.getState();
 
-    createChannel({
+    const newChannel = await createChannel({
       type,
       title,
       content,
       filterLevel,
-    }).then((res) => {
-      // addNewChannel(res);
     });
+    if (newChannel) {
+      useChannelListStore.getState().addChannel(newChannel);
+    } else {
+      alert('채널 생성에 실패했습니다.');
+    }
   };
 
   return (

@@ -1,19 +1,27 @@
-import type {
-  ChannelCreate,
-  ChannelUpdate,
-} from '@/containers/(personal)/service/channel/type';
+import type { ChannelUpdate } from '@/containers/(personal)/service/channel/type';
 import { query } from '@/containers/query';
+import { callAPI } from '@/shared/api';
 
 export const getChannels = async () => {
   return query.serverSide.get<Channel[]>('/channel/list');
 };
 
-export const createChannel = async (request: ChannelCreate) => {
-  return query.clientSide
-    .post<Channel, ChannelCreate>('/channel/create', request)
+export const createChannel = async (
+  request: ChannelCreateRequest,
+): Promise<Channel | null> => {
+  return callAPI.clientSide
+    .post('/channel/create', request)
     .then((res) => {
-      console.log(res);
-      return res;
+      if (process.env.NODE_ENV === 'development') {
+        console.log('channel create:', res.data);
+      }
+      return res.data as Channel;
+    })
+    .catch((err) => {
+      if (process.env.NODE_ENV === 'development') {
+        console.error('channel create:', err.response?.data);
+      }
+      return null;
     });
 };
 
