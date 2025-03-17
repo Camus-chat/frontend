@@ -1,13 +1,13 @@
 import { tv } from 'tailwind-variants';
 
-export const wrapper = tv({
+export const itemWrapperStyle = tv({
   base: [
-    'w-full max-md:rounded-none max-md:shadow-none',
-    'md:min-h-[50%] md:max-w-[400px]',
+    'h-full w-full p-2 max-md:rounded-none max-md:shadow-none',
+    'md:max-h-[900px] md:max-w-[400px]',
   ],
   variants: {
     popup: {
-      true: 'max-md:absolute',
+      true: 'z-50 max-md:absolute',
     },
   },
 });

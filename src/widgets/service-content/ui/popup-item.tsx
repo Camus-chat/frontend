@@ -2,20 +2,20 @@
 
 import { Card } from '@heroui/card';
 
-import { wrapper } from './styles';
+import { itemWrapperStyle } from './styles';
 import { useServicePopup } from '../store/popup';
 
 interface Props {
   children: ReactNode;
-  key: string;
+  id: string;
 }
 
-const PopupItem = ({ children, key }: Props) => {
+const PopupItem = ({ children, id }: Props) => {
   const openKey = useServicePopup((state) => state.key);
 
-  if (openKey === key) {
+  if (openKey === id) {
     return (
-      <Card shadow='sm' className={wrapper({ popup: true })}>
+      <Card shadow='sm' className={itemWrapperStyle({ popup: true })}>
         {children}
       </Card>
     );

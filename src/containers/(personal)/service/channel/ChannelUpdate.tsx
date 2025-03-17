@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 
 import DropDown from '@/components/Form/DropDown';
 import InfoTextBox from '@/components/InfoTextBox';
-import { updateChannel } from '@/containers/(personal)/service/channel/query';
 import type { FilterLevel } from '@/containers/(personal)/service/channel/type';
+import { updateChannel } from '@/pages/channel/api/channel';
 import { Button, Input } from '@/shared/ui';
 import { useChannelStore } from '@/states/channel';
 

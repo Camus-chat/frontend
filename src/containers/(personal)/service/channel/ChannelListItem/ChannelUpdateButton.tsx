@@ -1,6 +1,5 @@
 'use client';
 
-import type { Channel } from '@/containers/(personal)/service/channel/type';
 import { Button } from '@/shared/ui';
 import { useChannelStore } from '@/states/channel';
 
