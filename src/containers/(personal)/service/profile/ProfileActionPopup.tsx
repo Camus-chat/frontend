@@ -12,7 +12,7 @@ import { Button, Input } from '@/shared/ui';
 import { useAccountStore } from '@/states/account';
 
 interface Props {
-  memberInfo: MemberInfo;
+  memberInfo: Member;
   clickCancel: () => void;
 }
 
@@ -30,7 +30,9 @@ const ProfileActionPopup = ({ memberInfo, clickCancel }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [imageSrc, setImageSrc] = useState<string>(memberInfo.profileLink);
+  const [imageSrc, setImageSrc] = useState<string | null>(
+    memberInfo.profileLink,
+  );
 
   const handleChangeImg = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -85,7 +87,7 @@ const ProfileActionPopup = ({ memberInfo, clickCancel }: Props) => {
             ref={profileImgRef}
           />
           <label htmlFor='upload-image'>
-            <Member imgSrc={imageSrc} size='large' />
+            <Member imgSrc={imageSrc || ''} size='large' />
           </label>
         </div>
         <Input

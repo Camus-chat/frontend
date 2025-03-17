@@ -7,7 +7,7 @@ import styles from '@/containers/(personal)/service/profile/index.module.scss';
 import ProfileActionPopup from '@/containers/(personal)/service/profile/ProfileActionPopup';
 
 interface Props {
-  memberInfo: MemberInfo;
+  memberInfo: Member;
 }
 
 const ProfileUpdateButton = ({ memberInfo }: Props) => {
