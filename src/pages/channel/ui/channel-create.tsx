@@ -2,7 +2,7 @@
 
 import { CardBody, CardFooter, CardHeader } from '@heroui/card';
 
-import { useChannelListStore } from '@/pages/channel/store/list';
+import { useChannelListStore } from '@/pages/channel/store/channel';
 import { Button } from '@/shared/ui';
 import { useServicePopup } from '@/widgets/service-content';
 

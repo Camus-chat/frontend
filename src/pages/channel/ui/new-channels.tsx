@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-import { useChannelListStore } from '@/pages/channel/store/list';
+import { useChannelListStore } from '@/pages/channel/store/channel';
 
 const NewChannels = () => {
   const newChannels = useChannelListStore((state) => state.channels);
