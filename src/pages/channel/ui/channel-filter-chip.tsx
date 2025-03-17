@@ -15,12 +15,7 @@ const ChannelFilterChip = <T extends FilterKey>({ name }: Props<T>) => {
   const color = FILTER_COLOR_MAP[name];
 
   return (
-    <Chip
-      size='sm'
-      variant='solid'
-      classNames={{ content: 'text-white' }}
-      color={color}
-    >
+    <Chip variant='solid' className='h-6 w-6 text-xs text-white' color={color}>
       {iconName}
     </Chip>
   );
