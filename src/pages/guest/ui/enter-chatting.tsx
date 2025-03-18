@@ -1,19 +1,16 @@
 import { CardBody, CardFooter, CardHeader } from '@heroui/card';
 
-import { Button } from '@/shared/ui';
-
 const EnterChatting: FC<{
+  children: ReactNode;
   info: Channel.Info;
-}> = ({ info }) => {
+}> = ({ info, children }) => {
   return (
     <>
       <CardHeader>
         <h2 className='text-3xl font-semibold'>{info.title}</h2>
       </CardHeader>
       <CardBody>{/* TODO: Add channel content */}</CardBody>
-      <CardFooter>
-        <Button>참여하기</Button>
-      </CardFooter>
+      <CardFooter className='flex-col gap-2'>{children}</CardFooter>
     </>
   );
 };

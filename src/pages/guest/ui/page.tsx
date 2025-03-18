@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import EnterChatting from '@/pages/guest/ui/enter-chatting';
 import ServiceContent from '@/widgets/service-content';
 
+import EnterAsMember from './enter-as-member';
 import { requestChannelInfo } from '../api/channel';
 
 const GuestChat: FC<{
@@ -20,7 +21,9 @@ const GuestChat: FC<{
   return (
     <ServiceContent>
       <ServiceContent.ContentItem>
-        <EnterChatting info={channelInfo} />
+        <EnterChatting info={channelInfo}>
+          <EnterAsMember link={link} />
+        </EnterChatting>
       </ServiceContent.ContentItem>
     </ServiceContent>
   );
