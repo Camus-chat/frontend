@@ -9,15 +9,13 @@ import { ChannelProvider } from '../store/channel';
 
 const ChannelPage = async () => {
   const channels = await getChannels();
-  const error =
-    process.env.NODE_ENV === 'development' ? false : channels === null;
 
   return (
     <ServiceContent>
       <ChannelProvider channels={channels}>
         <ServiceContent.MainItem title='채널'>
           <div className='grid grid-cols-2 gap-3'>
-            <ChannelAddButton serverListFetchingError={error} />
+            <ChannelAddButton />
             <ChannelList />
           </div>
         </ServiceContent.MainItem>
