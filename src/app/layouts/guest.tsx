@@ -5,7 +5,7 @@ const GuestChatLayout: FC<{
 }> = ({ children }) => {
   return (
     <div className='grid size-full grid-rows-[auto,1fr]'>
-      <Header className='max-w-none md:h-16' />
+      <Header className='max-w-none' />
       <main className='relative md:bg-default-100'>{children}</main>
     </div>
   );
