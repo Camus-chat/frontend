@@ -1,15 +1,27 @@
+import { redirect } from 'next/navigation';
+
+import EnterChatting from '@/pages/guest/ui/enter-chatting';
 import ServiceContent from '@/widgets/service-content';
+
+import { requestChannelInfo } from '../api/channel';
 
 const GuestChat: FC<{
   params: Promise<{
     link: string;
   }>;
-}> = () => {
+}> = async ({ params }) => {
+  const { link } = await params;
+  const channelInfo = await requestChannelInfo(link);
+
+  if (!channelInfo) {
+    redirect('/');
+  }
+
   return (
     <ServiceContent>
-      <ServiceContent.MainItem>
-        <h2 className='text-3xl font-semibold'>님과 대화를 시작합니다</h2>
-      </ServiceContent.MainItem>
+      <ServiceContent.ContentItem>
+        <EnterChatting info={channelInfo} />
+      </ServiceContent.ContentItem>
     </ServiceContent>
   );
 };
