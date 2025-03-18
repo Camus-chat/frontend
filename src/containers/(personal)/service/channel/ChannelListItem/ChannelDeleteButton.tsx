@@ -1,4 +1,3 @@
-import type { Channel } from '@/containers/(personal)/service/channel/type';
 import { Button } from '@/shared/ui';
 
 interface Props {
