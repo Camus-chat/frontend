@@ -39,7 +39,7 @@ export const ChannelProvider = ({ channels, children }: Props) => {
 
   if (channels === null) {
     if (process.env.NODE_ENV === 'development') {
-      channels = [];
+      channels = []; // eslint-disable-line no-param-reassign
     } else {
       throw new Error('채널 목록을 불러오는데 실패했습니다.');
     }
