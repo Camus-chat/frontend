@@ -15,7 +15,7 @@ const ChannelPage = async () => {
   return (
     <ServiceContent>
       <ServiceContent.MainItem title='채널'>
-        <div className='grid grid-cols-2 gap-3'>
+        <div className='flex flex-col gap-3'>
           <ChannelAddButton serverListFetchingError={error} />
           <Channels list={channels} />
           <NewChannels />

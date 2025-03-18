@@ -1,9 +1,10 @@
 import { Card, CardBody, CardFooter, CardHeader } from '@heroui/card';
 
-import { FILTER_CLASS_MAP } from '@/containers/(personal)/service/channel/constants';
+import { FILTER_CLASS_MAP } from '@/pages/channel/config/channel-list-items';
 import ChannelFilterChip from '@/pages/channel/ui/channel-filter-chip';
 import ChannelTypeChip from '@/pages/channel/ui/channel-type-chip';
 import { listItem } from '@/pages/channel/ui/styles';
+import { Button } from '@/shared/ui';
 
 import ChannelLinkCopyButton from './channel-link-copy-button';
 
@@ -25,7 +26,13 @@ const ChannelListItem = ({ channel }: Props) => {
       >
         {channel.content}
       </CardBody>
-      <CardFooter className='mb-1'>
+      <CardFooter className='mb-1 gap-1'>
+        <Button size='sm' variant='flat' className='hover:text-red-500'>
+          삭제
+        </Button>
+        <Button size='sm' color='primary' variant='flat'>
+          수정
+        </Button>
         <ChannelLinkCopyButton link={channel.link} />
       </CardFooter>
     </Card>
