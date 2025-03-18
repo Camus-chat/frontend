@@ -26,14 +26,6 @@ export const FILTER_DROP_DOWN_OPTION: DropDownItem<FilterLevel>[] =
     name,
   }));
 
-export const FILTER_CLASS_MAP = FILTER_LIST.reduce(
-  (acc, [level, , className]) => {
-    acc[level] = className;
-    return acc;
-  },
-  {} as Record<FilterLevel, FilterClassName>,
-);
-
 export const FILTER_OPTION_MAP = FILTER_LIST.reduce(
   (acc, [level, name]) => {
     acc[level] = name;
