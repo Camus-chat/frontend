@@ -4,8 +4,8 @@ import { getChannels } from '../api/channel';
 import { CHANNEL_ACTION_KEY } from '../config';
 import ChannelAddButton from './channel-add-button';
 import ChannelCreate from './channel-create';
-import Channels from './channels';
-import NewChannels from './new-channels';
+import ChannelList from './channel-list';
+import { ChannelProvider } from '../store/channel';
 
 const ChannelPage = async () => {
   const channels = await getChannels();
@@ -14,16 +14,17 @@ const ChannelPage = async () => {
 
   return (
     <ServiceContent>
-      <ServiceContent.MainItem title='채널'>
-        <div className='grid grid-cols-2 gap-3'>
-          <ChannelAddButton serverListFetchingError={error} />
-          <Channels list={channels} />
-          <NewChannels />
-        </div>
-      </ServiceContent.MainItem>
-      <ServiceContent.PopupItem id={CHANNEL_ACTION_KEY.create}>
-        <ChannelCreate />
-      </ServiceContent.PopupItem>
+      <ChannelProvider channels={channels}>
+        <ServiceContent.MainItem title='채널'>
+          <div className='grid grid-cols-2 gap-3'>
+            <ChannelAddButton serverListFetchingError={error} />
+            <ChannelList />
+          </div>
+        </ServiceContent.MainItem>
+        <ServiceContent.PopupItem id={CHANNEL_ACTION_KEY.create}>
+          <ChannelCreate />
+        </ServiceContent.PopupItem>
+      </ChannelProvider>
     </ServiceContent>
   );
 };

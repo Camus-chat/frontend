@@ -2,7 +2,6 @@
 
 import { CardBody, CardFooter, CardHeader } from '@heroui/card';
 
-import { useChannelListStore } from '@/pages/channel/store/channel';
 import { Button } from '@/shared/ui';
 import { useServicePopup } from '@/widgets/service-content';
 
@@ -11,12 +10,14 @@ import ChannelFilterLevelSlider from './channel-filter-level-slider';
 import ChannelNameInput from './channel-name-input';
 import { descriptionStyle, titleStyle } from './styles';
 import { createChannel } from '../api/channel';
+import { useChannelStore } from '../store/channel';
 import { useChannelFormStore } from '../store/form';
 
 const CreateButton = () => {
   const isInvalid = useChannelFormStore(
     (state) => !state.title || !state.content,
   );
+  const addChannel = useChannelStore((state) => state.addChannel);
 
   const handleClick = async () => {
     const { type, title, content, filterLevel } =
@@ -29,7 +30,7 @@ const CreateButton = () => {
       filterLevel,
     });
     if (newChannel) {
-      useChannelListStore.getState().addChannel(newChannel);
+      addChannel(newChannel);
     } else {
       alert('채널 생성에 실패했습니다.');
     }
