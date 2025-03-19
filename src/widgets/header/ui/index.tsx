@@ -1,12 +1,9 @@
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
 import { tv } from 'tailwind-variants';
 
 import { Drawer, DrawerClose, DrawerOpen } from '@/features/drawer';
-import { ROUTE } from '@/shared/config';
 import { Logo } from '@/shared/ui';
 
-import { requestMemberInfo } from '@/entities/member/api';
 import { NAVIGATIONS } from '../config/navigation';
 import DrawerLogin from './drawer-item/login';
 import NavigationBelt from './nav-belt';
@@ -14,38 +11,23 @@ import Login from './nav-login';
 
 interface Props {
   business?: boolean;
-  loggedInOnly?: boolean;
   className?: string;
 }
 
 const wrapper = tv({
-  base: 'wrapper flex h-14 items-center justify-between',
-  variants: {
-    loggedIn: {
-      true: 'md:h-16',
-    },
-  },
+  base: 'wrapper flex h-14 items-center justify-between md:h-16',
 });
 
-const Header = async ({ business, loggedInOnly, className }: Props) => {
+const Header = async ({ business, className }: Props) => {
   const isBusiness = !!business;
   const navigationMenuItems = business
     ? NAVIGATIONS.business
     : NAVIGATIONS.personal;
-  const member = await requestMemberInfo();
-  const loggedIn = !!member;
-  if (process.env.NODE_ENV === 'production') {
-    if (loggedInOnly && !loggedIn) {
-      redirect(ROUTE.login);
-    }
-  }
 
   return (
     <header>
-      {!member && (
-        <NavigationBelt business={isBusiness} className={className} />
-      )}
-      <div className={wrapper({ loggedIn, className })}>
+      <NavigationBelt business={isBusiness} className={className} />
+      <div className={wrapper({ className })}>
         <Logo business={isBusiness} />
         <nav className='flex h-full max-md:hidden'>
           {navigationMenuItems.map((item) => (
