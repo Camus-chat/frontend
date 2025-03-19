@@ -1,1 +1,1 @@
-export { useTokenStore, TokenProvider } from './token';
+export { useTokenStore } from './token';

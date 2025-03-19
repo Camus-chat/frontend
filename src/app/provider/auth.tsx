@@ -3,7 +3,8 @@ import { redirect } from 'next/navigation';
 import { MemberProvider, requestMemberInfo } from '@/entities/member';
 import { getToken } from '@/shared/api';
 import { ROUTE } from '@/shared/config';
-import { TokenProvider } from '@/shared/store';
+
+import TokenProvider from './token';
 
 const AuthProvider: FC<{
   children: ReactNode;
