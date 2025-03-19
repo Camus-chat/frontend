@@ -8,7 +8,7 @@ interface AuthActions {
   setToken: (token: string) => void;
 }
 
-export const useAuthStore = create<AuthState & AuthActions>((set) => ({
+export const useTokenStore = create<AuthState & AuthActions>((set) => ({
   token: '',
   setToken: (token: string) => set({ token }),
 }));

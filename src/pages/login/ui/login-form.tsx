@@ -6,7 +6,7 @@ import { useCallback, useState } from 'react';
 import { signIn } from '@/pages/login/api/sign-in';
 import { EMAIL_REGEX } from '@/shared/config';
 import { useUncontrolledInput } from '@/shared/hook';
-import { useAuthStore } from '@/shared/store';
+import { useTokenStore } from '@/shared/store';
 import { Button, Input, Password } from '@/shared/ui';
 
 const LoginForm = () => {
@@ -50,7 +50,7 @@ const LoginForm = () => {
     setIsLoading(true);
     signIn(requestBody)
       .then((res) => {
-        const { setToken } = useAuthStore.getState();
+        const { setToken } = useTokenStore.getState();
         setToken(res);
         router.push('/service/chat');
       })
