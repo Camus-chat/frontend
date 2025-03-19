@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-interface States extends Auth {
+interface States extends Account.SignUp {
   isAgreed: boolean;
   nicknameError: string;
   usernameError: string;

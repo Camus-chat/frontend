@@ -15,7 +15,7 @@ const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const validate = useCallback(({ username: email, password }: LogIn) => {
+  const validate = useCallback(({ username: email, password }: Account) => {
     if (!email) {
       setEmailError('아이디(메일)를 입력해주세요.');
       return false;
@@ -39,7 +39,7 @@ const LoginForm = () => {
   }, []);
 
   const handleClick = useCallback(async () => {
-    const requestBody: LogIn = {
+    const requestBody: Account = {
       username: $email.current?.value || '',
       password: $password.current?.value || '',
     };
