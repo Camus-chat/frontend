@@ -6,7 +6,7 @@ import { Drawer, DrawerClose, DrawerOpen } from '@/features/drawer';
 import { ROUTE } from '@/shared/config';
 import { Logo } from '@/shared/ui';
 
-import { fetchMemberInfo } from '../api/member-info';
+import { requestMemberInfo } from '@/entities/member/api';
 import { NAVIGATIONS } from '../config/navigation';
 import DrawerLogin from './drawer-item/login';
 import NavigationBelt from './nav-belt';
@@ -32,7 +32,7 @@ const Header = async ({ business, loggedInOnly, className }: Props) => {
   const navigationMenuItems = business
     ? NAVIGATIONS.business
     : NAVIGATIONS.personal;
-  const member = await fetchMemberInfo();
+  const member = await requestMemberInfo();
   const loggedIn = !!member;
   if (process.env.NODE_ENV === 'production') {
     if (loggedInOnly && !loggedIn) {

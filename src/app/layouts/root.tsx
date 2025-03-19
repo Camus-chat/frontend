@@ -2,6 +2,8 @@ import { HeroUIProvider } from '@heroui/system';
 import type { ReactNode } from 'react';
 
 import '@/app/styles';
+import { MemberProvider, requestMemberInfo } from '@/entities/member';
+import { getToken } from '@/shared/api';
 
 export const metadata = {
   title: 'CAMUS',
@@ -11,12 +13,15 @@ export const metadata = {
   },
 };
 
-const RootLayout = ({ children }: { children: ReactNode }) => {
+const RootLayout = async ({ children }: { children: ReactNode }) => {
+  const token = await getToken();
+  const member = token ? await requestMemberInfo() : null;
+
   return (
     <html lang='en'>
       <body>
         <HeroUIProvider className='h-screen w-screen'>
-          {children}
+          <MemberProvider member={member}>{children}</MemberProvider>
         </HeroUIProvider>
       </body>
     </html>
