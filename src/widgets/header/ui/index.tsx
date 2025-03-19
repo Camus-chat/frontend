@@ -20,6 +20,11 @@ interface Props {
 
 const wrapper = tv({
   base: 'wrapper flex h-14 items-center justify-between',
+  variants: {
+    loggedIn: {
+      true: 'md:h-16',
+    },
+  },
 });
 
 const Header = async ({ business, loggedInOnly, className }: Props) => {
@@ -28,16 +33,19 @@ const Header = async ({ business, loggedInOnly, className }: Props) => {
     ? NAVIGATIONS.business
     : NAVIGATIONS.personal;
   const member = await fetchMemberInfo();
+  const loggedIn = !!member;
   if (process.env.NODE_ENV === 'production') {
-    if (loggedInOnly && !member) {
+    if (loggedInOnly && !loggedIn) {
       redirect(ROUTE.login);
     }
   }
 
   return (
     <header>
-      {!loggedInOnly && <NavigationBelt business={isBusiness} />}
-      <div className={wrapper({ className })}>
+      {!member && (
+        <NavigationBelt business={isBusiness} className={className} />
+      )}
+      <div className={wrapper({ loggedIn, className })}>
         <Logo business={isBusiness} />
         <nav className='flex h-full max-md:hidden'>
           {navigationMenuItems.map((item) => (

@@ -1,5 +1,6 @@
 import { tv } from 'tailwind-variants';
 
+import Item from './item';
 import MainItem from './main-item';
 import PopupItem from './popup-item';
 
@@ -23,5 +24,6 @@ const ServiceContent = ({ children }: Props) => {
 
 ServiceContent.MainItem = MainItem;
 ServiceContent.PopupItem = PopupItem;
+ServiceContent.ContentItem = Item;
 
 export default ServiceContent;
