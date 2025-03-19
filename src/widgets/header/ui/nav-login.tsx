@@ -10,13 +10,13 @@ import { User } from '@heroui/user';
 import { useRouter } from 'next/navigation';
 import { tv } from 'tailwind-variants';
 
+import { useMemberStore } from '@/entities/member';
 import { ROUTE } from '@/shared/config';
 import { Button } from '@/shared/ui';
 
 import { logout } from '../api/logout';
 
 interface Props {
-  member: Member | null;
   className?: string;
 }
 
@@ -27,7 +27,8 @@ const style = tv({
   },
 });
 
-const Login = ({ member, className }: Props) => {
+const Login = ({ className }: Props) => {
+  const member = useMemberStore((state) => state.member);
   const router = useRouter();
   const { wrapper, trigger } = style();
 

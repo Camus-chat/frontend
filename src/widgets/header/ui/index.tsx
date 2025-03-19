@@ -58,7 +58,7 @@ const Header = async ({ business, loggedInOnly, className }: Props) => {
             </Link>
           ))}
         </nav>
-        <Login member={member} className='max-md:hidden' />
+        <Login className='max-md:hidden' />
         <DrawerOpen className='md:hidden' />
       </div>
       <Drawer className='fixed text-lg font-semibold md:hidden'>
