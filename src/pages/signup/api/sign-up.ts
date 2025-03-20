@@ -1,6 +1,6 @@
 import { callAPI } from '@/shared/api';
 
-export const signUp = async (data: SignUp) => {
+export const signUp = async (data: Account.SignUp) => {
   return callAPI.clientSide
     .post('/member/signup', data, {
       headers: {
