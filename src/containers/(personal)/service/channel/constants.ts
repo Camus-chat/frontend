@@ -1,13 +1,12 @@
 import type {
-  FilterClassName,
   FilterLevel,
   FilterName,
 } from '@/containers/(personal)/service/channel/type';
 
-export const CHANNEL_CREATE = {
-  title: '채널 생성',
-  content: '채팅 채널 생성에 필요한 정보를 입력해주세요.',
-};
+// export const CHANNEL_CREATE = {
+//   title: '채널 생성',
+//   content: '채팅 채널 생성에 필요한 정보를 입력해주세요.',
+// };
 
 export const CHANNEL_UPDATE = {
   title: '채널 수정',
