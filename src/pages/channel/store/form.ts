@@ -6,6 +6,7 @@ interface Actions {
   setTitle: (title: string) => void;
   setContent: (content: string) => void;
   setFilterLevel: (filterLevel: FilterType) => void;
+  reset: () => void;
 }
 
 type Store = State & Actions;
@@ -19,4 +20,5 @@ export const useChannelFormStore = create<Store>((set) => ({
   setTitle: (title) => set({ title }),
   setContent: (content) => set({ content }),
   setFilterLevel: (filterLevel) => set({ filterLevel }),
+  reset: () => set({ title: '', content: '', filterLevel: 100 }),
 }));
