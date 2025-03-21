@@ -1,1 +1,1 @@
-export { default } from '@/app/layouts/with-header';
+export { default } from '@/app/layouts/default';

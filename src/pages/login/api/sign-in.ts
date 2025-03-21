@@ -5,7 +5,7 @@ import { cookies } from 'next/headers';
 import { callAPI } from '@/shared/api';
 import { ACCESS_TOKEN } from '@/shared/config';
 
-export const signIn = async (data: LogIn) => {
+export const signIn = async (data: Account) => {
   const cookieStore = await cookies();
 
   return callAPI.serverSide

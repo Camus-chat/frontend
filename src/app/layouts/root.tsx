@@ -1,5 +1,4 @@
 import { HeroUIProvider } from '@heroui/system';
-import type { ReactNode } from 'react';
 
 import '@/app/styles';
 
