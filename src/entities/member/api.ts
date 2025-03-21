@@ -1,17 +1,8 @@
 'use server';
 
-import { cookies } from 'next/headers';
-
 import { callAPI } from '@/shared/api';
-import { ACCESS_TOKEN } from '@/shared/config';
 
-export const fetchMemberInfo = async (): Promise<Member | null> => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get(ACCESS_TOKEN)?.value;
-  if (!accessToken) {
-    return null;
-  }
-
+export const requestMemberInfo = async (): Promise<Member | null> => {
   return callAPI.serverSide
     .get('/member/info')
     .then((res) => {
