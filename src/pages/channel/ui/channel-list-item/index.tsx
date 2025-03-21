@@ -1,6 +1,5 @@
 import { Card, CardBody, CardFooter, CardHeader } from '@heroui/card';
 
-import { FILTER_CLASS_MAP } from '@/pages/channel/config/channel-list-items';
 import ChannelFilterChip from '@/pages/channel/ui/channel-filter-chip';
 import ChannelTypeChip from '@/pages/channel/ui/channel-type-chip';
 import { listItem } from '@/pages/channel/ui/styles';
@@ -18,7 +17,7 @@ const ChannelListItem = ({ channel }: Props) => {
       <CardHeader className='flex items-center gap-1'>
         <div className='text-3xl'>{channel.title}</div>
         <ChannelTypeChip name={channel.type} />
-        <ChannelFilterChip name={FILTER_CLASS_MAP[channel.filterLevel]} />
+        <ChannelFilterChip level={channel.filterLevel} />
       </CardHeader>
       <CardBody
         className='overflow-auto'

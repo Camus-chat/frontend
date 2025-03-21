@@ -1,22 +1,17 @@
 import { Chip } from '@heroui/chip';
 
-import {
-  FILTER_COLOR_MAP,
-  FILTER_NAME_MAP,
-} from '@/pages/channel/config/chips';
-import { FilterKey } from '@/pages/channel/config/type';
+import { FILTERS } from '@/pages/channel/config/chips';
 
-interface Props<T extends FilterKey> {
-  name: T;
+interface Props {
+  level: FilterType;
 }
 
-const ChannelFilterChip = <T extends FilterKey>({ name }: Props<T>) => {
-  const iconName = FILTER_NAME_MAP[name];
-  const color = FILTER_COLOR_MAP[name];
+const ChannelFilterChip = ({ level }: Props) => {
+  const { name, color } = FILTERS[level];
 
   return (
     <Chip variant='solid' className='h-6 w-6 text-xs text-white' color={color}>
-      {iconName}
+      {name}
     </Chip>
   );
 };

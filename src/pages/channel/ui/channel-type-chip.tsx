@@ -1,14 +1,13 @@
 import { Chip } from '@heroui/chip';
 
-import { CHANNEL_TYPE_NAME_MAP } from '@/pages/channel/config/chips';
-import { ChannelTypeKey } from '@/pages/channel/config/type';
+import { CHANNEL_TYPE_NAME } from '@/pages/channel/config/chips';
 
-interface Props<T extends ChannelTypeKey> {
-  name: T;
+interface Props {
+  name: ChannelType;
 }
 
-const ChannelTypeChip = <T extends ChannelTypeKey>({ name }: Props<T>) => {
-  const iconName = CHANNEL_TYPE_NAME_MAP[name];
+const ChannelTypeChip = ({ name }: Props) => {
+  const iconName = CHANNEL_TYPE_NAME[name];
 
   return (
     <Chip
