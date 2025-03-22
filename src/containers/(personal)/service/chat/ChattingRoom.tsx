@@ -1,12 +1,13 @@
 'use client';
 
-import ChatInputBox from '@/lib/componenets/ChatInputBox';
-import ChatMessageItem from '@/lib/componenets/ChatMessageItem';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useRef } from 'react';
 
 import NewMessages from '@/containers/(personal)/service/chat/NewMessages';
+import ChatInputBox from '@/lib/componenets/ChatInputBox';
+import ChatMessageItem from '@/lib/componenets/ChatMessageItem';
 import { useChatStore } from '@/states/chat';
+import ChatRoomHeader from '@/widgets/chat/ui/chat-room-header';
+import ServiceContent from '@/widgets/service-content';
 
 import styles from './index.module.scss';
 
@@ -33,19 +34,9 @@ const ChattingRoom = ({ onClose }: Props) => {
   };
 
   return (
-    <>
+    <ServiceContent.ContentItem>
       <div className={styles.roomWrapper}>
-        <div className={styles.top}>
-          {onClose && (
-            <button type='button' onClick={onClose}>
-              <ExpandMoreIcon />
-            </button>
-          )}
-          {chat.channelType === 'private' && (
-            <div className={styles.nickname}>유저 이름 넣어라</div>
-          )}
-          <div className={styles.channelTitle}>{`#${chat.channelTitle}`}</div>
-        </div>
+        <ChatRoomHeader title='CAMUS' />
         <ol ref={scrollRef} className={styles.messages}>
           {messages.map((message) => {
             const userId = message.senderId || message.targetId;
@@ -68,7 +59,7 @@ const ChattingRoom = ({ onClose }: Props) => {
         chattingClient={chattingClient}
         token={token}
       />
-    </>
+    </ServiceContent.ContentItem>
   );
 };
 
