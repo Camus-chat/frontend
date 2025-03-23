@@ -1,6 +1,6 @@
 import { Chip } from '@heroui/chip';
 
-import { CHANNEL_TYPE_NAME } from '@/pages/channel/config/chips';
+import { CHANNEL_TYPE_NAME } from '../config';
 
 interface Props {
   name: ChannelType;

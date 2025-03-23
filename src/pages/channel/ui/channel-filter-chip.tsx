@@ -1,13 +1,17 @@
 import { Chip } from '@heroui/chip';
 
-import { FILTERS } from '@/pages/channel/config/chips';
+import { CHANNEL_FILTER_LEVEL } from '../config';
 
 interface Props {
-  level: FilterType;
+  level: number;
 }
 
 const ChannelFilterChip = ({ level }: Props) => {
-  const { name, color } = FILTERS[level];
+  const { name, color } = CHANNEL_FILTER_LEVEL[level];
+
+  if (!color) {
+    return null;
+  }
 
   return (
     <Chip variant='solid' className='h-6 w-6 text-xs text-white' color={color}>
