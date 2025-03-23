@@ -3,6 +3,6 @@ interface ChattingRoom {
   channelType: ChannelType;
   channelTitle: Channel['title'];
   filteredLevel: Channel['filterLevel'];
-  userList: Member['myUuid'][];
+  userList: Member['uuid'][];
   isClosed: boolean;
 }
