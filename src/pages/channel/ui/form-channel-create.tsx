@@ -1,15 +1,15 @@
 'use client';
 
-import { CardBody, CardFooter, CardHeader } from '@heroui/card';
+import { CardBody, CardFooter } from '@heroui/card';
 
 import { Button } from '@/shared/ui';
 import { useServicePopup } from '@/widgets/service-content';
 
 import { createChannel } from '../api';
+import FormHeader from './form-header';
 import InputChannelDescription from './input-channel-description';
 import InputChannelFilterLevel from './input-channel-filter-level';
 import InputChannelName from './input-channel-name';
-import { descriptionStyle, titleStyle } from './styles';
 import { useChannelStore } from '../store/channel';
 import { useChannelFormStore } from '../store/form';
 
@@ -55,12 +55,9 @@ const FormChannelCreate = () => {
 
   return (
     <>
-      <CardHeader className='flex-col items-start'>
-        <h3 className={titleStyle()}>채널 생성</h3>
-        <p className={descriptionStyle()}>
-          채팅 채널 생성에 필요한 정보를 입력해주세요.
-        </p>
-      </CardHeader>
+      <FormHeader title='채널 생성'>
+        채팅 채널 생성에 필요한 정보를 입력해주세요.
+      </FormHeader>
       <CardBody className='gap-3'>
         {/* TODO: add channel type */}
         <InputChannelName />
