@@ -2,10 +2,10 @@ import ServiceContent from '@/widgets/service-content';
 
 import { getChannels } from '../api/channel';
 import { CHANNEL_ACTION_KEY } from '../config';
-import ChannelAddButton from './channel-add-button';
-import ChannelCreate from './channel-create';
-import ChannelList from './channel-list';
+import ButtonChannelAdd from './button-channel-add';
 import { ChannelProvider } from '../store/channel';
+import ChannelList from './channel/list';
+import FormChannelCreate from './form-channel-create';
 
 const ChannelPage = async () => {
   const channels = await getChannels();
@@ -15,12 +15,12 @@ const ChannelPage = async () => {
       <ChannelProvider channels={channels}>
         <ServiceContent.MainItem title='채널'>
           <div className='flex flex-col gap-3'>
-            <ChannelAddButton />
+            <ButtonChannelAdd />
             <ChannelList />
           </div>
         </ServiceContent.MainItem>
         <ServiceContent.PopupItem id={CHANNEL_ACTION_KEY.create}>
-          <ChannelCreate />
+          <FormChannelCreate />
         </ServiceContent.PopupItem>
       </ChannelProvider>
     </ServiceContent>

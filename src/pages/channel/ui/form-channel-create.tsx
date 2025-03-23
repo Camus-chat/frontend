@@ -50,7 +50,7 @@ const CreateButton = () => {
   );
 };
 
-const ChannelCreate = () => {
+const FormChannelCreate = () => {
   const close = useServicePopup((state) => state.close);
 
   return (
@@ -77,4 +77,4 @@ const ChannelCreate = () => {
   );
 };
 
-export default ChannelCreate;
+export default FormChannelCreate;

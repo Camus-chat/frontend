@@ -8,7 +8,7 @@ import { useServicePopup } from '@/widgets/service-content';
 import { CHANNEL_ACTION_KEY } from '../config';
 import { listItem } from './styles';
 
-const ChannelAddButton = () => {
+const ButtonChannelAdd = () => {
   const open = useServicePopup((state) => state.open);
 
   return (
@@ -23,4 +23,4 @@ const ChannelAddButton = () => {
   );
 };
 
-export default ChannelAddButton;
+export default ButtonChannelAdd;
