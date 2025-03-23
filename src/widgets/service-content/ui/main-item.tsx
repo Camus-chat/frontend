@@ -15,7 +15,7 @@ const MainItem = ({ children, title }: Props) => {
       <CardHeader>
         <h2 className='text-3xl font-semibold'>{title}</h2>
       </CardHeader>
-      <CardBody>{children}</CardBody>
+      <CardBody className='scrollbar-hide'>{children}</CardBody>
     </Card>
   );
 };

@@ -1,27 +1,14 @@
 import { Slider, type SliderProps } from '@heroui/slider';
 
+import { CHANNEL_FILTER_LEVEL } from '../config';
 import { useChannelFormStore } from '../store/form';
 
-const MARKS = [
-  {
-    value: 0,
-    label: '없음',
-  },
-  {
-    value: 100,
-    label: '약',
-  },
-  {
-    value: 200,
-    label: '중',
-  },
-  {
-    value: 300,
-    label: '강',
-  },
-];
+const MARKS = Object.entries(CHANNEL_FILTER_LEVEL).map(([key, value]) => ({
+  value: parseInt(key, 10),
+  label: value.name,
+}));
 
-const ChannelFilterLevelSlider = () => {
+const InputChannelFilterLevel = () => {
   const filterLevel = useChannelFormStore((state) => state.filterLevel);
   const setFilterLevel = useChannelFormStore(
     (state) => state.setFilterLevel,
@@ -47,4 +34,4 @@ const ChannelFilterLevelSlider = () => {
   );
 };
 
-export default ChannelFilterLevelSlider;
+export default InputChannelFilterLevel;

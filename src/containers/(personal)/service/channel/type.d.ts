@@ -4,8 +4,6 @@ type FilterLevel = number;
 
 type FilterName = (typeof FILTER_LIST)[number][1];
 
-type FilterClassName = (typeof FILTER_LIST)[number][2];
-
 interface ChannelRequest {
   title: string;
   content: string;
