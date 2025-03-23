@@ -1,7 +1,7 @@
 import { Card, CardBody, CardFooter, CardHeader } from '@heroui/card';
 
-import ChannelFilterChip from '@/pages/channel/ui/channel-filter-chip';
-import ChannelTypeChip from '@/pages/channel/ui/channel-type-chip';
+import ChipChannelFilter from '@/pages/channel/ui/chip-channel-filter';
+import ChipChannelType from '@/pages/channel/ui/chip-channel-type';
 import { listItem } from '@/pages/channel/ui/styles';
 import { Button } from '@/shared/ui';
 
@@ -16,8 +16,8 @@ const ChannelListItem = ({ channel }: Props) => {
     <Card shadow='none' className={listItem({ class: 'flex-col p-1' })}>
       <CardHeader className='flex items-center gap-1 pb-1'>
         <div className='text-3xl font-medium'>{channel.title}</div>
-        <ChannelTypeChip type={channel.type} />
-        <ChannelFilterChip level={channel.filterLevel} />
+        <ChipChannelType type={channel.type} />
+        <ChipChannelFilter level={channel.filterLevel} />
       </CardHeader>
       <CardBody className='overflow-auto truncate pt-1 scrollbar-hide'>
         {channel.content}

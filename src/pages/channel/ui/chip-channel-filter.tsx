@@ -6,7 +6,7 @@ interface Props {
   level: number;
 }
 
-const ChannelFilterChip = ({ level }: Props) => {
+const ChipChannelFilter = ({ level }: Props) => {
   const { name, color } = CHANNEL_FILTER_LEVEL[level];
 
   if (!color) {
@@ -20,4 +20,4 @@ const ChannelFilterChip = ({ level }: Props) => {
   );
 };
 
-export default ChannelFilterChip;
+export default ChipChannelFilter;

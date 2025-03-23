@@ -6,7 +6,7 @@ interface Props {
   type: ChannelType;
 }
 
-const ChannelTypeChip = ({ type }: Props) => {
+const ChipChannelType = ({ type }: Props) => {
   const name = CHANNEL_TYPE_NAME[type];
 
   return (
@@ -21,4 +21,4 @@ const ChannelTypeChip = ({ type }: Props) => {
   );
 };
 
-export default ChannelTypeChip;
+export default ChipChannelType;
