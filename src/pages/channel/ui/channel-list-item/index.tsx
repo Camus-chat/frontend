@@ -13,23 +13,25 @@ interface Props {
 
 const ChannelListItem = ({ channel }: Props) => {
   return (
-    <Card shadow='sm' className={listItem({ class: 'flex-col p-1' })}>
+    <Card shadow='none' className={listItem({ class: 'flex-col p-1' })}>
       <CardHeader className='flex items-center gap-1'>
-        <div className='text-3xl'>{channel.title}</div>
+        <div className='text-3xl font-medium'>{channel.title}</div>
         <ChannelTypeChip name={channel.type} />
         <ChannelFilterChip level={channel.filterLevel} />
       </CardHeader>
-      <CardBody
-        className='overflow-auto'
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-      >
+      <CardBody className='overflow-auto scrollbar-hide'>
         {channel.content}
       </CardBody>
       <CardFooter className='mb-1 gap-1'>
-        <Button size='sm' variant='flat' className='hover:text-red-500'>
+        <Button
+          size='sm'
+          variant='flat'
+          className='hover:text-red-500'
+          isDisabled
+        >
           삭제
         </Button>
-        <Button size='sm' color='primary' variant='flat'>
+        <Button size='sm' color='primary' variant='flat' isDisabled>
           수정
         </Button>
         <ChannelLinkCopyButton link={channel.link} />
