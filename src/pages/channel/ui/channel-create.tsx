@@ -6,9 +6,9 @@ import { useChannelListStore } from '@/pages/channel/store/list';
 import { Button } from '@/shared/ui';
 import { useServicePopup } from '@/widgets/service-content';
 
-import ChannelDescriptionInput from './channel-description-input';
-import ChannelFilterLevelSlider from './channel-filter-level-slider';
-import ChannelNameInput from './channel-name-input';
+import InputChannelDescription from './input-channel-description';
+import InputChannelFilterLevel from './input-channel-filter-level';
+import InputChannelName from './input-channel-name';
 import { descriptionStyle, titleStyle } from './styles';
 import { createChannel } from '../api/channel';
 import { useChannelFormStore } from '../store/form';
@@ -62,9 +62,9 @@ const ChannelCreate = () => {
       </CardHeader>
       <CardBody className='gap-3'>
         {/* TODO: add channel type */}
-        <ChannelNameInput />
-        <ChannelDescriptionInput />
-        <ChannelFilterLevelSlider />
+        <InputChannelName />
+        <InputChannelDescription />
+        <InputChannelFilterLevel />
       </CardBody>
       <CardFooter className='grid grid-cols-2 gap-3'>
         <Button size='lg' variant='flat' onClick={close}>

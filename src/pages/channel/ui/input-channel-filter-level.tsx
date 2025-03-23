@@ -9,7 +9,7 @@ const MARKS = Object.entries(CHANNEL_FILTER_LEVEL).map(([key, value]) => ({
   label: value.name,
 }));
 
-const ChannelFilterLevelSlider = () => {
+const InputChannelFilterLevel = () => {
   const filterLevel = useChannelFormStore((state) => state.filterLevel);
   const setFilterLevel = useChannelFormStore(
     (state) => state.setFilterLevel,
@@ -35,4 +35,4 @@ const ChannelFilterLevelSlider = () => {
   );
 };
 
-export default ChannelFilterLevelSlider;
+export default InputChannelFilterLevel;
