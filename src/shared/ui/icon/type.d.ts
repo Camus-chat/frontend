@@ -1,3 +1,3 @@
-interface IconSvgProps extends React.SVGProps<SVGSVGElement> {
+interface IconSvgProps extends React.ComponentProps<'svg'> {
   size?: number;
 }
