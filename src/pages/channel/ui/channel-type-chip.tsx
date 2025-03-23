@@ -3,11 +3,11 @@ import { Chip } from '@heroui/chip';
 import { CHANNEL_TYPE_NAME } from '../config';
 
 interface Props {
-  name: ChannelType;
+  type: ChannelType;
 }
 
-const ChannelTypeChip = ({ name }: Props) => {
-  const iconName = CHANNEL_TYPE_NAME[name];
+const ChannelTypeChip = ({ type }: Props) => {
+  const name = CHANNEL_TYPE_NAME[type];
 
   return (
     <Chip
@@ -16,7 +16,7 @@ const ChannelTypeChip = ({ name }: Props) => {
       classNames={{ content: 'text-white' }}
       color='secondary'
     >
-      {iconName}
+      {name}
     </Chip>
   );
 };
