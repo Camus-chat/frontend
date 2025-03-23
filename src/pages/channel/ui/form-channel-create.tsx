@@ -20,7 +20,7 @@ const CreateButton = () => {
   const addChannel = useChannelStore((state) => state.addChannel);
 
   const handleClick = async () => {
-    const { type, title, content, filterLevel, reset } =
+    const { type, title, content, filterLevel } =
       useChannelFormStore.getState();
 
     const newChannel = await createChannel({
@@ -32,7 +32,6 @@ const CreateButton = () => {
     if (newChannel) {
       addChannel(newChannel);
       useServicePopup.getState().close();
-      reset();
     } else {
       alert('채널 생성에 실패했습니다.');
     }
