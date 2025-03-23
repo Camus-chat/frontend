@@ -1,8 +1,0 @@
-@use "@/styles/variables" as *;
-
-// config 에 추가해야함
-  .title {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-  }
