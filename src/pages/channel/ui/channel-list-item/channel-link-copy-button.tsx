@@ -1,5 +1,6 @@
 'use client';
 
+import { DOMAIN_NAME, ROUTE } from '@/shared/config';
 import { Button, LinkIcon } from '@/shared/ui';
 
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
 const ChannelLinkCopyButton = ({ link }: Props) => {
   const handleClick = () => {
     navigator.clipboard
-      .writeText(`https://camus.life/guest/${link}`)
+      .writeText(`${DOMAIN_NAME}${ROUTE.guest}/${link}`)
       .then(() => {
         alert('링크가 복사되었습니다.');
       });

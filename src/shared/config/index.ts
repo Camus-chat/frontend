@@ -19,4 +19,5 @@ export const ROUTE = {
   chat: '/service/chat',
   channel: '/service/channel',
   profile: '/service/profile',
+  guest: '/chat',
 };
