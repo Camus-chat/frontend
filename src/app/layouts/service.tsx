@@ -14,7 +14,7 @@ const ServiceLayout: FC<Props> = ({ children }) => {
     <div className='grid size-full grid-rows-[auto,1fr]'>
       <AuthProvider requireAuth={process.env.NODE_ENV !== 'development'}>
         <Header className='max-w-none' />
-        <main className='relative md:grid md:grid-cols-[auto,1fr] md:bg-default-100'>
+        <main className='relative overflow-y-hidden md:grid md:grid-cols-[auto,1fr] md:bg-default-100'>
           <Menu />
           {children}
         </main>

@@ -19,7 +19,7 @@ const ChannelListItem = ({ channel }: Props) => {
         <ChannelTypeChip name={channel.type} />
         <ChannelFilterChip level={channel.filterLevel} />
       </CardHeader>
-      <CardBody className='overflow-auto scrollbar-hide'>
+      <CardBody className='overflow-auto truncate scrollbar-hide'>
         {channel.content}
       </CardBody>
       <CardFooter className='mb-1 gap-1'>
