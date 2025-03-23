@@ -1,7 +1,6 @@
 import { Slider, type SliderProps } from '@heroui/slider';
 
-import { CHANNEL_FILTER_LEVEL } from '@/pages/channel/config';
-
+import { CHANNEL_FILTER_LEVEL } from '../config';
 import { useChannelFormStore } from '../store/form';
 
 const MARKS = Object.entries(CHANNEL_FILTER_LEVEL).map(([key, value]) => ({

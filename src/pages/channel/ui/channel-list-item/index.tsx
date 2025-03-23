@@ -5,7 +5,7 @@ import ChipChannelType from '@/pages/channel/ui/chip-channel-type';
 import { listItem } from '@/pages/channel/ui/styles';
 import { Button } from '@/shared/ui';
 
-import ChannelLinkCopyButton from './channel-link-copy-button';
+import ButtonLinkCopy from './button-link-copy';
 
 interface Props {
   channel: Channel;
@@ -34,7 +34,7 @@ const ChannelListItem = ({ channel }: Props) => {
         <Button size='sm' color='primary' variant='flat' isDisabled>
           수정
         </Button>
-        <ChannelLinkCopyButton link={channel.link} />
+        <ButtonLinkCopy link={channel.link} />
       </CardFooter>
     </Card>
   );

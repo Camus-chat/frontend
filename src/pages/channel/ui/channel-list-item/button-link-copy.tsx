@@ -7,7 +7,7 @@ interface Props {
   link: string;
 }
 
-const ChannelLinkCopyButton = ({ link }: Props) => {
+const ButtonLinkCopy = ({ link }: Props) => {
   const handleClick = () => {
     navigator.clipboard
       .writeText(`${DOMAIN_NAME}${ROUTE.guest}/${link}`)
@@ -23,4 +23,4 @@ const ChannelLinkCopyButton = ({ link }: Props) => {
   );
 };
 
-export default ChannelLinkCopyButton;
+export default ButtonLinkCopy;
