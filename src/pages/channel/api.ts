@@ -1,5 +1,3 @@
-import type { ChannelUpdate } from '@/containers/(personal)/service/channel/type';
-import { query } from '@/containers/query';
 import { callAPI } from '@/shared/api';
 
 export const getChannels = async () => {
@@ -35,14 +33,5 @@ export const createChannel = async (
         console.error('channel create:', err.response?.data);
       }
       return null;
-    });
-};
-
-export const updateChannel = async (request: ChannelUpdate) => {
-  await query.clientSide
-    .patch<Channel, ChannelUpdate>('/channel/edit', request)
-    .then((res) => {
-      console.log(res);
-      return res;
     });
 };

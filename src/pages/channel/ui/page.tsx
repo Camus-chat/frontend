@@ -1,6 +1,6 @@
 import ServiceContent from '@/widgets/service-content';
 
-import { getChannels } from '../api/channel';
+import { getChannels } from '../api';
 import { CHANNEL_ACTION_KEY } from '../config';
 import ButtonChannelAdd from './button-channel-add';
 import { ChannelProvider } from '../store/channel';

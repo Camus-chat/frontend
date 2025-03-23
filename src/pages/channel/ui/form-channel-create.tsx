@@ -5,11 +5,11 @@ import { CardBody, CardFooter, CardHeader } from '@heroui/card';
 import { Button } from '@/shared/ui';
 import { useServicePopup } from '@/widgets/service-content';
 
+import { createChannel } from '../api';
 import InputChannelDescription from './input-channel-description';
 import InputChannelFilterLevel from './input-channel-filter-level';
 import InputChannelName from './input-channel-name';
 import { descriptionStyle, titleStyle } from './styles';
-import { createChannel } from '../api/channel';
 import { useChannelStore } from '../store/channel';
 import { useChannelFormStore } from '../store/form';
 
