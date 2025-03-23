@@ -14,15 +14,15 @@ interface Props {
 const ChannelListItem = ({ channel }: Props) => {
   return (
     <Card shadow='none' className={listItem({ class: 'flex-col p-1' })}>
-      <CardHeader className='flex items-center gap-1'>
+      <CardHeader className='flex items-center gap-1 pb-1'>
         <div className='text-3xl font-medium'>{channel.title}</div>
         <ChannelTypeChip name={channel.type} />
         <ChannelFilterChip level={channel.filterLevel} />
       </CardHeader>
-      <CardBody className='overflow-auto truncate scrollbar-hide'>
+      <CardBody className='overflow-auto truncate pt-1 scrollbar-hide'>
         {channel.content}
       </CardBody>
-      <CardFooter className='mb-1 gap-1'>
+      <CardFooter className='gap-1'>
         <Button
           size='sm'
           variant='flat'
