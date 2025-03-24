@@ -11,7 +11,6 @@ interface Channel {
 type ChannelCreateRequest = Omit<Channel, 'link'>;
 
 namespace Channel {
-  interface Info extends Pick<Channel, 'title' | 'content'> {
-    owner: Pick<Member, 'nickname' | 'profileImage'>;
-  }
+  type Info = Pick<Channel, 'title' | 'content'> &
+    Pick<Member, 'nickname' | 'profileLink' | 'uuid'>;
 }
