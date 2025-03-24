@@ -17,12 +17,18 @@ const EnterAsMember: FC<{
   const isDisabled = isLoggedIn && member.uuid === uuid;
   const router = useRouter();
 
-  const onClick = () => {
-    if (isLoggedIn) {
-      requestEnterChatting(link);
-    } else {
+  const onClick = async () => {
+    if (!isLoggedIn) {
       router.push(ROUTE.login);
+      return;
     }
+
+    const chatting = await requestEnterChatting(link);
+    if (!chatting) {
+      alert('채팅방에 입장에 실패했습니다.');
+      return;
+    }
+    router.push(`${ROUTE.guest}/${link}/${chatting.roomId}`);
   };
 
   return (
