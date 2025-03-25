@@ -1,33 +1,28 @@
 'use client';
 
 import { Button } from '@heroui/button';
-import { useEffect } from 'react';
 
 import { PlusIcon } from '@/shared/ui';
 import { useServicePopup } from '@/widgets/service-content';
 
 import { CHANNEL_ACTION_KEY } from '../config';
 import { listItem } from './styles';
+import { useChannelFormStore } from '../store/form';
 
-interface Props {
-  serverListFetchingError: boolean;
-}
-
-const ChannelAddButton = ({ serverListFetchingError }: Props) => {
+const ButtonChannelAdd = () => {
   const open = useServicePopup((state) => state.open);
+  const reset = useChannelFormStore((state) => state.reset);
 
-  useEffect(() => {
-    if (serverListFetchingError) {
-      alert('채널 목록을 불러오는데 실패했습니다.');
-    }
-  }, []);
+  const onOpen = () => {
+    reset();
+    open(CHANNEL_ACTION_KEY.create);
+  };
 
   return (
     <Button
       variant='bordered'
       className={listItem({ class: 'flex-col text-default-500' })}
-      isDisabled={serverListFetchingError}
-      onPress={() => open(CHANNEL_ACTION_KEY.create)}
+      onPress={onOpen}
     >
       <PlusIcon />
       채널 추가
@@ -35,4 +30,4 @@ const ChannelAddButton = ({ serverListFetchingError }: Props) => {
   );
 };
 
-export default ChannelAddButton;
+export default ButtonChannelAdd;

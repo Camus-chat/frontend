@@ -5,14 +5,6 @@ export const listItem = tv({
   base: 'h-40 border border-default-100 hover:shadow',
 });
 
-export const titleStyle = tv({
-  base: 'text-2xl font-semibold',
-});
-
-export const descriptionStyle = tv({
-  base: 'text-sm',
-});
-
 export const inputStyleProps = {
   variant: 'bordered',
   labelPlacement: 'outside',
