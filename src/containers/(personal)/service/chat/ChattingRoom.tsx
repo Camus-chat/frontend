@@ -36,7 +36,12 @@ const ChattingRoom = ({ onClose }: Props) => {
   return (
     <ServiceContent.ContentItem>
       <div className={styles.roomWrapper}>
-        <ChatRoomHeader title='CAMUS' />
+        <ChatRoomHeader
+          title='CAMUS'
+          onClose={onClose}
+          channelType='private'
+          userName=''
+        />
         <ol ref={scrollRef} className={styles.messages}>
           {messages.map((message) => {
             const userId = message.senderId || message.targetId;
