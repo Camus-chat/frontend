@@ -2,15 +2,7 @@ import { type InputProps } from '@heroui/input';
 import { tv } from 'tailwind-variants';
 
 export const listItem = tv({
-  base: 'h-32 border border-default-100 hover:shadow',
-});
-
-export const titleStyle = tv({
-  base: 'text-2xl font-semibold',
-});
-
-export const descriptionStyle = tv({
-  base: 'text-sm',
+  base: 'h-40 border border-default-100 hover:shadow',
 });
 
 export const inputStyleProps = {

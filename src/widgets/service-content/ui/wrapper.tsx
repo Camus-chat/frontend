@@ -10,7 +10,7 @@ interface Props {
 
 const contentsWrapperStyle = tv({
   base: [
-    'relative flex h-full items-start justify-center gap-5',
+    'relative flex h-full items-start justify-center gap-5 overflow-y-auto',
     'md:items-center',
     // padding
     'pb-service-menu',

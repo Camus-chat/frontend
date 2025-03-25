@@ -1,25 +1,26 @@
 'use client';
 
-import { CardBody, CardFooter, CardHeader } from '@heroui/card';
+import { CardBody, CardFooter } from '@heroui/card';
 
-import { useChannelListStore } from '@/pages/channel/store/list';
 import { Button } from '@/shared/ui';
 import { useServicePopup } from '@/widgets/service-content';
 
-import ChannelDescriptionInput from './channel-description-input';
-import ChannelFilterLevelSlider from './channel-filter-level-slider';
-import ChannelNameInput from './channel-name-input';
-import { descriptionStyle, titleStyle } from './styles';
-import { createChannel } from '../api/channel';
+import { createChannel } from '../api';
+import FormHeader from './form-header';
+import InputChannelDescription from './input-channel-description';
+import InputChannelFilterLevel from './input-channel-filter-level';
+import InputChannelName from './input-channel-name';
+import { useChannelStore } from '../store/channel';
 import { useChannelFormStore } from '../store/form';
 
 const CreateButton = () => {
   const isInvalid = useChannelFormStore(
     (state) => !state.title || !state.content,
   );
+  const addChannel = useChannelStore((state) => state.addChannel);
 
   const handleClick = async () => {
-    const { type, title, content, filterLevel, reset } =
+    const { type, title, content, filterLevel } =
       useChannelFormStore.getState();
 
     const newChannel = await createChannel({
@@ -29,9 +30,8 @@ const CreateButton = () => {
       filterLevel,
     });
     if (newChannel) {
-      useChannelListStore.getState().addChannel(newChannel);
+      addChannel(newChannel);
       useServicePopup.getState().close();
-      reset();
     } else {
       alert('채널 생성에 실패했습니다.');
     }
@@ -49,22 +49,19 @@ const CreateButton = () => {
   );
 };
 
-const ChannelCreate = () => {
+const FormChannelCreate = () => {
   const close = useServicePopup((state) => state.close);
 
   return (
     <>
-      <CardHeader className='flex-col items-start'>
-        <h3 className={titleStyle()}>채널 생성</h3>
-        <p className={descriptionStyle()}>
-          채팅 채널 생성에 필요한 정보를 입력해주세요.
-        </p>
-      </CardHeader>
+      <FormHeader title='채널 생성'>
+        채팅 채널 생성에 필요한 정보를 입력해주세요.
+      </FormHeader>
       <CardBody className='gap-3'>
         {/* TODO: add channel type */}
-        <ChannelNameInput />
-        <ChannelDescriptionInput />
-        <ChannelFilterLevelSlider />
+        <InputChannelName />
+        <InputChannelDescription />
+        <InputChannelFilterLevel />
       </CardBody>
       <CardFooter className='grid grid-cols-2 gap-3'>
         <Button size='lg' variant='flat' onClick={close}>
@@ -76,4 +73,4 @@ const ChannelCreate = () => {
   );
 };
 
-export default ChannelCreate;
+export default FormChannelCreate;

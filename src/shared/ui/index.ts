@@ -11,3 +11,4 @@ export { MessagesIcon } from './icon/messages';
 export { ProfileCardIcon } from './icon/profile-card';
 export { MailBoxIcon } from './icon/mail-box';
 export { PlusIcon } from './icon/plus';
+export { LinkIcon } from './icon/link';

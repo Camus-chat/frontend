@@ -2,7 +2,7 @@ import { useChannelFormStore } from '@/pages/channel/store/form';
 import { inputStyleProps } from '@/pages/channel/ui/styles';
 import { Input } from '@/shared/ui';
 
-const ChannelDescriptionInput = () => {
+const InputChannelDescription = () => {
   const description = useChannelFormStore((state) => state.content);
   const setDescription = useChannelFormStore((state) => state.setContent);
 
@@ -18,4 +18,4 @@ const ChannelDescriptionInput = () => {
   );
 };
 
-export default ChannelDescriptionInput;
+export default InputChannelDescription;
