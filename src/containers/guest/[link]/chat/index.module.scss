@@ -1,8 +1,0 @@
-@use '@/containers/guest/variable' as guest;
-
-.container {
-  @include guest.container-style;
-
-  padding: 8px;
-  height: 100%;
-}
