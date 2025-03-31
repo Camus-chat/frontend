@@ -23,7 +23,7 @@ const GuestChat: FC<{
     <ServiceContent>
       <ServiceContent.ContentItem>
         <EnterChatting info={channelInfo}>
-          <EnterAsMember link={link} />
+          <EnterAsMember link={link} uuid={channelInfo.uuid} />
           <EnterAsGuest />
         </EnterChatting>
       </ServiceContent.ContentItem>

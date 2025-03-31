@@ -1,5 +1,5 @@
 interface Member {
-  myUuid: string;
+  uuid: string;
   username: string;
   nickname: string;
   profileLink: null | string;

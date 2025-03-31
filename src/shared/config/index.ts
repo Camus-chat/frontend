@@ -21,3 +21,7 @@ export const ROUTE = {
   profile: '/service/profile',
   guest: '/chat',
 };
+
+export const MEATADATA = {
+  title: 'CAMUS',
+};
