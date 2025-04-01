@@ -2,7 +2,7 @@ interface Props {
   message: Message;
 }
 
-const SentBubble = ({ message }: Props) => {
+const MessageSent = ({ message }: Props) => {
   const time = new Date(message.createdDate).toLocaleTimeString('en-US', {
     hour: '2-digit',
     minute: '2-digit',
@@ -20,4 +20,4 @@ const SentBubble = ({ message }: Props) => {
   );
 };
 
-export default SentBubble;
+export default MessageSent;

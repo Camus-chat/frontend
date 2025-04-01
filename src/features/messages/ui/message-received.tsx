@@ -6,7 +6,7 @@ interface Props {
   senderProfileImg: string;
 }
 
-const ReceivedBubble = ({
+const MessageReceived = ({
   message,
   senderNickname,
   senderProfileImg,
@@ -34,4 +34,4 @@ const ReceivedBubble = ({
   );
 };
 
-export default ReceivedBubble;
+export default MessageReceived;
