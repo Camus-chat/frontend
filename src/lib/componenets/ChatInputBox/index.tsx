@@ -1,6 +1,7 @@
-import { CamusClient } from '@/lib/class/CamusClient';
 import Image from 'next/image';
 import { useRef } from 'react';
+
+import { CamusClient } from '@/features/websocket';
 
 import styles from './index.module.css';
 import sendIcon from './send.svg';

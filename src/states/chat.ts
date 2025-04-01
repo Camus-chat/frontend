@@ -1,6 +1,7 @@
-import { CamusClient } from '@/lib/class/CamusClient';
-import type { Chat } from '@/lib/class/Chat';
 import { create } from 'zustand';
+
+import { CamusClient } from '@/features/websocket';
+import type { Chat } from '@/lib/class/Chat';
 
 interface chatState {
   chattingClient: CamusClient;
