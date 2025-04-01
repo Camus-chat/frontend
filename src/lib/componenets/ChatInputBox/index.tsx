@@ -18,11 +18,7 @@ const ChatInputBox = ({ chattingClient, roomId, onClick, token }: Props) => {
 
   const sendMessage = () => {
     if (input.current?.value && chattingClient) {
-      chattingClient
-        .sendMessage(roomId, input.current.value, token)
-        .then(() => {
-          input.current!.value = '';
-        });
+      chattingClient.sendMessage(roomId, input.current.value);
     }
 
     if (!chattingClient && onClick) {

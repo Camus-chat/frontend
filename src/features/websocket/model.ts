@@ -5,6 +5,7 @@ import { API_BASE_URL } from '@/shared/config';
 
 export class CamusClient {
   stompClient: Client;
+  token: string | null = null;
 
   constructor() {
     const config: StompConfig = {
@@ -29,6 +30,7 @@ export class CamusClient {
   }
 
   activate(token: string, onConnect: () => void) {
+    this.token = token;
     this.stompClient.connectHeaders = {
       Authorization: `Bearer ${token}`,
     };
@@ -40,13 +42,13 @@ export class CamusClient {
     this.stompClient.deactivate();
   }
 
-  async sendMessage(roomId: string, message: string, token: string) {
+  sendMessage(roomId: string, message: string) {
     this.stompClient.publish({
       destination: '/pub/message_send',
       body: JSON.stringify({
         roomId,
         content: message,
-        userToken: token,
+        userToken: this.token,
       }),
     });
   }
