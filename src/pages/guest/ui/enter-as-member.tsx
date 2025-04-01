@@ -23,12 +23,12 @@ const EnterAsMember: FC<{
       return;
     }
 
-    const chatting = await requestEnterChatting(link);
-    if (!chatting) {
+    const roomId = await requestEnterChatting(link);
+    if (!roomId) {
       alert('채팅방에 입장에 실패했습니다.');
       return;
     }
-    router.push(`${ROUTE.guest}/${link}/${chatting.roomId}`);
+    router.push(`${ROUTE.guest}/${link}/${roomId}`);
   };
 
   return (
