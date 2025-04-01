@@ -1,1 +1,2 @@
-export { default as ChattingFooter } from './ui/chatting-footer';
+export { ChattingFooter } from './ui/chatting-footer';
+export { InputMessage } from './ui/input-message';

@@ -1,11 +1,22 @@
-import { ChattingFooter } from '@/widgets/chatting';
+import { WebsocketProvider } from '@/features/websocket';
+import { ChattingFooter, InputMessage } from '@/widgets/chatting';
 import ServiceContent from '@/widgets/service-content';
 
-const GuestChattingPage = () => {
+const GuestChattingPage: FC<{
+  params: Promise<{
+    roomId: string;
+  }>;
+}> = async ({ params }) => {
+  const { roomId } = await params;
+
   return (
     <ServiceContent>
       <ServiceContent.ContentItem>
-        <ChattingFooter />
+        <WebsocketProvider>
+          <ChattingFooter>
+            <InputMessage roomId={roomId} />
+          </ChattingFooter>
+        </WebsocketProvider>
       </ServiceContent.ContentItem>
     </ServiceContent>
   );
