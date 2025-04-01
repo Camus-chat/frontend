@@ -1,11 +1,16 @@
+import { messageStyle } from './styles';
+
 interface Props {
-  message: Message;
-  targetNickname: string;
+  message: string;
 }
 
-const MessageNotice = ({ message, targetNickname }: Props) => {
+const styles = messageStyle({ type: 'notice', isFirst: true });
+
+const MessageNotice = ({ message }: Props) => {
   return (
-    <div className='mx-0 my-2 flex justify-center text-sm text-[#858899]'>{`${targetNickname}${message.content}`}</div>
+    <div className={styles.wrapper()}>
+      <div className={styles.subText()}>{message}</div>
+    </div>
   );
 };
 

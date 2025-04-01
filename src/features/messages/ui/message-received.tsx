@@ -1,35 +1,32 @@
 import { Avatar } from '@heroui/avatar';
 
+import { messageStyle } from './styles';
+
 interface Props {
-  message: Message;
-  senderNickname: string;
-  senderProfileImg: string;
+  message: string;
+  time: string;
+  sender: Pick<Member, 'nickname' | 'profileLink'>;
+  isFirst?: boolean;
+  isLast?: boolean;
 }
 
-const MessageReceived = ({
-  message,
-  senderNickname,
-  senderProfileImg,
-}: Props) => {
-  const time = new Date(message.createdDate).toLocaleTimeString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+const MessageReceived = ({ message, time, sender, isFirst, isLast }: Props) => {
+  const styles = messageStyle({ type: 'received', isFirst });
 
   return (
-    <div className='mt-2 flex w-full items-end'>
-      <div className='mb-1 mr-1 pb-5'>
-        <Avatar size='md' src={senderProfileImg} />
+    <div className={styles.wrapper()}>
+      {isFirst && (
+        <Avatar
+          size='sm'
+          src={sender.profileLink || undefined}
+          className='mr-1 self-start'
+        />
+      )}
+      <div className={styles.bubbleWrapper()}>
+        {isFirst && <div className={styles.mainText()}>{sender.nickname}</div>}
+        <div className={styles.bubble()}>{message}</div>
       </div>
-      <div className='flex flex-col items-start'>
-        <div className='rounded-3xl bg-[#F6F7F8] px-4 py-3'>
-          <div className='mb-1 bg-transparent text-xs font-semibold'>
-            {senderNickname}
-          </div>
-          <div className='bg-transparent text-base'>{message.content}</div>
-        </div>
-        <div className='p-1 text-xs text-[#858899]'>{time}</div>
-      </div>
+      {isLast && <div className={styles.subText()}>{time}</div>}
     </div>
   );
 };

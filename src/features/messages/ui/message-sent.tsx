@@ -1,20 +1,20 @@
+import { messageStyle } from './styles';
+
 interface Props {
-  message: Message;
+  message: string;
+  time: string;
+  isFirst?: boolean;
+  isLast?: boolean;
 }
 
-const MessageSent = ({ message }: Props) => {
-  const time = new Date(message.createdDate).toLocaleTimeString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+const MessageSent = ({ message, time, isFirst, isLast }: Props) => {
+  const styles = messageStyle({ type: 'sent', isFirst });
 
   return (
-    <div className='mt-2 flex w-full justify-end'>
-      <div className='flex flex-col items-end'>
-        <div className='rounded-3xl bg-[#DDECF9] px-4 py-3'>
-          <div className='bg-transparent text-base'>{message.content}</div>
-        </div>
-        <div className='p-1 text-xs text-[#858899]'>{time}</div>
+    <div className={styles.wrapper()}>
+      {isLast && <div className={styles.subText()}>{time}</div>}
+      <div className={styles.bubbleWrapper()}>
+        <div className={styles.bubble()}>{message}</div>
       </div>
     </div>
   );
