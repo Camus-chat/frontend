@@ -39,7 +39,7 @@ const EnterAsMember: FC<{
       onClick={onClick}
       isDisabled={isDisabled}
     >
-      {!isDisabled && '로그인 후 '}
+      {!isDisabled && !isLoggedIn && '로그인 후 '}
       참여하기
     </Button>
   );
