@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-type RoomId = ChattingRoom['roomId'];
+type RoomId = ChattingRoom.Info['roomId'];
 
 interface State {
   newMessageMap: Record<RoomId, Message[]>;

@@ -2,7 +2,7 @@ import { callAPI } from '@/shared/api';
 
 export const requestRoomInfo = async (link: string, roomId: string) => {
   return callAPI.serverSide
-    .post<ChattingRoom>('/room/info', { link, roomId })
+    .post<ChattingRoom.Info>('/room/info', { link, roomId })
     .then((res) => {
       if (process.env.NODE_ENV === 'development') {
         console.log('room Info:', res.data);

@@ -1,4 +1,3 @@
-import type { ChatRoom } from '@/lib/class/Chat';
 import { ReactNode, useState } from 'react';
 
 import styles from './index.module.css';
@@ -6,7 +5,7 @@ import styles from './index.module.css';
 interface Props {
   children?: ReactNode;
   isSelected: boolean;
-  chat: ChatRoom;
+  chat: ChattingRoom;
   onClick: () => void;
 }
 
