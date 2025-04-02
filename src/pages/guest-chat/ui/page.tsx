@@ -1,13 +1,24 @@
+import { redirect } from 'next/navigation';
+
 import { WebsocketProvider } from '@/features/websocket';
+import { ROUTE } from '@/shared/config';
 import { ChattingFooter, InputMessage } from '@/widgets/chatting';
 import ServiceContent from '@/widgets/service-content';
 
+import { requestRoomInfo } from '../api/room';
+
 const GuestChattingPage: FC<{
   params: Promise<{
+    link: string;
     roomId: string;
   }>;
 }> = async ({ params }) => {
-  const { roomId } = await params;
+  const { link, roomId } = await params;
+  const roomInfo = await requestRoomInfo(link, roomId);
+
+  if (!roomInfo) {
+    redirect(`${ROUTE.guest}/${link}`);
+  }
 
   return (
     <ServiceContent>
