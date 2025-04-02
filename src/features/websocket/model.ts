@@ -56,7 +56,7 @@ export class CamusClient {
 
   subscribeRoom(roomId: string) {
     this.stompClient.publish({
-      destination: '/pub/message_received',
+      destination: '/pub/message_receive',
       body: JSON.stringify({
         roomId,
         userToken: this.token,
@@ -65,15 +65,12 @@ export class CamusClient {
   }
 
   onReceiveMessage(roomId: string, callbackFn: (message: Message) => void) {
-    this.stompClient.subscribe(
-      `/subscribe/message_receive/${roomId}`,
-      (stompMessage) => {
-        const message = addParsedTime(JSON.parse(stompMessage.body));
-        if (process.env.NODE_ENV === 'development') {
-          console.log(message);
-        }
-        callbackFn(message);
-      },
-    );
+    this.stompClient.subscribe(`/subs/${roomId}`, (stompMessage) => {
+      const message = addParsedTime(JSON.parse(stompMessage.body));
+      if (process.env.NODE_ENV === 'development') {
+        console.log(message);
+      }
+      callbackFn(message);
+    });
   }
 }
