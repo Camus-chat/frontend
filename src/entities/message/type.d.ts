@@ -1,4 +1,4 @@
-type MessageType = 'NoticeMessage' | 'CommonMessage' | 'FilteredMessage';
+type MessageType = 'NoticeMessage' | 'Common' | 'FilteredMessage';
 
 namespace Message {
   interface Base {
