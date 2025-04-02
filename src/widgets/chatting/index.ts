@@ -1,4 +1,3 @@
-export { ChattingFooter } from './ui/chatting-footer';
-export { InputMessage } from './ui/input-message';
+export { Chatting } from './ui/chatting';
 
 export { useChattingRoomStore } from './store/room';

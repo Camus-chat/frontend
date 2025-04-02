@@ -8,7 +8,7 @@ import { Button, SendIcon } from '@/shared/ui';
 
 const IconButton = <SendIcon size={18} />;
 
-export const InputMessage: FC<{
+const InputMessage: FC<{
   roomId: string;
 }> = ({ roomId }) => {
   const client = useWebsocketStore((state) => state.client);
@@ -53,3 +53,5 @@ export const InputMessage: FC<{
     />
   );
 };
+
+export default InputMessage;
