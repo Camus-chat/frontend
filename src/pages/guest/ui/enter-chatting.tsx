@@ -1,6 +1,6 @@
 import { CardBody, CardFooter, CardHeader } from '@heroui/card';
 
-import { MessageReceived } from '@/features/messages';
+import { MessageReceived } from '@/entities/message';
 
 const EnterChatting: FC<{
   children: ReactNode;
