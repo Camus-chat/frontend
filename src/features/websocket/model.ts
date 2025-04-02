@@ -53,23 +53,25 @@ export class CamusClient {
     });
   }
 
-  async subscribeRoom(roomId: string, token: string) {
+  subscribeRoom(roomId: string) {
     this.stompClient.publish({
       destination: '/pub/message_received',
       body: JSON.stringify({
         roomId,
-        userToken: token,
+        userToken: this.token,
       }),
     });
   }
 
-  receiveMessage<T>(roomId: string, callback: (message: T) => void) {
+  onReceiveMessage(roomId: string, callbackFn: (message: Message) => void) {
     this.stompClient.subscribe(
       `/subscribe/message_receive/${roomId}`,
       (stompMessage) => {
-        const content: T = JSON.parse(stompMessage.body);
-        console.log(content);
-        callback(content);
+        const message: Message = JSON.parse(stompMessage.body);
+        if (process.env.NODE_ENV === 'development') {
+          console.log(message);
+        }
+        callbackFn(message);
       },
     );
   }

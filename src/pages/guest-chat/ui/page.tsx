@@ -12,7 +12,7 @@ const GuestChattingPage: FC<{
   return (
     <ServiceContent>
       <ServiceContent.ContentItem>
-        <WebsocketProvider>
+        <WebsocketProvider roomIds={[roomId]}>
           <ChattingFooter>
             <InputMessage roomId={roomId} />
           </ChattingFooter>

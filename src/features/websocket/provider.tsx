@@ -8,14 +8,22 @@ import { useWebsocketStore } from './store';
 
 export const WebsocketProvider: FC<{
   children: ReactNode;
-}> = ({ children }) => {
+  roomIds: string[];
+}> = ({ children, roomIds }) => {
   useEffect(() => {
-    const { client, setIsConnected } = useWebsocketStore.getState();
+    const { client, setIsConnected, addNewMessage } =
+      useWebsocketStore.getState();
 
     getToken().then((token) => {
       if (token) {
         client.activate(token, () => {
           setIsConnected(true);
+          roomIds.forEach((roomId) => {
+            // client.subscribeRoom(roomId);
+            client.onReceiveMessage(roomId, (message) => {
+              addNewMessage(roomId, message);
+            });
+          });
         });
       }
     });
