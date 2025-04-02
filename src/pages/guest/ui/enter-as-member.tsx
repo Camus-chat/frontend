@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useMemberStore } from '@/entities/member';
 import { ROUTE } from '@/shared/config';
 import { Button } from '@/shared/ui';
+import { useChattingRoomStore } from '@/widgets/chatting';
 
 import { requestEnterChatting } from '../api/enter';
 
@@ -28,6 +29,7 @@ const EnterAsMember: FC<{
       alert('채팅방에 입장에 실패했습니다.');
       return;
     }
+    useChattingRoomStore.getState().setRoomId(roomId);
     router.push(`${ROUTE.guest}/${link}/${roomId}`);
   };
 
