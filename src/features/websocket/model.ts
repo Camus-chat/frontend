@@ -1,6 +1,7 @@
 import { Client, type StompConfig } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 
+import { addParsedTime } from '@/entities/message';
 import { API_BASE_URL } from '@/shared/config';
 
 export class CamusClient {
@@ -67,7 +68,7 @@ export class CamusClient {
     this.stompClient.subscribe(
       `/subscribe/message_receive/${roomId}`,
       (stompMessage) => {
-        const message: Message = JSON.parse(stompMessage.body);
+        const message = addParsedTime(JSON.parse(stompMessage.body));
         if (process.env.NODE_ENV === 'development') {
           console.log(message);
         }

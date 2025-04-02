@@ -6,6 +6,7 @@ namespace Message {
     content: string;
     messageId: number | string;
     createdDate: string;
+    time: string;
   }
 
   interface Notice extends Base {
