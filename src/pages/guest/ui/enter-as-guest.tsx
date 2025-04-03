@@ -10,9 +10,9 @@ import {
 } from '@heroui/modal';
 import { useRouter } from 'next/navigation';
 
+import { signIn } from '@/features/login';
 import { requestEnterChatting } from '@/pages/guest/api/enter';
 import { guestSignUp } from '@/pages/guest/api/guest-signup';
-import { signIn } from '@/pages/login/api/sign-in';
 import { ROUTE } from '@/shared/config';
 import { useTokenStore } from '@/shared/store';
 import { Button } from '@/shared/ui';
