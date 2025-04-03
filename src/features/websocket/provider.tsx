@@ -8,7 +8,7 @@ import { useTokenStore } from '@/shared/store';
 import { useWebsocketStore } from './store';
 
 export const WebsocketProvider: FC<{
-  children: ReactNode;
+  children?: ReactNode;
   roomIds: string[];
 }> = ({ children, roomIds }) => {
   useEffect(() => {
@@ -40,5 +40,8 @@ export const WebsocketProvider: FC<{
     };
   }, []);
 
-  return children;
+  if (children) {
+    return children;
+  }
+  return null;
 };
