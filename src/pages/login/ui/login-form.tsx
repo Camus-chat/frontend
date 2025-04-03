@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
 
-import { signIn } from '@/pages/login/api/sign-in';
+import { signIn } from '@/features/login';
 import { EMAIL_REGEX } from '@/shared/config';
 import { useUncontrolledInput } from '@/shared/hook';
 import { useTokenStore } from '@/shared/store';
