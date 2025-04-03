@@ -2,15 +2,15 @@
 
 import { CardBody, CardFooter } from '@heroui/card';
 
+import { useChattingStore } from '../store';
 import InputMessage from './input-message';
 import MessagesNew from './messages-new';
-import { useChattingRoomStore } from '../store/room';
 
 export const Chatting: FC<{
   roomId?: string;
 }> = ({ roomId }) => {
   const currentRoomId =
-    useChattingRoomStore((state) => state.currentRoomId) || roomId;
+    useChattingStore((state) => state.currentRoomId) || roomId;
 
   if (!currentRoomId) {
     return (

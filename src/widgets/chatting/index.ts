@@ -1,3 +1,3 @@
 export { Chatting } from './ui/chatting';
 
-export { useChattingRoomStore } from './store/room';
+export { useChattingStore } from './store';

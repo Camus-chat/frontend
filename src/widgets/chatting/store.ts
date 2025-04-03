@@ -10,7 +10,7 @@ interface Actions {
 
 type ChattingRoomStore = State & Actions;
 
-export const useChattingRoomStore = create<ChattingRoomStore>((set) => ({
+export const useChattingStore = create<ChattingRoomStore>((set) => ({
   currentRoomId: null,
   setRoomId: (currentRoomId) => set({ currentRoomId }),
 }));
