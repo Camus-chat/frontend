@@ -11,12 +11,12 @@ import {
 import { useRouter } from 'next/navigation';
 
 import { signIn } from '@/features/login';
-import { requestEnterChatting } from '@/pages/guest/api/enter';
-import { guestSignUp } from '@/pages/guest/api/guest-signup';
 import { ROUTE } from '@/shared/config';
 import { useTokenStore } from '@/shared/store';
 import { Button } from '@/shared/ui';
 import { useChattingRoomStore } from '@/widgets/chatting';
+
+import { guestSignUp, requestEnterChatting } from '../api';
 
 interface Props {
   link: string;

@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import EnterChatting from '@/pages/guest/ui/enter-chatting';
 import ServiceContent from '@/widgets/service-content';
 
-import { requestChannelInfo } from '../api/channel';
+import { requestChannelInfo } from '../api';
 import EnterAsGuest from './enter-as-guest';
 import EnterAsMember from './enter-as-member';
 
