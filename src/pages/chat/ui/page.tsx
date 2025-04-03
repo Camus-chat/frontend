@@ -4,6 +4,7 @@ import ServiceContent from '@/widgets/service-content';
 
 import { requestChattingList } from '../api/chatting';
 import { CHATTING_ACTION_KEY } from '../config';
+import { ChattingRoomProvider } from '../store/chatting-room';
 import ChattingList from './chatting/list';
 
 const ChattingPage = async () => {
@@ -13,7 +14,9 @@ const ChattingPage = async () => {
     <ServiceContent>
       <WebsocketConnector roomIds={[]} />
       <ServiceContent.MainItem title='채팅'>
-        <ChattingList list={chattingRooms} />
+        <ChattingRoomProvider chattingRooms={chattingRooms}>
+          <ChattingList />
+        </ChattingRoomProvider>
       </ServiceContent.MainItem>
       <ServiceContent.PopupItem id={CHATTING_ACTION_KEY.enter}>
         <Chatting />

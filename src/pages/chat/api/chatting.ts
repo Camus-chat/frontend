@@ -1,3 +1,4 @@
+import { addParsedTime } from '@/entities/message';
 import { callAPI } from '@/shared/api';
 
 export const requestChattingList = async () => {
@@ -7,7 +8,11 @@ export const requestChattingList = async () => {
       if (process.env.NODE_ENV === 'development') {
         console.log('room list:', res.data);
       }
-      return res.data;
+      const rooms = res.data;
+      return rooms.map((room) => ({
+        ...room,
+        lastMessage: addParsedTime(room.lastMessage),
+      }));
     })
     .catch((err) => {
       if (process.env.NODE_ENV === 'development') {
