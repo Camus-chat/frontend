@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
 import { useTokenStore } from '@/shared/store';
 
@@ -8,7 +8,7 @@ const TokenProvider: FC<{ children: ReactNode; token: string }> = ({
   children,
   token,
 }) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     useTokenStore.getState().setToken(token);
   }, []);
 
