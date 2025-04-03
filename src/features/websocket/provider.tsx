@@ -14,7 +14,7 @@ export const WebsocketProvider: FC<{
   useEffect(() => {
     const { token } = useTokenStore.getState();
 
-    if (token) {
+    if (!token || roomIds.length === 0) {
       return () => {};
     }
 
