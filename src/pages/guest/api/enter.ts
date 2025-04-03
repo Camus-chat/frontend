@@ -2,7 +2,7 @@ import { callAPI } from '@/shared/api';
 
 export const requestEnterChatting = async (link: string) => {
   return callAPI.clientSide
-    .post<ChattingRoom>('/room/guest/enter', link)
+    .post<ChattingRoom.Info['roomId']>('/room/enter', link)
     .then((res) => {
       if (process.env.NODE_ENV === 'development') {
         console.log('chatting room:', res.data);

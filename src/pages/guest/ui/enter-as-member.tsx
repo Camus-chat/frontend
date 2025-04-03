@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useMemberStore } from '@/entities/member';
 import { ROUTE } from '@/shared/config';
 import { Button } from '@/shared/ui';
+import { useChattingRoomStore } from '@/widgets/chatting';
 
 import { requestEnterChatting } from '../api/enter';
 
@@ -23,12 +24,13 @@ const EnterAsMember: FC<{
       return;
     }
 
-    const chatting = await requestEnterChatting(link);
-    if (!chatting) {
+    const roomId = await requestEnterChatting(link);
+    if (!roomId) {
       alert('채팅방에 입장에 실패했습니다.');
       return;
     }
-    router.push(`${ROUTE.guest}/${link}/${chatting.roomId}`);
+    useChattingRoomStore.getState().setRoomId(roomId);
+    router.push(`${ROUTE.guest}/${link}/${roomId}`);
   };
 
   return (
@@ -39,7 +41,7 @@ const EnterAsMember: FC<{
       onClick={onClick}
       isDisabled={isDisabled}
     >
-      {!isDisabled && '로그인 후 '}
+      {!isDisabled && !isLoggedIn && '로그인 후 '}
       참여하기
     </Button>
   );

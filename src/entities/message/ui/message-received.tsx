@@ -10,7 +10,13 @@ interface Props {
   isLast?: boolean;
 }
 
-const MessageReceived = ({ message, time, sender, isFirst, isLast }: Props) => {
+export const MessageReceived = ({
+  message,
+  time,
+  sender,
+  isFirst,
+  isLast,
+}: Props) => {
   const styles = messageStyle({ type: 'received', isFirst });
 
   return (
@@ -30,5 +36,3 @@ const MessageReceived = ({ message, time, sender, isFirst, isLast }: Props) => {
     </div>
   );
 };
-
-export default MessageReceived;

@@ -1,1 +1,3 @@
-export { default as ChattingFooter } from './ui/chatting-footer';
+export { Chatting } from './ui/chatting';
+
+export { useChattingRoomStore } from './store/room';

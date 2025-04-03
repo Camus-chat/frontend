@@ -1,7 +1,0 @@
-.message {
-    display: flex;
-    justify-content: center;
-    margin: var(--chat-notice-margin-y, 8px) 0;
-    color: var(--chat-notice-color, #858899);
-    font-size: var(--chat-notice-font-size, 14px);
-}
