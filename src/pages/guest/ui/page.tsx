@@ -3,9 +3,9 @@ import { redirect } from 'next/navigation';
 import EnterChatting from '@/pages/guest/ui/enter-chatting';
 import ServiceContent from '@/widgets/service-content';
 
+import { requestChannelInfo } from '../api/channel';
 import EnterAsGuest from './enter-as-guest';
 import EnterAsMember from './enter-as-member';
-import { requestChannelInfo } from '../api/channel';
 
 const GuestChat: FC<{
   params: Promise<{
@@ -24,7 +24,7 @@ const GuestChat: FC<{
       <ServiceContent.ContentItem>
         <EnterChatting info={channelInfo}>
           <EnterAsMember link={link} uuid={channelInfo.uuid} />
-          <EnterAsGuest />
+          <EnterAsGuest link={link} />
         </EnterChatting>
       </ServiceContent.ContentItem>
     </ServiceContent>
