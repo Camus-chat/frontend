@@ -7,11 +7,10 @@ import { Button } from '@/shared/ui';
 import { useChattingStore } from '@/widgets/chatting';
 import { useServicePopup } from '@/widgets/service-content';
 
+import Nickname from './list-item-nickname';
 import Preview from './preview';
 
 const ChattingListItem: FC<{ chatting: ChattingRoom }> = ({ chatting }) => {
-  const nickname = '유저 닉네임'; // TODO: Replace with actual nickname
-
   const onClick = () => {
     useServicePopup.getState().open(CHATTING_ACTION_KEY.enter);
     useChattingStore.getState().setRoomId(chatting.roomId);
@@ -26,7 +25,7 @@ const ChattingListItem: FC<{ chatting: ChattingRoom }> = ({ chatting }) => {
       <Avatar />
       <div className='flex flex-col items-start gap-0.5'>
         <span className='text-xs'>{`#${chatting.channelTitle}`}</span>
-        <span className='font-semibold'>{nickname}</span>
+        <Nickname chattingRoom={chatting} />
         <Preview chattingRoomId={chatting.roomId} />
       </div>
     </Button>
