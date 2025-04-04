@@ -17,7 +17,7 @@ const Preview: FC<{
         {chattingRoom.lastMessage.content}
       </div>
       <span className='absolute bottom-0 right-0 flex flex-col items-end gap-0.5'>
-        <Chip color='primary' size='sm'>
+        <Chip color='primary' size='sm' className='h-5 min-w-5 p-0'>
           {chattingRoom.unreadCount}
         </Chip>
         <div className='text-default-500'>{chattingRoom.lastMessage.time}</div>
