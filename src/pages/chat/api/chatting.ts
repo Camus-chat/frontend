@@ -1,18 +1,13 @@
-import { addParsedTime } from '@/entities/message';
 import { callAPI } from '@/shared/api';
 
 export const requestChattingList = async () => {
   return callAPI.serverSide
-    .get<ChattingRoom[]>('/room/list')
+    .get<ChattingRoom.RawData[]>('/room/list')
     .then((res) => {
       if (process.env.NODE_ENV === 'development') {
         console.log('room list:', res.data);
       }
-      const rooms = res.data;
-      return rooms.map((room) => ({
-        ...room,
-        lastMessage: addParsedTime(room.lastMessage),
-      }));
+      return res.data;
     })
     .catch((err) => {
       if (process.env.NODE_ENV === 'development') {

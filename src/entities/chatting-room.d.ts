@@ -12,6 +12,17 @@ namespace ChattingRoom {
     lastMessage: Message;
     unreadCount: number;
   }
+
+  type RawData = Info & Preview;
 }
 
-type ChattingRoom = ChattingRoom.Info & ChattingRoom.Preview;
+interface GroupChattingRoom extends ChattingRoom.RawData {
+  channelType: 'group';
+}
+
+interface PrivateChattingRoom extends ChattingRoom.RawData {
+  channelType: 'private';
+  counterpart: MemberId | undefined;
+}
+
+type ChattingRoom = GroupChattingRoom | PrivateChattingRoom;

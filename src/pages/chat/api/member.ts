@@ -1,7 +1,7 @@
 import { callAPI } from '@/shared/api';
 
 export const requestChattingMemberMap = async (
-  chattingRooms: ChattingRoom[],
+  chattingRooms: ChattingRoom.RawData[],
 ) => {
   const memberIdSet = new Set<string>(
     chattingRooms.flatMap((room) => room.userList),
