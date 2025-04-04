@@ -8,7 +8,7 @@ import { useChattingStore } from '@/widgets/chatting';
 import { useServicePopup } from '@/widgets/service-content';
 
 import Nickname from './list-item-nickname';
-import Preview from './preview';
+import Preview from './list-item-preview';
 
 const ChattingListItem: FC<{ chatting: ChattingRoom }> = ({ chatting }) => {
   const onClick = () => {
