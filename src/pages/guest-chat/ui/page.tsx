@@ -3,6 +3,8 @@ import { redirect } from 'next/navigation';
 import { WebsocketProvider } from '@/features/websocket';
 import { ROUTE } from '@/shared/config';
 import { Chatting } from '@/widgets/chatting';
+import ChattingHeader from '@/widgets/chatting/ui/chatting-header';
+import ChattingTitle from '@/widgets/chatting/ui/chatting-title';
 import ServiceContent from '@/widgets/service-content';
 
 import { requestRoomInfo } from '../api/room';
@@ -24,6 +26,9 @@ const GuestChattingPage: FC<{
     <ServiceContent>
       <ServiceContent.ContentItem>
         <WebsocketProvider roomIds={[roomId]}>
+          <ChattingHeader>
+            <ChattingTitle title={roomInfo.channelTitle} />
+          </ChattingHeader>
           <Chatting roomId={roomId} />
         </WebsocketProvider>
       </ServiceContent.ContentItem>
