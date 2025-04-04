@@ -4,7 +4,7 @@ namespace ChattingRoom {
     channelType: ChannelType;
     channelTitle: Channel['title'];
     filteredLevel: Channel['filterLevel'];
-    userList: Member['uuid'][];
+    userList: MemberId[];
     isClosed: boolean;
   }
 
