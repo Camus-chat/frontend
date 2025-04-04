@@ -5,9 +5,11 @@ import { useStore } from 'zustand';
 import { createStore } from 'zustand/vanilla';
 
 type RoomId = ChattingRoom['roomId'];
+type MemberId = Member['uuid'];
 
 interface State {
   chattingRoomMap: Record<RoomId, ChattingRoom>;
+  chattingMemberMap: Record<MemberId, Member>;
 }
 
 interface Actions {
@@ -16,11 +18,15 @@ interface Actions {
 
 type ChattingRoomStore = State & Actions;
 
-const createChattingRoomStore = (initial: State['chattingRoomMap']) => {
+const createChattingRoomStore = ({
+  chattingRoomMap,
+  chattingMemberMap,
+}: State) => {
   const create = createStore<ChattingRoomStore>();
 
   return create((set) => ({
-    chattingRoomMap: initial,
+    chattingRoomMap,
+    chattingMemberMap,
 
     read: (roomId) => {
       set((state) => {
@@ -45,14 +51,18 @@ const ChattingRoomContext = createContext<ChattingRoomStoreApi | null>(null);
 export const ChattingRoomProvider: FC<{
   children: ReactNode;
   chattingRooms: ChattingRoom[];
-}> = ({ chattingRooms, children }) => {
+  chattingMemberMap: Record<MemberId, Member>;
+}> = ({ children, chattingRooms, chattingMemberMap }) => {
   const storeRef = useRef<ChattingRoomStoreApi | null>(null);
 
   if (storeRef.current === null) {
-    const map = Object.fromEntries(
+    const chattingRoomMap = Object.fromEntries(
       chattingRooms.map((room) => [room.roomId, room]),
     );
-    storeRef.current = createChattingRoomStore(map);
+    storeRef.current = createChattingRoomStore({
+      chattingRoomMap,
+      chattingMemberMap,
+    });
   }
 
   return (

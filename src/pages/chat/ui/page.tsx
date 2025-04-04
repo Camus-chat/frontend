@@ -1,4 +1,5 @@
 import { WebsocketProvider as WebsocketConnector } from '@/features/websocket';
+import { requestChattingMemberMap } from '@/pages/chat/api/member';
 import { Chatting } from '@/widgets/chatting';
 import ServiceContent from '@/widgets/service-content';
 
@@ -9,12 +10,16 @@ import ChattingList from './chatting/list';
 
 const ChattingPage = async () => {
   const chattingRooms = await requestChattingList();
+  const chattingMemberMap = await requestChattingMemberMap(chattingRooms);
 
   return (
     <ServiceContent>
       <WebsocketConnector roomIds={[]} />
       <ServiceContent.MainItem title='채팅'>
-        <ChattingRoomProvider chattingRooms={chattingRooms}>
+        <ChattingRoomProvider
+          chattingRooms={chattingRooms}
+          chattingMemberMap={chattingMemberMap}
+        >
           <ChattingList />
         </ChattingRoomProvider>
       </ServiceContent.MainItem>
