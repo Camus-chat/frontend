@@ -1,6 +1,6 @@
 import { CardHeader } from '@heroui/card';
 
-const ChattingHeader: FC<{
+export const ChattingHeader: FC<{
   children: ReactNode;
 }> = ({ children }) => {
   return (
@@ -9,5 +9,3 @@ const ChattingHeader: FC<{
     </CardHeader>
   );
 };
-
-export default ChattingHeader;

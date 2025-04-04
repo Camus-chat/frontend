@@ -2,9 +2,7 @@ import { redirect } from 'next/navigation';
 
 import { WebsocketProvider } from '@/features/websocket';
 import { ROUTE } from '@/shared/config';
-import { Chatting } from '@/widgets/chatting';
-import ChattingHeader from '@/widgets/chatting/ui/chatting-header';
-import ChattingTitle from '@/widgets/chatting/ui/chatting-title';
+import { Chatting, ChattingHeader, ChattingTitle } from '@/widgets/chatting';
 import ServiceContent from '@/widgets/service-content';
 
 import { requestRoomInfo } from '../api/room';
