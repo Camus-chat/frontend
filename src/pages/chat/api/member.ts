@@ -3,13 +3,9 @@ import { callAPI } from '@/shared/api';
 export const requestChattingMemberMap = async (
   chattingRooms: ChattingRoom[],
 ) => {
-  const memberIdSet = new Set<string>();
-  chattingRooms.forEach((room) => {
-    room.userList.forEach((member) => {
-      memberIdSet.add(member);
-    });
-  });
-  console.log(memberIdSet);
+  const memberIdSet = new Set<string>(
+    chattingRooms.flatMap((room) => room.userList),
+  );
 
   const memberEntries = await Promise.all(
     Array.from(memberIdSet).map((memberId) =>
