@@ -7,7 +7,7 @@ import { ROUTE } from '@/shared/config';
 import { Button } from '@/shared/ui';
 import { useChattingStore } from '@/widgets/chatting';
 
-import { requestEnterChatting } from '../api/enter';
+import { requestEnterChatting } from '../api';
 
 const EnterAsMember: FC<{
   link: string;
