@@ -20,11 +20,13 @@ const InputPassword = () => {
       setErrorMessage('Enter your password.');
       return;
     }
-    if (!PASSWORD_REGEX.test(value)) {
-      setErrorMessage(
-        'Password must be 8-16 characters, with uppercase, lowercase, digit, and special character (!@#$%^&*).',
-      );
-      return;
+    if (process.env.NODE_ENV !== 'development') {
+      if (!PASSWORD_REGEX.test(value)) {
+        setErrorMessage(
+          'Password must be 8-16 characters, with uppercase, lowercase, digit, and special character (!@#$%^&*).',
+        );
+        return;
+      }
     }
     if (errorMessage) {
       setErrorMessage('');

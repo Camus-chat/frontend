@@ -6,7 +6,7 @@ import { signIn } from '@/features/login';
 import { ROUTE } from '@/shared/config';
 import { useTokenStore } from '@/shared/store';
 import { Button } from '@/shared/ui';
-import { useChattingRoomStore } from '@/widgets/chatting';
+import { useChattingStore } from '@/widgets/chatting';
 
 import { guestSignUp, requestEnterChatting } from '../api';
 
@@ -39,7 +39,7 @@ const EnterAsGuestFooter: FC<{
       return;
     }
 
-    useChattingRoomStore.getState().setRoomId(roomId);
+    useChattingStore.getState().setRoomId(roomId);
     router.push(`${ROUTE.guest}/${link}/${roomId}`);
   };
 

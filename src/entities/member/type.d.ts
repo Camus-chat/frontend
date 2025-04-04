@@ -1,5 +1,7 @@
+type MemberId = string;
+
 interface Member {
-  uuid: string;
+  uuid: MemberId;
   username: string;
   nickname: string;
   profileLink: null | string;
