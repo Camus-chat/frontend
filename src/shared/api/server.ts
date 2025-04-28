@@ -1,12 +1,16 @@
 'use server';
 
 import axios from 'axios';
-import { cookies } from 'next/headers';
 
-import { ACCESS_TOKEN, API_BASE_URL } from '@/shared/config';
+import { API_BASE_URL, BACKEND_INTERNAL_URL } from '@/shared/config';
+
+import { getToken } from './token';
+
+const baseURL =
+  process.env.NODE_ENV === 'production' ? BACKEND_INTERNAL_URL : API_BASE_URL;
 
 const server = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -14,8 +18,11 @@ const server = axios.create({
 });
 
 server.interceptors.request.use(async (config) => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get(ACCESS_TOKEN)?.value;
+  if (config.headers['X-Bypass-Authorization']) {
+    return config;
+  }
+
+  const accessToken = await getToken();
   config.headers.Authorization = `Bearer ${accessToken}`;
 
   return config;

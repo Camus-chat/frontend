@@ -1,12 +1,14 @@
+'use client';
+
 import axios from 'axios';
 
 import { API_BASE_URL } from '@/shared/config';
-import { useAuthStore } from '@/shared/store';
+import { useTokenStore } from '@/shared/store';
 
 const baseURL =
   process.env.NODE_ENV === 'development' ? '/client' : API_BASE_URL;
 
-export const client = axios.create({
+const client = axios.create({
   baseURL,
   headers: {
     'Content-Type': 'application/json',
@@ -15,7 +17,13 @@ export const client = axios.create({
 });
 
 client.interceptors.request.use((config) => {
-  const { token } = useAuthStore.getState();
+  if (config.headers['X-Bypass-Authorization']) {
+    return config;
+  }
+
+  const { token } = useTokenStore.getState();
   config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
+
+export default client;

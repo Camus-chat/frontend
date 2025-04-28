@@ -31,6 +31,7 @@ const InputEmail = () => {
 
   return (
     <Input
+      variant='underlined'
       value={email}
       errorMessage={errorMessage}
       isInvalid={Boolean(errorMessage)}

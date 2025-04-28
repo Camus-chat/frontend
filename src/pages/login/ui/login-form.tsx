@@ -3,10 +3,10 @@
 import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
 
-import { signIn } from '@/pages/login/api/sign-in';
+import { signIn } from '@/features/login';
 import { EMAIL_REGEX } from '@/shared/config';
 import { useUncontrolledInput } from '@/shared/hook';
-import { useAuthStore } from '@/shared/store';
+import { useTokenStore } from '@/shared/store';
 import { Button, Input, Password } from '@/shared/ui';
 
 const LoginForm = () => {
@@ -15,7 +15,7 @@ const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const validate = useCallback(({ username: email, password }: LogIn) => {
+  const validate = useCallback(({ username: email, password }: Account) => {
     if (!email) {
       setEmailError('아이디(메일)를 입력해주세요.');
       return false;
@@ -39,7 +39,7 @@ const LoginForm = () => {
   }, []);
 
   const handleClick = useCallback(async () => {
-    const requestBody: LogIn = {
+    const requestBody: Account = {
       username: $email.current?.value || '',
       password: $password.current?.value || '',
     };
@@ -50,7 +50,7 @@ const LoginForm = () => {
     setIsLoading(true);
     signIn(requestBody)
       .then((res) => {
-        const { setToken } = useAuthStore.getState();
+        const { setToken } = useTokenStore.getState();
         setToken(res);
         router.push('/service/chat');
       })
@@ -65,14 +65,14 @@ const LoginForm = () => {
 
   return (
     <>
-      <Input ref={$email} {...emailError} label='Email' />
+      <Input variant='underlined' ref={$email} {...emailError} label='Email' />
       <Password ref={$password} {...passwordError} label='Password' />
       <Button
         className='mt-6'
-        size='large'
-        color='blue'
+        size='lg'
+        color='primary'
         onClick={handleClick}
-        disabled={isLoading}
+        isLoading={isLoading}
       >
         Sign in
       </Button>

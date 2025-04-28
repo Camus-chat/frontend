@@ -2,14 +2,16 @@
 const nextConfig = {
   reactStrictMode: false,
   output: 'standalone',
-  async rewrites() {
-    return [
-      {
-        source: '/client/:path*',
-        destination: `${process.env.API_BASE_URL}/:path*`,
-      },
-    ];
-  },
+  ...(process.env.NODE_ENV === 'development' && {
+    async rewrites() {
+      return [
+        {
+          source: '/client/:path*',
+          destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}/:path*`,
+        },
+      ];
+    },
+  }),
   images: {
     remotePatterns: [
       {

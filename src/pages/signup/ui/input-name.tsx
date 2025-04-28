@@ -26,6 +26,7 @@ const InputName = () => {
 
   return (
     <Input
+      variant='underlined'
       value={name}
       errorMessage={errorMessage}
       isInvalid={Boolean(errorMessage)}

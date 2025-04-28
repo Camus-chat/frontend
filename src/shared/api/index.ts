@@ -1,9 +1,9 @@
-import { auth } from './auth';
-import { client } from './client';
+import clientSide from './client';
 import serverSide from './server';
 
+export { getToken } from './token';
+
 export const callAPI = {
-  auth: auth.post,
-  clientSide: client,
+  clientSide,
   serverSide,
 };

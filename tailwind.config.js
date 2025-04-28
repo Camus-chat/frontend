@@ -11,6 +11,9 @@ const config = {
   ],
   theme: {
     extend: {
+      spacing: {
+        'service-menu': '4rem',
+      },
       colors: {
         blue: {
           50: '#f0f6ff',
@@ -44,6 +47,12 @@ const config = {
       themes: {
         light: {
           colors: {
+            primary: {
+              DEFAULT: '#117ce9',
+            },
+            secondary: {
+              DEFAULT: '#000000',
+            },
             danger: {
               DEFAULT: '#f84d3a',
             },

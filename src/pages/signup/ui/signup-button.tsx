@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
 
 import { signUp } from '@/pages/signup/api/sign-up';
+import { ROUTE } from '@/shared/config';
 import { Button } from '@/shared/ui';
 
 import { useSignupDataStore } from '../store/signup-data';
@@ -13,13 +14,13 @@ const SignupButton = () => {
   const [isLoading, setIsLoading] = useState(false);
   const isInvalid = useSignupDataStore(
     (state) =>
-      Boolean(state.nicknameError) &&
-      Boolean(state.usernameError) &&
-      Boolean(state.passwordError) &&
-      !state.nickname &&
-      !state.username &&
-      !state.password &&
-      state.isAgreed,
+      Boolean(state.nicknameError) ||
+      Boolean(state.usernameError) ||
+      Boolean(state.passwordError) ||
+      !state.nickname ||
+      !state.username ||
+      !state.password ||
+      !state.isAgreed,
   );
 
   const handleClick = useCallback(async () => {
@@ -34,7 +35,7 @@ const SignupButton = () => {
       isEnterprise,
     });
     if (isSuccess) {
-      router.push('/signin');
+      router.push(ROUTE.login);
     } else {
       alert('회원가입에 실패했습니다.');
       setIsLoading(false);
@@ -44,10 +45,11 @@ const SignupButton = () => {
   return (
     <Button
       className='mt-5'
-      size='large'
-      color={isInvalid ? 'disable' : 'blue'}
+      size='lg'
+      color={isInvalid ? 'default' : 'primary'}
       onClick={handleClick}
-      disabled={isInvalid || isLoading}
+      isDisabled={isInvalid}
+      isLoading={isLoading}
     >
       Create account
     </Button>
