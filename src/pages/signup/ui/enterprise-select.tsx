@@ -1,9 +1,9 @@
 'use client';
 
+import { CircleCheck } from 'lucide-react';
 import { tv } from 'tailwind-variants';
 
 import { useSignupDataStore } from '@/pages/signup/store/signup-data';
-import { CheckCircleIcon } from '@/shared/ui';
 
 import { ENTERPRISE, PERSONAL } from '../constants';
 
@@ -31,7 +31,10 @@ const EnterpriseSelect = () => {
         className={style({ selected: selectedKey === PERSONAL })}
         onClick={() => onSelect(PERSONAL)}
       >
-        <CheckCircleIcon />
+        <CircleCheck
+          size={16}
+          style={{ padding: '0.5px', marginRight: '4px' }}
+        />
         Personal
       </button>
       <button
@@ -39,7 +42,10 @@ const EnterpriseSelect = () => {
         className={style({ selected: selectedKey === ENTERPRISE })}
         onClick={() => onSelect(ENTERPRISE)}
       >
-        <CheckCircleIcon />
+        <CircleCheck
+          size={16}
+          style={{ padding: '0.5px', marginRight: '4px' }}
+        />
         Enterprise
       </button>
     </div>

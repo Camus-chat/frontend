@@ -1,12 +1,13 @@
 'use client';
 
 import { Input } from '@heroui/input';
+import { Send } from 'lucide-react';
 import { useState } from 'react';
 
 import { useWebsocketStore } from '@/features/websocket/store';
-import { Button, SendIcon } from '@/shared/ui';
+import { Button } from '@/shared/ui';
 
-const IconButton = <SendIcon size={18} />;
+const IconButton = <Send size={18} />;
 
 const InputMessage: FC<{
   roomId: string;

@@ -1,4 +1,4 @@
-import { CheckIcon } from '@/shared/ui';
+import { Check } from 'lucide-react';
 
 import Animation from './animation';
 
@@ -22,7 +22,7 @@ const Banner = () => {
         <ul className='mt-4 font-medium'>
           {DETAILS.map((detail) => (
             <li key={detail} className='mb-1 flex items-center gap-2'>
-              <CheckIcon />
+              <Check size={16} />
               <span>{detail}</span>
             </li>
           ))}

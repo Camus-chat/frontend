@@ -1,13 +1,13 @@
 'use client';
 
 import { Button } from '@heroui/button';
+import { Plus } from 'lucide-react';
 
-import { PlusIcon } from '@/shared/ui';
 import { useServicePopup } from '@/widgets/service-content';
 
 import { CHANNEL_ACTION_KEY } from '../config';
-import { listItem } from './styles';
 import { useChannelFormStore } from '../store/form';
+import { listItem } from './styles';
 
 const ButtonChannelAdd = () => {
   const open = useServicePopup((state) => state.open);
@@ -24,7 +24,7 @@ const ButtonChannelAdd = () => {
       className={listItem({ class: 'flex-col text-default-500' })}
       onPress={onOpen}
     >
-      <PlusIcon />
+      <Plus />
       채널 추가
     </Button>
   );
