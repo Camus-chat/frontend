@@ -1,6 +1,6 @@
 'use client';
 
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
 
 import { ROUTE } from '@/shared/config';
@@ -10,7 +10,13 @@ const Login = () => {
     <span className='w-full bg-transparent p-5'>
       <Link href={ROUTE.login} className='bg-transparent text-white'>
         로그인해주세요
-        <ExpandMoreIcon className='ml-1 -rotate-90 bg-transparent fill-white' />
+        <ChevronLeft
+          style={{
+            marginLeft: '4px',
+            background: 'transparent',
+            color: 'white',
+          }}
+        />
       </Link>
     </span>
   );

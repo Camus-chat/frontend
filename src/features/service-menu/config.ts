@@ -1,5 +1,5 @@
 import { ROUTE } from '@/shared/config';
-import { MailBoxIcon, MessagesIcon, ProfileCardIcon } from '@/shared/ui';
+import { Mailbox, MessagesSquare, IdCard } from 'lucide-react';
 
 interface Menu {
   key: string;
@@ -13,18 +13,18 @@ export const SERVICE_MENU: Menu[] = [
     key: 'chat',
     name: '채팅',
     path: ROUTE.chat,
-    icon: MessagesIcon,
+    icon: MessagesSquare,
   },
   {
     key: 'channel',
     name: '채널',
     path: ROUTE.channel,
-    icon: MailBoxIcon,
+    icon: Mailbox,
   },
   {
     key: 'profile',
     name: '프로필',
     path: ROUTE.profile,
-    icon: ProfileCardIcon,
+    icon: IdCard,
   },
 ];
