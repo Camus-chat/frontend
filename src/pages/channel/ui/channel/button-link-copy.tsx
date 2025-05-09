@@ -1,8 +1,9 @@
 'use client';
 
+import { Link2 } from 'lucide-react';
+
 import { DOMAIN_NAME, ROUTE } from '@/shared/config';
 import { Button } from '@/shared/ui';
-import { Link } from 'lucide-react';
 
 interface Props {
   link: string;
@@ -19,7 +20,7 @@ const ButtonLinkCopy = ({ link }: Props) => {
 
   return (
     <Button size='sm' color='primary' isIconOnly onClick={handleClick}>
-      <Link size={20} />
+      <Link2 size={20} />
     </Button>
   );
 };
