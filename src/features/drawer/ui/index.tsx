@@ -1,6 +1,6 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import { useEffect } from 'react';
 
 import { backdrop, drawer } from './styles';
 import { useDrawerStore } from '../store/open';
@@ -12,6 +12,12 @@ interface Props {
 
 const Drawer = ({ children, className }: Props) => {
   const { open, closeDrawer } = useDrawerStore((state) => state);
+
+  useEffect(() => {
+    return () => {
+      closeDrawer();
+    };
+  }, []);
 
   return (
     <>
