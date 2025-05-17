@@ -15,15 +15,15 @@ const wrapper = tv({
 
 const link = tv({
   base: [
-    'h-service-menu flex flex-col items-center justify-center gap-1 px-3 text-xs text-default-500',
-    'hover:text-default-800 md:hover:text-default-200',
-    'md:text-sm',
+    'mx-1 flex size-service-menu flex-col items-center justify-center gap-1 rounded-md text-xs text-default-400',
+    'md:hover:bg-default-800',
+    'md:text-sm md:text-default-500',
   ],
   variants: {
     selected: {
       true: [
-        'font-semibold text-default-800',
-        'md:font-medium md:text-default-200',
+        'cursor-default font-semibold text-default-800',
+        'md:font-medium md:text-default-100',
       ],
     },
   },

@@ -12,7 +12,7 @@ const config = {
   theme: {
     extend: {
       spacing: {
-        'service-menu': '4rem',
+        'service-menu': '60px',
       },
       colors: {
         blue: {
