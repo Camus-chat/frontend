@@ -19,7 +19,7 @@ const Open = ({ className }: Props) => {
       type='button'
       onClick={closeDrawer}
     >
-      <X style={{ background: 'inherit', color: 'white' }} />
+      <X />
     </button>
   );
 };

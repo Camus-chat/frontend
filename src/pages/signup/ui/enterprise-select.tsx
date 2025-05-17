@@ -9,7 +9,7 @@ import { ENTERPRISE, PERSONAL } from '../constants';
 
 const style = tv({
   base: [
-    'flex items-center justify-center font-medium duration-300',
+    'flex items-center justify-center gap-1.5 font-medium duration-300',
     'h-10 min-w-[4rem] rounded-lg px-4 text-sm',
   ],
   variants: {
@@ -31,10 +31,7 @@ const EnterpriseSelect = () => {
         className={style({ selected: selectedKey === PERSONAL })}
         onClick={() => onSelect(PERSONAL)}
       >
-        <CircleCheck
-          size={16}
-          style={{ padding: '0.5px', marginRight: '4px' }}
-        />
+        <CircleCheck size={16} />
         Personal
       </button>
       <button
@@ -42,10 +39,7 @@ const EnterpriseSelect = () => {
         className={style({ selected: selectedKey === ENTERPRISE })}
         onClick={() => onSelect(ENTERPRISE)}
       >
-        <CircleCheck
-          size={16}
-          style={{ padding: '0.5px', marginRight: '4px' }}
-        />
+        <CircleCheck size={16} />
         Enterprise
       </button>
     </div>

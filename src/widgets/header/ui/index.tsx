@@ -45,7 +45,7 @@ const Header = async ({ business, className }: Props) => {
       </div>
       <Drawer className='fixed text-lg font-semibold md:hidden'>
         <div className='flex flex-col items-end bg-neutral-800'>
-          <DrawerClose className='m-3 bg-transparent fill-white' />
+          <DrawerClose className='te m-3 bg-transparent text-background' />
           <DrawerLogin />
         </div>
       </Drawer>

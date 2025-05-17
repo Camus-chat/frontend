@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronLeft } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
 import { ROUTE } from '@/shared/config';
@@ -8,15 +8,12 @@ import { ROUTE } from '@/shared/config';
 const Login = () => {
   return (
     <span className='w-full bg-transparent p-5'>
-      <Link href={ROUTE.login} className='bg-transparent text-white'>
+      <Link
+        href={ROUTE.login}
+        className='flex items-center gap-1 bg-transparent text-background'
+      >
         로그인해주세요
-        <ChevronLeft
-          style={{
-            marginLeft: '4px',
-            background: 'transparent',
-            color: 'white',
-          }}
-        />
+        <ChevronRight />
       </Link>
     </span>
   );
