@@ -1,6 +1,6 @@
 'use client';
 
-import CloseIcon from '@mui/icons-material/Close';
+import { X } from 'lucide-react';
 
 import { useDrawerStore } from '@/features/drawer/store/open';
 
@@ -19,7 +19,7 @@ const Open = ({ className }: Props) => {
       type='button'
       onClick={closeDrawer}
     >
-      <CloseIcon className='bg-inherit fill-inherit' />
+      <X />
     </button>
   );
 };

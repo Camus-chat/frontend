@@ -2,36 +2,35 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
 import { tv } from 'tailwind-variants';
 
 import { SERVICE_MENU } from '../config';
 
 const wrapper = tv({
   base: [
-    'flex w-full max-md:absolute max-md:bottom-0 max-md:justify-around',
+    'z-10 flex w-full max-md:absolute max-md:bottom-0 max-md:justify-around',
     'md:h-full md:w-fit md:flex-col md:gap-2 md:bg-default-900 md:pt-2',
   ],
 });
 
 const link = tv({
   base: [
-    'h-service-menu flex flex-col items-center justify-center gap-1 px-3 text-xs text-default-500',
-    'hover:text-default-800 md:hover:text-default-200',
-    'md:text-sm',
+    'mx-1 flex size-service-menu flex-col items-center justify-center gap-1 rounded-md text-xs text-default-400',
+    'md:hover:bg-default-800',
+    'md:text-sm md:text-default-500',
   ],
   variants: {
     selected: {
       true: [
-        'font-semibold text-default-800',
-        'md:font-medium md:text-default-200',
+        'cursor-default font-semibold text-default-800',
+        'md:font-medium md:text-default-100',
       ],
     },
   },
 });
 
 const Menu = () => {
-  const [pathname, setPathname] = useState(usePathname()?.split('/')[2]);
+  const pathname = usePathname()?.split('/')[2];
 
   return (
     <div className={wrapper()}>
@@ -40,7 +39,6 @@ const Menu = () => {
           key={item.key}
           href={item.path}
           className={link({ selected: item.key === pathname })}
-          onClick={() => setPathname(item.key)}
         >
           <item.icon />
           <div>{item.name}</div>
