@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
 import { tv } from 'tailwind-variants';
 
 import { SERVICE_MENU } from '../config';
@@ -31,7 +30,7 @@ const link = tv({
 });
 
 const Menu = () => {
-  const [pathname, setPathname] = useState(usePathname()?.split('/')[2]);
+  const pathname = usePathname()?.split('/')[2];
 
   return (
     <div className={wrapper()}>
@@ -40,7 +39,6 @@ const Menu = () => {
           key={item.key}
           href={item.path}
           className={link({ selected: item.key === pathname })}
-          onClick={() => setPathname(item.key)}
         >
           <item.icon />
           <div>{item.name}</div>
