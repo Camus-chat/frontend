@@ -9,7 +9,7 @@ import { SERVICE_MENU } from '../config';
 
 const wrapper = tv({
   base: [
-    'flex w-full max-md:absolute max-md:bottom-0 max-md:justify-around',
+    'z-10 flex w-full max-md:absolute max-md:bottom-0 max-md:justify-around',
     'md:h-full md:w-fit md:flex-col md:gap-2 md:bg-default-900 md:pt-2',
   ],
 });
