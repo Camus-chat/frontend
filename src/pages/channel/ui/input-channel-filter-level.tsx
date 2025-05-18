@@ -1,4 +1,4 @@
-import { Slider, type SliderProps } from '@heroui/slider';
+import { Slider, type SliderProps } from '@heroui/react';
 
 import { CHANNEL_FILTER_LEVEL } from '../config';
 import { useChannelFormStore } from '../store/form';

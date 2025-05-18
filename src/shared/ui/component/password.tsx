@@ -1,6 +1,6 @@
 'use client';
 
-import { Input, type InputProps } from '@heroui/input';
+import { Input, type InputProps } from '@heroui/react';
 import { useState } from 'react';
 import { tv } from 'tailwind-variants';
 

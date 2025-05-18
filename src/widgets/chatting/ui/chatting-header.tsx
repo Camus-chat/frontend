@@ -1,4 +1,4 @@
-import { CardHeader } from '@heroui/card';
+import { CardHeader } from '@heroui/react';
 
 export const ChattingHeader: FC<{
   children: ReactNode;

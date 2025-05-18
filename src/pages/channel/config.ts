@@ -1,4 +1,4 @@
-import { type ChipProps } from '@heroui/chip';
+import { type ChipProps } from '@heroui/react';
 
 export const CHANNEL_ACTION_KEY = {
   create: 'channel-create',

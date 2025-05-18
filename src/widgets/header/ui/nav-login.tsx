@@ -5,8 +5,8 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-} from '@heroui/dropdown';
-import { User } from '@heroui/user';
+  User,
+} from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import { tv } from 'tailwind-variants';
 

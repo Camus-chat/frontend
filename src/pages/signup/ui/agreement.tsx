@@ -1,6 +1,6 @@
 'use client';
 
-import { Checkbox } from '@heroui/checkbox';
+import { Checkbox } from '@heroui/react';
 import Link from 'next/link';
 
 import { useSignupDataStore } from '../store/signup-data';

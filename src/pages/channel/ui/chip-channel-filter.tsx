@@ -1,4 +1,4 @@
-import { Chip } from '@heroui/chip';
+import { Chip } from '@heroui/react';
 
 import { CHANNEL_FILTER_LEVEL } from '../config';
 

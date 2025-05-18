@@ -1,4 +1,4 @@
-import { CardBody, CardFooter, CardHeader } from '@heroui/card';
+import { CardBody, CardFooter, CardHeader } from '@heroui/react';
 
 import { MessageReceived } from '@/entities/message';
 

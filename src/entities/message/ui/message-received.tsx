@@ -1,4 +1,4 @@
-import { Avatar } from '@heroui/avatar';
+import { Avatar } from '@heroui/react';
 
 import { messageStyle } from './styles';
 

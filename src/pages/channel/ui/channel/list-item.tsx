@@ -1,4 +1,4 @@
-import { Card, CardBody, CardFooter, CardHeader } from '@heroui/card';
+import { Card, CardBody, CardFooter, CardHeader } from '@heroui/react';
 
 import ChipChannelFilter from '@/pages/channel/ui/chip-channel-filter';
 import ChipChannelType from '@/pages/channel/ui/chip-channel-type';

@@ -1,4 +1,4 @@
-import { Button, type ButtonProps } from '@heroui/button';
+import { Button, type ButtonProps } from '@heroui/react';
 
 interface Props extends Omit<ButtonProps, 'onPress' | 'onClick'> {
   onClick?: () => void;
