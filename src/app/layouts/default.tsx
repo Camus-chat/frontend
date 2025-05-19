@@ -11,7 +11,7 @@ interface Props {
 const Layout: FC<Props> = ({ children }) => {
   return (
     <AuthProvider>
-      <Header />
+      <Header isFixed />
       <main>{children}</main>
     </AuthProvider>
   );
