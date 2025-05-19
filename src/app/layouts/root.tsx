@@ -1,4 +1,4 @@
-import { HeroUIProvider } from '@heroui/system';
+import { HeroUIProvider } from '@heroui/react';
 
 import '@/app/styles';
 

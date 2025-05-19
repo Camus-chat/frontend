@@ -1,4 +1,4 @@
-import { ModalFooter } from '@heroui/modal';
+import { ModalFooter } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 

@@ -6,7 +6,7 @@ import {
   ModalContent,
   ModalHeader,
   useDisclosure,
-} from '@heroui/modal';
+} from '@heroui/react';
 
 import { Button } from '@/shared/ui';
 

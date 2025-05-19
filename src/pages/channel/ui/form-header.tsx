@@ -1,4 +1,4 @@
-import { CardHeader } from '@heroui/card';
+import { CardHeader } from '@heroui/react';
 
 const FormHeader: FC<{
   title: string;

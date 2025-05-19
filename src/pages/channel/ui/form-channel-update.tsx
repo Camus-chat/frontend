@@ -1,6 +1,6 @@
 'use client';
 
-import { CardBody, CardFooter } from '@heroui/card';
+import { CardBody, CardFooter } from '@heroui/react';
 
 import { Button } from '@/shared/ui';
 import { useServicePopup } from '@/widgets/service-content';

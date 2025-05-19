@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar } from '@heroui/avatar';
+import { Avatar } from '@heroui/react';
 
 import { CHATTING_ACTION_KEY } from '@/pages/chat/config';
 import { Button } from '@/shared/ui';

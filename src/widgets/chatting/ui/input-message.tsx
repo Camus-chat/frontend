@@ -1,6 +1,6 @@
 'use client';
 
-import { Input } from '@heroui/input';
+import { Input } from '@heroui/react';
 import { Send } from 'lucide-react';
 import { useState } from 'react';
 

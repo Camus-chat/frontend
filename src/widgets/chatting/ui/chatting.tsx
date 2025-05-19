@@ -1,6 +1,6 @@
 'use client';
 
-import { CardBody, CardFooter } from '@heroui/card';
+import { CardBody, CardFooter } from '@heroui/react';
 
 import { useChattingStore } from '../store';
 import InputMessage from './input-message';

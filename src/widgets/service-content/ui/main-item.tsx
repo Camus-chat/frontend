@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, CardBody, CardHeader } from '@heroui/card';
+import { Card, CardBody, CardHeader } from '@heroui/react';
 
 import { itemWrapperStyle } from './styles';
 
