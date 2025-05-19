@@ -13,6 +13,7 @@ const config = {
     extend: {
       spacing: {
         'service-menu': '60px',
+        mockup: '660px',
       },
       colors: {
         blue: {
