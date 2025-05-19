@@ -12,22 +12,35 @@ import Login from './nav-login';
 interface Props {
   business?: boolean;
   className?: string;
+  isFixed?: boolean;
 }
 
-const wrapper = tv({
-  base: 'wrapper flex h-14 items-center justify-between md:h-16',
+const createStyle = tv({
+  slots: {
+    base: 'w-full bg-background',
+    wrapper: 'wrapper flex h-14 items-center justify-between md:h-16',
+  },
+  variants: {
+    isFixed: {
+      true: {
+        base: 'fixed z-10',
+      },
+    },
+  },
 });
 
-const Header = async ({ business, className }: Props) => {
+const Header = async ({ business, className, isFixed }: Props) => {
   const isBusiness = !!business;
   const navigationMenuItems = business
     ? NAVIGATIONS.business
     : NAVIGATIONS.personal;
 
+  const styles = createStyle({ isFixed });
+
   return (
-    <header>
+    <header className={styles.base()}>
       <NavigationBelt business={isBusiness} className={className} />
-      <div className={wrapper({ className })}>
+      <div className={styles.wrapper({ className })}>
         <Logo business={isBusiness} />
         <nav className='flex h-full max-md:hidden'>
           {navigationMenuItems.map((item) => (
