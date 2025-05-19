@@ -2,31 +2,50 @@
 
 import { Input } from '@heroui/react';
 import { Send } from 'lucide-react';
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
-import { useWebsocketStore } from '@/features/websocket/store';
 import { Button } from '@/shared/ui';
 
-const IconButton = <Send size={18} />;
+const sendIcon = <Send size={18} className='mr-0.5 mt-0.5' />;
 
-const InputMessage: FC<{
-  roomId: string;
-}> = ({ roomId }) => {
-  const client = useWebsocketStore((state) => state.client);
-  const isConnected = useWebsocketStore((state) => state.isConnected);
+interface Props {
+  onSendMessage: (value: string) => void;
+  isDisabled?: boolean;
+}
+
+const InputMessage = ({ onSendMessage, isDisabled }: Props) => {
   const [value, setValue] = useState('');
   const hasValue = !!value.trim();
 
-  const handleSendMessage = () => {
-    if (isConnected && hasValue) {
-      client.sendMessage(roomId, value);
-      setValue('');
-    }
-  };
+  const handleSendMessage = useCallback(() => {
+    setValue((prev) => {
+      const trimmed = prev.trim();
+      if (!trimmed) {
+        return prev;
+      }
+      onSendMessage(trimmed);
+      return '';
+    });
+  }, []);
+
+  const sendButton = useMemo(() => {
+    return (
+      <Button
+        size='sm'
+        color='primary'
+        radius='full'
+        isIconOnly
+        onClick={handleSendMessage}
+        isDisabled={!hasValue}
+      >
+        {sendIcon}
+      </Button>
+    );
+  }, [hasValue]);
 
   return (
     <Input
-      isDisabled={!isConnected}
+      isDisabled={isDisabled}
       placeholder='메시지 입력'
       classNames={{
         inputWrapper: 'pr-1',
@@ -39,18 +58,7 @@ const InputMessage: FC<{
           handleSendMessage();
         }
       }}
-      endContent={
-        <Button
-          size='sm'
-          color='primary'
-          radius='full'
-          isIconOnly
-          onClick={handleSendMessage}
-          isDisabled={!hasValue}
-        >
-          {IconButton}
-        </Button>
-      }
+      endContent={sendButton}
     />
   );
 };
