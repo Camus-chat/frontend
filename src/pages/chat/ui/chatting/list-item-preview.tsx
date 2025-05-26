@@ -2,7 +2,7 @@
 
 import { Chip } from '@heroui/react';
 
-import { useChattingRoomStore } from '../../store/chatting-room';
+import { useChattingRoomStore } from '@/entities/chatting-room';
 
 const Preview: FC<{
   chattingRoomId: ChattingRoom['roomId'];

@@ -1,8 +1,7 @@
 'use client';
 
+import { useChattingRoomStore } from '@/entities/chatting-room';
 import ChattingListItem from '@/pages/chat/ui/chatting/list-item';
-
-import { useChattingRoomStore } from '../../store/chatting-room';
 
 const compareDate = (a: ChattingRoom, b: ChattingRoom) => {
   if (a.lastMessage.createdDate > b.lastMessage.createdDate) {
