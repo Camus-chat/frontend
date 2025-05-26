@@ -26,8 +26,8 @@ const evaluateIsLast = (message: Message.Common, nextMessage?: Message) => {
 
 const Message = memo<{
   message: Message;
-  prevMessage?: Message;
-  nextMessage?: Message;
+  prevMessage: Message | undefined;
+  nextMessage: Message | undefined;
 }>(({ message, prevMessage, nextMessage }) => {
   const currentMemberId = useMemberStore((state) => state.member?.uuid);
 
