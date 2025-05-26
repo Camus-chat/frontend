@@ -1,11 +1,14 @@
+import { usePathname } from 'next/navigation';
 import { memo } from 'react';
 
+import { useChattingRoomStore } from '@/entities/chatting-room';
 import { useMemberStore } from '@/entities/member';
 import {
   MessageNotice,
   MessageReceived,
   MessageSent,
 } from '@/entities/message';
+import { TUTORIAL_CHAT_MEMBER_ID } from '@/shared/config';
 
 const evaluateIsFirst = (message: Message.Common, prevMessage?: Message) => {
   if (!prevMessage || prevMessage.type === 'NoticeMessage') {
@@ -24,12 +27,26 @@ const evaluateIsLast = (message: Message.Common, nextMessage?: Message) => {
   );
 };
 
+const useMemberId = () => {
+  const memberId = useMemberStore((state) => state.member?.uuid);
+
+  const pathname = usePathname();
+  if (pathname === '/') {
+    return TUTORIAL_CHAT_MEMBER_ID.user;
+  }
+
+  return memberId;
+};
+
 const Message = memo<{
   message: Message;
   prevMessage: Message | undefined;
   nextMessage: Message | undefined;
 }>(({ message, prevMessage, nextMessage }) => {
-  const currentMemberId = useMemberStore((state) => state.member?.uuid);
+  const currentMemberId = useMemberId();
+  const chattingMemberMap = useChattingRoomStore(
+    (state) => state.chattingMemberMap,
+  );
 
   if (message.type === 'NoticeMessage') {
     const text = message.content; // TODO: 테스트 필요
@@ -50,8 +67,7 @@ const Message = memo<{
     );
   }
 
-  // TODO: senderId를 통해서 유저 정보를 가져와야 함
-  const sender = { nickname: '테스트', profileLink: null };
+  const sender = chattingMemberMap[message.senderId];
 
   return (
     <MessageReceived
