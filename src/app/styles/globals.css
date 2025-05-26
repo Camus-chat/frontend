@@ -5,17 +5,18 @@
 @tailwind utilities;
 
 @layer base {
-    html {
-        font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-    }
+  html {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    scrollbar-width: thin;
+  }
 
-    body {
-        @apply tracking-tight overflow-x-hidden;
-    }
+  body {
+    @apply tracking-tight overflow-x-hidden;
+  }
 }
 
 @layer components {
-    .wrapper {
-        @apply max-w-screen-xl mx-auto px-5 md:max-xl:px-7;
-    }
+  .wrapper {
+    @apply max-w-screen-xl mx-auto px-5 md:px-7 lg:px-10;
+  }
 }
