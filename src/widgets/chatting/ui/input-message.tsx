@@ -2,7 +2,7 @@
 
 import { Input } from '@heroui/react';
 import { Send } from 'lucide-react';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { Button } from '@/shared/ui';
 
@@ -15,6 +15,7 @@ interface Props {
 
 const InputMessage = ({ onSendMessage, isDisabled }: Props) => {
   const [value, setValue] = useState('');
+  const compositionRef = useRef(false);
   const hasValue = !!value.trim();
 
   const handleSendMessage = useCallback(() => {
@@ -43,6 +44,14 @@ const InputMessage = ({ onSendMessage, isDisabled }: Props) => {
     );
   }, [hasValue]);
 
+  const onCompositionStart = useCallback(() => {
+    compositionRef.current = true;
+  }, []);
+
+  const onCompositionEnd = useCallback(() => {
+    compositionRef.current = false;
+  }, []);
+
   return (
     <Input
       isDisabled={isDisabled}
@@ -54,11 +63,16 @@ const InputMessage = ({ onSendMessage, isDisabled }: Props) => {
       value={value}
       onValueChange={setValue}
       onKeyDown={(e) => {
+        if (compositionRef.current) {
+          return;
+        }
         if (e.key === 'Enter') {
           handleSendMessage();
         }
       }}
       endContent={sendButton}
+      onCompositionEnd={onCompositionEnd}
+      onCompositionStart={onCompositionStart}
     />
   );
 };
