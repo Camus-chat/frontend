@@ -1,6 +1,6 @@
 import { Skeleton } from '@heroui/react';
 
-import { useChattingRoomStore } from '../../store/chatting-room';
+import { useChattingRoomStore } from '@/entities/chatting-room';
 
 const Nickname: FC<{
   chattingRoom: ChattingRoom;

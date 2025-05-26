@@ -5,12 +5,10 @@ import { useStore } from 'zustand';
 import { createStore } from 'zustand/vanilla';
 
 import { useMemberStore } from '@/entities/member';
-import { addParsedTime } from '@/entities/message';
 
-import { getCounterpart } from '../lib';
+import { getChattingRoomMap } from './lib';
 
 type RoomId = ChattingRoom['roomId'];
-type MemberId = Member['uuid'];
 
 interface State {
   chattingRoomMap: Record<RoomId, ChattingRoom>;
@@ -55,25 +53,15 @@ const ChattingRoomContext = createContext<ChattingRoomStoreApi | null>(null);
 
 export const ChattingRoomProvider: FC<{
   children: ReactNode;
-  chattingRooms: ChattingRoom.RawData[];
+  chattingRooms?: ChattingRoom.RawData[];
   chattingMemberMap: Record<MemberId, Member>;
 }> = ({ children, chattingRooms, chattingMemberMap }) => {
   const storeRef = useRef<ChattingRoomStoreApi | null>(null);
   const memberId = useMemberStore((state) => state.member?.uuid);
 
   if (storeRef.current === null) {
-    const chattingRoomMap = Object.fromEntries(
-      chattingRooms.map((room) => {
-        return [
-          room.roomId,
-          {
-            ...room,
-            lastMessage: addParsedTime(room.lastMessage),
-            counterpart: getCounterpart(room, memberId),
-          },
-        ];
-      }),
-    );
+    const chattingRoomMap = getChattingRoomMap({ chattingRooms, memberId });
+
     storeRef.current = createChattingRoomStore({
       chattingRoomMap,
       chattingMemberMap,
