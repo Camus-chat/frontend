@@ -16,18 +16,16 @@ interface Props {
 const InputMessage = ({ onSendMessage, isDisabled }: Props) => {
   const [value, setValue] = useState('');
   const compositionRef = useRef(false);
-  const hasValue = !!value.trim();
+  const trimmed = value.trim();
+  const hasValue = Boolean(trimmed);
 
-  const handleSendMessage = useCallback(() => {
-    setValue((prev) => {
-      const trimmed = prev.trim();
-      if (!trimmed) {
-        return prev;
-      }
-      onSendMessage(trimmed);
-      return '';
-    });
-  }, []);
+  const handleSendMessage = () => {
+    if (!hasValue) {
+      return;
+    }
+    onSendMessage(trimmed);
+    setValue('');
+  };
 
   const sendButton = useMemo(() => {
     return (
