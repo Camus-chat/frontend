@@ -11,7 +11,11 @@ const config = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '480px',
+      },
       spacing: {
+        22: '5.5rem',
         'service-menu': '60px',
         mockup: '660px',
       },
