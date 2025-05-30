@@ -25,7 +25,7 @@ export const MessageSent = ({
   return (
     <div className={styles.base()}>
       {isLast && <div className={styles.subText()}>{time}</div>}
-      <div className={styles.bubbleWrapper()}>
+      <div className={styles.wrapper()}>
         <div className={styles.bubble()}>
           <p>{text}</p>
           {isFiltered && (

@@ -41,7 +41,7 @@ export const MessageReceived = ({
   return (
     <div className={styles.base()}>
       {avatar}
-      <div className={styles.bubbleWrapper()}>
+      <div className={styles.wrapper()}>
         {isFirst && <div className={styles.mainText()}>{sender.nickname}</div>}
         <div className={styles.bubble()}>
           <p>{text}</p>
