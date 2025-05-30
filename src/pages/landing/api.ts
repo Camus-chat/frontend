@@ -2,7 +2,9 @@
 
 import axios from 'axios';
 
-import { FILTERING_API_BASE_URL } from '@/shared/config';
+import { FILTERING_API_BASE_URL, FILTERING_PREDICTION } from '@/shared/config';
+
+import { TUTORIAL_CHAT_FILTER_LEVEL } from './config';
 
 const baseURL =
   process.env.NODE_ENV === 'development'
@@ -20,6 +22,8 @@ export const fetchFilteringPrediction = async (text: string) => {
   return client.post('/predict', { text }).then((res) => {
     const { prediction } = res.data;
     console.debug('prediction:', prediction);
-    return prediction === 2;
+    return prediction === FILTERING_PREDICTION.neutral
+      ? 0
+      : TUTORIAL_CHAT_FILTER_LEVEL;
   });
 };

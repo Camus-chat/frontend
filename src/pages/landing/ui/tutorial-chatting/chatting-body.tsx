@@ -18,11 +18,12 @@ const TutorialChattingBody = () => {
   ]);
 
   const handleSendMessage = (value: string) => {
-    fetchFilteringPrediction(value).then((filtered) => {
-      if (filtered) {
-        // TODO: 필터링된 메시지 추가
-      }
-      const message = createMessage(value, TUTORIAL_CHAT_MEMBER_ID.user);
+    fetchFilteringPrediction(value).then((filterLevel) => {
+      const message = createMessage(
+        value,
+        TUTORIAL_CHAT_MEMBER_ID.user,
+        filterLevel,
+      );
       setMessages((prev) => [...prev, message]);
     });
   };
