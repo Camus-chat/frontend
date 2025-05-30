@@ -7,6 +7,7 @@ import { Messages } from '@/features/messages';
 import { TUTORIAL_CHAT_MEMBER_ID } from '@/shared/config';
 import { ChattingInput } from '@/widgets/chatting';
 
+import { fetchFilteringPrediction } from '../../api';
 import { createMessage } from '../../lib/tutorial-chatting';
 
 const TutorialChattingBody = () => {
@@ -17,10 +18,13 @@ const TutorialChattingBody = () => {
   ]);
 
   const handleSendMessage = (value: string) => {
-    setMessages((prev) => [
-      ...prev,
-      createMessage(value, TUTORIAL_CHAT_MEMBER_ID.user),
-    ]);
+    fetchFilteringPrediction(value).then((filtered) => {
+      if (filtered) {
+        // TODO: 필터링된 메시지 추가
+      }
+      const message = createMessage(value, TUTORIAL_CHAT_MEMBER_ID.user);
+      setMessages((prev) => [...prev, message]);
+    });
   };
 
   useEffect(() => {
