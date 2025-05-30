@@ -2,7 +2,7 @@ import { tv } from 'tailwind-variants';
 
 export const messageStyle = tv({
   slots: {
-    wrapper: 'mt-1 flex w-full items-end gap-1',
+    base: 'mt-1 flex w-full items-end gap-1',
     bubbleWrapper: 'flex max-w-[70%] flex-col gap-1',
     bubble: 'rounded-2xl px-4 py-3',
     mainText: 'text-sm font-semibold',
@@ -11,10 +11,10 @@ export const messageStyle = tv({
   variants: {
     type: {
       notice: {
-        wrapper: 'justify-center',
+        base: 'justify-center',
       },
       sent: {
-        wrapper: 'justify-end',
+        base: 'justify-end',
         bubble: 'bg-blue-100',
       },
       received: {
@@ -23,7 +23,7 @@ export const messageStyle = tv({
     },
     isFirst: {
       true: {
-        wrapper: 'mt-3',
+        base: 'mt-3',
       },
     },
   },

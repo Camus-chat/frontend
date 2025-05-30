@@ -20,7 +20,7 @@ export const MessageReceived = ({
   const styles = messageStyle({ type: 'received', isFirst });
 
   return (
-    <div className={styles.wrapper()}>
+    <div className={styles.base()}>
       {isFirst && (
         <Avatar
           size='sm'
