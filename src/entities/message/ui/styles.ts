@@ -4,9 +4,10 @@ export const messageStyle = tv({
   slots: {
     base: 'mt-1 flex w-full items-end gap-1',
     bubbleWrapper: 'flex max-w-[70%] flex-col gap-1',
-    bubble: 'rounded-2xl px-4 py-3',
+    bubble: 'flex flex-col gap-1 rounded-2xl px-4 py-3',
     mainText: 'text-sm font-semibold',
     subText: 'text-xs text-default-500',
+    button: 'self-end text-xs text-default-500',
   },
   variants: {
     type: {
@@ -24,6 +25,11 @@ export const messageStyle = tv({
     isFirst: {
       true: {
         base: 'mt-3',
+      },
+    },
+    isFiltered: {
+      true: {
+        bubble: 'border border-red-500 bg-red-50 text-red-500',
       },
     },
   },

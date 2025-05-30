@@ -42,7 +42,8 @@ const Message = memo<{
   message: Message;
   prevMessage: Message | undefined;
   nextMessage: Message | undefined;
-}>(({ message, prevMessage, nextMessage }) => {
+  chattingFilterLevel: Channel['filterLevel'];
+}>(({ message, prevMessage, nextMessage, chattingFilterLevel }) => {
   const currentMemberId = useMemberId();
   const chattingMemberMap = useChattingRoomStore(
     (state) => state.chattingMemberMap,
@@ -55,6 +56,8 @@ const Message = memo<{
 
   const isFirst = evaluateIsFirst(message, prevMessage);
   const isLast = evaluateIsLast(message, nextMessage);
+  const isFiltered =
+    !!message.filteredLevel && message.filteredLevel <= chattingFilterLevel;
 
   if (message.senderId === currentMemberId) {
     return (
@@ -63,6 +66,7 @@ const Message = memo<{
         time={message.time}
         isFirst={isFirst}
         isLast={isLast}
+        isFiltered={isFiltered}
       />
     );
   }
@@ -76,6 +80,7 @@ const Message = memo<{
       sender={sender}
       isFirst={isFirst}
       isLast={isLast}
+      isFiltered={isFiltered}
     />
   );
 });
