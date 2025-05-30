@@ -19,13 +19,12 @@ const TutorialChattingBody = () => {
   ]);
 
   const handleSendMessage = (value: string) => {
+    const message = createMessage(value, TUTORIAL_CHAT_MEMBER_ID.user);
+    setMessages((prev) => [...prev, message]);
+
     fetchFilteringPrediction(value).then((filterLevel) => {
-      const message = createMessage(
-        value,
-        TUTORIAL_CHAT_MEMBER_ID.user,
-        filterLevel,
-      );
-      setMessages((prev) => [...prev, message]);
+      message.filteredLevel = filterLevel;
+      setMessages((prev) => [...prev]);
     });
   };
 

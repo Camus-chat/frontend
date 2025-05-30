@@ -1,4 +1,4 @@
-import Message from './message';
+import MessageBubble from './message';
 
 interface Props {
   messages: Message[];
@@ -6,15 +6,22 @@ interface Props {
 }
 
 const Messages = ({ messages, filterLevel }: Props) => {
-  return messages.map((message, index) => (
-    <Message
-      key={message.messageId}
-      message={message}
-      prevMessage={messages[index - 1]}
-      nextMessage={messages[index + 1]}
-      chattingFilterLevel={filterLevel}
-    />
-  ));
+  return messages.map((message, index) => {
+    const key =
+      message.type === 'NoticeMessage'
+        ? message.messageId
+        : `${message.messageId}-${message.filteredLevel}`;
+
+    return (
+      <MessageBubble
+        key={key}
+        message={message}
+        prevMessage={messages[index - 1]}
+        nextMessage={messages[index + 1]}
+        chattingFilterLevel={filterLevel}
+      />
+    );
+  });
 };
 
 export default Messages;
