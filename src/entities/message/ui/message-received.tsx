@@ -1,3 +1,5 @@
+'use client';
+
 import { Avatar } from '@heroui/react';
 import { useMemo, useState } from 'react';
 
