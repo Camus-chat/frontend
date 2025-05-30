@@ -30,3 +30,6 @@ export const TUTORIAL_CHAT_MEMBER_ID = {
   ai: 'tutorial-ai',
   user: 'tutorial-user',
 };
+
+export const FILTERING_API_BASE_URL =
+  process.env.NEXT_PUBLIC_FILTERING_API_BASE_URL;

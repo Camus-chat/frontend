@@ -9,6 +9,10 @@ const nextConfig = {
           source: '/client/:path*',
           destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}/:path*`,
         },
+        {
+          source: '/filtering/:path*',
+          destination: `${process.env.NEXT_PUBLIC_FILTERING_API_BASE_URL}/:path*`,
+        },
       ];
     },
   }),
