@@ -1,4 +1,4 @@
-import { heroui } from '@heroui/theme';
+import { heroui } from '@heroui/react';
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -7,12 +7,17 @@ const config = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/@heroui/theme/dist/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '480px',
+      },
       spacing: {
+        22: '5.5rem',
         'service-menu': '60px',
+        mockup: '660px',
       },
       colors: {
         blue: {
