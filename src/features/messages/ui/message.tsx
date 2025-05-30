@@ -38,7 +38,7 @@ const useMemberId = () => {
   return memberId;
 };
 
-const Message = memo<{
+const MessageBubble = memo<{
   message: Message;
   prevMessage: Message | undefined;
   nextMessage: Message | undefined;
@@ -85,4 +85,4 @@ const Message = memo<{
   );
 });
 
-export default Message;
+export default MessageBubble;
