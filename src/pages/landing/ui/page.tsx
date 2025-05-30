@@ -1,4 +1,5 @@
-import Hero from './hero';
+import { Hero } from '@/shared/ui';
+
 import TutorialChatting from './tutorial-chatting/chatting';
 import TutorialChattingDescription from './tutorial-chatting/description';
 
