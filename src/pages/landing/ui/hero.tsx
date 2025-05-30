@@ -2,32 +2,34 @@ import { tv } from 'tailwind-variants';
 
 const createStyle = tv({
   slots: {
-    base: 'wrapper',
+    base: '',
     wrapper: [
-      'flex items-center lg:gap-10',
-      'flex-col lg:flex-row',
-      'lg:justify-between',
+      'wrapper flex flex-col items-center',
+      'lg:flex-row lg:justify-between lg:gap-10',
       'py-16 md:py-24',
     ],
+  },
+  variants: {
+    isFirst: {
+      true: {
+        base: 'pt-14 md:pt-22',
+      },
+    },
   },
 });
 
 interface Props {
   children: ReactNode;
-  classNames?: {
-    base?: string;
-    wrapper?: string;
-  };
+  className?: string;
+  isFirst?: boolean;
 }
 
-const Hero = ({ children, classNames }: Props) => {
-  const styles = createStyle();
+const Hero = ({ children, className, isFirst }: Props) => {
+  const styles = createStyle({ isFirst });
 
   return (
-    <article className={styles.base({ class: classNames?.base })}>
-      <div className={styles.wrapper({ class: classNames?.wrapper })}>
-        {children}
-      </div>
+    <article className={styles.base({ class: className })}>
+      <div className={styles.wrapper()}>{children}</div>
     </article>
   );
 };
