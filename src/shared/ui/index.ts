@@ -4,3 +4,4 @@ export { default as Password } from './component/password';
 export { Input } from '@heroui/react';
 export { default as Logo } from './component/logo';
 export { default as Mockup } from './component/mockup';
+export { default as Hero } from './component/hero';
