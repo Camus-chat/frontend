@@ -16,16 +16,16 @@ const Agreement = () => {
       onValueChange={setIsAgreed}
     >
       <p className='text-sm font-light text-gray-400'>
-        {"I agree to CAMUS's "}
+        {'CAMUS의 '}
         <Link href='/terms-of-service' className='font-normal text-blue-600'>
-          Terms of Service
+          서비스 약관
         </Link>
-        {' and '}
+        {' 및 '}
         <Link href='/privacy-notice' className='font-normal text-blue-600'>
-          Privacy Policy
+          개인정보 보호정책
         </Link>
         {
-          ' which includes my consent to receive marketing information from CAMUS. I can unsubscribe from marketing communications at any time.'
+          ' 에 동의합니다. 이는 CAMUS로부터 마케팅 정보를 수신하는 것에 대한 내 동의를 포함합니다. 마케팅 커뮤니케이션 수신을 언제든지 취소할 수 있습니다.'
         }
       </p>
     </Checkbox>

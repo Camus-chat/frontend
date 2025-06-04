@@ -33,27 +33,6 @@ const Banner = () => {
           </ul>
         </div>
       </div>
-      <Divider className='my-12' />
-      <section className='text-center'>
-        <div>
-          <h3 className='mb-2 text-xl font-semibold'>
-            CAMUS와 함께할 파트너를 기다리고 있어요
-          </h3>
-          <p className='text-sm text-gray-500'>
-            귀사의 브랜드가 이 자리에 함께하게 될 수 있습니다.
-          </p>
-        </div>
-        <div className='grid grid-cols-2 gap-16'>
-          {[true, false].map((isBusiness) => (
-            <div
-              key={String(isBusiness)}
-              className='flex h-16 items-center justify-center text-gray-900'
-            >
-              <Logo business={isBusiness} />
-            </div>
-          ))}
-        </div>
-      </section>
     </article>
   );
 };

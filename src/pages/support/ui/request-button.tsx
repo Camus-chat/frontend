@@ -18,16 +18,18 @@ const RequestButton = () => {
   );
 
   const handleClick = useCallback(async () => {
-    alert('성공적으로 제출되었습니다.');
+    if (isInvalid) {
+      alert('내용을 입력해주세요.');
+    } else {
+      alert('성공적으로 제출되었습니다.');
+    }
   }, []);
 
   return (
     <Button
-      className='mt-5'
+      className='bg-gradient-to-tr from-indigo-400 to-indigo-800 text-white shadow-lg'
       size='lg'
-      color={isInvalid ? 'default' : 'primary'}
       onClick={handleClick}
-      isDisabled={isInvalid}
     >
       Submit
     </Button>

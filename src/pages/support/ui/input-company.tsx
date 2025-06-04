@@ -25,12 +25,15 @@ const InputCompany = () => {
 
   return (
     <Input
-      variant='underlined'
+      variant='bordered'
       value={company}
       size='lg'
       errorMessage={errorMessage}
       isInvalid={Boolean(errorMessage)}
-      label='Company'
+      label='회사'
+      labelPlacement='outside'
+      placeholder='회사명'
+      isRequired
       onChange={handleCompanyChange}
     />
   );

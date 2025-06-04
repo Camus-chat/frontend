@@ -1,3 +1,5 @@
+import { Button } from '@heroui/react';
+
 import Agreement from '@/pages/support/ui/agreement';
 import Banner from '@/pages/support/ui/banner';
 import InputCompany from '@/pages/support/ui/input-company';
@@ -15,12 +17,18 @@ const SupportPage = () => {
         <Banner />
       </aside>
       <div className='order-2 flex w-full flex-col items-center justify-start px-16 lg:order-2 lg:items-start'>
-        <div className='flex w-full max-w-[540px] flex-col gap-1 rounded-md border bg-white p-6'>
+        <div className='mb-4 flex w-full max-w-[540px] flex-col gap-3.5 rounded-lg border-2 bg-white p-8'>
           <InputEmail />
           <InputName />
           <InputCompany />
           <Agreement />
           <RequestButton />
+        </div>
+        <div className='flex w-full max-w-[540px] items-center justify-between rounded-lg bg-white px-4 py-2'>
+          <p>이미 CAMUS 계정이 있으신가요?</p>
+          <Button color='primary' variant='light'>
+            로그인
+          </Button>
         </div>
       </div>
     </div>

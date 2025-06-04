@@ -25,12 +25,15 @@ const InputName = () => {
 
   return (
     <Input
-      variant='underlined'
+      variant='bordered'
       value={name}
       size='lg'
       errorMessage={errorMessage}
       isInvalid={Boolean(errorMessage)}
-      label='Name'
+      label='이름'
+      labelPlacement='outside'
+      isRequired
+      placeholder='홍길동'
       onChange={handleNameChange}
     />
   );

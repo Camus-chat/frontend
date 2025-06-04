@@ -30,12 +30,15 @@ const InputEmail = () => {
 
   return (
     <Input
-      variant='underlined'
+      variant='bordered'
       value={email}
       size='lg'
       errorMessage={errorMessage}
       isInvalid={Boolean(errorMessage)}
-      label='Email'
+      label='업무용 이메일'
+      labelPlacement='outside'
+      placeholder='이메일 주소'
+      isRequired
       onChange={handleEmailChange}
     />
   );
