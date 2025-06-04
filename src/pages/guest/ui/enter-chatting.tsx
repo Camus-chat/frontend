@@ -12,7 +12,13 @@ const EnterChatting: FC<{
         <h2 className='text-3xl font-semibold'>{info.title}</h2>
       </CardHeader>
       <CardBody>
-        <MessageReceived message={info.content} time='' sender={info} isFirst />
+        <MessageReceived
+          message={info.content}
+          time=''
+          sender={info}
+          isFirst
+          isFiltered={false}
+        />
       </CardBody>
       <CardFooter className='flex-col gap-2'>{children}</CardFooter>
     </>
