@@ -27,7 +27,7 @@ const GuestChattingPage: FC<{
           <ChattingHeader>
             <ChattingTitle title={roomInfo.channelTitle} />
           </ChattingHeader>
-          <Chatting roomId={roomId} />
+          <Chatting roomInfo={roomInfo} />
         </WebsocketProvider>
       </ServiceContent.ContentItem>
     </ServiceContent>
