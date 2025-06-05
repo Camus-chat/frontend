@@ -25,7 +25,7 @@ const SupportInput = ({
 
   return (
     <Input
-      classNames={{ inputWrapper: 'border-1' }}
+      classNames={{ inputWrapper: 'border-1', label: 'z-0' }}
       {...props}
       variant='bordered'
       size='lg'
