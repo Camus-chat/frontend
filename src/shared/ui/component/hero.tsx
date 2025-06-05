@@ -5,7 +5,8 @@ const createStyle = tv({
     base: '',
     wrapper: [
       'wrapper flex flex-col items-center',
-      'lg:flex-row lg:justify-between lg:gap-10',
+      'lg:flex-row lg:justify-between',
+      'gap-16 lg:gap-10',
       'py-16 md:py-24',
     ],
   },
