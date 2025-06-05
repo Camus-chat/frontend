@@ -33,3 +33,9 @@ export const TUTORIAL_CHAT_MEMBER_ID = {
 
 export const FILTERING_API_BASE_URL =
   process.env.NEXT_PUBLIC_FILTERING_API_BASE_URL;
+
+export const FILTERING_PREDICTION = {
+  abuse: 0,
+  harassment: 1,
+  neutral: 2,
+};

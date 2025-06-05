@@ -5,6 +5,7 @@ let id = 0;
 export const createMessage = (
   content: string,
   senderId: string,
+  filteredLevel = 0,
 ): Message.Common => {
   const messageId = id++;
   const date = new Date();
@@ -21,6 +22,6 @@ export const createMessage = (
     createdDate,
     time,
     senderId,
-    filteredLevel: 0,
+    filteredLevel,
   };
 };

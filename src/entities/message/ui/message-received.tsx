@@ -1,4 +1,7 @@
+'use client';
+
 import { Avatar } from '@heroui/react';
+import { useMemo, useState } from 'react';
 
 import { messageStyle } from './styles';
 
@@ -8,6 +11,7 @@ interface Props {
   sender: Pick<Member, 'nickname' | 'profileLink'>;
   isFirst?: boolean;
   isLast?: boolean;
+  isFiltered: boolean;
 }
 
 export const MessageReceived = ({
@@ -16,21 +20,43 @@ export const MessageReceived = ({
   sender,
   isFirst,
   isLast,
+  isFiltered,
 }: Props) => {
-  const styles = messageStyle({ type: 'received', isFirst });
+  const [filtered, setFiltered] = useState(isFiltered);
+  const text = filtered ? '필터링 되었습니다.' : message;
+
+  const styles = messageStyle({ type: 'received', isFirst, isFiltered });
+
+  const avatar = useMemo(() => {
+    if (!isFirst) {
+      return null;
+    }
+    return (
+      <Avatar
+        size='sm'
+        src={sender.profileLink || undefined}
+        className='mr-1 self-start'
+      />
+    );
+  }, []);
 
   return (
-    <div className={styles.wrapper()}>
-      {isFirst && (
-        <Avatar
-          size='sm'
-          src={sender.profileLink || undefined}
-          className='mr-1 self-start'
-        />
-      )}
-      <div className={styles.bubbleWrapper()}>
+    <div className={styles.base()}>
+      {avatar}
+      <div className={styles.wrapper()}>
         {isFirst && <div className={styles.mainText()}>{sender.nickname}</div>}
-        <div className={styles.bubble()}>{message}</div>
+        <div className={styles.bubble()}>
+          <p>{text}</p>
+          {isFiltered && (
+            <button
+              type='button'
+              className={styles.button()}
+              onClick={() => setFiltered((prev) => !prev)}
+            >
+              {filtered ? '해제하기' : '가리기'}
+            </button>
+          )}
+        </div>
       </div>
       {isLast && <div className={styles.subText()}>{time}</div>}
     </div>

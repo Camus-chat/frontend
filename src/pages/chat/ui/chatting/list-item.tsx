@@ -13,7 +13,7 @@ import Preview from './list-item-preview';
 const ChattingListItem: FC<{ chatting: ChattingRoom }> = ({ chatting }) => {
   const onClick = () => {
     useServicePopup.getState().open(CHATTING_ACTION_KEY.enter);
-    useChattingStore.getState().setRoomId(chatting.roomId);
+    useChattingStore.getState().setRoom(chatting);
   };
 
   return (
