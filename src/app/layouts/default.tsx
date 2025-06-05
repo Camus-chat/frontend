@@ -1,7 +1,5 @@
 import type { FC, ReactNode } from 'react';
 
-import Header from '@/widgets/header';
-
 import AuthProvider from '../provider/auth';
 
 interface Props {
@@ -9,12 +7,7 @@ interface Props {
 }
 
 const Layout: FC<Props> = ({ children }) => {
-  return (
-    <AuthProvider>
-      <Header isFixed />
-      <main>{children}</main>
-    </AuthProvider>
-  );
+  return <AuthProvider>{children}</AuthProvider>;
 };
 
 export default Layout;
