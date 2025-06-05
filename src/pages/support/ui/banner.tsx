@@ -1,7 +1,4 @@
-import { Divider } from '@heroui/react';
 import { CheckCircle } from 'lucide-react';
-
-import { Logo } from '@/shared/ui';
 
 const BANNER_OPTION = [
   '활용 사례 상담',
@@ -19,8 +16,8 @@ const Banner = () => {
           문의하세요.
         </h2>
         <p className='mt-4 text-xl font-light tracking-tight text-gray-700 lg:pr-5 lg:text-2xl'>
-          CAMUS가 앱 내외에서 제공하는 더욱 혁신적인{' '}
-          <br className='hidden lg:inline' /> 커뮤니케이션을 확인해보세요.
+          CAMUS가 앱 내외에서 제공하는 더욱 혁신적인 커뮤니케이션을
+          확인해보세요.
         </p>
         <div className='flex items-center justify-center lg:justify-start'>
           <ul className='mt-4 text-medium font-semibold lg:text-xl'>

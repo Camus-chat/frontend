@@ -17,11 +17,11 @@ const Agreement = () => {
     >
       <p className='text-sm font-light text-gray-400'>
         {'CAMUS의 '}
-        <Link href='/terms-of-service' className='font-normal text-blue-600'>
+        <Link href='/terms-of-service' className='font-normal text-indigo-600'>
           서비스 약관
         </Link>
         {' 및 '}
-        <Link href='/privacy-notice' className='font-normal text-blue-600'>
+        <Link href='/privacy-notice' className='font-normal text-indigo-600'>
           개인정보 보호정책
         </Link>
         {
