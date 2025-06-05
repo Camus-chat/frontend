@@ -1,12 +1,12 @@
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-import Agreement from '@/pages/support/ui/agreement';
+import Agreement from '@/pages/landing/ui/support/agreement';
+import RequestButton from '@/pages/landing/ui/support/request-button';
 import Banner from '@/pages/support/ui/banner';
 import InputCompany from '@/pages/support/ui/input-company';
 import InputEmail from '@/pages/support/ui/input-email';
 import InputName from '@/pages/support/ui/input-name';
-import RequestButton from '@/pages/support/ui/request-button';
 import { Hero } from '@/shared/ui';
 
 const SupportPage = () => {

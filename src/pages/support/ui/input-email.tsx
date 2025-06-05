@@ -2,7 +2,7 @@
 
 import { type ChangeEvent } from 'react';
 
-import { useAssistDataStore } from '@/pages/support/store/assist-data';
+import { useAssistDataStore } from '@/pages/landing/store/assist-data';
 import { EMAIL_REGEX } from '@/shared/config';
 import { Input } from '@/shared/ui';
 

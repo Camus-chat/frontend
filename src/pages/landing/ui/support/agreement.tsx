@@ -3,7 +3,7 @@
 import { Checkbox } from '@heroui/react';
 import Link from 'next/link';
 
-import { useAssistDataStore } from '@/pages/support/store/assist-data';
+import { useAssistDataStore } from '@/pages/landing/store/assist-data';
 
 const Agreement = () => {
   const isAgreed = useAssistDataStore((state) => state.isAgreed);
@@ -11,7 +11,10 @@ const Agreement = () => {
 
   return (
     <Checkbox
-      className='mt-2 max-w-full items-start pr-0'
+      className='max-w-full items-start pr-0'
+      classNames={{
+        wrapper: 'after:bg-indigo-600',
+      }}
       isSelected={isAgreed}
       onValueChange={setIsAgreed}
     >
