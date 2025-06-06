@@ -19,4 +19,8 @@
   .wrapper {
     @apply max-w-screen-xl mx-auto px-5 md:px-7 lg:px-10;
   }
+
+  .hero {
+    @apply py-16 md:py-24
+  }
 }
