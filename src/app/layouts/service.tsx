@@ -11,15 +11,13 @@ interface Props {
 
 const ServiceLayout: FC<Props> = ({ children }) => {
   return (
-    <div className='grid size-full grid-rows-[auto,1fr]'>
-      <AuthProvider requireAuth={process.env.NODE_ENV !== 'development'}>
-        <Header className='max-w-none' />
-        <main className='relative overflow-y-hidden md:grid md:grid-cols-[auto,1fr] md:bg-default-100'>
-          <Menu />
-          {children}
-        </main>
-      </AuthProvider>
-    </div>
+    <AuthProvider requireAuth={process.env.NODE_ENV !== 'development'}>
+      <Header className='max-w-none' />
+      <main className='relative grow overflow-y-hidden md:grid md:grid-cols-[auto,1fr] md:bg-default-100'>
+        <Menu />
+        {children}
+      </main>
+    </AuthProvider>
   );
 };
 
