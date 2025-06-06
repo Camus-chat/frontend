@@ -14,6 +14,7 @@ export const PASSWORD_REGEX =
 export const ACCESS_TOKEN = 'a-t';
 
 export const ROUTE = {
+  home: '/',
   login: '/signin',
   signup: '/signup',
   chat: '/service/chat',

@@ -2,11 +2,11 @@ import { tv } from 'tailwind-variants';
 
 const createStyle = tv({
   slots: {
-    base: '',
+    base: 'w-full',
     wrapper: [
-      'wrapper flex flex-col items-center',
-      'lg:flex-row lg:justify-between lg:gap-10',
-      'py-16 md:py-24',
+      'hero wrapper flex flex-col items-center',
+      'lg:flex-row lg:justify-between',
+      'gap-16 lg:gap-10',
     ],
   },
   variants: {

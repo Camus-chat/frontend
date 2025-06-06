@@ -1,14 +1,16 @@
 import { tv } from 'tailwind-variants';
 
+import { description } from '../styles';
+
 const createStyle = tv({
+  extend: description,
   slots: {
     wrapper: [
-      'flex max-w-[666px] flex-col gap-4 max-lg:mb-16 lg:max-xl:grow',
+      'max-w-[666px] lg:max-xl:grow',
       'items-center xl:items-start',
       'text-center xl:text-left',
     ],
-    title: ['font-bold', 'text-5xl md:text-6xl lg:text-7xl xl:text-6xl'],
-    description: 'text-lg sm:text-xl',
+    title: 'xl:text-6xl',
   },
 });
 
