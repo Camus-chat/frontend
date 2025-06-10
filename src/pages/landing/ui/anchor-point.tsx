@@ -16,7 +16,14 @@ const AnchorPoint = ({ label, anchorPortalId }: Props) => {
   );
 
   const scroll = () => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
+    const offset = 64;
+    const elementPosition = ref.current?.getBoundingClientRect().top ?? 0; // 뷰포트 기준 위치
+    const offsetPosition = window.scrollY + elementPosition - offset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth',
+    });
   };
 
   useEffect(() => {
