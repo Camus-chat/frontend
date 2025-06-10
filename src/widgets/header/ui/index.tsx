@@ -13,31 +13,30 @@ import Login from './nav-login';
 interface Props {
   business?: boolean;
   className?: string;
-  isFixed?: boolean;
+  position?: 'fixed' | 'sticky';
   children?: ReactNode;
 }
 
 const createStyle = tv({
   slots: {
-    base: 'w-full bg-background',
+    base: 'z-10 w-full bg-background',
     wrapper: 'wrapper flex h-14 items-center justify-between md:h-16',
   },
   variants: {
-    isFixed: {
-      true: {
-        base: 'fixed z-10',
-      },
+    position: {
+      fixed: { base: 'fixed' },
+      sticky: { base: 'sticky top-0' },
     },
   },
 });
 
-const Header = async ({ business, className, isFixed, children }: Props) => {
+const Header = async ({ business, className, position, children }: Props) => {
   const isBusiness = !!business;
   const navigationMenuItems = business
     ? NAVIGATIONS.business
     : NAVIGATIONS.personal;
 
-  const styles = createStyle({ isFixed });
+  const styles = createStyle({ position });
 
   return (
     <header className={styles.base()}>

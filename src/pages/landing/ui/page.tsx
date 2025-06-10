@@ -11,12 +11,12 @@ import TutorialChattingDescription from './tutorial-chatting/description';
 const LandingPage = () => {
   return (
     <>
-      <Header isFixed>
+      <Header position='sticky'>
         <nav id='nav-menu' className='flex gap-8 max-md:hidden' />
       </Header>
       <main>
         <AnchorPoint label='소개' anchorPortalId='nav-menu' />
-        <Hero className='bg-sky-50/40' isFirst>
+        <Hero className='bg-sky-50/40'>
           <TutorialChattingDescription />
           <TutorialChatting />
         </Hero>
