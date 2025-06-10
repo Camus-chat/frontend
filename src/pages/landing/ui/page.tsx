@@ -1,4 +1,5 @@
 import { Hero } from '@/shared/ui';
+import { Footer } from '@/widgets/footer';
 import Header from '@/widgets/header';
 
 import AnchorPoint from './anchor-point';
@@ -25,6 +26,7 @@ const LandingPage = () => {
           <SupportForm />
         </Hero>
       </main>
+      <Footer />
     </>
   );
 };
