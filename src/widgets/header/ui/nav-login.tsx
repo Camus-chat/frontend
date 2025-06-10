@@ -59,8 +59,12 @@ const Login = ({ className }: Props) => {
         <User name={member.nickname} description={member.username} />
       </DropdownTrigger>
       <DropdownMenu variant='flat' disabledKeys={['chat', 'channel']}>
-        <DropdownItem key='chat'>내 채팅</DropdownItem>
-        <DropdownItem key='channel'>내 채널</DropdownItem>
+        <DropdownItem key='chat' onPress={() => router.push(ROUTE.chat)}>
+          내 채팅
+        </DropdownItem>
+        <DropdownItem key='channel' onPress={() => router.push(ROUTE.channel)}>
+          내 채널
+        </DropdownItem>
         <DropdownItem
           key='logout'
           className='text-red-500'
