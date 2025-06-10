@@ -11,7 +11,7 @@ const LandingPage = () => {
   return (
     <>
       <Header isFixed>
-        <nav id='nav-menu' className='flex gap-8' />
+        <nav id='nav-menu' className='flex gap-8 max-md:hidden' />
       </Header>
       <main>
         <AnchorPoint label='소개' anchorPortalId='nav-menu' />
