@@ -15,7 +15,10 @@ const LandingPage = () => {
       </Header>
       <main>
         <AnchorPoint label='소개' anchorPortalId='nav-menu' />
-        <Hero className='bg-sky-50/40' isFirst>
+        <Hero
+          className='bg-[url(/images/background-landing.svg)] bg-cover bg-center bg-no-repeat'
+          isFirst
+        >
           <TutorialChattingDescription />
           <TutorialChatting />
         </Hero>
