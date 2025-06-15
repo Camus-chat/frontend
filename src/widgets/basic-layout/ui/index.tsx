@@ -1,6 +1,7 @@
 import { tv } from 'tailwind-variants';
 
 import { Logo } from '@/shared/ui';
+import { Footer } from '@/widgets/footer';
 
 export const createStyle = tv({
   slots: {
@@ -25,18 +26,28 @@ export const createStyle = tv({
 
 interface Props {
   children: ReactNode;
+  classNames?: {
+    header?: string;
+  };
   isHeaderSticky?: boolean;
+  removeFooter?: boolean;
 }
 
-export const BasicLayout = ({ children, isHeaderSticky }: Props) => {
+export const BasicLayout = ({
+  children,
+  classNames,
+  isHeaderSticky,
+  removeFooter,
+}: Props) => {
   const styles = createStyle({ isHeaderSticky });
 
   return (
     <>
-      <header className={styles.header()}>
+      <header className={styles.header({ class: classNames?.header })}>
         <Logo business={false} />
       </header>
       <main className={styles.main()}>{children}</main>
+      {!removeFooter && <Footer />}
     </>
   );
 };

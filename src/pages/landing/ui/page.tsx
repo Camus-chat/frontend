@@ -1,4 +1,5 @@
 import { Hero } from '@/shared/ui';
+import { Footer } from '@/widgets/footer';
 import Header from '@/widgets/header';
 
 import AnchorPoint from './anchor-point';
@@ -10,14 +11,13 @@ import TutorialChattingDescription from './tutorial-chatting/description';
 const LandingPage = () => {
   return (
     <>
-      <Header isFixed>
-        <nav id='nav-menu' className='flex gap-8' />
+      <Header position='sticky'>
+        <nav id='nav-menu' className='flex gap-8 max-md:hidden' />
       </Header>
       <main>
         <AnchorPoint label='소개' anchorPortalId='nav-menu' />
         <Hero
           className='bg-[url(/images/background-landing.svg)] bg-cover bg-center bg-no-repeat'
-          isFirst
         >
           <TutorialChattingDescription />
           <TutorialChatting />
@@ -28,6 +28,7 @@ const LandingPage = () => {
           <SupportForm />
         </Hero>
       </main>
+      <Footer />
     </>
   );
 };

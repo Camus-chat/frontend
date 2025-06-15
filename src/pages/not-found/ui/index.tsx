@@ -6,7 +6,10 @@ import HomeButton from './home-button';
 
 const ComingSoon = () => {
   return (
-    <BasicLayout isHeaderSticky>
+    <BasicLayout
+      classNames={{ header: 'mx-auto w-full max-w-screen-xl' }}
+      isHeaderSticky
+    >
       <article className='hero flex size-full flex-col items-center justify-center gap-4 text-center'>
         <h1 className='text-6xl font-bold'>Page not found</h1>
         <p className='text-xl'>
