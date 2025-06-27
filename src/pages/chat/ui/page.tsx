@@ -1,3 +1,4 @@
+import { ChattingRoomProvider } from '@/entities/chatting-room';
 import { WebsocketProvider as WebsocketConnector } from '@/features/websocket';
 import { requestChattingMemberMap } from '@/pages/chat/api/member';
 import { Chatting } from '@/widgets/chatting';
@@ -5,7 +6,6 @@ import ServiceContent from '@/widgets/service-content';
 
 import { requestChattingList } from '../api/chatting';
 import { CHATTING_ACTION_KEY } from '../config';
-import { ChattingRoomProvider } from '../store/chatting-room';
 import ChattingList from './chatting/list';
 
 const ChattingPage = async () => {

@@ -1,53 +1,64 @@
-import Link from 'next/link';
+import { ChevronRight } from 'lucide-react';
 import { tv } from 'tailwind-variants';
 
 import { Drawer, DrawerClose, DrawerOpen } from '@/features/drawer';
+import { ROUTE } from '@/shared/config';
 import { Logo } from '@/shared/ui';
 
 import { NAVIGATIONS } from '../config/navigation';
-import DrawerLogin from './drawer-item/login';
+import DrawerLink from './drawer-item/link';
 import NavigationBelt from './nav-belt';
 import Login from './nav-login';
 
 interface Props {
   business?: boolean;
   className?: string;
+  position?: 'fixed' | 'sticky';
+  children?: ReactNode;
 }
 
-const wrapper = tv({
-  base: 'wrapper flex h-14 items-center justify-between md:h-16',
+const createStyle = tv({
+  slots: {
+    base: 'z-10 w-full bg-background',
+    wrapper: 'wrapper flex h-14 items-center justify-between md:h-16',
+  },
+  variants: {
+    position: {
+      fixed: { base: 'fixed' },
+      sticky: { base: 'sticky top-0' },
+    },
+  },
 });
 
-const Header = async ({ business, className }: Props) => {
+const Header = async ({ business, className, position, children }: Props) => {
   const isBusiness = !!business;
   const navigationMenuItems = business
     ? NAVIGATIONS.business
     : NAVIGATIONS.personal;
 
+  const styles = createStyle({ position });
+
   return (
-    <header>
+    <header className={styles.base()}>
       <NavigationBelt business={isBusiness} className={className} />
-      <div className={wrapper({ className })}>
+      <div className={styles.wrapper({ className })}>
         <Logo business={isBusiness} />
-        <nav className='flex h-full max-md:hidden'>
-          {navigationMenuItems.map((item) => (
-            <Link
-              className='flex h-full items-center px-4 text-sm font-medium hover:text-blue-700'
-              key={item.key}
-              href={item.path}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
+        {children}
         <Login className='max-md:hidden' />
         <DrawerOpen className='md:hidden' />
       </div>
-      <Drawer className='fixed text-lg font-semibold md:hidden'>
+      <Drawer className='fixed md:hidden'>
         <div className='flex flex-col items-end bg-neutral-800'>
-          <DrawerClose className='m-3 bg-transparent fill-white' />
-          <DrawerLogin />
+          <DrawerClose className='m-3 text-background' />
+          <DrawerLink
+            className='gap-1 font-medium text-background'
+            path={ROUTE.login}
+          >
+            로그인해주세요
+            <ChevronRight />
+          </DrawerLink>
         </div>
+        <DrawerLink path={ROUTE.signup}>회원가입</DrawerLink>
       </Drawer>
     </header>
   );

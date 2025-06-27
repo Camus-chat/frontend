@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar } from '@heroui/avatar';
+import { Avatar } from '@heroui/react';
 
 import { CHATTING_ACTION_KEY } from '@/pages/chat/config';
 import { Button } from '@/shared/ui';
@@ -13,7 +13,7 @@ import Preview from './list-item-preview';
 const ChattingListItem: FC<{ chatting: ChattingRoom }> = ({ chatting }) => {
   const onClick = () => {
     useServicePopup.getState().open(CHATTING_ACTION_KEY.enter);
-    useChattingStore.getState().setRoomId(chatting.roomId);
+    useChattingStore.getState().setRoom(chatting);
   };
 
   return (

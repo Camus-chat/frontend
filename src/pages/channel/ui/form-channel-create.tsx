@@ -1,17 +1,17 @@
 'use client';
 
-import { CardBody, CardFooter } from '@heroui/card';
+import { CardBody, CardFooter } from '@heroui/react';
 
 import { Button } from '@/shared/ui';
 import { useServicePopup } from '@/widgets/service-content';
 
 import { createChannel } from '../api';
+import { useChannelStore } from '../store/channel';
+import { useChannelFormStore } from '../store/form';
 import FormHeader from './form-header';
 import InputChannelDescription from './input-channel-description';
 import InputChannelFilterLevel from './input-channel-filter-level';
 import InputChannelName from './input-channel-name';
-import { useChannelStore } from '../store/channel';
-import { useChannelFormStore } from '../store/form';
 
 const CreateButton = () => {
   const isInvalid = useChannelFormStore(

@@ -1,4 +1,4 @@
-import { ModalFooter } from '@heroui/modal';
+import { ModalFooter } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -6,7 +6,6 @@ import { signIn } from '@/features/login';
 import { ROUTE } from '@/shared/config';
 import { useTokenStore } from '@/shared/store';
 import { Button } from '@/shared/ui';
-import { useChattingStore } from '@/widgets/chatting';
 
 import { guestSignUp, requestEnterChatting } from '../api';
 
@@ -39,7 +38,6 @@ const EnterAsGuestFooter: FC<{
       return;
     }
 
-    useChattingStore.getState().setRoomId(roomId);
     router.push(`${ROUTE.guest}/${link}/${roomId}`);
   };
 

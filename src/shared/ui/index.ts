@@ -1,15 +1,7 @@
 // components
 export { default as Button } from './component/button';
 export { default as Password } from './component/password';
-export { Input } from '@heroui/input';
+export { Input } from '@heroui/react';
 export { default as Logo } from './component/logo';
-
-// icons
-export { CheckIcon } from './icon/check';
-export { CheckCircleIcon } from './icon/check-circle';
-export { MessagesIcon } from './icon/messages';
-export { ProfileCardIcon } from './icon/profile-card';
-export { MailBoxIcon } from './icon/mail-box';
-export { PlusIcon } from './icon/plus';
-export { LinkIcon } from './icon/link';
-export { SendIcon } from './icon/send';
+export { default as Mockup } from './component/mockup';
+export { default as Hero } from './component/hero';

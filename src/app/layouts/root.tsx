@@ -1,4 +1,4 @@
-import { HeroUIProvider } from '@heroui/system';
+import { HeroUIProvider } from '@heroui/react';
 
 import '@/app/styles';
 
@@ -14,7 +14,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang='en'>
       <body>
-        <HeroUIProvider className='h-screen w-screen'>
+        <HeroUIProvider className='flex min-h-screen w-screen flex-col'>
           {children}
         </HeroUIProvider>
       </body>

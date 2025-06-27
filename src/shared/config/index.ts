@@ -14,6 +14,7 @@ export const PASSWORD_REGEX =
 export const ACCESS_TOKEN = 'a-t';
 
 export const ROUTE = {
+  home: '/',
   login: '/signin',
   signup: '/signup',
   chat: '/service/chat',
@@ -24,4 +25,18 @@ export const ROUTE = {
 
 export const MEATADATA = {
   title: 'CAMUS',
+};
+
+export const TUTORIAL_CHAT_MEMBER_ID = {
+  ai: 'tutorial-ai',
+  user: 'tutorial-user',
+};
+
+export const FILTERING_API_BASE_URL =
+  process.env.NEXT_PUBLIC_FILTERING_API_BASE_URL;
+
+export const FILTERING_PREDICTION = {
+  abuse: 0,
+  harassment: 1,
+  neutral: 2,
 };

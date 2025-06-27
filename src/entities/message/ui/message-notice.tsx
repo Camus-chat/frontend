@@ -8,7 +8,7 @@ const styles = messageStyle({ type: 'notice', isFirst: true });
 
 export const MessageNotice = ({ message }: Props) => {
   return (
-    <div className={styles.wrapper()}>
+    <div className={styles.base()}>
       <div className={styles.subText()}>{message}</div>
     </div>
   );

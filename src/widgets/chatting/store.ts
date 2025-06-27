@@ -1,16 +1,16 @@
 import { create } from 'zustand';
 
 interface State {
-  currentRoomId: string | null;
+  currentRoom: ChattingRoom | null;
 }
 
 interface Actions {
-  setRoomId: (currentRoomId: string) => void;
+  setRoom: (selectedRoom: ChattingRoom) => void;
 }
 
 type ChattingRoomStore = State & Actions;
 
 export const useChattingStore = create<ChattingRoomStore>((set) => ({
-  currentRoomId: null,
-  setRoomId: (currentRoomId) => set({ currentRoomId }),
+  currentRoom: null,
+  setRoom: (selectedRoom) => set({ currentRoom: selectedRoom }),
 }));

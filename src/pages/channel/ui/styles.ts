@@ -1,4 +1,4 @@
-import { type InputProps } from '@heroui/input';
+import { type InputProps } from '@heroui/react';
 import { tv } from 'tailwind-variants';
 
 export const listItem = tv({

@@ -1,18 +1,23 @@
 'use client';
 
-import { CardBody, CardFooter } from '@heroui/card';
+import { CardBody, CardFooter } from '@heroui/react';
 
-import { useChattingStore } from '../store';
+import { useWebsocketStore } from '@/features/websocket';
+
+import { useCurrentRoom } from '../hook';
 import InputMessage from './input-message';
 import MessagesNew from './messages-new';
 
-export const Chatting: FC<{
-  roomId?: string;
-}> = ({ roomId }) => {
-  const currentRoomId =
-    useChattingStore((state) => state.currentRoomId) || roomId;
+interface Props {
+  roomInfo?: ChattingRoom.Info;
+}
 
-  if (!currentRoomId) {
+export const Chatting = ({ roomInfo }: Props) => {
+  const currentRoom = useCurrentRoom(roomInfo);
+  const client = useWebsocketStore((state) => state.client);
+  const isConnected = useWebsocketStore((state) => state.isConnected);
+
+  if (!currentRoom) {
     return (
       <CardBody>
         <div>error</div>
@@ -20,13 +25,22 @@ export const Chatting: FC<{
     );
   }
 
+  const handleSendMessage = (value: string) => {
+    if (isConnected && !value) {
+      client.sendMessage(currentRoom.roomId, value);
+    }
+  };
+
   return (
     <>
       <CardBody>
-        <MessagesNew roomId={currentRoomId} />
+        <MessagesNew roomInfo={currentRoom} />
       </CardBody>
       <CardFooter className='p-0'>
-        <InputMessage roomId={currentRoomId} />
+        <InputMessage
+          isDisabled={!isConnected}
+          onSendMessage={handleSendMessage}
+        />
       </CardFooter>
     </>
   );

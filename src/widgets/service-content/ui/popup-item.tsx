@@ -1,9 +1,9 @@
 'use client';
 
-import { Card } from '@heroui/card';
+import { Card } from '@heroui/react';
 
-import { itemWrapperStyle } from './styles';
 import { useServicePopup } from '../store/popup';
+import { itemWrapperStyle } from './styles';
 
 interface Props {
   children: ReactNode;

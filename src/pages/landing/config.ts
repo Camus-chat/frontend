@@ -1,0 +1,1 @@
+export const TUTORIAL_CHAT_FILTER_LEVEL = 100;
