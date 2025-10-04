@@ -25,7 +25,7 @@ const createStyle = tv({
   variants: {
     position: {
       fixed: { base: 'fixed' },
-      sticky: { base: 'sticky top-0' },
+      sticky: { base: 'sticky top-0 bg-transparent backdrop-blur-lg' },
     },
   },
 });
