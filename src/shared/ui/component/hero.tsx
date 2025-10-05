@@ -1,3 +1,6 @@
+'use client';
+
+import { type MotionProps, motion, stagger } from 'framer-motion';
 import { tv } from 'tailwind-variants';
 
 const createStyle = tv({
@@ -18,19 +21,34 @@ const createStyle = tv({
   },
 });
 
-interface Props {
+type Props = {
   children: ReactNode;
   className?: string;
   isFirst?: boolean;
-}
+} & Pick<MotionProps, 'viewport'>;
 
-const Hero = ({ children, className, isFirst }: Props) => {
+const Hero = ({ children, className, isFirst, viewport }: Props) => {
   const styles = createStyle({ isFirst });
 
   return (
-    <article className={styles.base({ class: className })}>
+    <motion.article
+      viewport={viewport}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: {
+            duration: 1.5,
+            delayChildren: stagger(0.5),
+          },
+        },
+      }}
+      initial='hidden'
+      whileInView='visible'
+      className={styles.base({ class: className })}
+    >
       <div className={styles.wrapper()}>{children}</div>
-    </article>
+    </motion.article>
   );
 };
 

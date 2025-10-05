@@ -18,7 +18,10 @@ const LandingPage = () => {
       </Header>
       <main>
         <AnchorPoint label='소개' anchorPortalId={NAV_ID} />
-        <Hero className='bg-[url(/images/background-landing.svg)] bg-cover bg-center bg-no-repeat'>
+        <Hero
+          viewport={{ once: true }}
+          className='bg-[url(/images/background-landing.svg)] bg-cover bg-center bg-no-repeat'
+        >
           <TutorialChattingDescription />
           <TutorialChatting />
         </Hero>

@@ -1,3 +1,7 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
 import { description } from '../styles';
 import { CheckCircle } from './check-circle';
 
@@ -5,7 +9,20 @@ const SupportDescription = () => {
   const styles = description();
 
   return (
-    <div className={styles.wrapper({ class: 'max-lg:items-center' })}>
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: 0.2,
+            duration: 0.5,
+          },
+        },
+      }}
+      className={styles.wrapper({ class: 'max-lg:items-center' })}
+    >
       <h1 className={styles.title({ class: 'max-xs:text-center' })}>
         {'지금 영업팀에 '}
         <br className='xs:max-lg:hidden' />
@@ -30,7 +47,7 @@ const SupportDescription = () => {
           ),
         )}
       </ul>
-    </div>
+    </motion.div>
   );
 };
 
