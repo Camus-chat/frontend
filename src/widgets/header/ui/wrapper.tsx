@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 interface Props {
   children: React.ReactNode;
-  classname?: string;
+  className?: string;
   animated?: boolean;
 }
 
