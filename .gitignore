@@ -48,3 +48,5 @@ logs
 
 # JetBrains IDEs (e.g., WebStorm, IntelliJ IDEA)
 .idea/
+*storybook.log
+storybook-static
