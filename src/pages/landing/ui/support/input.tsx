@@ -1,40 +1,33 @@
 import { Input } from '@heroui/react';
+import { type UseControllerProps, useController } from 'react-hook-form';
 
-import { useAssistDataStore } from '@/pages/landing/store/assist-data';
-
-type Selector = Parameters<typeof useAssistDataStore>[0];
-type State = Parameters<Selector>[0];
-
-interface Props {
+interface Props
+  extends UseControllerProps<
+    SupportFormData,
+    Exclude<keyof SupportFormData, 'agreed'>
+  > {
   label: string;
   placeholder: string;
-  valueSelector: (state: State) => string;
-  setValueSelector: (state: State) => (value: string) => void;
-  errorSelector?: (state: State) => string;
 }
 
-const SupportInput = ({
-  valueSelector,
-  setValueSelector,
-  errorSelector,
-  ...props
-}: Props) => {
-  const value = useAssistDataStore(valueSelector);
-  const setValue = useAssistDataStore(setValueSelector);
-  const error = useAssistDataStore(errorSelector ?? (() => undefined));
+const SupportInput = ({ label, placeholder, ...props }: Props) => {
+  const {
+    field,
+    fieldState: { invalid, error },
+  } = useController(props);
 
   return (
     <Input
       classNames={{ inputWrapper: 'border-1', label: 'z-0' }}
-      {...props}
+      {...field}
+      label={label}
+      placeholder={placeholder}
       variant='bordered'
       size='lg'
       labelPlacement='outside'
-      value={value}
       isRequired
-      onValueChange={setValue}
-      errorMessage={error}
-      isInvalid={Boolean(error)}
+      errorMessage={error?.message}
+      isInvalid={invalid}
     />
   );
 };

@@ -1,10 +1,12 @@
 'use client';
 
+import { Form } from '@heroui/form';
 import { LogIn } from 'lucide-react';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
 import { tv } from 'tailwind-variants';
 
-import { ROUTE } from '@/shared/config';
+import { EMAIL_REGEX, ROUTE } from '@/shared/config';
 
 import Agreement from './agreement';
 import SupportInput from './input';
@@ -34,43 +36,63 @@ const createStyle = tv({
 
 const SupportForm = () => {
   const styles = createStyle();
+  const { handleSubmit, control } = useForm<SupportFormData>({
+    defaultValues: {
+      email: '',
+      firstName: '',
+      lastName: '',
+      company: '',
+      agreed: false,
+    },
+  });
+
+  const onSubmit = (data: SupportFormData) => {
+    console.log(data);
+    alert('성공적으로 제출되었습니다.');
+  };
 
   return (
     <div className={styles.wrapper()}>
-      <div className={styles.form()}>
+      <Form className={styles.form()} onSubmit={handleSubmit(onSubmit)}>
         <SupportInput
           label='업무용 이메일'
           placeholder='이메일 주소'
-          valueSelector={(state) => state.email}
-          setValueSelector={(state) => state.setEmail}
-          errorSelector={(state) => state.emailError}
+          name='email'
+          control={control}
+          rules={{
+            required: '필수 입력 항목입니다.',
+            pattern: {
+              value: EMAIL_REGEX,
+              message: '이메일 형식이 올바르지 않습니다.',
+            },
+          }}
         />
         <div className={styles.inputWrapper()}>
           <SupportInput
             label='성'
             placeholder='홍'
-            valueSelector={(state) => state.lastName}
-            setValueSelector={(state) => state.setLastName}
-            errorSelector={(state) => state.lastNameError}
+            name='firstName'
+            control={control}
+            rules={{ required: '필수 입력 항목입니다.' }}
           />
           <SupportInput
             label='이름'
             placeholder='길동'
-            valueSelector={(state) => state.name}
-            setValueSelector={(state) => state.setName}
-            errorSelector={(state) => state.nameError}
+            name='lastName'
+            control={control}
+            rules={{ required: '필수 입력 항목입니다.' }}
           />
         </div>
         <SupportInput
           label='회사'
           placeholder='회사명'
-          valueSelector={(state) => state.company}
-          setValueSelector={(state) => state.setCompany}
-          errorSelector={(state) => state.companyError}
+          name='company'
+          control={control}
+          rules={{ required: '필수 입력 항목입니다.' }}
         />
-        <Agreement />
+        <Agreement name='agreed' control={control} rules={{ required: true }} />
         <RequestButton />
-      </div>
+      </Form>
       <div className={styles.login()}>
         이미 CAMUS 계정이 있으신가요?
         <Link

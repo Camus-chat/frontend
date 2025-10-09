@@ -2,12 +2,13 @@
 
 import { Checkbox } from '@heroui/react';
 import Link from 'next/link';
+import { type UseControllerProps, useController } from 'react-hook-form';
 
-import { useAssistDataStore } from '@/pages/landing/store/assist-data';
-
-const Agreement = () => {
-  const isAgreed = useAssistDataStore((state) => state.isAgreed);
-  const setIsAgreed = useAssistDataStore((state) => state.setIsAgreed);
+const Agreement = (props: UseControllerProps<SupportFormData, 'agreed'>) => {
+  const {
+    field: { value, ...field },
+    fieldState: { invalid },
+  } = useController(props);
 
   return (
     <Checkbox
@@ -15,8 +16,9 @@ const Agreement = () => {
       classNames={{
         wrapper: 'after:bg-indigo-600',
       }}
-      isSelected={isAgreed}
-      onValueChange={setIsAgreed}
+      {...field}
+      isSelected={value}
+      isInvalid={invalid}
     >
       <p className='text-sm font-light text-gray-400'>
         {'CAMUS의 '}
