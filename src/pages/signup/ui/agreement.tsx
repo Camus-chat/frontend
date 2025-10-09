@@ -3,6 +3,8 @@
 import { Checkbox } from '@heroui/react';
 import Link from 'next/link';
 
+import { ROUTE } from '@/shared/config';
+
 import { useSignupDataStore } from '../store/signup-data';
 
 const Agreement = () => {
@@ -17,11 +19,11 @@ const Agreement = () => {
     >
       <p className='text-sm font-light text-gray-400'>
         {"I agree to CAMUS's "}
-        <Link href='/terms-of-service' className='font-normal text-blue-600'>
+        <Link href={ROUTE.termsOfService} className='font-normal text-blue-600'>
           Terms of Service
         </Link>
         {' and '}
-        <Link href='/privacy-notice' className='font-normal text-blue-600'>
+        <Link href={ROUTE.privacyNotice} className='font-normal text-blue-600'>
           Privacy Policy
         </Link>
         {
