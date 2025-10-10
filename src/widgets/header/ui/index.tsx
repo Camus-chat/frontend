@@ -9,6 +9,7 @@ import { NAVIGATIONS } from '../config/navigation';
 import DrawerLink from './drawer-item/link';
 import NavigationBelt from './nav-belt';
 import Login from './nav-login';
+import HeaderWrapper from './wrapper';
 
 interface Props {
   business?: boolean;
@@ -25,7 +26,7 @@ const createStyle = tv({
   variants: {
     position: {
       fixed: { base: 'fixed' },
-      sticky: { base: 'sticky top-0' },
+      sticky: { base: 'sticky top-0 bg-transparent backdrop-blur-lg' },
     },
   },
 });
@@ -39,7 +40,7 @@ const Header = async ({ business, className, position, children }: Props) => {
   const styles = createStyle({ position });
 
   return (
-    <header className={styles.base()}>
+    <HeaderWrapper className={styles.base()} animated={position === 'sticky'}>
       <NavigationBelt business={isBusiness} className={className} />
       <div className={styles.wrapper({ className })}>
         <Logo business={isBusiness} />
@@ -60,7 +61,7 @@ const Header = async ({ business, className, position, children }: Props) => {
         </div>
         <DrawerLink path={ROUTE.signup}>회원가입</DrawerLink>
       </Drawer>
-    </header>
+    </HeaderWrapper>
   );
 };
 

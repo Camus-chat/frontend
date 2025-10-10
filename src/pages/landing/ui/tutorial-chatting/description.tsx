@@ -1,3 +1,6 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import { tv } from 'tailwind-variants';
 
 import { description } from '../styles';
@@ -18,7 +21,19 @@ const TutorialChattingDescription = () => {
   const styles = createStyle();
 
   return (
-    <div className={styles.wrapper()}>
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: 10 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 0.5,
+          },
+        },
+      }}
+      className={styles.wrapper()}
+    >
       <h1 className={styles.title()}>
         {'문맥까지 이해하는 '}
         <br className='sm:max-lg:hidden xl:hidden' />
@@ -29,7 +44,7 @@ const TutorialChattingDescription = () => {
         <br className='max-xs:hidden xl:hidden' />
         누구나 안심하고 대화할 수 있는 커뮤니케이션 공간을 만듭니다.
       </p>
-    </div>
+    </motion.div>
   );
 };
 
