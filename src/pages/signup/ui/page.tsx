@@ -3,13 +3,8 @@ import Link from 'next/link';
 import { ROUTE } from '@/shared/config';
 import AuthLayout from '@/widgets/auth-layout';
 
-import Agreement from './agreement';
 import Banner from './banner';
-import EnterpriseSelect from './enterprise-select';
-import InputEmail from './input-email';
-import InputName from './input-name';
-import InputPassword from './input-password';
-import SignupButton from './signup-button';
+import SignUp from './signup';
 
 const SignupPage = () => {
   return (
@@ -29,12 +24,7 @@ const SignupPage = () => {
             Sign in
           </Link>
         </div>
-        <EnterpriseSelect />
-        <InputName />
-        <InputEmail />
-        <InputPassword />
-        <Agreement />
-        <SignupButton />
+        <SignUp />
       </AuthLayout>
       <aside>
         <Banner />

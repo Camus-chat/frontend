@@ -1,11 +1,15 @@
 'use client';
 
 import { CircleCheck } from 'lucide-react';
+import { useState } from 'react';
 import { tv } from 'tailwind-variants';
 
-import { useSignupDataStore } from '@/pages/signup/store/signup-data';
+import { ENTERPRISE, PERSONAL } from '../../constants';
 
-import { ENTERPRISE, PERSONAL } from '../constants';
+interface Props {
+  defaultValue: boolean;
+  onSelect: (value: boolean) => void;
+}
 
 const style = tv({
   base: [
@@ -20,16 +24,20 @@ const style = tv({
   },
 });
 
-const EnterpriseSelect = () => {
-  const selectedKey = useSignupDataStore((state) => state.isEnterprise);
-  const onSelect = useSignupDataStore((state) => state.setIsEnterprise);
+const EnterpriseSelect = ({ defaultValue, onSelect }: Props) => {
+  const [selectedKey, setSelectedKey] = useState(defaultValue);
+
+  const select = (value: boolean) => {
+    setSelectedKey(value);
+    onSelect(value);
+  };
 
   return (
     <div className='grid w-full grid-cols-2 gap-2'>
       <button
         type='button'
         className={style({ selected: selectedKey === PERSONAL })}
-        onClick={() => onSelect(PERSONAL)}
+        onClick={() => select(PERSONAL)}
       >
         <CircleCheck size={16} />
         Personal
@@ -37,7 +45,7 @@ const EnterpriseSelect = () => {
       <button
         type='button'
         className={style({ selected: selectedKey === ENTERPRISE })}
-        onClick={() => onSelect(ENTERPRISE)}
+        onClick={() => select(ENTERPRISE)}
       >
         <CircleCheck size={16} />
         Enterprise
