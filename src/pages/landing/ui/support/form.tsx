@@ -7,8 +7,8 @@ import { useForm } from 'react-hook-form';
 import { tv } from 'tailwind-variants';
 
 import { EMAIL_REGEX, ROUTE } from '@/shared/config';
+import { Agreement } from '@/shared/ui';
 
-import Agreement from './agreement';
 import SupportInput from './input';
 import RequestButton from './request-button';
 
@@ -90,7 +90,34 @@ const SupportForm = () => {
           control={control}
           rules={{ required: '필수 입력 항목입니다.' }}
         />
-        <Agreement name='agreed' control={control} rules={{ required: true }} />
+        <Agreement
+          name='agreed'
+          control={control}
+          rules={{ required: true }}
+          classNames={{
+            wrapper: 'after:bg-indigo-600',
+          }}
+        >
+          <p className='text-sm font-light text-gray-400'>
+            {'CAMUS의 '}
+            <Link
+              href={ROUTE.termsOfService}
+              className='font-normal text-indigo-600'
+            >
+              서비스 약관
+            </Link>
+            {' 및 '}
+            <Link
+              href={ROUTE.privacyNotice}
+              className='font-normal text-indigo-600'
+            >
+              개인정보 보호정책
+            </Link>
+            {
+              ' 에 동의합니다. 이는 CAMUS로부터 마케팅 정보를 수신하는 것에 대한 내 동의를 포함합니다. 마케팅 커뮤니케이션 수신을 언제든지 취소할 수 있습니다.'
+            }
+          </p>
+        </Agreement>
         <RequestButton />
       </Form>
       <div className={styles.login()}>

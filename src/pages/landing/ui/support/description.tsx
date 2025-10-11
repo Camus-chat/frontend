@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 
-import { CheckCircle } from '@/shared/icon';
+import { CheckCircleIcon } from '@/shared/icon';
 
 import { description } from '../styles';
 
@@ -42,7 +42,7 @@ const SupportDescription = () => {
         {['활용 사례 상담', '주요 기능 살펴보기', '맞춤 견적 받기'].map(
           (item) => (
             <li key={item} className='flex items-center gap-2'>
-              <CheckCircle size={20} className='text-indigo-600' />
+              <CheckCircleIcon size={20} className='text-indigo-600' />
               <span className='font-semibold lg:text-lg'>{item}</span>
             </li>
           ),
