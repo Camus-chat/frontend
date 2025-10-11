@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion';
 
+import { CheckCircle } from '@/shared/icon';
+
 import { description } from '../styles';
-import { CheckCircle } from './check-circle';
 
 const SupportDescription = () => {
   const styles = description();
