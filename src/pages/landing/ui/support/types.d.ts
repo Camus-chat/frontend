@@ -1,7 +1,6 @@
-interface SupportFormData {
+type SupportFormData = UserConsent & {
   email: string;
   firstName: string;
   lastName: string;
   company: string;
-  agreed: boolean;
-}
+};

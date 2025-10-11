@@ -5,6 +5,6 @@ type ErrorPage = FC<{
   reset: () => void;
 }>;
 
-interface IconSvgProps extends React.ComponentProps<'svg'> {
+type IconSvgProps = React.ComponentProps<'svg'> & {
   size?: number;
-}
+};
