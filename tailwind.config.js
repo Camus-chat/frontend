@@ -15,6 +15,7 @@ const config = {
         xs: '480px',
       },
       spacing: {
+        18: '4.5rem',
         22: '5.5rem',
         'service-menu': '60px',
         mockup: '660px',
