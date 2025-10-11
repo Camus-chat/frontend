@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 
 import { Drawer, DrawerClose, DrawerOpen } from '@/features/drawer';
 import { ROUTE } from '@/shared/config';
-import { Logo } from '@/shared/ui';
+import { Logo, blur } from '@/shared/ui';
 
 import { NAVIGATIONS } from '../config/navigation';
 import DrawerLink from './drawer-item/link';
@@ -26,9 +26,17 @@ const createStyle = tv({
   variants: {
     position: {
       fixed: { base: 'fixed' },
-      sticky: { base: 'sticky top-0 bg-transparent backdrop-blur-lg' },
+      sticky: { base: 'sticky top-0' },
     },
   },
+  compoundVariants: [
+    {
+      position: ['sticky', 'fixed'],
+      class: {
+        base: blur(),
+      },
+    },
+  ],
 });
 
 const Header = async ({ business, className, position, children }: Props) => {
@@ -40,7 +48,7 @@ const Header = async ({ business, className, position, children }: Props) => {
   const styles = createStyle({ position });
 
   return (
-    <HeaderWrapper className={styles.base()} animated={position === 'sticky'}>
+    <HeaderWrapper className={styles.base()} animated={!!position}>
       <NavigationBelt business={isBusiness} className={className} />
       <div className={styles.wrapper({ className })}>
         <Logo business={isBusiness} />
