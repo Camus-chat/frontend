@@ -1,10 +1,10 @@
 'use client';
 
-import { Form } from '@heroui/form';
+import { Form, Input } from '@heroui/react';
 import { Controller, useForm } from 'react-hook-form';
 
 import { EMAIL_REGEX } from '@/shared/config';
-import { Button, Input, Password } from '@/shared/ui';
+import { Button, Password } from '@/shared/ui';
 
 interface Props {
   onSubmit: (account: Account) => Promise<void>;
