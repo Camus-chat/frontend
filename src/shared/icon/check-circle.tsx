@@ -1,4 +1,4 @@
-export const CheckCircle = ({ size = 24, ...props }: IconSvgProps) => {
+export const CheckCircleIcon = ({ size = 24, ...props }: IconSvgProps) => {
   return (
     <svg
       {...props}

@@ -1,6 +1,7 @@
+import { Input } from '@heroui/react';
+
 import { useChannelFormStore } from '@/pages/channel/store/form';
 import { inputStyleProps } from '@/pages/channel/ui/styles';
-import { Input } from '@/shared/ui';
 
 const InputChannelName = () => {
   const name = useChannelFormStore((state) => state.title);
