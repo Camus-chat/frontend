@@ -21,6 +21,8 @@ export const ROUTE = {
   channel: '/service/channel',
   profile: '/service/profile',
   guest: '/chat',
+  termsOfService: '/terms-of-service',
+  privacyNotice: '/privacy-notice',
 };
 
 export const MEATADATA = {

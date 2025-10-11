@@ -1,7 +1,6 @@
-// components
-export { default as Button } from './component/button';
-export { default as Password } from './component/password';
-export { Input } from '@heroui/react';
-export { default as Logo } from './component/logo';
-export { default as Mockup } from './component/mockup';
-export { default as Hero } from './component/hero';
+export { default as Button } from './button';
+export { default as Password } from './password';
+export { default as Logo } from './logo';
+export { default as Mockup } from './mockup';
+export { default as Hero } from './hero';
+export { default as Agreement } from './agreement';
