@@ -17,7 +17,7 @@ const AuthLayout = ({ children, title, subtitle, bottomContent }: Props) => {
       </header>
       <main className={styles.main()}>
         <div className='mb-6 mt-12 flex flex-col items-center'>
-          <h1 className='text-center text-4xl font-medium'>{title}</h1>
+          <h1 className={styles.title({ class: 'text-center' })}>{title}</h1>
           {subtitle && (
             <span className='mt-4 text-center text-base font-light text-gray-700'>
               {subtitle}
