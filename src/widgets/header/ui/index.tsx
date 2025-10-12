@@ -39,7 +39,7 @@ const createStyle = tv({
   ],
 });
 
-const Header = async ({ business, className, position, children }: Props) => {
+const Header = ({ business, className, position, children }: Props) => {
   const isBusiness = !!business;
   const navigationMenuItems = business
     ? NAVIGATIONS.business
