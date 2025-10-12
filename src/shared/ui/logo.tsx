@@ -8,7 +8,7 @@ interface Props {
 
 const createStyle = tv({
   slots: {
-    base: 'flex items-end text-foreground',
+    base: 'flex w-fit items-end text-foreground',
     text: 'text-xl font-semibold leading-none md:text-3xl',
   },
 });

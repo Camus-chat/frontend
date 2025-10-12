@@ -10,11 +10,15 @@ const config = {
     './node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    fontFamily: {
+      'cal-sans': ['Cal Sans', 'sans-serif'],
+    },
     extend: {
       screens: {
         xs: '480px',
       },
       spacing: {
+        18: '4.5rem',
         22: '5.5rem',
         'service-menu': '60px',
         mockup: '660px',
