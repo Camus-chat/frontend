@@ -3,9 +3,10 @@ import Link from 'next/link';
 import { tv } from 'tailwind-variants';
 
 import { ROUTE } from '@/shared/config';
-import { Logo } from '@/shared/ui';
+import { Logo, hero } from '@/shared/ui';
 
 const createStyle = tv({
+  extend: hero,
   slots: {
     divider: 'bg-foreground-700 md:hidden',
     column: 'flex flex-col gap-1 md:gap-4',
@@ -18,8 +19,8 @@ const Footer = () => {
   const styles = createStyle();
 
   return (
-    <footer className='hero w-full bg-foreground-900'>
-      <div className='wrapper'>
+    <footer className='w-full bg-foreground-900'>
+      <div className={styles.wrapper()}>
         <div className='flex grid-cols-6 flex-col gap-5 px-2 md:grid'>
           <div
             className={styles.column({
