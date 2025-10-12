@@ -10,7 +10,7 @@ const SignupPage = () => {
   return (
     <div className='grid size-full grid-cols-[1fr,auto]'>
       <AuthLayout
-        title='Create Your CAMUS Account'
+        title='Create your CAMUS account'
         subtitle='Try free for 30 days or get started with our Developer plan'
       >
         <div className='mb-4 flex justify-end'>
